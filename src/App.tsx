@@ -1,6 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import Home from './Pages/Home';
+import NotFound from './Pages/NotFound';
 
 export function App() {
   return (
@@ -18,4 +18,3 @@ export function WrappedApp() {
     </HashRouter>
   );
 }
-
