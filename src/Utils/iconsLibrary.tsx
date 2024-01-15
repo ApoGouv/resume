@@ -8,6 +8,7 @@ import {
   FaStackOverflow,
   FaSquareXTwitter,
   FaTerminal,
+  FaLaptopCode,
 } from 'react-icons/fa6';
 
 import { CgWebsite } from 'react-icons/cg';
@@ -27,8 +28,17 @@ const PROFILE_LINKS_ICONS = {
   twitter: <FaSquareXTwitter />,
 };
 
+const WORK_EXPERIENCE_ICONS = {
+  code: <FaLaptopCode />,
+};
+
 const PROJECT_ICONS = {
   website: <CgWebsite />,
 };
 
-export { PROFILE_CONTACT_ICONS, PROFILE_LINKS_ICONS, PROJECT_ICONS };
+export {
+  PROFILE_CONTACT_ICONS,
+  PROFILE_LINKS_ICONS,
+  PROJECT_ICONS,
+  WORK_EXPERIENCE_ICONS,
+};

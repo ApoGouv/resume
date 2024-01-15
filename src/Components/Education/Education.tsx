@@ -26,7 +26,7 @@ function Education({ data }: EducationProps) {
 
   return (
     <section className="education__section">
-      <h3 className="education__heading">ΕΚΠΑΙΔΕΥΣΗ</h3>
+      <h2 className="education__heading">ΕΚΠΑΙΔΕΥΣΗ</h2>
       {educationState
         .filter((edu) => !edu.isHidden)
         .map((education, index) => {
@@ -34,9 +34,9 @@ function Education({ data }: EducationProps) {
           return (
             <div className="education__entry" key={keyEdu}>
               <div className="education__basic-info">
-                <div className="education__type">
+                <h3 className="education__type">
                   {education.degree || education.type}
-                </div>
+                </h3>
                 <div className="education__period">
                   {education.isGraduation ? (
                     <>

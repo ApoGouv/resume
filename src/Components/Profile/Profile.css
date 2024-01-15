@@ -1,5 +1,84 @@
-.profile__picture {
-    border: 0.2rem solid var(--color-blue);
-    border-radius: 50%;
-    width: 10rem;
+.profile__section {
+  padding: 1.5rem 0;
+  padding-bottom: 0;
+}
+
+.profile__bio-wrapper {
+  text-align: center;
+}
+
+.profile__name {
+  font-size: var(--h1-font-size);
+}
+
+.profile__role {
+  font-weight: var(--font-medium);
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-1);
+  color: var(--color-red);
+}
+
+.profile__bio {
+  text-align: left;
+}
+
+.profile__bio-and-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__picture-wrapper img {
+  width: 10rem;
+  border-radius: 50%;
+  border: 0.2rem solid var(--color-red);
+}
+
+.profile__contacts-and-socials {
+  margin-top: 1rem;
+}
+
+.profile__contacts-wrapper,
+.profile__socials-wrapper {
+  display: flex;
+  padding: 0.5rem 0;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile__contacts-wrapper > .profile__contact,
+.profile__socials-wrapper > .profile__social {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__contact-icon,
+.profile__social-icon {
+  position: relative;
+  margin-right: 0.25rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__contact-icon > svg,
+.profile__social-icon > svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.profile__hr {
+  border: none;
+  border-top: 0.1rem solid var(--color-red);
+  width: calc(100% - 1rem);
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.profile__contact-icon.scaled-up-icon,
+.profile__social-icon.scaled-up-icon {
+  margin-right: 0.75rem;
+  transform: scale(1.6);
 }

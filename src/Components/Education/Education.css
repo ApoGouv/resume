@@ -1,11 +1,10 @@
 .education__section {
-  padding: 1rem;
-  font-size: 1.2rem;
+  padding: 1.5rem 0;
 }
 
 .education__heading {
-  color: var(--color-blue);
   text-transform: uppercase;
+  margin-bottom: var(--mb-1);
 }
 
 .education__basic-info,
@@ -13,26 +12,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 5px;
 }
 
 .education__type {
-  font-size: 1.6rem;
   color: var(--color-red);
-  font-weight: 500;
+  font-weight: var(--font-medium);
   margin: 0.5rem 0;
 }
 
 .education__period {
   font-style: italic;
   font-size: 1rem;
+  white-space: nowrap;
 }
 
 .education__name-and-score {
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: var(--font-medium);
 }
 
 .education__score {
   font-style: italic;
-  font-size: 1.2rem;
+  white-space: nowrap;
 }

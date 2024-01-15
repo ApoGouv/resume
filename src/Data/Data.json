@@ -218,7 +218,7 @@
             "Δημιουργία και διαχείριση διαφημιστικών καμπανιών για την εταιρεία, μέσω Facebook και Google AdWords.",
             "Βελτιστοποίηση της ταχύτητας του ιστότοπου της εταιρείας, με βάση εργαλεία όπως το PageSpeed (Google) και το YSlow (βασίζεται στους κανόνες της Yahoo). Η ιστοσελίδα της εταιρείας έχει κατασκευαστεί με το Joomla! CMS."
           ],
-          "showDescription": true
+          "showDescription": false
         }
       ]
     },
@@ -237,7 +237,7 @@
             "Οι εφαρμογές αναπτύχθηκαν από την εταιρεία iGraphics. Η δουλειά μου ήταν να δημιουργηθεί το front-end κομμάτι της εφαρμογής, με βάση τα παρεχόμενα γραφικά mockup, με έγκυρη HTML και CSS.",
             "Χρησιμοποίησα την jQuery για αλληλεπιδράσεις και εφέ, όπως μεταβάσεις και αναδυόμενα παράθυρα."
           ],
-          "showDescription": true
+          "showDescription": false
         }
       ]
     },
@@ -256,7 +256,7 @@
             "e-shop content management with Magento.",
             "online classroom content management with Moodle."
           ],
-          "showDescription": true
+          "showDescription": false
         }
       ]
     }

@@ -6,6 +6,7 @@ import {
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
 } from '../../Utils/iconsLibrary';
+
 import './Profile.css';
 
 import ProfilePic from '../../Assets/Images/profile.jpg';
@@ -55,7 +56,7 @@ function Profile({ data }: ProfileProps) {
   };
 
   return (
-    <section className="profile-section" id="profile">
+    <section className="profile__section" id="profile">
       <div className="profile__container">
         <div className="profile__bio-and-pic">
           {profileState.image?.showImage && (
@@ -153,7 +154,7 @@ function Profile({ data }: ProfileProps) {
               })}
           </div>
 
-          <hr className="hr" />
+          <hr className="profile__hr" />
 
           <div className="profile__socials-wrapper">
             {profileState.socials

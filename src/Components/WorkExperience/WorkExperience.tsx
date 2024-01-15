@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getDateRangeFormatted } from '../../Utils/dates';
+import { WORK_EXPERIENCE_ICONS } from '../../Utils/iconsLibrary';
 import './WorkExperience.css';
 
 type DurationType = {
@@ -38,13 +39,13 @@ function WorkExperience({ data }: WorkExperienceProps) {
   return (
     <section className="workExp__section" id="workExperience">
       <div className="workExp__container">
-        <h3 className="workExp__heading">ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h3>
+        <h2 className="workExp__heading">ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h2>
 
         {workExpState.map((exp, index) => {
           const keyExpId: string = `exp-${index}`;
           return (
             <div className="workExp__entry" key={keyExpId}>
-              <p className="workExp__company-name">{exp.company}</p>
+              <h3 className="workExp__company-name">{exp.company}</h3>
               <div className="workExp__company-info">
                 <p className="workExp__company-duration">
                   {getDateRangeFormatted(
@@ -92,8 +93,11 @@ function WorkExperience({ data }: WorkExperienceProps) {
                                   {project.name}
                                 </div>
                                 <div className="workExp__work-project-technologies">
-                                  <div className="workExp__work-project-technologies-label">
-                                    Τεχνολογίες που χρησιμοποιήθηκαν:{' '}
+                                  <div
+                                    className="workExp__work-project-technologies-label"
+                                    title="Τεχνολογίες που χρησιμοποιήθηκαν"
+                                  >
+                                    {WORK_EXPERIENCE_ICONS.code}:{' '}
                                   </div>
                                   <div className="workExp__work-project-technologies-values">
                                     {project.technologies.join(', ')}
