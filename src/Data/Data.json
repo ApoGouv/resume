@@ -291,6 +291,7 @@
     {
       "name": "NPC Generator",
       "technologies": ["Python", "JavaScript", "HTML", "CSS", "Bootstrap"],
+      "showDesc": true,
       "desc": [
         "Κατασκευή μιας φόρμας με δυναμικά και αλληλοεξαρτώμενα πεδία για επιλογές χαρακτηριστικών ενός παίκτη για DnD.",
         "Δημιουργία end-points σε Flask για την αποστολή της φόρμας.",

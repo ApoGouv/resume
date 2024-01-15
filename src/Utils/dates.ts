@@ -78,6 +78,23 @@ export const calculateDiff = (
   return `${experience} χρόν${+experience <= 1 ? 'ο' : 'ια'}`;
 };
 
+export const getDateRangeFormatted = (
+  dateFrom: string,
+  dateTo: string | null,
+  format: string = 'YYYY',
+  separator: string = ' - '
+): string => {
+  const formattedDateFrom = getDateFormat(dateFrom, format);
+  let formattedDateTo = '';
+  if (typeof dateTo === 'string') {
+    formattedDateTo =
+      dateTo === 'present' ? 'Present' : getDateFormat(dateTo, format);
+    formattedDateTo = `${separator}${formattedDateTo}`;
+  }
+
+  return `${formattedDateFrom}${formattedDateTo}`;
+};
+
 export const dateToGreekFormat = (date: Date): string => {
   const localeDateOptions: Intl.DateTimeFormatOptions = {
     year: 'numeric',

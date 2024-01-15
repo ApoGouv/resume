@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getDateFormat } from '../../Utils/dates';
+import { getDateRangeFormatted } from '../../Utils/dates';
 import './WorkExperience.css';
 
 type DurationType = {
@@ -36,39 +36,42 @@ function WorkExperience({ data }: WorkExperienceProps) {
   const [workExpState] = useState<ExperienceType[]>(data);
 
   return (
-    <section className="workExp-section" id="workExperience">
+    <section className="workExp__section" id="workExperience">
       <div className="workExp__container">
-        <h3 className="workExp__heading">Επαγγελματική Εμπειρία</h3>
+        <h3 className="workExp__heading">ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h3>
 
         {workExpState.map((exp, index) => {
           const keyExpId: string = `exp-${index}`;
           return (
-            <div className="experience" key={keyExpId}>
-              <p className="company-name">{exp.company}</p>
-              <div className="exp-info">
-                <p className="exp-duration">
-                  {getDateFormat(exp.duration.from, 'MMM, YYYY')}
-                  {' - '}
-                  {exp.duration.to === 'present'
-                    ? 'Present'
-                    : getDateFormat(exp.duration.to, 'MMM, YYYY')}
+            <div className="workExp__entry" key={keyExpId}>
+              <p className="workExp__company-name">{exp.company}</p>
+              <div className="workExp__company-info">
+                <p className="workExp__company-duration">
+                  {getDateRangeFormatted(
+                    exp.duration.from,
+                    exp.duration.to,
+                    'MMM, YYYY'
+                  )}
                 </p>
-                <p>{exp.location}</p>
+                <p className="workExp__company-location">{exp.location}</p>
               </div>
 
               {exp.work.map((work, workIndex) => {
                 const keyExpWorkId: string = `exp-${index}-work-${workIndex}`;
                 return (
-                  <div className="work-wrapper" key={keyExpWorkId}>
-                    <div className="work-info">
-                      <p className="work-role">{work.role}</p>
+                  <div className="workExp__work-wrapper" key={keyExpWorkId}>
+                    <div className="workExp__work-info">
+                      <p className="workExp__work-role">{work.role}</p>
                     </div>
                     {work.showDescription && work.description && (
-                      <ul className="work-desc">
+                      <ul className="workExp__work-desc">
                         {work.description.map((desc, descIndex) => {
                           const keyWorkDescId: string = `desc-${index}-${workIndex}-${descIndex}}`;
                           return (
-                            <li className="desc" key={keyWorkDescId}>
+                            <li
+                              className="workExp__work-desc-entry"
+                              key={keyWorkDescId}
+                            >
                               {desc}
                             </li>
                           );
@@ -76,31 +79,34 @@ function WorkExperience({ data }: WorkExperienceProps) {
                       </ul>
                     )}
                     {work.projects && (
-                      <div className="projects">
-                        <ul className="project-list">
+                      <div className="workExp__work-projects">
+                        <ul className="workExp__work-project-list">
                           {work.projects.map((project, projectIndex) => {
                             const keyWorkProjectId: string = `project-${project.name}-${projectIndex}`;
                             return (
-                              <li className="project" key={keyWorkProjectId}>
-                                <div className="project-name">
+                              <li
+                                className="workExp__work-project-entry"
+                                key={keyWorkProjectId}
+                              >
+                                <div className="workExp__work-project-name">
                                   {project.name}
                                 </div>
-                                <div className="project-technologies">
-                                  <div className="project-technologies-label">
-                                    Technologies Used:{' '}
+                                <div className="workExp__work-project-technologies">
+                                  <div className="workExp__work-project-technologies-label">
+                                    Τεχνολογίες που χρησιμοποιήθηκαν:{' '}
                                   </div>
-                                  <div className="project-technologies-values">
+                                  <div className="workExp__work-project-technologies-values">
                                     {project.technologies.join(', ')}
                                   </div>
                                 </div>
                                 {project.showResponsibilities && (
-                                  <ul className="responsibilties">
+                                  <ul className="workExp__work-project-responsibilties">
                                     {project.responsibilities.map(
                                       (resp, respIndex) => {
                                         const keyWorkProjectResponsibilityId: string = `project-${project.name}-${projectIndex}-${respIndex}`;
                                         return (
                                           <li
-                                            className="project-responsibility"
+                                            className="workExp__work-project-responsibility"
                                             key={keyWorkProjectResponsibilityId}
                                           >
                                             {resp}
