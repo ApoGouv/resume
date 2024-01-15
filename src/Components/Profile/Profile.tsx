@@ -37,6 +37,7 @@ type ProfileProps = {
     role: string;
     overallExperienceStartDate: string;
     bio: string;
+    showBio: boolean;
     contact: ContactType[];
     socials: SocialType[];
     image: ImageType;
@@ -54,33 +55,35 @@ function Profile({ data }: ProfileProps) {
   };
 
   return (
-    <div className="profile-section">
-      <div className="main-info">
-        <div className="bio-and-image">
-          <div className="bio-wrapper">
-            <div className="name-text">{profileState.name}</div>
-            <div className="role-text">{profileState.role}</div>
-            <div className="bio-text">
-              {getBio(
-                profileState.bio,
-                'experience',
-                profileState.overallExperienceStartDate
-              )}
-            </div>
+    <section className="profile-section" id="profile">
+      <div className="profile__container">
+        <div className="profile__bio-and-pic">
+          <div className="profile__bio-wrapper">
+            <div className="profile__name">{profileState.name}</div>
+            <div className="profile__role">{profileState.role}</div>
+            {profileState.showBio && (
+              <div className="profile__bio">
+                {getBio(
+                  profileState.bio,
+                  'experience',
+                  profileState.overallExperienceStartDate
+                )}
+              </div>
+            )}
           </div>
           {profileState.image?.showImage && (
-            <div className="image-wrapper">
+            <div className="profile__picture-wrapper">
               <img
                 src={profileImage}
                 alt={`profile of ${profileState.name}`}
-                className="profile-picture"
+                className="profile__picture"
               />
             </div>
           )}
         </div>
 
-        <div className="all-socials">
-          <div className="contacts-wrapper">
+        <div className="profile__contacts-and-socials">
+          <div className="profile__contacts-wrapper">
             {profileState.contact
               .filter((contact) => !contact.isHidden)
               .map((contact) => {
@@ -90,7 +93,7 @@ function Profile({ data }: ProfileProps) {
                   case 'email':
                     contactElement = (
                       <a
-                        className="email-text"
+                        className="profile__email"
                         href={`mailto:${contact.value}`}
                         rel="noreferrer noopener"
                       >
@@ -101,7 +104,7 @@ function Profile({ data }: ProfileProps) {
                   case 'phone':
                     contactElement = (
                       <a
-                        className="phone-text"
+                        className="profile__phone"
                         href={`tel:${contact.value.replace(/\s+/g, '')}`}
                         rel="noreferrer noopener"
                       >
@@ -112,7 +115,7 @@ function Profile({ data }: ProfileProps) {
                   case 'website':
                     contactElement = (
                       <a
-                        className="website-text"
+                        className="profile__website"
                         href={contact.link}
                         rel="noreferrer noopener"
                       >
@@ -122,40 +125,51 @@ function Profile({ data }: ProfileProps) {
                     break;
                   default:
                     contactElement = (
-                      <p className="other-contact-text">{contact.value}</p>
+                      <p className="profile__other-contact">{contact.value}</p>
                     );
                     break;
                 }
                 return (
-                  <div className="contact" key={`contact-${contact.type}`}>
-                    <div className={`contact-icon ${contact.iconClass ?? ''}`}>
+                  <div
+                    className="profile__contact"
+                    key={`contact-${contact.type}`}
+                  >
+                    <div
+                      className={`profile__contact-icon ${
+                        contact.iconClass ?? ''
+                      }`}
+                    >
                       {
                         PROFILE_CONTACT_ICONS[
                           contact.icon as keyof typeof PROFILE_CONTACT_ICONS
                         ]
                       }
                     </div>
-                    <div className="contact-text">{contactElement}</div>
+                    <div className="profile__contact-text">
+                      {contactElement}
+                    </div>
                   </div>
                 );
               })}
           </div>
 
-          <hr className="link-hr" />
+          <hr className="hr" />
 
-          <div className="socials-wrapper all-socials-wrapper">
+          <div className="profile__socials-wrapper">
             {profileState.socials
               .filter((social) => !social.isHidden)
               .map((social) => (
-                <div className="social" key={`social-${social.type}`}>
-                  <div className={`social-icon ${social.iconClass ?? ''}`}>
+                <div className="profile__social" key={`social-${social.type}`}>
+                  <div
+                    className={`profile__social-icon ${social.iconClass ?? ''}`}
+                  >
                     {
                       PROFILE_LINKS_ICONS[
                         social.icon as keyof typeof PROFILE_LINKS_ICONS
                       ]
                     }
                   </div>
-                  <div className="social-text">
+                  <div className="profile__social-text">
                     <a
                       href={social.value}
                       target="_blank"
@@ -169,7 +183,7 @@ function Profile({ data }: ProfileProps) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

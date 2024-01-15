@@ -70,8 +70,6 @@ export const calculateDiff = (
   const startDateDateFormat = new Date(startDate);
   const endDateDateFormat = new Date(endDate);
 
-  console.log({ startDate, endDate, startDateDateFormat, endDateDateFormat });
-
   const experience = (
     (endDateDateFormat.getTime() - startDateDateFormat.getTime()) /
     (1000 * 60 * 60 * 24 * 30 * 12)

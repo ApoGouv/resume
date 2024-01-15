@@ -22,6 +22,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'react-refresh', 'prettier'],
   rules: {
+    'no-console': 'off',
     'react-refresh/only-export-components': [
       'warn',
       {
