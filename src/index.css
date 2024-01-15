@@ -1,26 +1,38 @@
 @import"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap";
 :root {
     --header-height: 3rem;
+
     --title-color: #434c5e;
     --text-color: #4c566a;
     --text-color-light: #7b88a1;
     --resume-color: #ffffff;
     --resume-color-alt: #f7f9fb;
+    
     --body-color: #f2f4f8;
-    --body-font: "Poppins", sans-serif;
+    --body-font: "Inter", sans-serif;
+    
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
     --h3-font-size: 1rem;
+    
     --normal-font-size: .938rem;
     --small-font-size: .875rem;
     --smaller-font-size: .813rem;
     --font-medium: 500;
     --font-semi-bold: 600;
+    
     --mb-1: .5rem;
     --mb-2: 1rem;
     --mb-3: 1.5rem;
+    
     --z-tooltip: 10;
-    --z-fixed: 100
+    --z-fixed: 100;
+
+    --color-red: #C3423F;
+    --color-black: #211A1E;
+    --color-blue: #247BA0;
+    --color-snow: #FFFCFF;
+    --color-yellow: #FFBA49;
 }
 
 *,:before,:after {

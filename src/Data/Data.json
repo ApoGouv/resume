@@ -295,8 +295,9 @@
       "isHidden": true
     }
   ],
-  "others": {
-    "certificates": [
+  "certificates": {
+    "isHidden": false,
+    "details": [
       {
         "org": "Udemy",
         "name": "JavaScript, React, Node.js, PHP, κ.α.",
@@ -353,7 +354,9 @@
         "shouldShowSubs": false,
         "subs": []
       }
-    ],
+    ]
+  },
+  "others": {
     "softwares": ["VSCode", "Git", "Ubuntu", "Windows", "etc."],
     "interests": ["Ποδηλασία", "Χορός Salsa/ Kizomba", "Sudoku", "Rock Music"],
     "languages": [

@@ -58,6 +58,15 @@ function Profile({ data }: ProfileProps) {
     <section className="profile-section" id="profile">
       <div className="profile__container">
         <div className="profile__bio-and-pic">
+          {profileState.image?.showImage && (
+            <div className="profile__picture-wrapper">
+              <img
+                src={profileImage}
+                alt={`profile of ${profileState.name}`}
+                className="profile__picture"
+              />
+            </div>
+          )}
           <div className="profile__bio-wrapper">
             <div className="profile__name">{profileState.name}</div>
             <div className="profile__role">{profileState.role}</div>
@@ -71,15 +80,6 @@ function Profile({ data }: ProfileProps) {
               </div>
             )}
           </div>
-          {profileState.image?.showImage && (
-            <div className="profile__picture-wrapper">
-              <img
-                src={profileImage}
-                alt={`profile of ${profileState.name}`}
-                className="profile__picture"
-              />
-            </div>
-          )}
         </div>
 
         <div className="profile__contacts-and-socials">

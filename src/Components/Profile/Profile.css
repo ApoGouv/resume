@@ -1,0 +1,5 @@
+.profile__picture {
+    border: 0.2rem solid var(--color-blue);
+    border-radius: 50%;
+    width: 10rem;
+}
