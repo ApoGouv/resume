@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Resume } from './Pages/Resume';
+import Resume from './Pages/Resume/Resume';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
