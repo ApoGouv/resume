@@ -68,12 +68,12 @@
       "showImage": true
     }
   },
-  "experience": [
+  "workExperience": [
     {
       "company": "MultiHosting",
       "duration": {
         "from": "2017, Nov",
-        "to": "Now"
+        "to": "present"
       },
       "location": "Καλαμαριά, Θεσσαλονίκη, Ελλάδα",
       "work": [
@@ -83,6 +83,7 @@
             {
               "name": "Eldico B2B",
               "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
+              "showResponsibilities": true,
               "responsibilities": [
                 "Βελτιστοποίηση της γεφύρωσης του καταστήματος με το Εμπορικό πρόγραμμα τους (SoftOne)",
                 "Δημιουργία custom λειτουργίας για Γρήγορο Καλάθι, με Ajax αναζήτηση προϊόντων, real time έλεγχο αποθέματος, αυτόματη αποθήκευση για συνέχιση της παραγγελίας άλλη στιγμή κ.ά.. Για την εμφάνιση βασίστηκα σε mockup σχέδιο που παρείχε η εταιρεία",
@@ -102,6 +103,7 @@
                 "QuaggaJS",
                 "Vue"
               ],
+              "showResponsibilities": true,
               "responsibilities": [
                 "Γεφύρωση του καταστήματος με το εμπορικό πρόγραμμά τους (SoftOne), με χρήση του Lumen microframework",
                 "Δημιουργία διεργασιών για αυτοματοποιημένο κατέβασμα των εικόνων των προϊόντων από το Google Drive. Επίσης γίνεται και μετατροπή των εικόνων σε .webp, όταν χρειάζεται.",
@@ -113,6 +115,7 @@
             {
               "name": "ICPS",
               "technologies": ["PHP", "JavaScript", "reCaptcha"],
+              "showResponsibilities": true,
               "responsibilities": [
                 "Custom website, refactored από PHP 5.6 ώστε να παίζει με PHP 7.4",
                 "Αντικατάσταση ξεπερασμένης λύσης για Captcha με εικόνες, με το Google reCaptcha",
@@ -130,6 +133,7 @@
                 "Drupal",
                 "Lumen"
               ],
+              "showResponsibilities": true,
               "responsibilities": [
                 "Κατασκευή λύσης για διάβασμα/εισαγωγή δεδομένων προϊόντων από αρχεία προμηθευτών. Εισαγωγή προϊόντων σε CS-Cart και συγκομιδή λεπτομερών δεδομένων (sku, εικόνες, περιγραφή, χαρακτηριστικά) μέσω κλήσης στο API της Icecat. Δημιουργία διεργασίας για επιλογή του φθηνότερου προμηθευτή, και με απόθεμα, για προϊόντα που τα είχαν πολλοί προμηθευτές.",
                 "Κατασκευή ιστοσελίδων και e-shop με έτοιμα templates και κατόπιν προσαρμογή αυτών ανάλογα τις απαιτήσεις του πελάτη",
@@ -147,6 +151,7 @@
                 "Laravel",
                 "vBulletin"
               ],
+              "showResponsibilities": true,
               "responsibilities": [
                 "Δημιουργία πρόσθετου για την παρουσίαση, αναζήτηση και εισαγωγή βιβλίων από την Βιβλιονετ, στο βιβλιοπωλείο της εταιρείας (OpenCart)",
                 "Κατασκευή πρόσθετων για WHMCS, π.χ. Φόρμα αξιολόγησης για τα διάφορα τμήματα της εταιρείας. Διαχείριση GDPR Agreement μεταξύ της εταιρείας και reseller πελατών.",
@@ -185,7 +190,7 @@
       "company": "Freelance",
       "duration": {
         "from": "2015, Dec",
-        "to": "Now"
+        "to": "present"
       },
       "location": "Θεσσαλονίκη, Ελλάδα",
       "work": [
@@ -303,7 +308,7 @@
         "name": "JavaScript, React, Node.js, PHP, κ.α.",
         "valid": {
           "from": "2017, Aug",
-          "to": "Now",
+          "to": "present",
           "showCurrent": true
         },
         "link": "https://www.udemy.com/user/apogouv/",
@@ -347,7 +352,7 @@
         "name": "Video Subtitling and Subtitling Software",
         "valid": {
           "from": "2015, Jan",
-          "to": "Now"
+          "to": "present"
         },
         "link": null,
         "containsSub": false,

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 type Seo = {
   name: string;

@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
 import Resume from './Pages/Resume/Resume';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +11,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Resume />
+    <HelmetProvider>
+      <Resume />
+    </HelmetProvider>
   </React.StrictMode>
 );
 
