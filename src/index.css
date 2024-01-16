@@ -11,11 +11,13 @@
   --body-color: #f2f4f8;
   --body-font: 'Inter', sans-serif;
 
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
+  --root-font-size: 14px;
 
-  --normal-font-size: 0.938rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.3rem;
+  --h3-font-size: 1.2rem;
+
+  --normal-font-size: 1rem;
   --small-font-size: 0.875rem;
   --smaller-font-size: 0.813rem;
 
@@ -43,6 +45,7 @@
 }
 
 html {
+  font-size: var(--root-font-size, 14px);
   scroll-behavior: smooth;
 }
 

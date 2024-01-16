@@ -30,5 +30,8 @@ export const printUrl = (url: string): string => {
   // Remove www.
   strippedUrl = strippedUrl.replace(/^www\./, '');
 
+  // Remove trailing forward slashes
+  strippedUrl = strippedUrl.replace(/\/+$/, '');
+
   return strippedUrl;
 };

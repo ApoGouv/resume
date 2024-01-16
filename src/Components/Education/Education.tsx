@@ -25,7 +25,7 @@ function Education({ data }: EducationProps) {
   const [educationState] = useState(data);
 
   return (
-    <section className="education__section">
+    <section className="education__section" id="education">
       <h2 className="education__heading">ΕΚΠΑΙΔΕΥΣΗ</h2>
       {educationState
         .filter((edu) => !edu.isHidden)

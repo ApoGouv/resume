@@ -309,8 +309,9 @@
   ],
   "certificates": {
     "isHidden": false,
-    "details": [
+    "certificatesDetails": [
       {
+        "isHidden": false,
         "org": "Udemy",
         "name": "JavaScript, React, Node.js, PHP, κ.α.",
         "valid": {
@@ -318,36 +319,43 @@
           "to": "present",
           "showCurrent": true
         },
+        "showLink": true,
         "link": "https://www.udemy.com/user/apogouv/",
         "containsSub": true,
         "shouldShowSubs": true,
         "subs": [
           {
+            "isHidden": true,
             "name": " MongoDB Essentials - Understand the Basics of MongoDB",
             "link": "https://www.udemy.com/certificate/UC-BX1J7EAA/",
             "issuedOn": "2019, Feb, 23"
           },
           {
+            "isHidden": false,
             "name": "Build a Social Network from Scratch: JavaScript PHP + MySQL",
             "link": "https://www.udemy.com/certificate/UC-SGPZFM5Y/",
             "issuedOn": "2019, Jan, 01"
           },
           {
+            "isHidden": false,
             "name": "The Complete Node.js Developer Course (2nd Edition)",
             "link": "https://www.udemy.com/certificate/UC-LW31MIKU/",
             "issuedOn": "2017, Oct, 09"
           },
           {
+            "isHidden": true,
             "name": "Learn Object Oriented PHP By Building a Complete Website",
             "link": "https://www.udemy.com/certificate/UC-DXBX0L7Z/",
             "issuedOn": "2017, Sep, 30"
           },
           {
+            "isHidden": false,
             "name": "The Complete JavaScript Course: Build a Real-World Project",
             "link": "https://www.udemy.com/certificate/UC-S8V09Y16/",
             "issuedOn": "2017, Sep, 11"
           },
           {
+            "isHidden": false,
             "name": "JavaScript Essentials",
             "link": "https://www.udemy.com/certificate/UC-S1LFA6UL/",
             "issuedOn": "2017, Aug, 14"
@@ -355,12 +363,14 @@
         ]
       },
       {
+        "isHidden": false,
         "org": "EL-Translations",
         "name": "Video Subtitling and Subtitling Software",
         "valid": {
           "from": "2015, Jan",
           "to": "present"
         },
+        "showLink": false,
         "link": null,
         "containsSub": false,
         "shouldShowSubs": false,

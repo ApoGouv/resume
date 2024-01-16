@@ -23,7 +23,7 @@ type ContactType = {
 
 type SocialType = {
   type: string;
-  value?: string;
+  value: string;
   isHidden: boolean;
   icon: string;
   iconClass?: string;
