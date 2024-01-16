@@ -1,12 +1,5 @@
-.resume-container-A4 {
-  width: 793.7007874px; /* ~ 210mm */
-  height: 1122.519685px; /* ~ 297mm */
-}
-
 @media screen and (min-width: 968px) {
   .resume-container {
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
     margin: 1rem auto;
     position: relative;
   }
@@ -16,6 +9,13 @@
     grid-template-columns: .5fr 1fr;
     background-color: var(--resume-bg-color);
     box-shadow: 0 0 8px #0d0c0c26;
+    border: 1px solid #e7e7e7;
+    margin: 0 auto;
+  }
+
+  .resume.resume-A4 {
+    width: 793.7007874px; /* ~ 210mm */
+    height: 1122.519685px; /* ~ 297mm */
   }
 
   .resume__left {

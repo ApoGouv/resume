@@ -22,3 +22,13 @@ export const padEnd = (
   }
   return (string as string).padEnd(maxLength, fillString);
 };
+
+export const printUrl = (url: string): string => {
+  // Remove http or https
+  let strippedUrl = url.replace(/^https?:\/\//, '');
+
+  // Remove www.
+  strippedUrl = strippedUrl.replace(/^www\./, '');
+
+  return strippedUrl;
+};

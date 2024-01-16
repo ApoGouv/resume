@@ -65,8 +65,8 @@
 
 .profile__contact-icon > svg,
 .profile__social-icon > svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .profile__hr {
@@ -81,4 +81,9 @@
 .profile__social-icon.scaled-up-icon {
   margin-right: 0.75rem;
   transform: scale(1.6);
+}
+
+.profile__social-heading{
+  text-transform: uppercase;
+  margin-bottom: var(--mb-1);
 }

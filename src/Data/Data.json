@@ -70,7 +70,8 @@
   },
   "workExperience": [
     {
-      "company": "MultiHosting",
+      "isHidden": false,
+      "company": "MultiHosting / Mental Media",
       "duration": {
         "from": "2017, Nov",
         "to": "present"
@@ -170,6 +171,7 @@
       ]
     },
     {
+      "isHidden": false,
       "company": "PSDGator ",
       "duration": {
         "from": "2017, Aug",
@@ -187,6 +189,7 @@
       ]
     },
     {
+      "isHidden": false,
       "company": "Freelance",
       "duration": {
         "from": "2015, Dec",
@@ -204,6 +207,7 @@
       ]
     },
     {
+      "isHidden": true,
       "company": "ΚΕΚ Ευρωπληροφόρηση Α.Ε. Κε.Δι.Βι.Μ. 2",
       "duration": {
         "from": "2014, Nov",
@@ -223,6 +227,7 @@
       ]
     },
     {
+      "isHidden": false,
       "company": "igraphics.gr",
       "duration": {
         "from": "2014, Apr",
@@ -242,6 +247,7 @@
       ]
     },
     {
+      "isHidden": true,
       "company": "WOW group",
       "duration": {
         "from": "2010, Jan",

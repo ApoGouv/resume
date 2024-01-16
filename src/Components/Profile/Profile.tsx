@@ -2,6 +2,7 @@
 /* eslint-disable import/no-dynamic-require */
 import { useState } from 'react';
 import { calculateDiff } from '../../Utils/dates';
+import { printUrl } from '../../Utils/strings';
 import {
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
@@ -154,9 +155,8 @@ function Profile({ data }: ProfileProps) {
               })}
           </div>
 
-          <hr className="profile__hr" />
-
           <div className="profile__socials-wrapper">
+            <h2 className="profile__social-heading">SOCIAL</h2>
             {profileState.socials
               .filter((social) => !social.isHidden)
               .map((social) => (
@@ -176,7 +176,7 @@ function Profile({ data }: ProfileProps) {
                       target="_blank"
                       rel="noreferrer noopener"
                     >
-                      {social.type}
+                      {printUrl(social.value)}
                     </a>
                   </div>
                 </div>

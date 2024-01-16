@@ -17,11 +17,8 @@ function Resume() {
         occupation={profile.role}
         description={profile.bio}
       />
-      <main
-        className="resume-container resume-container-A4"
-        id="resume-container"
-      >
-        <div className="resume" id="resume">
+      <main className="resume-container" id="resume-container">
+        <div className="resume resume-A4" id="resume">
           <div className="resume__left">
             <Profile data={profile} />
           </div>

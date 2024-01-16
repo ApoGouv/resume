@@ -1,4 +1,4 @@
-import { padStart } from './padding';
+import { padStart } from './strings';
 
 const months: string[] = [
   'Jan',

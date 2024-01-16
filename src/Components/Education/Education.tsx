@@ -33,28 +33,36 @@ function Education({ data }: EducationProps) {
           const keyEdu = `edu-${index}`;
           return (
             <div className="education__entry" key={keyEdu}>
-              <div className="education__basic-info">
-                <h3 className="education__type">
-                  {education.degree || education.type}
-                </h3>
-                <div className="education__period">
-                  {education.isGraduation ? (
-                    <>
-                      {getDateRangeFormatted(
-                        education.duration.from,
-                        education.duration?.to ?? null
-                      )}
-                    </>
-                  ) : (
-                    getDateFormat(education.duration.from, 'YYYY')
+              <div className="education__time">
+                <span className="education__rounder" />
+                <span className="education__line" />
+              </div>
+              <div className="education__data">
+                <div className="education__basic-info">
+                  <h3 className="education__type">
+                    {education.degree || education.type}
+                  </h3>
+                  <div className="education__period">
+                    {education.isGraduation ? (
+                      <>
+                        {getDateRangeFormatted(
+                          education.duration.from,
+                          education.duration?.to ?? null
+                        )}
+                      </>
+                    ) : (
+                      getDateFormat(education.duration.from, 'YYYY')
+                    )}
+                  </div>
+                </div>
+                <div className="education__name-and-score">
+                  <div className="education__name">{education.school}</div>
+                  {education.score && (
+                    <div className="education__score">
+                      [ {education.score} ]
+                    </div>
                   )}
                 </div>
-              </div>
-              <div className="education__name-and-score">
-                <div className="education__name">{education.school}</div>
-                {education.score && (
-                  <div className="education__score">[ {education.score} ]</div>
-                )}
               </div>
             </div>
           );
