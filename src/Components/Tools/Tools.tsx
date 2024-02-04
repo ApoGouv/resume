@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Tools.css';
 
 type ToolsType = {
@@ -12,7 +12,11 @@ type ToolsProp = {
 };
 
 function Tools({ data }: ToolsProp) {
-  const [toolsState] = useState(data);
+  const [toolsState, setToolsState] = useState(data);
+
+  useEffect(() => {
+    setToolsState(data);
+  }, [data]);
 
   return (
     <section className="tools__section" id="tools">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useLocale from '../../Utils/useLocale';
 import {
   getDateFormatIntl,
@@ -33,7 +33,12 @@ type EducationProps = {
 };
 
 function Education({ data }: EducationProps) {
-  const [educationState] = useState(data);
+  const [educationState, setEducationState] = useState(data);
+
+  useEffect(() => {
+    setEducationState(data);
+  }, [data]);
+
   const { appLocale } = useLocale();
 
   return (

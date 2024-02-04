@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useLocale from '../../Utils/useLocale';
 import {
   getDateRangeFormattedIntl,
@@ -60,7 +60,12 @@ type WorkExperienceProps = {
 };
 
 function WorkExperience({ data }: WorkExperienceProps) {
-  const [workExpState] = useState(data);
+  const [workExpState, setWorkExpState] = useState(data);
+
+  useEffect(() => {
+    setWorkExpState(data);
+  }, [data]);
+
   const { appLocale } = useLocale();
 
   return (

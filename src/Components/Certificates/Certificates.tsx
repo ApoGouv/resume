@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useLocale from '../../Utils/useLocale';
 import { getDateFormatIntl, dateFormatOptions } from '../../Utils/dates';
 import { printUrl } from '../../Utils/strings';
@@ -40,7 +40,12 @@ type CertificatesProps = {
 };
 
 function Certificates({ data }: CertificatesProps) {
-  const [certificatesState] = useState(data);
+  const [certificatesState, setCertificatesState] = useState(data);
+
+  useEffect(() => {
+    setCertificatesState(data);
+  }, [data]);
+
   const { appLocale } = useLocale();
 
   return (

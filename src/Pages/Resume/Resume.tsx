@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SEO from '../../Components/Seo/SEO';
 import Profile from '../../Components/Profile/Profile';
 import WorkExperience from '../../Components/WorkExperience/WorkExperience';
@@ -9,11 +9,27 @@ import Tools from '../../Components/Tools/Tools';
 import Interests from '../../Components/Interests/Interests';
 import isEmpty from '../../Utils/isEmpty';
 
-import userData from '../../Data/Data.json';
+import useLocale from '../../Utils/useLocale';
+
+import userDataElGR from '../../Data/Data_el-GR.json';
+import userDataEnUS from '../../Data/Data_en-US.json';
 import './Resume.css';
 
 function Resume() {
-  const [state] = useState(userData);
+  const { appLocale, changeLocale } = useLocale();
+  const [state, setState] = useState(
+    appLocale === 'en-US' ? userDataEnUS : userDataElGR
+  );
+
+  // Update state when appLocale changes
+  useEffect(() => {
+    if (appLocale === 'en-US') {
+      setState({ ...userDataEnUS });
+    } else if (appLocale === 'el-GR') {
+      setState({ ...userDataElGR });
+    }
+  }, [appLocale]);
+
   const {
     profile,
     workExperience,
@@ -24,6 +40,9 @@ function Resume() {
     interests,
   } = state;
 
+  console.log(`${appLocale} - state: `, state);
+  console.log(`${appLocale} - state.tools: `, tools);
+
   return (
     <>
       <SEO
@@ -31,6 +50,17 @@ function Resume() {
         occupation={profile.role}
         description={profile.bio}
       />
+      <div>
+        <p>Current Locale: {appLocale}</p>
+        <button
+          type="button"
+          onClick={() =>
+            changeLocale(appLocale === 'el-GR' ? 'en-US' : 'el-GR')
+          }
+        >
+          Toggle Locale
+        </button>
+      </div>
       <main className="resume-container" id="resume-container">
         <div className="resume resume-A4" id="resume">
           <div className="resume__left">

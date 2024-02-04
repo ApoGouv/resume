@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Interests.css';
 
 type InterestEntryType = {
@@ -18,7 +18,11 @@ type InterestsProps = {
 };
 
 function Interests({ data }: InterestsProps) {
-  const [interestsState] = useState(data);
+  const [interestsState, setInterestsState] = useState(data);
+
+  useEffect(() => {
+    setInterestsState(data);
+  }, [data]);
 
   const interestsNamesString = interestsState.entries
     .map((interest) => interest.name)

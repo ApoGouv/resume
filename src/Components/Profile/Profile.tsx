@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { calculateDiff } from '../../Utils/dates';
 import { printUrl } from '../../Utils/strings';
 import {
@@ -53,7 +53,11 @@ type ProfileProps = {
 };
 
 function Profile({ data }: ProfileProps) {
-  const [profileState] = useState(data);
+  const [profileState, setProfileState] = useState(data);
+
+  useEffect(() => {
+    setProfileState(data);
+  }, [data]);
 
   // fetch the current profile picture name [user can save more than one]
   const profileImage = profileState.image?.showImage ? ProfilePic : '';

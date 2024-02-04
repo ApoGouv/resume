@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Languages.css';
 
 type LanguageEntryType = {
@@ -18,7 +18,11 @@ type LanguagesProp = {
 };
 
 function Languages({ data }: LanguagesProp) {
-  const [languagesState] = useState(data);
+  const [languagesState, setLanguagesState] = useState(data);
+
+  useEffect(() => {
+    setLanguagesState(data);
+  }, [data]);
 
   return (
     <section className="languages__section" id="languages">
