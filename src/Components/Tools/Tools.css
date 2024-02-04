@@ -1,12 +1,12 @@
-.interests__section {
+.tools__section {
   padding: var(--section-padding);
 }
 
-.interests__heading {
+.tools__heading {
   text-transform: uppercase;
   margin-bottom: var(--mb-1);
 }
 
-.interests__entries {
+.tools__entries {
   color: var(--color-red);
 }

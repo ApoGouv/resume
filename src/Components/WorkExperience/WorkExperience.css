@@ -1,5 +1,5 @@
 .workExp__section {
-  padding: 1.5rem 0 0.5rem;
+  padding: var(--section-padding);
 }
 
 .workExp__heading {
@@ -44,15 +44,32 @@
 }
 
 .workExp__data {
-  gap: 0.5rem;
+  width: 100%;
 }
 
-.workExp__company-name {
-  /* color: var(--color-red); */
+.workExp__main-role {
+  font-weight: var(--font-semi-bold);
   font-size: var(--h3-font-size);
 }
 
-.workExp__company-info,
+.workExp__company-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  margin: 0.5rem 0;
+  font-style: normal;
+}
+
+.workExp__company-duration {
+  white-space: nowrap;
+}
+
+.workExp__company-name {
+  color: var(--color-red);
+  /* font-size: var(--h3-font-size); */
+}
+
 .workExp__work-info {
   display: flex;
   align-items: center;
@@ -129,11 +146,11 @@
   font-style: normal;
 }
 
-.workExp__work-project-responsibilties {
+.workExp__work-project-responsibilities {
   list-style: square;
   padding-left: 2rem;
 }
 
-.workExp__work-project-responsibilties ::marker {
+.workExp__work-project-responsibilities ::marker {
   font-size: 1.3rem !important;
 }

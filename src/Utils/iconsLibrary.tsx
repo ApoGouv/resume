@@ -2,13 +2,15 @@
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 
 import {
+  FaRegCalendarDays,
   FaGlobe,
   FaGithub,
+  FaLaptopCode,
   FaLinkedin,
+  FaLocationDot,
   FaStackOverflow,
   FaSquareXTwitter,
   FaTerminal,
-  FaLaptopCode,
 } from 'react-icons/fa6';
 
 import { CgWebsite } from 'react-icons/cg';
@@ -30,6 +32,8 @@ const PROFILE_LINKS_ICONS = {
 
 const WORK_EXPERIENCE_ICONS = {
   code: <FaLaptopCode />,
+  calendar: <FaRegCalendarDays />,
+  location: <FaLocationDot />,
 };
 
 const PROJECT_ICONS = {

@@ -1,5 +1,5 @@
 .certificates__section {
-  padding: 1.5rem 0 0.5rem;
+  padding: var(--section-padding);
 }
 
 .certificates__heading {
@@ -44,5 +44,40 @@
 }
 
 .certificate__data {
-  gap: 0.5rem;
+  width: 100%;
+}
+
+.certificate__basic-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  margin: 0.5rem 0;
+  font-style: normal;
+}
+
+.certificate__issued-on {
+  white-space: nowrap;
+}
+
+.certificate__org {
+  color: var(--color-red);
+  /* font-size: var(--h3-font-size); */
+}
+
+.certificate__sub-cert-info {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgb(123 136 161 / 20%);
+}
+
+.certificate__sub-cert-issued-on {
+  font-style: italic;
+  text-align: right;
+  flex-shrink: 0;
+  white-space: nowrap;
 }

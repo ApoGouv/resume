@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
+import LocaleProvider from './LocaleProvider';
 import Resume from './Pages/Resume/Resume';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <Resume />
+      <LocaleProvider>
+        <Resume />
+      </LocaleProvider>
     </HelmetProvider>
   </React.StrictMode>
 );

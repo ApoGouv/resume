@@ -1,0 +1,33 @@
+.languages__section {
+  padding: var(--section-padding);
+}
+
+.languages__heading {
+  text-transform: uppercase;
+  margin-bottom: var(--mb-1);
+}
+
+.languages-wrapper ul ::marker {
+  color: var(--color-red);
+  font-size: 1.5rem;
+}
+
+.languages__list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.languages__entry-detail {
+  position: relative;
+  top: -0.1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.languages__entry-info {
+  padding: 0 0.5rem;
+  color: var(--color-red);
+  font-style: italic;
+  font-size: 0.9rem;
+}

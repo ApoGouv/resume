@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { getDateFormat } from '../../Utils/dates';
+import useLocale from '../../Utils/useLocale';
+import { getDateFormatIntl, dateFormatOptions } from '../../Utils/dates';
 import { printUrl } from '../../Utils/strings';
 import './Certificates.css';
 
@@ -30,7 +31,8 @@ type CertificateDetailsType = {
 
 type CertificatesType = {
   isHidden: boolean;
-  certificatesDetails: CertificateDetailsType[];
+  sectionTitle: string;
+  entries: CertificateDetailsType[];
 };
 
 type CertificatesProps = {
@@ -39,11 +41,14 @@ type CertificatesProps = {
 
 function Certificates({ data }: CertificatesProps) {
   const [certificatesState] = useState(data);
+  const { appLocale } = useLocale();
 
   return (
-    <section className="certificates__section">
-      <h2 className="certificates__heading">Πιστοποιητικά</h2>
-      {certificatesState.certificatesDetails
+    <section className="certificates__section" id="certificates">
+      <h2 className="certificates__heading section-title">
+        {certificatesState.sectionTitle}
+      </h2>
+      {certificatesState.entries
         .filter((cert) => !cert.isHidden)
         .map((certificate, index) => {
           const keyCert = `cert-${index}`;
@@ -56,19 +61,27 @@ function Certificates({ data }: CertificatesProps) {
               <div className="certificate__data">
                 <h3 className="certificate__name">{certificate.name}</h3>
                 <div className="certificate__basic-info">
-                  <div className="certificate__org">{certificate.org}</div>
-                  <div className="certificate__issued-on">
-                    {getDateFormat(
+                  <p className="certificate__issued-on">
+                    {getDateFormatIntl(
                       certificate.valid.from,
-                      certificate.valid.showCurrent ? 'YYYY' : 'MMM, YYYY'
+                      certificate.valid.showCurrent
+                        ? dateFormatOptions.year
+                        : dateFormatOptions.monthYear,
+                      appLocale
                     )}
                     {certificate.valid.showCurrent && (
                       <>
                         {' - '}
-                        {getDateFormat(new Date().toLocaleDateString(), 'YYYY')}
+                        {getDateFormatIntl(
+                          new Date().toLocaleDateString(),
+                          dateFormatOptions.year,
+                          appLocale
+                        )}
                       </>
                     )}
-                  </div>
+                  </p>
+                  <p className="certificate__info-separator"> | </p>
+                  <p className="certificate__org">{certificate.org}</p>
                 </div>
                 {certificate.link && certificate.showLink && (
                   <div className="certificate__link">
@@ -107,9 +120,10 @@ function Certificates({ data }: CertificatesProps) {
                                 </div>
                               )}
                               <div className="certificate__sub-cert-issued-on">
-                                {getDateFormat(
+                                {getDateFormatIntl(
                                   subCert.issuedOn,
-                                  'MMM DD, YYYY'
+                                  dateFormatOptions.dayMonthYear,
+                                  appLocale
                                 )}
                               </div>
                             </div>

@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { getDateRangeFormatted } from '../../Utils/dates';
+import useLocale from '../../Utils/useLocale';
+import {
+  getDateRangeFormattedIntl,
+  dateFormatOptions,
+} from '../../Utils/dates';
 import { WORK_EXPERIENCE_ICONS } from '../../Utils/iconsLibrary';
 import './WorkExperience.css';
 
 type DurationType = {
   from: string;
   to: string;
+  icon: string;
+  showIcon: boolean;
 };
 
 type ProjectType = {
@@ -17,32 +23,54 @@ type ProjectType = {
 
 type WorkType = {
   role: string;
+  showRole: boolean;
   projects?: ProjectType[];
   description?: string[];
   showDescription?: boolean;
 };
 
+type AddressType = {
+  street: string;
+  postalCode: string;
+  city: string;
+  countryCode: string;
+  country: string;
+  text: string;
+  icon: string;
+  showIcon: boolean;
+};
+
 type ExperienceType = {
   isHidden: boolean;
+  mainRole: string;
   company: string;
   duration: DurationType;
-  location: string;
+  address: AddressType;
   work: WorkType[];
 };
 
+type ExperienceSectionType = {
+  sectionTitle: string;
+  isHidden: boolean;
+  entries: ExperienceType[];
+};
+
 type WorkExperienceProps = {
-  data: ExperienceType[];
+  data: ExperienceSectionType;
 };
 
 function WorkExperience({ data }: WorkExperienceProps) {
-  const [workExpState] = useState<ExperienceType[]>(data);
+  const [workExpState] = useState(data);
+  const { appLocale } = useLocale();
 
   return (
     <section className="workExp__section" id="workExperience">
       <div className="workExp__container">
-        <h2 className="workExp__heading">ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h2>
+        <h2 className="workExp__heading section-title">
+          {workExpState.sectionTitle}
+        </h2>
 
-        {workExpState
+        {workExpState.entries
           .filter((exp) => !exp.isHidden)
           .map((exp, index) => {
             const keyExpId: string = `exp-${index}`;
@@ -53,25 +81,59 @@ function WorkExperience({ data }: WorkExperienceProps) {
                   <span className="workExp__line" />
                 </div>
                 <div className="workExp__data">
-                  <h3 className="workExp__company-name">{exp.company}</h3>
+                  <h3 className="workExp__main-role">{exp.mainRole}</h3>
                   <div className="workExp__company-info">
                     <p className="workExp__company-duration">
-                      {getDateRangeFormatted(
-                        exp.duration.from,
-                        exp.duration.to,
-                        'MMM, YYYY'
+                      {exp.duration.showIcon && (
+                        <span className="workExp__company-duration-icon">
+                          {
+                            WORK_EXPERIENCE_ICONS[
+                              exp.duration
+                                .icon as keyof typeof WORK_EXPERIENCE_ICONS
+                            ]
+                          }
+                        </span>
                       )}
+                      <span className="workExp__company-duration-date-range">
+                        {getDateRangeFormattedIntl(
+                          exp.duration.from,
+                          exp.duration.to,
+                          dateFormatOptions.monthYear,
+                          appLocale
+                        )}
+                      </span>
                     </p>
-                    <p className="workExp__company-location">{exp.location}</p>
+                    <p className="workExp__company-separator"> | </p>
+                    <p className="workExp__company-name">{exp.company}</p>
+                    <p
+                      className="workExp__company-location"
+                      style={{ display: 'none' }}
+                    >
+                      {exp.address.showIcon && (
+                        <span className="workExp__company-location-icon">
+                          {
+                            WORK_EXPERIENCE_ICONS[
+                              exp.address
+                                .icon as keyof typeof WORK_EXPERIENCE_ICONS
+                            ]
+                          }
+                        </span>
+                      )}
+                      <span className="workExp__company-location-place">
+                        {exp.address.city}, {exp.address.country}
+                      </span>
+                    </p>
                   </div>
 
                   {exp.work.map((work, workIndex) => {
                     const keyExpWorkId: string = `exp-${index}-work-${workIndex}`;
                     return (
                       <div className="workExp__work-wrapper" key={keyExpWorkId}>
-                        <div className="workExp__work-info">
-                          <p className="workExp__work-role">{work.role}</p>
-                        </div>
+                        {work.showRole && work.role && (
+                          <div className="workExp__work-info">
+                            <p className="workExp__work-role">{work.role}</p>
+                          </div>
+                        )}
                         {work.showDescription && work.description && (
                           <ul className="workExp__work-desc">
                             {work.description.map((desc, descIndex) => {
@@ -112,7 +174,7 @@ function WorkExperience({ data }: WorkExperienceProps) {
                                       </div>
                                     </div>
                                     {project.showResponsibilities && (
-                                      <ul className="workExp__work-project-responsibilties">
+                                      <ul className="workExp__work-project-responsibilities">
                                         {project.responsibilities.map(
                                           (resp, respIndex) => {
                                             const keyWorkProjectResponsibilityId: string = `project-${project.name}-${projectIndex}-${respIndex}`;

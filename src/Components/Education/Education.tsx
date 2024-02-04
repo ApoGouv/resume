@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { getDateFormat, getDateRangeFormatted } from '../../Utils/dates';
+import useLocale from '../../Utils/useLocale';
+import {
+  getDateFormatIntl,
+  getDateRangeFormattedIntl,
+  dateFormatOptions,
+} from '../../Utils/dates';
 import './Education.css';
 
 type DurationType = {
@@ -17,17 +22,26 @@ type EducationType = {
   isGraduation: boolean;
 };
 
+type EducationSectionType = {
+  sectionTitle: string;
+  isHidden: boolean;
+  entries: EducationType[];
+};
+
 type EducationProps = {
-  data: EducationType[];
+  data: EducationSectionType;
 };
 
 function Education({ data }: EducationProps) {
   const [educationState] = useState(data);
+  const { appLocale } = useLocale();
 
   return (
     <section className="education__section" id="education">
-      <h2 className="education__heading">ΕΚΠΑΙΔΕΥΣΗ</h2>
-      {educationState
+      <h2 className="education__heading section-title">
+        {educationState.sectionTitle}
+      </h2>
+      {educationState.entries
         .filter((edu) => !edu.isHidden)
         .map((education, index) => {
           const keyEdu = `edu-${index}`;
@@ -38,30 +52,35 @@ function Education({ data }: EducationProps) {
                 <span className="education__line" />
               </div>
               <div className="education__data">
+                <h3 className="education__type">
+                  {education.degree || education.type}
+                </h3>
                 <div className="education__basic-info">
-                  <h3 className="education__type">
-                    {education.degree || education.type}
-                  </h3>
                   <div className="education__period">
                     {education.isGraduation ? (
                       <>
-                        {getDateRangeFormatted(
+                        {getDateRangeFormattedIntl(
                           education.duration.from,
-                          education.duration?.to ?? null
+                          education.duration?.to ?? null,
+                          dateFormatOptions.year
                         )}
                       </>
                     ) : (
-                      getDateFormat(education.duration.from, 'YYYY')
+                      getDateFormatIntl(
+                        education.duration.from,
+                        dateFormatOptions.year,
+                        appLocale
+                      )
                     )}
                   </div>
-                </div>
-                <div className="education__name-and-score">
-                  <div className="education__name">{education.school}</div>
                   {education.score && (
                     <div className="education__score">
                       [ {education.score} ]
                     </div>
                   )}
+                </div>
+                <div className="education__school-info">
+                  <div className="education__name">{education.school}</div>
                 </div>
               </div>
             </div>

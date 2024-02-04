@@ -29,6 +29,12 @@ type SocialType = {
   iconClass?: string;
 };
 
+type SocialSectionType = {
+  sectionTitle: string;
+  isHidden: boolean;
+  entries: SocialType[];
+};
+
 type ImageType = {
   showImage: boolean;
 };
@@ -41,7 +47,7 @@ type ProfileProps = {
     bio: string;
     showBio: boolean;
     contact: ContactType[];
-    socials: SocialType[];
+    socials: SocialSectionType;
     image: ImageType;
   };
 };
@@ -115,15 +121,17 @@ function Profile({ data }: ProfileProps) {
                     );
                     break;
                   case 'website':
-                    contactElement = (
-                      <a
-                        className="profile__website"
-                        href={contact.link}
-                        rel="noreferrer noopener"
-                      >
-                        {contact.value}
-                      </a>
-                    );
+                    if ('link' in contact && contact.link) {
+                      contactElement = (
+                        <a
+                          className="profile__website"
+                          href={contact.link}
+                          rel="noreferrer noopener"
+                        >
+                          {printUrl(contact.link)}
+                        </a>
+                      );
+                    }
                     break;
                   default:
                     contactElement = (
@@ -156,8 +164,10 @@ function Profile({ data }: ProfileProps) {
           </div>
 
           <div className="profile__socials-wrapper">
-            <h2 className="profile__social-heading">SOCIAL</h2>
-            {profileState.socials
+            <h2 className="profile__social-heading section-title">
+              {profileState.socials.sectionTitle}
+            </h2>
+            {profileState.socials.entries
               .filter((social) => !social.isHidden)
               .map((social) => (
                 <div className="profile__social" key={`social-${social.type}`}>

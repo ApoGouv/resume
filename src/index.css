@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600&display=swap';
 :root {
   --header-height: 3rem;
 
@@ -9,20 +9,23 @@
   --resume-bg-color-alt: #f7f9fb;
 
   --body-color: #f2f4f8;
-  --body-font: 'Inter', sans-serif;
+  --body-line-height: 1.1;
+  --body-font: 'Lato', sans-serif;
 
-  --root-font-size: 14px;
+  --root-font-size: 16px;
 
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.3rem;
-  --h3-font-size: 1.2rem;
+  --h1-font-size: 1.102rem;
+  --h2-font-size: 1.082rem;
+  --h3-font-size: 1.072rem;
 
   --normal-font-size: 1rem;
   --small-font-size: 0.875rem;
   --smaller-font-size: 0.813rem;
 
+  --font-normal: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
+  --font-bold: 700;
 
   --mb-1: 0.5rem;
   --mb-2: 1rem;
@@ -36,6 +39,8 @@
   --color-blue: #247ba0;
   --color-snow: #fffcff;
   --color-yellow: #ffba49;
+
+  --section-padding: 1.2rem 0 0.5rem;
 }
 
 *,
@@ -56,6 +61,19 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  line-height: var(--body-line-height, 1.1);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
 }
 
 h1,
@@ -80,6 +98,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: var(--color-blue);
 }
 
 img {

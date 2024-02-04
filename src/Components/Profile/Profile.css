@@ -1,5 +1,5 @@
 .profile__section {
-  padding: 1.5rem 0;
+  padding: var(--section-padding);
   padding-bottom: 0;
 }
 
@@ -83,7 +83,7 @@
   transform: scale(1.6);
 }
 
-.profile__social-heading{
+.profile__social-heading {
   text-transform: uppercase;
   margin-bottom: var(--mb-1);
 }
