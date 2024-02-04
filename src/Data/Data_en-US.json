@@ -1,9 +1,10 @@
 {
+  "htmlLang": "en",
   "profile": {
     "name": "Apostolos Gouvalas",
     "role": "Full-stack Web Developer",
     "overallExperienceStartDate": "2017, Aug, 01",
-    "bio": "Full-stack προγραμματιστής με πάνω από {{experience}} εμπειρία σε PHP, SQL και JavaScript, μεταξύ άλλων γλωσσών. Με προσήλωση στη λεπτομέρεια και πάθος για την επίλυση προβλημάτων, είμαι διατεθειμένος να συνεισφέρω τις δεξιότητές μου σε δυναμικά και προκλητικά έργα.",
+    "bio": "Full-stack developer with over {{experience}} of experience in PHP, SQL and JavaScript, among other languages. With attention to detail and a passion for problem solving, I am willing to contribute my skills to dynamic and challenging projects.",
     "showBio": true,
     "contact": [
       {
@@ -106,15 +107,15 @@
                 "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
                 "showResponsibilities": true,
                 "responsibilities": [
-                  "Βελτιστοποίηση της γεφύρωσης του καταστήματος με το Εμπορικό πρόγραμμα τους (SoftOne)",
-                  "Δημιουργία custom λειτουργίας για Γρήγορο Καλάθι, με Ajax αναζήτηση προϊόντων, real time έλεγχο αποθέματος, αυτόματη αποθήκευση για συνέχιση της παραγγελίας άλλη στιγμή κ.ά.. Για την εμφάνιση βασίστηκα σε mockup σχέδιο που παρείχε η εταιρεία",
-                  "Δημιουργία διεργασιών για διάφορες απαιτήσεις της εταιρείας",
-                  "Δημιουργία πρόσθετου για δημιουργία και διαχείριση xml με λίστες προϊόντων με διάφορες επιλογές (κατασκευαστής, εξαιρέσεις κατηγοριών, προσθήκη με βάση των κωδικό προϊόντος κ.ά.)",
-                  "Στα πλαίσια του έργου έγιναν και τα άλλα sites της εταιρείας: amila.gr, escapesummer.gr και total-gym.gr"
+                  "Optimizing the bridging of the store with their Merchant program (SoftOne)",
+                  "Creation of a custom function for Quick Cart, with Ajax product search, real time inventory control, automatic saving to continue the order at another time, etc.. For the appearance, I relied on a mockup design provided by the company",
+                  "Creating processes for various company requirements",
+                  "Create plugin to create and manage xml with product lists with various options (manufacturer, category exceptions, add based on product codes, etc.)",
+                  "As part of the project, the other sites of the company were also created: amila.gr, escapesummer.gr and total-gym.gr"
                 ]
               },
               {
-                "name": "Ευθυβούλης B2B",
+                "name": "Efthivoulis Cash and Carry - B2B",
                 "technologies": [
                   "OpenCart",
                   "Lumen",
@@ -126,11 +127,11 @@
                 ],
                 "showResponsibilities": true,
                 "responsibilities": [
-                  "Γεφύρωση του καταστήματος με το εμπορικό πρόγραμμά τους (SoftOne), με χρήση του Lumen microframework",
-                  "Δημιουργία διεργασιών για αυτοματοποιημένο κατέβασμα των εικόνων των προϊόντων από το Google Drive. Επίσης γίνεται και μετατροπή των εικόνων σε .webp, όταν χρειάζεται.",
-                  "Άλλη διεργασία για κατέβασμα του καταλόγου και προβολή σε flipbook",
-                  "Υπολογισμός και παρουσίαση ογκομετρικών στοιχείων της παραγγελίας με Ajax με κάθε προσθήκη/αφαίρεση προϊόντος από το καλάθι",
-                  "Δημιουργία module για σκανάρισμα του barcode ενός προϊόντος με την κάμερα του κινητού και κατόπιν δυνατότητα προβολής της σελίδας του προϊόντος ή προσθήκης στο καλάθι. Για την εμφάνιση, και την διαχείρηση της εφαρμογής έγινε χρήση της Vue και για το σκανάρισμα έγινε χρήση της βιβλιοθήκης QuaggaJS"
+                  "Bridging the store with their commercial program (SoftOne), using the Lumen microframework",
+                  "Create processes to automatically download product images from Google Drive. Also convert images to .webp when needed.",
+                  "Another process to download the catalog and display in flipbook",
+                  "Calculating and presenting order volumetrics with Ajax with each product addition/removal from the cart",
+                  "Creation of a module for scanning the barcode of a product with the mobile camera and then being able to view the product page or add it to the cart. Vue was used for the appearance and management of the application and the QuaggaJS library was used for scanning"
                 ]
               },
               {
@@ -138,9 +139,9 @@
                 "technologies": ["PHP", "JavaScript", "reCaptcha"],
                 "showResponsibilities": true,
                 "responsibilities": [
-                  "Custom website, refactored από PHP 5.6 ώστε να παίζει με PHP 7.4",
-                  "Αντικατάσταση ξεπερασμένης λύσης για Captcha με εικόνες, με το Google reCaptcha",
-                  "Αντικατάσταση FLASH με HTML και JavaScript λύσεις"
+                  "Custom website, refactored from PHP 5.6 to play with PHP 7.4",
+                  "Replace outdated solution for Captcha with images, with Google reCaptcha",
+                  "Replace FLASH with HTML and JavaScript solutions"
                 ]
               },
               {
@@ -156,10 +157,10 @@
                 ],
                 "showResponsibilities": true,
                 "responsibilities": [
-                  "Κατασκευή λύσης για διάβασμα/εισαγωγή δεδομένων προϊόντων από αρχεία προμηθευτών. Εισαγωγή προϊόντων σε CS-Cart και συγκομιδή λεπτομερών δεδομένων (sku, εικόνες, περιγραφή, χαρακτηριστικά) μέσω κλήσης στο API της Icecat. Δημιουργία διεργασίας για επιλογή του φθηνότερου προμηθευτή, και με απόθεμα, για προϊόντα που τα είχαν πολλοί προμηθευτές.",
-                  "Κατασκευή ιστοσελίδων και e-shop με έτοιμα templates και κατόπιν προσαρμογή αυτών ανάλογα τις απαιτήσεις του πελάτη",
-                  "Κατασκευή πρόσθετων για OpenCart, WordPress για διάφορες απαιτήσεις των πελατών",
-                  "Καθαρισμός site, κυρίως WordPress, μετά από hack"
+                  "Build a solution to read/import product data from supplier files. Import products into CS-Cart and harvest detailed data (sku, images, description, features) via Icecat API call. Create a process to select the cheapest supplier, and with stock , for products that many suppliers had.",
+                  "Building websites and e-shops with ready-made templates and then adapting them according to the customer's requirements",
+                  "Building plugins for OpenCart, WordPress for various customer requirements",
+                  "Cleaning sites, mainly WordPress, after a hack"
                 ]
               },
               {
@@ -174,17 +175,17 @@
                 ],
                 "showResponsibilities": true,
                 "responsibilities": [
-                  "Δημιουργία πρόσθετου για την παρουσίαση, αναζήτηση και εισαγωγή βιβλίων από την Βιβλιονετ, στο βιβλιοπωλείο της εταιρείας (OpenCart)",
-                  "Κατασκευή πρόσθετων για WHMCS, π.χ. Φόρμα αξιολόγησης για τα διάφορα τμήματα της εταιρείας. Διαχείριση GDPR Agreement μεταξύ της εταιρείας και reseller πελατών.",
-                  "Κατασκευή πρόσθετων για Joomla, π.χ. προβολή Forum Threads ανάλογα με την κατηγορία που βρισκόμαστε. Αντίστοιχα, προβολή βιβλίων ανάλογα με την κατηγορία που βρισκόμαστε κ.α.",
-                  "Κατασκευή πρόσθετων για WordPress, π.χ. Διαχείριση προσωπικού καθώς και προβολή αυτών"
+                  "Creation of an module for the presentation, search and import of books from Biblionet, in the company's bookstore (OpenCart)",
+                  "Building plugins for WHMCS, e.g. Evaluation form for the different departments of the company. Managing GDPR Agreement between the company and reseller customers.",
+                  "Building plugins for Joomla, e.g. display Forum Threads according to the category we are in. Accordingly, display books according to the category we are in, etc.",
+                  "Building plugins for WordPress, e.g. Staff management and viewing them"
                 ]
               }
             ],
             "description": [
-              "Ανάπτυξη Ηλεκτρονικών Καταστημάτων, με OpenCart, CS-Cart, PrestaShop, WooCommerce κ.λπ., καθώς και προσαρμοσμένες λειτουργικότητες και γεφυρώσεις με ERP.",
-              "Ανάπτυξη Ιστοσελίδων (portfolios, εταιρικές, προσωπικές κ.λπ.) - WordPress, Joomla, κ.ά.",
-              "Εταιρικά Έργα - WHMCS, Laravel, vBulletin, Joomla κ.λπ."
+              "Development of Online Stores, with OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., as well as custom functionalities and bridging with ERP.",
+              "Website Development (portfolios, corporate, personal, etc.) - WordPress, Joomla, etc.",
+              "Company Projects - WHMCS, Laravel, vBulletin, Joomla, etc."
             ],
             "showDescription": true
           }
@@ -201,12 +202,12 @@
           "showIcon": false
         },
         "address": {
-          "street": "Οδυσσέως 3, Εύοσμος",
+          "street": "Odisseos 3, Evosmos",
           "postalCode": "56224",
           "city": "Thessaloniki",
           "countryCode": "GR",
           "country": "Greece",
-          "text": "Οδυσσέως 3, Εύοσμος\n56224 Thessaloniki\nGreece",
+          "text": "Odisseos 3, Evosmos\n56224 Thessaloniki\nGreece",
           "icon": "location",
           "showIcon": false
         },
@@ -215,7 +216,7 @@
             "role": "Junior Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Μετατροπή mockup σχεδίων από PSD ή AI σε valid HTML και CSS ή WordPress Themes."
+              "Convert design mockups from PSD or AI to valid HTML and CSS or WordPress Themes."
             ],
             "showDescription": true
           }
@@ -246,7 +247,7 @@
             "role": "Web Developer",
             "showRole": false,
             "description": [
-              "Κατασκευή ιστοσελίδων, e-shop και custom λύσεων ανάλογα με τις απαιτήσεις των πελατών"
+              "Construction of websites, e-shops and custom solutions according to customer requirements"
             ],
             "showDescription": true
           }
@@ -255,7 +256,7 @@
       {
         "isHidden": true,
         "mainRole": "Website Optimizations & Internet Marketing",
-        "company": "ΚΕΚ Ευρωπληροφόρηση Α.Ε. Κε.Δι.Βι.Μ. 2",
+        "company": "K.E.K. EUROPLIROFORISI A.E. K.E.DI.VI.M. 2",
         "duration": {
           "from": "2014-11",
           "to": "2015-10",
@@ -263,12 +264,12 @@
           "showIcon": false
         },
         "address": {
-          "street": "Σωκράτους 111",
+          "street": "Sokratous 111",
           "postalCode": "41336",
-          "city": "Λάρισα",
+          "city": "Larisa",
           "countryCode": "GR",
           "country": "Greece",
-          "text": "Σωκράτους 111\n41336 Λάρισα\nGreece",
+          "text": "Sokratous 111\n41336 Larisa\nGreece",
           "icon": "location",
           "showIcon": false
         },
@@ -277,9 +278,9 @@
             "role": "Website Optimizations & Internet Marketing",
             "showRole": false,
             "description": [
-              "Δημιουργία και προώθηση των προφίλ της εταιρείας στο Facebook και στο Twitter",
-              "Δημιουργία και διαχείριση διαφημιστικών καμπανιών για την εταιρεία, μέσω Facebook και Google AdWords.",
-              "Βελτιστοποίηση της ταχύτητας του ιστότοπου της εταιρείας, με βάση εργαλεία όπως το PageSpeed (Google) και το YSlow (βασίζεται στους κανόνες της Yahoo). Η ιστοσελίδα της εταιρείας έχει κατασκευαστεί με το Joomla! CMS."
+              "Creation and promotion of company profiles on Facebook and Twitter",
+              "Create and manage advertising campaigns for the company, through Facebook and Google AdWords.",
+              "Optimizing the speed of the company website, based on tools such as PageSpeed (Google) and YSlow (based on Yahoo rules). The company website is built with Joomla! CMS."
             ],
             "showDescription": false
           }
@@ -296,12 +297,12 @@
           "showIcon": false
         },
         "address": {
-          "street": "Πλατεία Καρύτση 10",
+          "street": "Plateia Karytsi 10",
           "postalCode": "10561",
-          "city": "Αθήνα",
+          "city": "Athens",
           "countryCode": "GR",
           "country": "Greece",
-          "text": "Πλατεία Καρύτση 10\n10561 Αθήνα\nGreece",
+          "text": "Plateia Karytsi 10\n10561 Athens\nGreece",
           "icon": "location",
           "showIcon": false
         },
@@ -310,7 +311,7 @@
             "role": "Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Δημιουργία της διεπαφής χρήστη με βάση τα παρεχόμενα γραφικά mockup, για εφαρμογές οπτικοποίησης των αποτελεσμάτων για τις Εκλογές Ευρωπαϊκού Κοινοβουλίου 2014 της Ιταλίας και απεικόνιση παλαιότερων ιταλικών εκλογικών αποτελεσμάτων, με HTML, CSS και jQuery."
+              "Creating the user interface based on the supplied graphic mockups, for applications to visualize the results for the 2014 Italian European Parliament Elections and display past Italian election results, with HTML, CSS and jQuery."
             ],
             "showDescription": true
           }
@@ -327,12 +328,12 @@
           "showIcon": false
         },
         "address": {
-          "street": "Φλέμινγκ 14, Μαρούσι",
+          "street": "Flemingk 14, Marousi",
           "postalCode": "15123",
-          "city": "Αθήνα",
+          "city": "Athens",
           "countryCode": "GR",
           "country": "Greece",
-          "text": "Φλέμινγκ 14, Μαρούσι\n15123 Αθήνα\nGreece",
+          "text": "Flemingk 14, Marousi\n15123 Athens\nGreece",
           "icon": "location",
           "showIcon": false
         },
@@ -358,7 +359,7 @@
       {
         "type": "Master of Science",
         "degree": "MS in Mobile and Web Computing",
-        "school": "Διεθνές Ελληνικό Πανεπιστήμιο (Thessaloniki, Greece)",
+        "school": "International Hellenic University (Thessaloniki, Greece)",
         "score": "Distinction",
         "isHidden": false,
         "duration": {
@@ -368,9 +369,9 @@
         "isGraduation": true
       },
       {
-        "type": "Προπτυχιακό",
-        "degree": "Πτυχίο Ψηφιακών Συστημάτων, κατεύθυνση \"Συστήματα επικοινωνιών και δικτύων\"",
-        "school": "Πανεπιστήμιο Πειραιά - Τμήμα Ψηφιακών Συστημάτων (Πειραιάς, Αθήνα, Greece)",
+        "type": "Undergraduate",
+        "degree": "Digital Systems Degree, majoring in \"Communication and Network Systems\"",
+        "school": "University of Piraeus - Department of Digital Systems (Piraeus, Athens, Greece)",
         "score": null,
         "isHidden": false,
         "duration": {
@@ -390,9 +391,9 @@
         "technologies": ["Python", "JavaScript", "HTML", "CSS", "Bootstrap"],
         "showDesc": true,
         "desc": [
-          "Κατασκευή μιας φόρμας με δυναμικά και αλληλοεξαρτώμενα πεδία για επιλογές χαρακτηριστικών ενός παίκτη για DnD.",
-          "Δημιουργία end-points σε Flask για την αποστολή της φόρμας.",
-          "Η επεξεργασία των δεδομένων της φόρμας γίνεται από ένα Python script που δημιούργησε ο φίλος μου Αργύρης Τσαγκαλίδης, ο οποίος με βοήθησε επίσης και στο στήσιμο του Flask αλλά και στις απαιτήσεις της φόρμας καθώς δεν έχω ιδέα από DnD!"
+          "Building a form with dynamic and interdependent fields for single player attribute options for DnD.",
+          "Creating endpoints in Flask to submit the form.",
+          "The processing of the form data is done by a Python script created by my friend Argyris Tsagkalidis, who also helped me with the Flask setup and the form requirements as I have no idea about DnD!"
         ],
         "link": null,
         "isHidden": true
@@ -478,7 +479,7 @@
       {
         "language": "Greek",
         "rating": 5,
-        "info": "Μητρική γλώσσα"
+        "info": "Native language"
       },
       {
         "language": "English",

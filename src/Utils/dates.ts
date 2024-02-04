@@ -1,73 +1,34 @@
-import { padStart } from './strings';
-
-const months: string[] = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Aug',
-  'Nov',
-  'Dec',
-];
-
 /**
- * @name getDateFormat
- * @description Formats the simple date string to the required date format.
- * @param {string} dateString - Date string to be converted
- * @param {string} format - String representing the desired format of the date
- * @returns {string} Formatted date string
+ * @typedef {Object} LanguageForms
+ * @property {string} singular - The singular form of the word.
+ * @property {string} plural - The plural form of the word.
  */
-export const getDateFormat = (dateString: string, format: string): string => {
-  const dateObj = new Date(dateString);
-  const fullYear = dateObj.getFullYear();
-  const givenMonth = dateObj.getMonth();
-  const givenDate = dateObj.getDate();
-
-  const formattedDate: Record<string, string> = {};
-
-  const year = (format.match(/y+/gi) || [])[0];
-  const month = (format.match(/m+/gi) || [])[0];
-  const date = (format.match(/d+/gi) || [])[0];
-
-  // Set year replacer.
-  if (year) {
-    if (year.length === 4) {
-      formattedDate[year] = fullYear.toString();
-    } else {
-      formattedDate[year] = dateObj
-        .toString()
-        .substring(4 - Math.max(year.length, 2));
-    }
-  }
-
-  // Set month replacer.
-  if (month) {
-    if (month.length === 3) {
-      formattedDate[month] = months[givenMonth];
-    } else {
-      formattedDate[month] = padStart(givenMonth + 1, '0', month.length);
-    }
-  }
-
-  // Set date replacer.
-  if (date) {
-    formattedDate[date] = padStart(givenDate, '0', date.length);
-  }
-
-  return format
-    .replace(year as string, formattedDate[year as string] || '')
-    .replace(month as string, formattedDate[month as string] || '')
-    .replace(date as string, formattedDate[date as string] || '');
+type LanguageForms = {
+  singular: string;
+  plural: string;
 };
 
+/**
+ * @type {Record<string, LanguageForms>}
+ * @description Object holding singular and plural forms of the word "year" for different locales.
+ */
+const yearsWords: Record<string, LanguageForms> = {
+  'el-GR': { singular: 'χρόνος', plural: 'χρόνια' },
+  'en-US': { singular: 'year', plural: 'years' },
+};
+
+/**
+ * @function calculateDiff
+ * @description Calculates the difference between two dates and returns the experience in years.
+ * @param {string | Date} startDate - The start date of the experience.
+ * @param {string | Date} [endDate=new Date()] - The end date of the experience (default is the current date).
+ * @param {string} [locale='el-GR'] - The locale to determine the language for formatting.
+ * @returns {string} - The experience duration formatted in years.
+ */
 export const calculateDiff = (
   startDate: string | Date,
-  endDate: string | Date = new Date()
+  endDate: string | Date = new Date(),
+  locale: string = 'el-GR'
 ): string => {
   const startDateDateFormat = new Date(startDate);
   const endDateDateFormat = new Date(endDate);
@@ -77,51 +38,24 @@ export const calculateDiff = (
     (1000 * 60 * 60 * 24 * 30 * 12)
   ).toFixed(1);
 
-  return `${experience} χρόν${+experience <= 1 ? 'ο' : 'ια'}`;
+  // Select the appropriate language forms based on the provided locale.
+  const { singular, plural } = yearsWords[locale] || yearsWords['el-GR'];
+
+  return `${experience} ${+experience <= 1 ? singular : plural}`;
 };
 
 /**
- * @name getDateRangeFormatted
- * @description Formats a date range string.
- * @param {string} dateFrom - Starting date string
- * @param {string | null} dateTo - Ending date string or null if ongoing
- * @param {string} format - String representing the desired format of the date
- * @param {string} separator - Separator between date range values
- * @returns {string} Formatted date range string
+ * @typedef {Object.<string, Intl.DateTimeFormatOptions>} DateFormatOptions
+ * @description A mapping of date format options by key.
+ * @property {Intl.DateTimeFormatOptions} year - Date format with only the year.
+ * @property {Intl.DateTimeFormatOptions} monthYear - Date format with short month and year.
+ * @property {Intl.DateTimeFormatOptions} dayMonthYear - Date format with short month, year, and 2-digit day.
  */
-export const getDateRangeFormatted = (
-  dateFrom: string,
-  dateTo: string | null,
-  format: string = 'YYYY',
-  separator: string = ' - '
-): string => {
-  const formattedDateFrom = getDateFormat(dateFrom, format);
-  let formattedDateTo = '';
-  if (typeof dateTo === 'string') {
-    formattedDateTo =
-      dateTo === 'present' ? 'Present' : getDateFormat(dateTo, format);
-    formattedDateTo = `${separator}${formattedDateTo}`;
-  }
-
-  return `${formattedDateFrom}${formattedDateTo}`;
-};
 
 /**
- * @name dateToGreekFormat
- * @description Converts a Date object to a formatted date string in Greek locale
- * @param {Date} date - The Date object to convert
- * @returns {string} Formatted date string in Greek locale
+ * @type {DateFormatOptions}
+ * @description Mapping of date format options for various use cases.
  */
-export const dateToGreekFormat = (date: Date): string => {
-  const localeDateOptions: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-  };
-
-  return date.toLocaleDateString('el-GR', localeDateOptions);
-};
-
 export const dateFormatOptions: Record<string, Intl.DateTimeFormatOptions> = {
   year: { year: 'numeric' },
   monthYear: { month: 'short', year: 'numeric' },

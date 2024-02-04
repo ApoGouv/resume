@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useLocale from '../../Utils/useLocale';
+import useLocale from '../../Hooks/useLocale';
 import {
   getDateFormatIntl,
   getDateRangeFormattedIntl,

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SEO from '../../Components/Seo/SEO';
+import Menu from '../../Components/Menu/Menu';
 import Profile from '../../Components/Profile/Profile';
 import WorkExperience from '../../Components/WorkExperience/WorkExperience';
 import Education from '../../Components/Education/Education';
@@ -9,14 +10,14 @@ import Tools from '../../Components/Tools/Tools';
 import Interests from '../../Components/Interests/Interests';
 import isEmpty from '../../Utils/isEmpty';
 
-import useLocale from '../../Utils/useLocale';
+import useLocale from '../../Hooks/useLocale';
 
 import userDataElGR from '../../Data/Data_el-GR.json';
 import userDataEnUS from '../../Data/Data_en-US.json';
 import './Resume.css';
 
 function Resume() {
-  const { appLocale, changeLocale } = useLocale();
+  const { appLocale } = useLocale();
   const [state, setState] = useState(
     appLocale === 'en-US' ? userDataEnUS : userDataElGR
   );
@@ -31,6 +32,7 @@ function Resume() {
   }, [appLocale]);
 
   const {
+    htmlLang,
     profile,
     workExperience,
     education,
@@ -41,26 +43,16 @@ function Resume() {
   } = state;
 
   console.log(`${appLocale} - state: `, state);
-  console.log(`${appLocale} - state.tools: `, tools);
 
   return (
     <>
       <SEO
+        lang={htmlLang}
         name={profile.name}
         occupation={profile.role}
         description={profile.bio}
       />
-      <div>
-        <p>Current Locale: {appLocale}</p>
-        <button
-          type="button"
-          onClick={() =>
-            changeLocale(appLocale === 'el-GR' ? 'en-US' : 'el-GR')
-          }
-        >
-          Toggle Locale
-        </button>
-      </div>
+      <Menu />
       <main className="resume-container" id="resume-container">
         <div className="resume resume-A4" id="resume">
           <div className="resume__left">

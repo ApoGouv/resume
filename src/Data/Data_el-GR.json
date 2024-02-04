@@ -1,4 +1,5 @@
 {
+  "htmlLang": "el",
   "profile": {
     "name": "Απόστολος Γουβάλας",
     "role": "Full-stack Web Developer",
@@ -102,7 +103,7 @@
             "showRole": false,
             "projects": [
               {
-                "name": "Eldico B2B",
+                "name": "Eldico - B2B",
                 "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
                 "showResponsibilities": true,
                 "responsibilities": [
@@ -114,7 +115,7 @@
                 ]
               },
               {
-                "name": "Ευθυβούλης B2B",
+                "name": "Ευθυβούλης Cash and Carry - B2B",
                 "technologies": [
                   "OpenCart",
                   "Lumen",
@@ -174,7 +175,7 @@
                 ],
                 "showResponsibilities": true,
                 "responsibilities": [
-                  "Δημιουργία πρόσθετου για την παρουσίαση, αναζήτηση και εισαγωγή βιβλίων από την Βιβλιονετ, στο βιβλιοπωλείο της εταιρείας (OpenCart)",
+                  "Δημιουργία πρόσθετου για την παρουσίαση, αναζήτηση και εισαγωγή βιβλίων από την ΒιβλιοNet, στο βιβλιοπωλείο της εταιρείας (OpenCart)",
                   "Κατασκευή πρόσθετων για WHMCS, π.χ. Φόρμα αξιολόγησης για τα διάφορα τμήματα της εταιρείας. Διαχείριση GDPR Agreement μεταξύ της εταιρείας και reseller πελατών.",
                   "Κατασκευή πρόσθετων για Joomla, π.χ. προβολή Forum Threads ανάλογα με την κατηγορία που βρισκόμαστε. Αντίστοιχα, προβολή βιβλίων ανάλογα με την κατηγορία που βρισκόμαστε κ.α.",
                   "Κατασκευή πρόσθετων για WordPress, π.χ. Διαχείριση προσωπικού καθώς και προβολή αυτών"

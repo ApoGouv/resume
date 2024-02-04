@@ -8,7 +8,7 @@
   margin-bottom: var(--mb-1);
 }
 
-@media screen and (min-width: 968px) {
+@media screen, print and (min-width: 968px) {
   .resume-container {
     margin: 1rem auto;
     position: relative;
@@ -21,6 +21,7 @@
     box-shadow: 0 0 8px #0d0c0c26;
     border: 1px solid #e7e7e7;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   .resume.resume-A4 {
@@ -59,5 +60,10 @@
     box-shadow: initial;
     background: initial;
     page-break-after: always;
+  }
+
+  .resume-container {
+    margin: 0 auto;
+    position: relative;
   }
 }
