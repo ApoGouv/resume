@@ -8,12 +8,16 @@ import {
   FaLaptopCode,
   FaLinkedin,
   FaLocationDot,
+  FaRegMoon,
+  FaRegSun,
   FaStackOverflow,
   FaSquareXTwitter,
   FaTerminal,
 } from 'react-icons/fa6';
 
 import { CgWebsite } from 'react-icons/cg';
+
+import { US, GR } from 'country-flag-icons/react/3x2';
 
 const PROFILE_CONTACT_ICONS = {
   email: <MdEmail />,
@@ -40,7 +44,25 @@ const PROJECT_ICONS = {
   website: <CgWebsite />,
 };
 
+const MENU_ICONS = {
+  moon: <FaRegMoon />,
+  sun: <FaRegSun />,
+  el_gr: (
+    <GR
+      title="Αλλαγή γλώσσας σε Ελληνικά"
+      className="language-flag language-el-gr"
+    />
+  ),
+  en_us: (
+    <US
+      title="Change language to English - United States"
+      className="language-flag language-en-us"
+    />
+  ),
+};
+
 export {
+  MENU_ICONS,
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
   PROJECT_ICONS,

@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
-import LocaleProvider from './LocaleProvider';
+import LocaleProvider from './Context/ThemeContext';
 import Resume from './Pages/Resume/Resume';
 import './index.css';
 import reportWebVitals from './reportWebVitals';

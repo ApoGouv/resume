@@ -11,6 +11,8 @@ import Interests from '../../Components/Interests/Interests';
 import isEmpty from '../../Utils/isEmpty';
 
 import useLocale from '../../Hooks/useLocale';
+import useDarkMode from '../../Hooks/useDarkMode';
+import usePrintStatus from '../../Hooks/usePrintStatus';
 
 import userDataElGR from '../../Data/Data_el-GR.json';
 import userDataEnUS from '../../Data/Data_en-US.json';
@@ -18,18 +20,29 @@ import './Resume.css';
 
 function Resume() {
   const { appLocale } = useLocale();
+  const { darkMode } = useDarkMode();
   const [state, setState] = useState(
     appLocale === 'en-US' ? userDataEnUS : userDataElGR
   );
 
-  // Update state when appLocale changes
+  const isPrinting = usePrintStatus();
+
   useEffect(() => {
+    // Update state when appLocale changes
     if (appLocale === 'en-US') {
       setState({ ...userDataEnUS });
     } else if (appLocale === 'el-GR') {
       setState({ ...userDataElGR });
     }
-  }, [appLocale]);
+
+    // Handle dark mode change
+    const { body } = document;
+    if (darkMode && !isPrinting) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+    }
+  }, [appLocale, darkMode]);
 
   const {
     htmlLang,
@@ -42,7 +55,7 @@ function Resume() {
     interests,
   } = state;
 
-  console.log(`${appLocale} - state: `, state);
+  // console.log(`${appLocale} - state: `, state);
 
   return (
     <>
@@ -53,7 +66,10 @@ function Resume() {
         description={profile.bio}
       />
       <Menu />
-      <main className="resume-container" id="resume-container">
+      <main
+        className={`resume-container ${darkMode ? 'dark-resume' : ''}`}
+        id="resume-container"
+      >
         <div className="resume resume-A4" id="resume">
           <div className="resume__left">
             <Profile data={profile} />

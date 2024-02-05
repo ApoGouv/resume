@@ -4,15 +4,37 @@
   right: 15px;
   z-index: 99;
   margin: 16px;
-  background-color: #333;
+  background-color: var(--text-color-light);
   color: white;
   padding: 8px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  gap: 10px;
 }
 
 #menu.printing {
   display: none;
+}
+
+#menu button.menu-item {
+  outline: none;
+  background: transparent;
+  border: 1px solid #e7e7e7;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu svg {
+  stroke: currentcolor;
+  fill: currentcolor;
+  stroke-width: 0;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 @media print {
