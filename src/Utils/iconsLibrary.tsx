@@ -8,6 +8,7 @@ import {
   FaLaptopCode,
   FaLinkedin,
   FaLocationDot,
+  FaPrint,
   FaRegMoon,
   FaRegSun,
   FaStackOverflow,
@@ -45,6 +46,7 @@ const PROJECT_ICONS = {
 };
 
 const MENU_ICONS = {
+  print: <FaPrint />,
   moon: <FaRegMoon />,
   sun: <FaRegSun />,
   el_gr: (

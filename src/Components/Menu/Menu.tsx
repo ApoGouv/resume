@@ -13,11 +13,25 @@ function Menu() {
   const darkModeIconKey = darkMode ? 'sun' : 'moon';
   const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
 
+  const handlePrintButtonClick = () => {
+    // eslint-disable-next-line no-restricted-globals
+    print();
+  };
+
   return (
     <div id="menu" className={`menu ${isPrinting ? 'printing' : ''}`}>
       <p className="hidden">
         Current Locale: {appLocale} and langKey: {languageIconKey}
       </p>
+      <button
+        className="menu-item menu-dark-mode-toggler"
+        type="button"
+        title="Print Resume"
+        onClick={handlePrintButtonClick}
+      >
+        {MENU_ICONS.print}
+      </button>
+
       <button
         className="menu-item menu-locale-toggler"
         type="button"
@@ -26,6 +40,7 @@ function Menu() {
       >
         {MENU_ICONS[languageIconKey as keyof typeof MENU_ICONS]}
       </button>
+
       <button
         className="menu-item menu-dark-mode-toggler"
         type="button"
