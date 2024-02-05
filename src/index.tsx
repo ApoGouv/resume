@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import LocaleProvider from './Context/ThemeContext';
-import Resume from './Pages/Resume/Resume';
+import ResumePage from './Pages/ResumePage/ResumePage';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <LocaleProvider>
-        <Resume />
+        <ResumePage />
       </LocaleProvider>
     </HelmetProvider>
   </React.StrictMode>

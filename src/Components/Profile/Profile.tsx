@@ -39,7 +39,7 @@ type ImageType = {
   showImage: boolean;
 };
 
-type ProfileProps = {
+export type ProfileProps = {
   data: {
     name: string;
     role: string;

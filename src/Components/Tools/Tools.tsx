@@ -7,7 +7,7 @@ type ToolsType = {
   entries: string[];
 };
 
-type ToolsProp = {
+export type ToolsProp = {
   data: ToolsType;
 };
 

@@ -1,14 +1,8 @@
+// Pages/ResumePage/ResumePage.tsx
 import { useEffect, useState } from 'react';
 import SEO from '../../Components/Seo/SEO';
 import Menu from '../../Components/Menu/Menu';
-import Profile from '../../Components/Profile/Profile';
-import WorkExperience from '../../Components/WorkExperience/WorkExperience';
-import Education from '../../Components/Education/Education';
-import Certificates from '../../Components/Certificates/Certificates';
-import Languages from '../../Components/Languages/Languages';
-import Tools from '../../Components/Tools/Tools';
-import Interests from '../../Components/Interests/Interests';
-import isEmpty from '../../Utils/isEmpty';
+import Resume from '../../Components/Resume/Resume';
 
 import useLocale from '../../Hooks/useLocale';
 import useDarkMode from '../../Hooks/useDarkMode';
@@ -16,9 +10,9 @@ import usePrintStatus from '../../Hooks/usePrintStatus';
 
 import userDataElGR from '../../Data/Data_el-GR.json';
 import userDataEnUS from '../../Data/Data_en-US.json';
-import './Resume.css';
+import './ResumePage.css';
 
-function Resume() {
+function ResumePage() {
   const { appLocale } = useLocale();
   const { darkMode } = useDarkMode();
   const [state, setState] = useState(
@@ -51,16 +45,7 @@ function Resume() {
     }
   }, [appLocale, darkMode, isPrinting]);
 
-  const {
-    htmlLang,
-    profile,
-    workExperience,
-    education,
-    certificates,
-    languages,
-    tools,
-    interests,
-  } = state;
+  const { htmlLang, profile } = state;
 
   // console.log(`${appLocale} - state: `, state);
 
@@ -77,28 +62,10 @@ function Resume() {
         className={`resume-container ${darkMode ? 'dark-resume' : ''}`}
         id="resume-container"
       >
-        <div className="resume resume-A4" id="resume">
-          <div className="resume__left">
-            <Profile data={profile} />
-            <Education data={education} />
-            {!isEmpty(languages.entries) && !languages.isHidden && (
-              <Languages data={languages} />
-            )}
-            {!isEmpty(tools.entries) && !tools.isHidden && (
-              <Tools data={tools} />
-            )}
-            {!isEmpty(interests.entries) && !interests.isHidden && (
-              <Interests data={interests} />
-            )}
-          </div>
-          <div className="resume__right">
-            <WorkExperience data={workExperience} />
-            {!certificates.isHidden && <Certificates data={certificates} />}
-          </div>
-        </div>
+        <Resume data={state} />
       </main>
     </>
   );
 }
 
-export default Resume;
+export default ResumePage;

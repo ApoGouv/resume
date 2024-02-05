@@ -13,7 +13,7 @@ type InterestsType = {
   entries: InterestEntryType[];
 };
 
-type InterestsProps = {
+export type InterestsProps = {
   data: InterestsType;
 };
 

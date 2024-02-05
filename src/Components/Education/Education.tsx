@@ -28,7 +28,7 @@ type EducationSectionType = {
   entries: EducationType[];
 };
 
-type EducationProps = {
+export type EducationProps = {
   data: EducationSectionType;
 };
 

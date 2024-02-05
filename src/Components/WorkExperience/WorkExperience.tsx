@@ -55,7 +55,7 @@ type ExperienceSectionType = {
   entries: ExperienceType[];
 };
 
-type WorkExperienceProps = {
+export type WorkExperienceProps = {
   data: ExperienceSectionType;
 };
 
