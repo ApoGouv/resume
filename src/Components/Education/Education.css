@@ -34,7 +34,7 @@
 }
 
 .education__entry:last-child > .education__time > .education__line {
-  height: 80%;
+  height: 85%;
 }
 
 .education__entry:hover > .education__time > .education__rounder {

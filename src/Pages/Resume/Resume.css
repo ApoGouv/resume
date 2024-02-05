@@ -8,7 +8,7 @@
   margin-bottom: var(--mb-1);
 }
 
-@media screen, print and (min-width: 968px) {
+@media print, screen and (min-width: 968px) {
   .resume-container {
     margin: 1rem auto;
     position: relative;
@@ -18,8 +18,8 @@
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     background-color: var(--resume-bg-color);
-    box-shadow: 0 0 8px #0d0c0c26;
-    border: 1px solid #e7e7e7;
+    box-shadow: 0 0 8px rgb(13 12 12 / 15%);
+    border: 1px solid var(--color-snow);
     margin: 0 auto;
     overflow: hidden;
   }

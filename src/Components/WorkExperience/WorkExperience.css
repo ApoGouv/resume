@@ -34,7 +34,7 @@
 }
 
 .workExp__entry:last-child > .workExp__time > .workExp__line {
-  height: 80%;
+  height: 85%;
 }
 
 .workExp__entry:hover > .workExp__time > .workExp__rounder {

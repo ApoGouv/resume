@@ -42,7 +42,14 @@ function Resume() {
     } else {
       body.classList.remove('dark-mode');
     }
-  }, [appLocale, darkMode]);
+
+    // Handle printing mode change
+    if (isPrinting) {
+      body.classList.add('printing-mode');
+    } else {
+      body.classList.remove('printing-mode');
+    }
+  }, [appLocale, darkMode, isPrinting]);
 
   const {
     htmlLang,

@@ -34,7 +34,7 @@
 }
 
 .certificate__entry:last-child > .certificate__time > .certificate__line {
-  height: 80%;
+  height: 85%;
 }
 
 .certificate__entry:hover > .certificate__time > .certificate__rounder {
