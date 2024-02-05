@@ -8,35 +8,62 @@
   margin-bottom: var(--mb-1);
 }
 
-@media print, screen and (min-width: 968px) {
-  .resume-container {
-    margin: 1rem auto;
-    position: relative;
-  }
+#resume .section__timeentry-time {
+  padding-right: 1rem;
+}
 
-  .resume {
-    display: grid;
-    grid-template-columns: 0.5fr 1fr;
-    background-color: var(--resume-bg-color);
-    box-shadow: 0 0 8px rgb(13 12 12 / 15%);
-    border: 1px solid var(--color-snow);
-    margin: 0 auto;
-    overflow: hidden;
-  }
+#resume .section__timeentry-rounder {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--text-color-light, #7b88a1);
+  border-radius: 50%;
+  margin-top: 0.25rem;
+}
 
-  .resume.resume-A4 {
-    width: 793.7007874px; /* ~ 210mm */
-    height: 1122.519685px; /* ~ 297mm */
-  }
+#resume .section__timeentry-line {
+  display: block;
+  width: 2px;
+  height: 110%;
+  background-color: var(--text-color-light, #7b88a1);
+  transform: translate(7px, 0);
+}
 
-  .resume__left {
-    background-color: var(--resume-bg-color-alt);
-  }
+#resume
+  .section__timeentry:last-child
+  > .section__timeentry-time
+  > .section__timeentry-line {
+  height: 85%;
+}
 
-  .resume__left,
-  .resume__right {
-    padding: 0 1.5rem;
-  }
+.resume-container {
+  margin: 1rem auto;
+  position: relative;
+}
+
+.resume {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  background-color: var(--resume-bg-color, #ffffff);
+  box-shadow: 0 0 8px rgb(13 12 12 / 15%);
+  border: 1px solid var(--color-snow, #fffcff);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.resume.resume-A4 {
+  width: 793.7007874px; /* ~ 210mm */
+  height: 1122.519685px; /* ~ 297mm */
+}
+
+.resume__left {
+  background-color: var(--resume-bg-color-alt, #f7f9fb);
+}
+
+.resume__left,
+.resume__right {
+  padding: 0 1.5rem;
 }
 
 @media print {
@@ -65,5 +92,59 @@
   .resume-container {
     margin: 0 auto;
     position: relative;
+  }
+
+  .resume {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    background-color: var(--resume-bg-color, #ffffff);
+    box-shadow: 0 0 8px rgb(13 12 12 / 15%);
+    border: 1px solid transparent;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .resume.resume-A4 {
+    width: 793.7007874px; /* ~ 210mm */
+    height: 1122.519685px; /* ~ 297mm */
+  }
+
+  .resume__left {
+    background-color: var(--resume-bg-color-alt, #f7f9fb);
+  }
+
+  .resume__left,
+  .resume__right {
+    padding: 0 1.5rem;
+  }
+
+  #resume .section__timeentry-time {
+    padding-right: 1rem;
+    width: 32px;
+  }
+
+  #resume .section__timeentry-rounder {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--text-color-light, #7b88a1);
+    border-radius: 50%;
+    margin-top: 0.25rem;
+  }
+
+  #resume .section__timeentry-line {
+    display: block;
+    width: 2px;
+    height: 110%;
+    background-color: var(--text-color-light, #7b88a1);
+    transform: translate(7px, 0);
+  }
+
+  #resume
+    .section__timeentry:last-child
+    > .section__timeentry-time
+    > .section__timeentry-line {
+    height: 85%;
   }
 }

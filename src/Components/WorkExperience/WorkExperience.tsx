@@ -80,10 +80,10 @@ function WorkExperience({ data }: WorkExperienceProps) {
           .map((exp, index) => {
             const keyExpId: string = `exp-${index}`;
             return (
-              <div className="workExp__entry" key={keyExpId}>
-                <div className="workExp__time">
-                  <span className="workExp__rounder" />
-                  <span className="workExp__line" />
+              <div className="workExp__entry section__timeentry" key={keyExpId}>
+                <div className="workExp__time section__timeentry-time">
+                  <span className="workExp__rounder section__timeentry-rounder" />
+                  <span className="workExp__line section__timeentry-line" />
                 </div>
                 <div className="workExp__data">
                   <h3 className="workExp__main-role">{exp.mainRole}</h3>

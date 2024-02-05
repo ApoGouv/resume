@@ -58,10 +58,13 @@ function Certificates({ data }: CertificatesProps) {
         .map((certificate, index) => {
           const keyCert = `cert-${index}`;
           return (
-            <div className="certificate__entry" key={keyCert}>
-              <div className="certificate__time">
-                <span className="certificate__rounder" />
-                <span className="certificate__line" />
+            <div
+              className="certificate__entry section__timeentry"
+              key={keyCert}
+            >
+              <div className="certificate__time section__timeentry-time">
+                <span className="certificate__rounder section__timeentry-rounder" />
+                <span className="certificate__line section__timeentry-line" />
               </div>
               <div className="certificate__data">
                 <h3 className="certificate__name">{certificate.name}</h3>

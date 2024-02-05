@@ -51,10 +51,10 @@ function Education({ data }: EducationProps) {
         .map((education, index) => {
           const keyEdu = `edu-${index}`;
           return (
-            <div className="education__entry" key={keyEdu}>
-              <div className="education__time">
-                <span className="education__rounder" />
-                <span className="education__line" />
+            <div className="education__entry section__timeentry" key={keyEdu}>
+              <div className="education__time section__timeentry-time">
+                <span className="education__rounder section__timeentry-rounder" />
+                <span className="education__line section__timeentry-line" />
               </div>
               <div className="education__data">
                 <h3 className="education__type">
