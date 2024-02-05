@@ -5,6 +5,7 @@ import {
   ReactNode,
   useMemo,
   useCallback,
+  useEffect,
 } from 'react';
 
 // Define the type for the locale context
@@ -25,11 +26,29 @@ type ThemeProviderProps = {
 
 // Create the ThemeProvider component
 function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
+  const isLocalStorageSupported = (() => {
+    try {
+      localStorage.setItem('test_storage', 'Working!');
+      localStorage.removeItem('test_storage');
+      return true;
+    } catch (error) {
+      return false;
+    }
+  })();
+
+  // Load initial values from local storage or use defaults
+  const initialLocale = isLocalStorageSupported
+    ? localStorage.getItem('appLocale') || 'el-GR'
+    : 'el-GR';
+  const initialDarkMode = isLocalStorageSupported
+    ? localStorage.getItem('darkMode') === 'true' || false
+    : false;
+
   // Set the default locale to el-GR
-  const [appLocale, setAppLocale] = useState('el-GR');
+  const [appLocale, setAppLocale] = useState(initialLocale);
 
   // Set darkMode to false by default
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(initialDarkMode);
 
   // Function to change the locale
   const changeLocale = useCallback((newLocale: string) => {
@@ -39,6 +58,20 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const toggleDarkMode = useCallback(() => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   }, []); // Empty dependency array as setAppLocale is a stable function
+
+  // Update local storage on appLocale change
+  useEffect(() => {
+    if (isLocalStorageSupported) {
+      localStorage.setItem('appLocale', appLocale);
+    }
+  }, [appLocale, isLocalStorageSupported]);
+
+  // Update local storage on darkMode change
+  useEffect(() => {
+    if (isLocalStorageSupported) {
+      localStorage.setItem('darkMode', darkMode.toString());
+    }
+  }, [darkMode, isLocalStorageSupported]);
 
   // Provide the context values to the children
   const contextValues: ThemeContextType = useMemo(() => {
