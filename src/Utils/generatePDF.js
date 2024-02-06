@@ -17,6 +17,7 @@ async function saveCurrentPageToPDF(page) {
   // Change the CSS media type to screen.
   await page.emulateMedia({ media: 'screen' });
 
+  // @todo 👉 Add data attribute to en element in order to get fullname (and maybe locale) instead of this hacky way!
   const title = await page.title();
 
   console.log('saveCurrentPageToPDF > title: ', title);
@@ -40,6 +41,7 @@ async function saveCurrentPageToPDF(page) {
   }
 
   // Take a screenshot of current page.
+  // @todo 👉 Check menu visibility on screenshots. In greek is visible! In english not!
   await page.screenshot({
     path: `./public/img/${cvFileName}.png`,
     fullPage: true,
