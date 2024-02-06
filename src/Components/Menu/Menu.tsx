@@ -27,6 +27,7 @@ function Menu() {
         className="menu-item menu-print-resume"
         type="button"
         title="Print Resume"
+        data-testid="rs-menu-print"
         onClick={handlePrintButtonClick}
       >
         {MENU_ICONS.print}
@@ -36,6 +37,7 @@ function Menu() {
         className="menu-item menu-locale-toggler"
         type="button"
         title={`Toggle Locale to ${appLocale === 'el-GR' ? 'en-US' : 'el-GR'}`}
+        data-testid="rs-menu-toggle-locale"
         onClick={() => changeLocale(appLocale === 'el-GR' ? 'en-US' : 'el-GR')}
       >
         {MENU_ICONS[languageIconKey as keyof typeof MENU_ICONS]}
@@ -45,6 +47,7 @@ function Menu() {
         className={`menu-item menu-dark-mode-toggler menu-dm-${darkModeIconKey}`}
         type="button"
         title={`Toggle Dark Mode ${darkMode ? 'Off' : 'On'}`}
+        data-testid="rs-menu-toggle-dark-mode"
         onClick={toggleDarkMode}
       >
         {MENU_ICONS[darkModeIconKey as keyof typeof MENU_ICONS]}

@@ -11,7 +11,9 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@playwright/browser-chromium": "^1.41.2",
     "country-flag-icons": "^1.5.9",
+    "playwright": "^1.41.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -20,7 +22,6 @@
     "web-vitals": "^3.5.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",
     "@types/node": "^20.11.0",
