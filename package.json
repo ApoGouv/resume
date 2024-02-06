@@ -11,17 +11,16 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@react-pdf/renderer": "^3.3.5",
     "country-flag-icons": "^1.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^2.0.4",
     "react-icons": "^5.0.1",
-    "react-router-dom": "^6.21.1",
     "web-vitals": "^3.5.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.2",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",
     "@types/node": "^20.11.0",
