@@ -24,7 +24,7 @@ function Menu() {
         Current Locale: {appLocale} and langKey: {languageIconKey}
       </p>
       <button
-        className="menu-item menu-dark-mode-toggler"
+        className="menu-item menu-print-resume"
         type="button"
         title="Print Resume"
         onClick={handlePrintButtonClick}
@@ -42,7 +42,7 @@ function Menu() {
       </button>
 
       <button
-        className="menu-item menu-dark-mode-toggler"
+        className={`menu-item menu-dark-mode-toggler menu-dm-${darkModeIconKey}`}
         type="button"
         title={`Toggle Dark Mode ${darkMode ? 'Off' : 'On'}`}
         onClick={toggleDarkMode}

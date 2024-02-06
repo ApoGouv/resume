@@ -4,8 +4,8 @@
   right: 15px;
   z-index: 99;
   margin: 16px;
-  background-color: var(--text-color-light);
-  color: white;
+  background-color: var(--resume-bg-color-alt, #f7f9fb);
+  color: var(--text-color-light);
   padding: 8px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -17,24 +17,64 @@
   display: none;
 }
 
-#menu button.menu-item {
+#menu .menu-item {
   outline: none;
   background: transparent;
-  border: 1px solid #e7e7e7;
+  border: 1px solid var(--text-color-light);
   border-radius: 50%;
   width: 38px;
   height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--text-color-light);
+  cursor: pointer;
+  filter: grayscale(1);
+  transition: all 0.3s ease-in-out;
 }
 
-#menu svg {
+#menu .menu-item:hover {
+  filter: none;
+  color: var(--color-yellow);
+  border-color: var(--color-yellow);
+  transform: scale(1.05);
+}
+
+#menu .menu-item svg {
   stroke: currentcolor;
   fill: currentcolor;
   stroke-width: 0;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+.dark-mode #menu {
+  background-color: var(--resume-bg-color-alt);
+  background-color: var(--resume-bg-color, #ffffff);
+  color: var(--text-color);
+}
+
+.dark-mode #menu .menu-item {
+  color: var(--text-color);
+  border-color: var(--text-color);
+}
+
+.dark-mode #menu .menu-item:hover {
+  filter: none;
+  color: var(--color-yellow);
+  border-color: var(--color-yellow);
+}
+
+.dark-mode #menu .menu-item.menu-dm-moon:hover {
+  filter: none;
+  color: var(--color-moon);
+  border-color: var(--color-moon);
+}
+
+.dark-mode #menu .menu-item.menu-dm-sun:hover {
+  filter: none;
+  color: var(--color-sun);
+  border-color: var(--color-sun);
 }
 
 @media print {

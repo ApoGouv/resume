@@ -57,6 +57,9 @@ body.dark-mode {
   --color-blue: #87ceed;
   --color-snow: #211a1e;
   --color-yellow: #e38f32;
+
+  --color-moon: #f1c40f;
+  --color-sun: #f39c12;
 }
 
 *,
