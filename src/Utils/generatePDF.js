@@ -73,15 +73,22 @@ async function saveCurrentPageToPDF(page) {
   // Save current page to pdf.
   await saveCurrentPageToPDF(page);
 
-  // Change locale by clicking the relative menu btn. | This is not working
+  // Change locale by clicking the relative menu btn.
+  // /!\ This is not working because element is not visible.
   // await page.getByTestId('rs-menu-toggle-locale').click();
+  // page.getByTestId('rs-menu-toggle-locale').dispatchEvent('click');
 
   // @see https://playwright.dev/docs/api/class-elementhandle
+  // /!\ This is not working because element is not visible.
   // const menuHandle = await page.$('#menu');
   // await menuHandle.$eval(
   //   '[data-testid="rs-menu-toggle-locale"]',
   //   (node) => node.click
   // );
+
+  // @see https://playwright.dev/docs/api/class-page#page-eval-on-selector
+  // This method does not wait for the element to pass actionability checks.
+  // Thus is working.
   await page.$eval('[data-testid="rs-menu-toggle-locale"]', (localeBtnEl) =>
     localeBtnEl.click()
   );
