@@ -62,7 +62,7 @@ function ResumePage() {
         className={`resume-container ${darkMode ? 'dark-resume' : ''}`}
         id="resume-container"
       >
-        <Resume data={state} />
+        <Resume data={state} locale={appLocale} />
       </main>
     </>
   );

@@ -21,9 +21,10 @@ type ResumeProps = {
     tools: ToolsProp['data'];
     interests: InterestsProps['data'];
   };
+  locale: string;
 };
 
-function Resume({ data }: ResumeProps) {
+function Resume({ data, locale }: ResumeProps) {
   const {
     profile,
     workExperience,
@@ -35,7 +36,13 @@ function Resume({ data }: ResumeProps) {
   } = data;
 
   return (
-    <div className="resume resume-A4" id="resume">
+    <div
+      className="resume resume-A4"
+      id="resume"
+      data-rs-id="rs-resume"
+      data-rs-name={`${profile?.name ?? 'Απόστολος Γουβάλας'}`}
+      data-rs-locale={locale}
+    >
       <div className="resume__left">
         <Profile data={profile} />
         <Education data={education} />

@@ -35,7 +35,7 @@ type CertificatesType = {
   entries: CertificateDetailsType[];
 };
 
-type CertificatesProps = {
+export type CertificatesProps = {
   data: CertificatesType;
 };
 

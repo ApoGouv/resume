@@ -13,7 +13,7 @@ type LanguagesType = {
   entries: LanguageEntryType[];
 };
 
-type LanguagesProp = {
+export type LanguagesProp = {
   data: LanguagesType;
 };
 
