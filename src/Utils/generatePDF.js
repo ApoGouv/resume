@@ -11,14 +11,12 @@
 import { chromium, selectors } from 'playwright';
 
 async function extractFullNameAndLocaleFromTitle(page) {
-  console.log(
-    '👉 saveCurrentPageToPDF > extractFullNameAndLocaleFromTitle running...'
-  );
+  console.log(' 🚀 extractFullNameAndLocaleFromTitle > running...');
   let fullName = '';
   let locale = '';
 
   const title = await page.title();
-  console.log('👉 saveCurrentPageToPDF > CV title: ', title);
+  console.log('    👉 extractFullNameAndLocaleFromTitle > CV title: ', title);
 
   if (title) {
     const parts = title.split(' - ');
@@ -36,28 +34,26 @@ async function extractFullNameAndLocaleFromTitle(page) {
 }
 
 async function extractFullNameAndLocaleFromResume(page) {
-  console.log(
-    '👉 saveCurrentPageToPDF > extractFullNameAndLocaleFromResume running...'
-  );
+  console.log(' 🚀 extractFullNameAndLocaleFromResume > running...');
   const resumeLocator = await page.getByTestId('rs-resume');
 
   if (!resumeLocator) {
     throw new Error('Resume element not found on the page.');
   }
 
-  const name = await resumeLocator.getAttribute('data-rs-locale');
-  const locale = await resumeLocator.getAttribute('data-rs-name');
+  const locale = await resumeLocator.getAttribute('data-rs-locale');
+  const name = await resumeLocator.getAttribute('data-rs-name');
+  const fullName = name.trim().replace(/\s+/g, '-');
 
-  if (!name || !locale) {
+  if (!fullName || !locale) {
     throw new Error('Full name or locale not found in the resume element.');
   }
-
-  const fullName = name.replace(/\s+/g, '-');
 
   return { fullName, locale };
 }
 
 async function extractFullNameAndLocale(page) {
+  console.log(' 🚀 extractFullNameAndLocale > running...');
   try {
     return await extractFullNameAndLocaleFromResume(page);
   } catch (error) {
@@ -68,28 +64,41 @@ async function extractFullNameAndLocale(page) {
 }
 
 async function getCvFileName(page) {
-  console.log('👉 saveCurrentPageToPDF > getCvFileName running...');
-  // rs-resume
+  console.log(' 🚀 getCvFileName > running...');
+
+  // Default file name
   let cvFileName = 'Απόστολος-Γουβάλας-Βιογραφικό';
 
-  // Destructure the fullName and locale from the extractedData.
-  const { fullName, locale } = await extractFullNameAndLocale(page);
-
-  console.log('👉 saveCurrentPageToPDF > extracted fullName:', fullName);
-  console.log('👉 saveCurrentPageToPDF > extracted locale:', locale);
-
-  if (fullName) {
-    if (locale === 'el-GR' || locale === '') {
-      cvFileName = `${fullName}-Βιογραφικό`;
-    } else {
-      cvFileName = `${fullName}-CV`;
+  try {
+    // Validate input
+    if (!page || typeof page !== 'object') {
+      throw new Error('Invalid page object provided.');
     }
-  }
 
-  return cvFileName;
+    // Extract fullName and locale
+    const { fullName, locale } = await extractFullNameAndLocale(page);
+
+    console.log('    👉 getCvFileName > extracted fullName:', fullName);
+    console.log('    👉 getCvFileName > extracted locale:', locale);
+
+    // Determine file name based on locale and fullName
+    cvFileName = fullName
+      ? `${fullName}-${locale === 'en-US' ? 'CV' : 'Βιογραφικό'}`
+      : cvFileName;
+
+    return cvFileName;
+  } catch (error) {
+    console.error(
+      ' ⚠️ getCvFileName > Error occurred in getCvFileName:',
+      error.message
+    );
+    // Handle error gracefully, by returning  the default file name as fallback
+    return cvFileName;
+  }
 }
 
 async function saveCurrentPageToPDF(page) {
+  console.log(' 🚀 saveCurrentPageToPDF > running...');
   if (!page) {
     return false;
   }
@@ -100,15 +109,25 @@ async function saveCurrentPageToPDF(page) {
 
   const screenshotFilePath = `./public/img/${cvFileName}.png`;
 
+  // Get menu, so we can mask it during screenshot.
+  await page.$eval('[data-rs-id="rs-menu"]', (menuEl) => {
+    menuEl.style.display = 'none';
+  });
+
+  // const rsMenuMaskLocator = await page.getByTestId('rs-menu');
+
   // Take a screenshot of current page.
-  // @todo 👉 Check menu visibility on screenshots. In greek is visible! In english not!
+  // @see 👉 https://playwright.dev/docs/api/class-locator#locator-screenshot
   await page.screenshot({
     path: screenshotFilePath,
+    type: 'png',
     fullPage: true,
+    // mask: [rsMenuMaskLocator],
+    // maskColor: '#f2f4f8',
   });
 
   console.log(
-    '👉 saveCurrentPageToPDF > took screenshot of it and saved at: ',
+    '    👉 saveCurrentPageToPDF > took screenshot of it and saved at: ',
     screenshotFilePath
   );
 
@@ -124,7 +143,7 @@ async function saveCurrentPageToPDF(page) {
   });
 
   console.log(
-    '👉 saveCurrentPageToPDF > convert it to pdf and saved at: ',
+    '    👉 saveCurrentPageToPDF > convert it to pdf and saved at: ',
     pdfFilePath
   );
 
@@ -135,7 +154,7 @@ async function saveCurrentPageToPDF(page) {
 }
 
 (async () => {
-  console.log(' 🏁 saveCurrentPageToPDF > running');
+  console.log(' 🏁 generatePDF > running...');
 
   // Defines custom attribute name to be used in page.getByTestId(testId). data-testid is used by default.
   selectors.setTestIdAttribute('data-rs-id');
@@ -154,28 +173,24 @@ async function saveCurrentPageToPDF(page) {
   await saveCurrentPageToPDF(page);
 
   // Change locale by clicking the relative menu btn.
-  // /!\ This is not working because element is not visible.
-  // await page.getByTestId('rs-menu-toggle-locale').click();
-  // await page.getByTestId('rs-menu-toggle-locale').dispatchEvent('click');
-
-  // @see https://playwright.dev/docs/api/class-elementhandle
-  // /!\ This is not working because element is not visible.
-  // const menuHandle = await page.$('#menu');
-  // await menuHandle.$eval(
-  //   '[data-testid="rs-menu-toggle-locale"]',
-  //   (node) => node.click
-  // );
-
-  // @see https://playwright.dev/docs/api/class-page#page-eval-on-selector
-  // This method does not wait for the element to pass actionability checks.
-  // Thus is working.
-  await page.$eval('[data-testid="rs-menu-toggle-locale"]', (localeBtnEl) =>
-    localeBtnEl.click()
-  );
+  const menuLocator = page.getByTestId('rs-menu-toggle-locale');
+  if (menuLocator) {
+    // @see https://playwright.dev/docs/api/class-locator#locator-dispatch-event
+    await menuLocator.dispatchEvent('click');
+  } else {
+    // @see https://playwright.dev/docs/api/class-page#page-eval-on-selector
+    // This method does not wait for the element to pass actionability checks.
+    // Thus is working.
+    await page.$eval('[data-rs-id="rs-menu-toggle-locale"]', (localeBtnEl) =>
+      localeBtnEl.click()
+    );
+  }
 
   // Since we changed locale, save current page to pdf.
   await saveCurrentPageToPDF(page);
 
   // Close the browser
   await browser.close();
+
+  console.log('🎆🎆🎆🎆 Finished 🎆🎆🎆🎆');
 })();
