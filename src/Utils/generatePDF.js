@@ -20,7 +20,7 @@ async function saveCurrentPageToPDF(page) {
   // @todo 👉 Add data attribute to en element in order to get fullname (and maybe locale) instead of this hacky way!
   const title = await page.title();
 
-  console.log('saveCurrentPageToPDF > title: ', title);
+  console.log('👉 saveCurrentPageToPDF > CV title: ', title);
 
   let cvFileName = 'Apostolos-Gouvalas-CV';
 
@@ -40,21 +40,35 @@ async function saveCurrentPageToPDF(page) {
     }
   }
 
+  const screenshotFilePath = `./public/img/${cvFileName}.png`;
+
   // Take a screenshot of current page.
   // @todo 👉 Check menu visibility on screenshots. In greek is visible! In english not!
   await page.screenshot({
-    path: `./public/img/${cvFileName}.png`,
+    path: screenshotFilePath,
     fullPage: true,
   });
+
+  console.log(
+    '👉 saveCurrentPageToPDF > took screenshot of it and saved at: ',
+    screenshotFilePath
+  );
 
   // Change the CSS media type to print.
   await page.emulateMedia({ media: 'print' });
 
+  const pdfFilePath = `./public/pdf/${cvFileName}.pdf`;
+
   // Save print version to pdf.
   await page.pdf({
-    path: `./public/pdf/${cvFileName}.pdf`,
+    path: pdfFilePath,
     format: 'A4',
   });
+
+  console.log(
+    '👉 saveCurrentPageToPDF > convert it to pdf and saved at: ',
+    pdfFilePath
+  );
 
   // Change the CSS media type to screen.
   await page.emulateMedia({ media: 'screen' });
@@ -63,6 +77,7 @@ async function saveCurrentPageToPDF(page) {
 }
 
 (async () => {
+  console.log(' 🏁 saveCurrentPageToPDF > running');
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
