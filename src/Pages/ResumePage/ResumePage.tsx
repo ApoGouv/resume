@@ -57,10 +57,11 @@ function ResumePage() {
         occupation={profile.role}
         description={profile.bio}
       />
-      <Menu />
+      <Menu name={profile.name} />
       <main
         className={`resume-container ${darkMode ? 'dark-resume' : ''}`}
         id="resume-container"
+        data-rs-id="rs-resume-container"
       >
         <Resume data={state} locale={appLocale} />
       </main>

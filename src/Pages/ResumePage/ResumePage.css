@@ -113,6 +113,9 @@
     border: 1px solid transparent;
     margin: 0 auto;
     overflow: hidden;
+
+    /* Black and White with grey shadows */
+    filter: grayscale(100%);
   }
 
   .resume.resume-A4 {

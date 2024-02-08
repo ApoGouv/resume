@@ -131,20 +131,48 @@ async function saveCurrentPageToPDF(page) {
     screenshotFilePath
   );
 
-  // Change the CSS media type to print.
-  await page.emulateMedia({ media: 'print' });
-
+  // Pdf file name and save colored version
   const pdfFilePath = `./public/pdf/${cvFileName}.pdf`;
 
-  // Save print version to pdf.
+  // Remove top and bottom margins in order to fit resume in one pdf page.
+  await page.addStyleTag({ content: '#resume-container{margin: 0px auto;}' });
+
+  // Save colored version to pdf.
+  // @see https://playwright.dev/docs/api/class-page#page-pdf
   await page.pdf({
     path: pdfFilePath,
     format: 'A4',
+    pageRanges: '1',
+    printBackground: true, // Print background graphics. Defaults to false.
+    /**
+     * preferCSSPageSize boolean (optional):
+     * Give any CSS @page size declared in the page priority over what is
+     * declared in width and height or format options. Defaults to false,
+     * which will scale the content to fit the paper size.
+     */
+    // preferCSSPageSize: true,
   });
 
   console.log(
     '    👉 saveCurrentPageToPDF > convert it to pdf and saved at: ',
     pdfFilePath
+  );
+
+  // Change the CSS media type to print.
+  await page.emulateMedia({ media: 'print' });
+
+  // Pdf file name and save print (monochrome) version
+  const pdfFilePathMono = `./public/pdf/${cvFileName}-print.pdf`;
+
+  // Save print version to pdf.
+  await page.pdf({
+    path: pdfFilePathMono,
+    format: 'A4',
+  });
+
+  console.log(
+    '    👉 saveCurrentPageToPDF > convert it to Print pdf and saved at: ',
+    pdfFilePathMono
   );
 
   // Change the CSS media type to screen.

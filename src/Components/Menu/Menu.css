@@ -29,12 +29,12 @@
   align-items: center;
   color: var(--text-color-light);
   cursor: pointer;
-  filter: grayscale(1);
+  filter: grayscale(100%);
   transition: all 0.3s ease-in-out;
 }
 
 #menu .menu-item:hover {
-  filter: none;
+  filter: grayscale(0);
   color: var(--color-yellow);
   border-color: var(--color-yellow);
   transform: scale(1.05);
@@ -48,6 +48,40 @@
   width: 1.5rem;
 }
 
+#menu .menu-item.menu-pdfs-resume {
+  position: relative;
+}
+
+#menu .menu-item.menu-pdfs-resume .pdf-buttons-container {
+  position: absolute;
+  top: -125px;
+  left: 0;
+  padding: 20px 0px;
+  display: none;
+}
+
+#menu .menu-item.menu-pdfs-resume:hover .pdf-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#menu
+  .menu-item.menu-pdfs-resume
+  .pdf-buttons-container
+  .menu-colored-pdf-resume {
+  filter: grayscale(0);
+  color: red;
+}
+
+#menu .menu-item.menu-pdfs-resume .pdf-buttons-container .menu-bnw-pdf-resume {
+  color: gray;
+  filter: grayscale(100%);
+}
+
+/**
+ * Dark Mode Menu Styles
+ */
 .dark-mode #menu {
   background-color: var(--resume-bg-color-alt);
   background-color: var(--resume-bg-color, #ffffff);

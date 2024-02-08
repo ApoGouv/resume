@@ -9,8 +9,10 @@ import {
   FaLinkedin,
   FaLocationDot,
   FaPrint,
+  FaRegFilePdf,
   FaRegMoon,
   FaRegSun,
+  FaSpinner,
   FaStackOverflow,
   FaSquareXTwitter,
   FaTerminal,
@@ -46,9 +48,6 @@ const PROJECT_ICONS = {
 };
 
 const MENU_ICONS = {
-  print: <FaPrint />,
-  moon: <FaRegMoon />,
-  sun: <FaRegSun />,
   el_gr: (
     <GR
       title="Αλλαγή γλώσσας σε Ελληνικά"
@@ -61,6 +60,11 @@ const MENU_ICONS = {
       className="language-flag language-en-us"
     />
   ),
+  loading: <FaSpinner className="spinner" />,
+  moon: <FaRegMoon />,
+  pdf: <FaRegFilePdf />,
+  print: <FaPrint />,
+  sun: <FaRegSun />,
 };
 
 export {

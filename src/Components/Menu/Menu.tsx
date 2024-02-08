@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useLocale from '../../Hooks/useLocale';
 import usePrintStatus from '../../Hooks/usePrintStatus';
 import useDarkMode from '../../Hooks/useDarkMode';
@@ -5,17 +6,91 @@ import { MENU_ICONS } from '../../Utils/iconsLibrary';
 
 import './Menu.css';
 
-function Menu() {
+// Define type for localized strings
+type LocalizedStrings = {
+  [key: string]: {
+    print: string;
+    downloadPdf: string;
+    downloadBnwPdf: string;
+    toggleLocale: string;
+    toggleDarkMode: string;
+    bio: string;
+  };
+};
+
+type MenuProps = {
+  name: string;
+};
+
+function Menu({ name }: MenuProps) {
   const { appLocale, changeLocale } = useLocale();
   const { darkMode, toggleDarkMode } = useDarkMode();
   const isPrinting = usePrintStatus();
+  const [loadingPdf, setLoadingPdf] = useState(false);
 
   const darkModeIconKey = darkMode ? 'sun' : 'moon';
   const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
 
+  // Define dictionary for localized strings
+  const localizedStrings: LocalizedStrings = {
+    'en-US': {
+      print: 'Print resume',
+      downloadPdf: 'Download colored resume PDF',
+      downloadBnwPdf: 'Download grayscale resume PDF',
+      toggleLocale: 'Toggle locale to el-GR',
+      toggleDarkMode: `Toggle dark mode ${darkMode ? 'Off' : 'On'}`,
+      bio: 'CV',
+    },
+    'el-GR': {
+      print: 'Εκτύπωση βιογραφικού',
+      downloadPdf: 'Λήψη έγχρωμου PDF βιογραφικού',
+      downloadBnwPdf: 'Λήψη PDF βιογραφικού σε κλίμακα του γκρι',
+      toggleLocale: 'Εναλλαγή γλώσσας σε en-US',
+      toggleDarkMode: `${
+        darkMode ? 'Απενεργοποίηση' : 'Ενεργοποίηση'
+      } σκούρου θέματος`,
+      bio: 'Βιογραφικό',
+    },
+  };
+
   const handlePrintButtonClick = () => {
     // eslint-disable-next-line no-restricted-globals
     print();
+  };
+
+  const handlePdfButtonClick = (bnw = false) => {
+    setLoadingPdf(true);
+    try {
+      const pdfName = `${name.replace(/\s+/g, '-')}-${
+        localizedStrings[appLocale].bio
+      }${bnw ? '-print' : ''}`;
+      const pdfUrl = `/pdf/${pdfName}.pdf`;
+
+      const pdfWindowOptions = {
+        url: pdfUrl,
+        target: `${name} - ${localizedStrings[appLocale].bio}`,
+        windowFeatures: [
+          'popup=true',
+          'noreferrer=true',
+          'width=793.7007874px',
+          'height=1122.519685px',
+          'status=no',
+          'location=no',
+          'toolbar=no',
+          'menubar=no',
+        ],
+      };
+
+      window.open(
+        pdfWindowOptions.url,
+        pdfWindowOptions.target,
+        pdfWindowOptions.windowFeatures.join()
+      );
+    } catch (error) {
+      console.error('Error downloading PDF:', error);
+    } finally {
+      setLoadingPdf(false);
+    }
   };
 
   return (
@@ -27,20 +102,52 @@ function Menu() {
       <p className="hidden">
         Current Locale: {appLocale} and langKey: {languageIconKey}
       </p>
+
       <button
         className="menu-item menu-print-resume"
         type="button"
-        title="Print Resume"
+        title={localizedStrings[appLocale].print}
         data-rs-id="rs-menu-print"
         onClick={handlePrintButtonClick}
       >
         {MENU_ICONS.print}
       </button>
 
+      <div
+        className="menu-item menu-pdfs-resume"
+        title={localizedStrings[appLocale].downloadPdf}
+        data-rs-id="rs-menu-pdfs"
+      >
+        <div className="pdf-buttons-container">
+          <button
+            className="menu-item menu-colored-pdf-resume"
+            type="button"
+            title={localizedStrings[appLocale].downloadPdf}
+            data-rs-id="rs-menu-colored-pdf"
+            onClick={() => handlePdfButtonClick()}
+            disabled={loadingPdf}
+          >
+            {loadingPdf ? MENU_ICONS.loading : MENU_ICONS.pdf}
+          </button>
+
+          <button
+            className="menu-item menu-bnw-pdf-resume"
+            type="button"
+            title={localizedStrings[appLocale].downloadBnwPdf}
+            data-rs-id="rs-menu-bnw-pdf"
+            onClick={() => handlePdfButtonClick(true)}
+            disabled={loadingPdf}
+          >
+            {loadingPdf ? MENU_ICONS.loading : MENU_ICONS.pdf}
+          </button>
+        </div>
+        {MENU_ICONS.pdf}
+      </div>
+
       <button
         className="menu-item menu-locale-toggler"
         type="button"
-        title={`Toggle Locale to ${appLocale === 'el-GR' ? 'en-US' : 'el-GR'}`}
+        title={localizedStrings[appLocale].toggleLocale}
         data-rs-id="rs-menu-toggle-locale"
         onClick={() => changeLocale(appLocale === 'el-GR' ? 'en-US' : 'el-GR')}
       >
@@ -50,13 +157,12 @@ function Menu() {
       <button
         className={`menu-item menu-dark-mode-toggler menu-dm-${darkModeIconKey}`}
         type="button"
-        title={`Toggle Dark Mode ${darkMode ? 'Off' : 'On'}`}
+        title={localizedStrings[appLocale].toggleDarkMode}
         data-rs-id="rs-menu-toggle-dark-mode"
         onClick={toggleDarkMode}
       >
         {MENU_ICONS[darkModeIconKey as keyof typeof MENU_ICONS]}
       </button>
-      {/* Additional buttons print, download PDF, here */}
     </div>
   );
 }
