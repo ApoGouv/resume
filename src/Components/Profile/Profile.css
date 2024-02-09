@@ -87,3 +87,23 @@
   text-transform: uppercase;
   margin-bottom: var(--mb-1);
 }
+
+/* Media query for mobile screens */
+@media screen and (max-width: 767.99px) {
+  #profile .profile__contacts-wrapper > .profile__contact,
+  #profile .profile__socials-wrapper > .profile__social {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #profile .profile__social-text {
+    max-width: 100%;
+    flex-grow: 1;
+  }
+
+  #profile .profile__social-text a {
+    word-wrap: break-word;
+    display: inline-block;
+    max-width: calc(100% - 1rem);
+  }
+}

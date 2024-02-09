@@ -80,7 +80,8 @@
       {
         "isHidden": false,
         "mainRole": "Full-stack Web Developer",
-        "company": "MultiHosting / Mental Media",
+        "company": "Mental Media",
+        "companyOldName": "(πρώην MultiHosting)",
         "duration": {
           "from": "2017-11",
           "to": "present",

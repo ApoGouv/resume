@@ -8,6 +8,7 @@ import Languages, { LanguagesProp } from '../Languages/Languages';
 import Tools, { ToolsProp } from '../Tools/Tools';
 import Interests, { InterestsProps } from '../Interests/Interests';
 import isEmpty from '../../Utils/isEmpty';
+// import useMobileDetection from '../../Hooks/useMobileDetection';
 
 import './Resume.css';
 
@@ -22,9 +23,10 @@ type ResumeProps = {
     interests: InterestsProps['data'];
   };
   locale: string;
+  dark: boolean;
 };
 
-function Resume({ data, locale }: ResumeProps) {
+function Resume({ data, locale, dark }: ResumeProps) {
   const {
     profile,
     workExperience,
@@ -35,30 +37,38 @@ function Resume({ data, locale }: ResumeProps) {
     interests,
   } = data;
 
+  // const isMobile = useMobileDetection();
+
   return (
-    <div
-      className="resume resume-A4"
-      id="resume"
-      data-rs-id="rs-resume"
-      data-rs-name={`${profile?.name ?? 'Απόστολος Γουβάλας'}`}
-      data-rs-locale={locale}
+    <main
+      className={`resume-container ${dark ? 'dark-resume' : ''}`}
+      id="resume-container"
+      data-rs-id="rs-resume-container"
     >
-      <div className="resume__left">
-        <Profile data={profile} />
-        <Education data={education} />
-        {!isEmpty(languages.entries) && !languages.isHidden && (
-          <Languages data={languages} />
-        )}
-        {!isEmpty(tools.entries) && !tools.isHidden && <Tools data={tools} />}
-        {!isEmpty(interests.entries) && !interests.isHidden && (
-          <Interests data={interests} />
-        )}
+      <div
+        className="resume resume-A4"
+        id="resume"
+        data-rs-id="rs-resume"
+        data-rs-name={`${profile?.name ?? 'Απόστολος Γουβάλας'}`}
+        data-rs-locale={locale}
+      >
+        <div className="resume__left">
+          <Profile data={profile} />
+          <Education data={education} />
+          {!isEmpty(languages.entries) && !languages.isHidden && (
+            <Languages data={languages} />
+          )}
+          {!isEmpty(tools.entries) && !tools.isHidden && <Tools data={tools} />}
+          {!isEmpty(interests.entries) && !interests.isHidden && (
+            <Interests data={interests} />
+          )}
+        </div>
+        <div className="resume__right">
+          <WorkExperience data={workExperience} />
+          {!certificates.isHidden && <Certificates data={certificates} />}
+        </div>
       </div>
-      <div className="resume__right">
-        <WorkExperience data={workExperience} />
-        {!certificates.isHidden && <Certificates data={certificates} />}
-      </div>
-    </div>
+    </main>
   );
 }
 

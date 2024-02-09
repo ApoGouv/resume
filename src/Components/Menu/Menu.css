@@ -19,7 +19,7 @@
 
 #menu .menu-item {
   outline: none;
-  background: transparent;
+  background-color: var(--resume-bg-color-alt, #f7f9fb);
   border: 1px solid var(--text-color-light);
   border-radius: 50%;
   width: 38px;
@@ -111,6 +111,26 @@
   border-color: var(--color-sun);
 }
 
+/* Media query for mobile screens */
+@media screen and (max-width: 767.99px) {
+  #menu.menu {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    margin: 0px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+/**
+ * Menu Print Styles
+ */
 @media print {
   #menu {
     display: none;

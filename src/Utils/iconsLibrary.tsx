@@ -11,10 +11,10 @@ import {
   FaPrint,
   FaRegFilePdf,
   FaRegMoon,
-  FaRegSun,
   FaSpinner,
-  FaStackOverflow,
   FaSquareXTwitter,
+  FaStackOverflow,
+  FaSun,
   FaTerminal,
 } from 'react-icons/fa6';
 
@@ -64,7 +64,7 @@ const MENU_ICONS = {
   moon: <FaRegMoon />,
   pdf: <FaRegFilePdf />,
   print: <FaPrint />,
-  sun: <FaRegSun />,
+  sun: <FaSun />,
 };
 
 export {

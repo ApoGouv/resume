@@ -44,6 +44,7 @@ type ExperienceType = {
   isHidden: boolean;
   mainRole: string;
   company: string;
+  companyOldName?: string;
   duration: DurationType;
   address: AddressType;
   work: WorkType[];
@@ -109,7 +110,16 @@ function WorkExperience({ data }: WorkExperienceProps) {
                       </span>
                     </p>
                     <p className="workExp__company-separator"> | </p>
-                    <p className="workExp__company-name">{exp.company}</p>
+                    <p className="workExp__company-name">
+                      <span className="workExp__company-name-current">
+                        {exp.company}
+                      </span>
+                      {exp.companyOldName && (
+                        <span className="workExp__company-name-old">
+                          {exp.companyOldName}
+                        </span>
+                      )}
+                    </p>
                     <p
                       className="workExp__company-location"
                       style={{ display: 'none' }}

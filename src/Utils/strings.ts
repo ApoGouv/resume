@@ -51,3 +51,10 @@ export const printUrl = (url: string): string => {
 
   return strippedUrl;
 };
+
+// Add a line break after a specific string (placeholder).
+export const addLineBreak = (str: string, placeholder: string): string => {
+  // Use a regular expression to find the placeholder and add a line break after it
+  const regex = new RegExp(`${placeholder}(?!\\s)`, 'g');
+  return str.replace(regex, `${placeholder}<br>`);
+};

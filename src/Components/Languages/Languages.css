@@ -31,3 +31,14 @@
   font-style: italic;
   font-size: 0.9rem;
 }
+
+/* Media query for mobile screens */
+@media screen and (max-width: 767.99px) {
+  #languages .languages__entry-detail {
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  #languages .languages__entry-info {
+    text-align: right;
+  }
+}

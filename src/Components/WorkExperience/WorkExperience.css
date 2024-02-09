@@ -68,6 +68,8 @@
 .workExp__company-name {
   color: var(--color-red);
   /* font-size: var(--h3-font-size); */
+  display: flex;
+  flex-direction: column;
 }
 
 .workExp__work-info {
@@ -153,4 +155,11 @@
 
 .workExp__work-project-responsibilities ::marker {
   font-size: 1.3rem !important;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 767.99px) {
+  #workExperience .workExp__work-desc {
+    padding-left: 0.5rem;
+  }
 }

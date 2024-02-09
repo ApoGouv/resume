@@ -58,13 +58,7 @@ function ResumePage() {
         description={profile.bio}
       />
       <Menu name={profile.name} />
-      <main
-        className={`resume-container ${darkMode ? 'dark-resume' : ''}`}
-        id="resume-container"
-        data-rs-id="rs-resume-container"
-      >
-        <Resume data={state} locale={appLocale} />
-      </main>
+      <Resume data={state} locale={appLocale} dark={darkMode} />
     </>
   );
 }
