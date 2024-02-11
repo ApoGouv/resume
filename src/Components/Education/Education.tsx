@@ -36,7 +36,7 @@ function Education({ data }: EducationProps) {
   const [educationState, setEducationState] = useState(data);
 
   useEffect(() => {
-    setEducationState(data);
+    setEducationState({ ...data });
   }, [data]);
 
   const { appLocale } = useLocale();

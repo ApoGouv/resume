@@ -43,7 +43,7 @@ function Certificates({ data }: CertificatesProps) {
   const [certificatesState, setCertificatesState] = useState(data);
 
   useEffect(() => {
-    setCertificatesState(data);
+    setCertificatesState({ ...data });
   }, [data]);
 
   const { appLocale } = useLocale();

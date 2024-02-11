@@ -56,7 +56,7 @@ function Profile({ data }: ProfileProps) {
   const [profileState, setProfileState] = useState(data);
 
   useEffect(() => {
-    setProfileState(data);
+    setProfileState({ ...data });
   }, [data]);
 
   // fetch the current profile picture name [user can save more than one]

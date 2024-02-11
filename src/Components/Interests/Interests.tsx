@@ -21,7 +21,7 @@ function Interests({ data }: InterestsProps) {
   const [interestsState, setInterestsState] = useState(data);
 
   useEffect(() => {
-    setInterestsState(data);
+    setInterestsState({ ...data });
   }, [data]);
 
   const interestsNamesString = interestsState.entries

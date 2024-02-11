@@ -21,7 +21,7 @@ function Languages({ data }: LanguagesProp) {
   const [languagesState, setLanguagesState] = useState(data);
 
   useEffect(() => {
-    setLanguagesState(data);
+    setLanguagesState({ ...data });
   }, [data]);
 
   return (

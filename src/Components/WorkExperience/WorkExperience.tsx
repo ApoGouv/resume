@@ -64,7 +64,7 @@ function WorkExperience({ data }: WorkExperienceProps) {
   const [workExpState, setWorkExpState] = useState(data);
 
   useEffect(() => {
-    setWorkExpState(data);
+    setWorkExpState({ ...data });
   }, [data]);
 
   const { appLocale } = useLocale();

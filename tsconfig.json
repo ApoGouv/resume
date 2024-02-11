@@ -12,6 +12,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    /**
+     * jsx options (tells TypeScript that we're using JSX).
+     * preserve: preserves the JSX as it is and doesn't add any extra transformations.
+     * react-jsx: uses a modern transform (_jsx) that works with React 17 and above.
+     * react: uses a legacy transform (React.createElement) that works with React 16 and below.
+     */
     "jsx": "react-jsx",
 
     /* Linting */

@@ -15,7 +15,7 @@ function Tools({ data }: ToolsProp) {
   const [toolsState, setToolsState] = useState(data);
 
   useEffect(() => {
-    setToolsState(data);
+    setToolsState({ ...data });
   }, [data]);
 
   return (
