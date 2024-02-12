@@ -10,8 +10,9 @@ import './Menu.css';
 type LocalizedStrings = {
   [key: string]: {
     print: string;
+    downloadPdfsWrapper: string;
     downloadPdf: string;
-    downloadBnwPdf: string;
+    downloadGrayscalePdf: string;
     toggleLocale: string;
     toggleDarkMode: string;
     bio: string;
@@ -26,7 +27,7 @@ function Menu({ name }: MenuProps) {
   const { appLocale, changeLocale } = useLocale();
   const { darkMode, toggleDarkMode } = useDarkMode();
   const isPrinting = usePrintStatus();
-  const [loadingPdf, setLoadingPdf] = useState(false);
+  const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
 
   const darkModeIconKey = darkMode ? 'sun' : 'moon';
   const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
@@ -35,16 +36,21 @@ function Menu({ name }: MenuProps) {
   const localizedStrings: LocalizedStrings = {
     'en-US': {
       print: 'Print resume',
-      downloadPdf: 'Download colored resume PDF',
-      downloadBnwPdf: 'Download grayscale resume PDF',
+      downloadPdfsWrapper:
+        'Download resume in PDF format (colored or grayscale)',
+      downloadPdf: 'Download colored resume in PDF format',
+      downloadGrayscalePdf: 'Download grayscaled resume in PDF format',
       toggleLocale: 'Toggle locale to el-GR',
       toggleDarkMode: `Toggle dark mode ${darkMode ? 'Off' : 'On'}`,
       bio: 'CV',
     },
     'el-GR': {
       print: 'Εκτύπωση βιογραφικού',
-      downloadPdf: 'Λήψη έγχρωμου PDF βιογραφικού',
-      downloadBnwPdf: 'Λήψη PDF βιογραφικού σε κλίμακα του γκρι',
+      downloadPdfsWrapper:
+        'Κατεβάστε το βιογραφικό σε μορφή PDf (έγχρωμο ή σε αποχρώσεις του γκρι)',
+      downloadPdf: 'Κατεβάστε το έγχρωμο βιογραφικό σε μορφή PDf',
+      downloadGrayscalePdf:
+        'Κατεβάστε το βιογραφικό σε μορφή PDf σε αποχρώσεις του γκρι',
       toggleLocale: 'Εναλλαγή γλώσσας σε en-US',
       toggleDarkMode: `${
         darkMode ? 'Απενεργοποίηση' : 'Ενεργοποίηση'
@@ -115,7 +121,7 @@ function Menu({ name }: MenuProps) {
 
       <div
         className="menu-item menu-pdfs-resume"
-        title={localizedStrings[appLocale].downloadPdf}
+        title={localizedStrings[appLocale].downloadPdfsWrapper}
         data-rs-id="rs-menu-pdfs"
       >
         <div className="pdf-buttons-container">
@@ -131,10 +137,10 @@ function Menu({ name }: MenuProps) {
           </button>
 
           <button
-            className="menu-item menu-bnw-pdf-resume"
+            className="menu-item menu-grayscale-pdf-resume"
             type="button"
-            title={localizedStrings[appLocale].downloadBnwPdf}
-            data-rs-id="rs-menu-bnw-pdf"
+            title={localizedStrings[appLocale].downloadGrayscalePdf}
+            data-rs-id="rs-menu-grayscale-pdf"
             onClick={() => handlePdfButtonClick(true)}
             disabled={loadingPdf}
           >

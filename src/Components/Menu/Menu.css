@@ -74,7 +74,10 @@
   color: red;
 }
 
-#menu .menu-item.menu-pdfs-resume .pdf-buttons-container .menu-bnw-pdf-resume {
+#menu
+  .menu-item.menu-pdfs-resume
+  .pdf-buttons-container
+  .menu-grayscale-pdf-resume {
   color: gray;
   filter: grayscale(100%);
 }

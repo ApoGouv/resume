@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const usePrintStatus = () => {
-  const [isPrinting, setIsPrinting] = useState(false);
+  const [isPrinting, setIsPrinting] = useState<boolean>(false);
 
   useEffect(() => {
     const updatePrintStatus = () => {
