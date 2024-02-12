@@ -3,8 +3,8 @@
   "profile": {
     "name": "Απόστολος Γουβάλας",
     "role": "Full-stack Web Developer",
-    "overallExperienceStartDate": "2017, Aug, 01",
-    "bio": "Full-stack προγραμματιστής με πάνω από {{experience}} εμπειρία σε PHP, SQL και JavaScript, μεταξύ άλλων γλωσσών. Με προσήλωση στη λεπτομέρεια και πάθος για την επίλυση προβλημάτων, είμαι διατεθειμένος να συνεισφέρω τις δεξιότητές μου σε δυναμικά και προκλητικά έργα.",
+    "overallExperienceStartDate": "2017-08-01",
+    "bio": "Full-stack προγραμματιστής με {{experience}} και πλέον χρόνια εμπειρίας σε PHP, SQL και JavaScript, μεταξύ άλλων γλωσσών. Με προσήλωση στη λεπτομέρεια και πάθος για την επίλυση προβλημάτων, είμαι διατεθειμένος να συνεισφέρω τις δεξιότητές μου σε δυναμικά και απαιτητικά έργα.",
     "showBio": true,
     "contact": [
       {
@@ -184,9 +184,9 @@
               }
             ],
             "description": [
-              "Ανάπτυξη Ηλεκτρονικών Καταστημάτων, με OpenCart, CS-Cart, PrestaShop, WooCommerce κ.λπ., καθώς και προσαρμοσμένες λειτουργικότητες και γεφυρώσεις με ERP.",
-              "Ανάπτυξη Ιστοσελίδων (portfolios, εταιρικές, προσωπικές κ.λπ.) - WordPress, Joomla, κ.ά.",
-              "Εταιρικά Έργα - WHMCS, Laravel, vBulletin, Joomla κ.λπ."
+              "Ανάπτυξη ηλεκτρονικών καταστημάτων με OpenCart, CS-Cart, PrestaShop, WooCommerce κ.λπ., καθώς και προσαρμοσμένες λειτουργικότητες και γεφυρώσεις με ERP.",
+              "Ανάπτυξη ιστοσελίδων (portfolios, εταιρικές, προσωπικές κ.λπ.) - WordPress, Joomla, κ.ά.",
+              "Εταιρικά έργα - WHMCS, Laravel, vBulletin, Joomla κ.λπ."
             ],
             "showDescription": true
           }
@@ -217,7 +217,7 @@
             "role": "Junior Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Μετατροπή mockup σχεδίων από PSD ή AI σε valid HTML και CSS ή WordPress Themes."
+              "Μετατροπή σχεδίων mockup από PSD ή AI σε έγκυρη HTML και CSS ή WordPress Themes."
             ],
             "showDescription": true
           }
@@ -360,8 +360,8 @@
       {
         "type": "Master of Science",
         "degree": "MS in Mobile and Web Computing",
-        "school": "Διεθνές Ελληνικό Πανεπιστήμιο (Θεσσαλονίκη, Ελλάδα)",
-        "score": "Distinction",
+        "school": "Διεθνές Πανεπιστήμιο της Ελλάδος (Θεσσαλονίκη, Ελλάδα)",
+        "score": "Με μνεία",
         "isHidden": false,
         "duration": {
           "from": "2016",
@@ -372,7 +372,7 @@
       {
         "type": "Προπτυχιακό",
         "degree": "Πτυχίο Ψηφιακών Συστημάτων, κατεύθυνση \"Συστήματα επικοινωνιών και δικτύων\"",
-        "school": "Πανεπιστήμιο Πειραιά - Τμήμα Ψηφιακών Συστημάτων (Πειραιάς, Αθήνα, Ελλάδα)",
+        "school": "Πανεπιστήμιο Πειραιά - Τμήμα Ψηφιακών Συστημάτων (Πειραιάς, Ελλάδα)",
         "score": null,
         "isHidden": false,
         "duration": {
@@ -519,7 +519,7 @@
         "isHidden": false
       },
       {
-        "name": "Rock Music",
+        "name": "Rock μουσική",
         "icon": "",
         "isHidden": false
       }

@@ -3,8 +3,8 @@
   "profile": {
     "name": "Apostolos Gouvalas",
     "role": "Full-stack Web Developer",
-    "overallExperienceStartDate": "2017, Aug, 01",
-    "bio": "Full-stack developer with over {{experience}} of experience in PHP, SQL and JavaScript, among other languages. With attention to detail and a passion for problem solving, I am willing to contribute my skills to dynamic and challenging projects.",
+    "overallExperienceStartDate": "2017-08-01",
+    "bio": "Full-stack developer with over {{experience}} years of experience in PHP, SQL and JavaScript, among other languages. With attention to detail and a passion for problem solving, I am willing to contribute my skills to dynamic and challenging projects.",
     "showBio": true,
     "contact": [
       {
@@ -184,9 +184,9 @@
               }
             ],
             "description": [
-              "Development of Online Stores, with OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., as well as custom functionalities and bridging with ERP.",
-              "Website Development (portfolios, corporate, personal, etc.) - WordPress, Joomla, etc.",
-              "Company Projects - WHMCS, Laravel, vBulletin, Joomla, etc."
+              "Development of ecommerce websites, with OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., as well as custom functionalities and integrations with ERP programs.",
+              "Website development (portfolios, corporate, personal, etc.) - WordPress, Joomla, etc.",
+              "Company projects - WHMCS, Laravel, vBulletin, Joomla, etc."
             ],
             "showDescription": true
           }
@@ -312,7 +312,7 @@
             "role": "Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Creating the user interface based on the supplied graphic mockups, for applications to visualize the results for the 2014 Italian European Parliament Elections and display past Italian election results, with HTML, CSS and jQuery."
+              "Created the user interface, based on the supplied graphic mockups, for applications to visualize the results of the 2014 Italian European Parliament Elections and display past Italian election results, with valid HTML, CSS and jQuery."
             ],
             "showDescription": true
           }

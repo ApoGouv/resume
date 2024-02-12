@@ -1,7 +1,8 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 import { useState, useEffect } from 'react';
-import { calculateDiff } from '../../Utils/dates';
+import useLocale from '../../Hooks/useLocale';
+import { dateDifferenceInYears, formatNumber } from '../../Utils/dates';
 import { printUrl } from '../../Utils/strings';
 import {
   PROFILE_CONTACT_ICONS,
@@ -59,11 +60,17 @@ function Profile({ data }: ProfileProps) {
     setProfileState({ ...data });
   }, [data]);
 
+  const { appLocale } = useLocale();
+
   // fetch the current profile picture name [user can save more than one]
   const profileImage = profileState.image?.showImage ? ProfilePic : '';
 
   const getBio = (bio: string, propertyName: string, expStartDate: string) => {
-    return bio.replace(`{{${propertyName}}}`, calculateDiff(expStartDate));
+    return bio.replace(
+      `{{${propertyName}}}`,
+      // calculateYearsDiff(expStartDate, appLocale)
+      formatNumber(dateDifferenceInYears(expStartDate), appLocale)
+    );
   };
 
   return (

@@ -1,4 +1,13 @@
 /**
+ * Checks if a value is of type string or number.
+ * @param value - The value to check.
+ * @returns {boolean} True if the value is of type string or number, otherwise false.
+ */
+const isStringOrNumber = (value: any): value is string | number => {
+  return typeof value === 'string' || typeof value === 'number';
+};
+
+/**
  * @typedef {Object} LanguageForms
  * @property {string} singular - The singular form of the word.
  * @property {string} plural - The plural form of the word.
@@ -18,20 +27,24 @@ const yearsWords: Record<string, LanguageForms> = {
 };
 
 /**
- * @function calculateDiff
+ * @function calculateYearsDiff
  * @description Calculates the difference between two dates and returns the experience in years.
- * @param {string | Date} startDate - The start date of the experience.
- * @param {string | Date} [endDate=new Date()] - The end date of the experience (default is the current date).
+ * @param {string | number | Date } startDate - The start date of the experience.
+ * @param {string | number | Date } [endDate=new Date()] - The end date of the experience (default is the current date).
  * @param {string} [locale='el-GR'] - The locale to determine the language for formatting.
  * @returns {string} - The experience duration formatted in years.
  */
-export const calculateDiff = (
-  startDate: string | Date,
-  endDate: string | Date = new Date(),
+export const calculateYearsDiff = (
+  startDate: string | number | Date,
+  endDate: string | number | Date = new Date(),
   locale: string = 'el-GR'
 ): string => {
-  const startDateDateFormat = new Date(startDate);
-  const endDateDateFormat = new Date(endDate);
+  const startDateDateFormat = isStringOrNumber(startDate)
+    ? new Date(startDate)
+    : startDate;
+  const endDateDateFormat = isStringOrNumber(endDate)
+    ? new Date(endDate)
+    : endDate;
 
   const experience = (
     (endDateDateFormat.getTime() - startDateDateFormat.getTime()) /
@@ -42,6 +55,97 @@ export const calculateDiff = (
   const { singular, plural } = yearsWords[locale] || yearsWords['el-GR'];
 
   return `${experience} ${+experience <= 1 ? singular : plural}`;
+};
+
+/**
+ * Calculates the difference in months between two dates.
+ * This function returns the number of months between the initial and final dates.
+ * If the final date is before the initial date, it returns 0.
+ * @param {Date | string | number} dateInitial - The initial date.
+ * @param {Date | string | number} [dateFinal=new Date()] - The final date. Defaults to the current date.
+ * @returns {number} The difference in months between the two dates.
+ */
+export const dateDifferenceInMonths = (
+  dateInitial: Date | string | number,
+  dateFinal: Date | string | number = new Date()
+): number => {
+  // Convert the arguments to Date objects if they are not already
+  const initialDate: Date = isStringOrNumber(dateInitial)
+    ? new Date(dateInitial)
+    : dateInitial;
+  const finalDate: Date = isStringOrNumber(dateFinal)
+    ? new Date(dateFinal)
+    : dateFinal;
+
+  // Check if the date objects are valid
+  if (
+    Number.isNaN(initialDate.getTime()) ||
+    Number.isNaN(finalDate.getTime())
+  ) {
+    return 0; // Return 0 if either date is invalid
+  }
+
+  // Calculate the difference in years
+  const yearDifference: number =
+    finalDate.getFullYear() - initialDate.getFullYear();
+
+  // Calculate the difference in months
+  const monthsDifference: number =
+    finalDate.getMonth() - initialDate.getMonth();
+
+  // Total months difference
+  const totalMonthsDifference: number = yearDifference * 12 + monthsDifference;
+
+  // Ensure the result is not negative, return 0 if it is
+  return Math.max(totalMonthsDifference, 0);
+};
+
+/**
+ * Calculates the difference in years between two dates.
+ * This function returns the number of years between the initial and final dates.
+ * If the final date is before the initial date, it returns 0.
+ * @param {Date | string | number} dateInitial - The initial date.
+ * @param {Date | string | number} [dateFinal=new Date()] - The final date. Defaults to the current date.
+ * @returns {number} The difference in years between the two dates.
+ */
+export const dateDifferenceInYears = (
+  dateInitial: Date | string | number,
+  dateFinal: Date | string | number = new Date()
+): number => {
+  // Convert the arguments to Date objects if they are not already
+  const initialDate: Date = isStringOrNumber(dateInitial)
+    ? new Date(dateInitial)
+    : dateInitial;
+  const finalDate: Date = isStringOrNumber(dateFinal)
+    ? new Date(dateFinal)
+    : dateFinal;
+
+  // Check if the date objects are valid
+  if (
+    Number.isNaN(initialDate.getTime()) ||
+    Number.isNaN(finalDate.getTime())
+  ) {
+    return 0; // Return 0 if either date is invalid
+  }
+
+  // Calculate the difference in years by dividing the difference in months by 12
+  return dateDifferenceInMonths(initialDate, finalDate) / 12;
+};
+
+/**
+ * Formats a number based on the provided locale with maximum significant digits.
+ * @param {number} number - The number to format.
+ * @param {string} locale - The locale to use for formatting.
+ * @returns {string} The formatted number.
+ */
+export const formatNumber = (
+  number: number,
+  locale: string = 'el-GR'
+): string => {
+  return new Intl.NumberFormat(locale, {
+    maximumSignificantDigits: 2,
+    maximumFractionDigits: 1,
+  }).format(number);
 };
 
 /**
