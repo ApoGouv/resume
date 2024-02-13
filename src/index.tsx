@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import LocaleProvider from './Context/ThemeContext';
 import ResumePage from './Pages/ResumePage/ResumePage';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './Utils/reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
