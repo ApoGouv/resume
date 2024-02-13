@@ -1,27 +1,27 @@
-# My personal resume
+# My Personal Resume
 
-Build with React + TypeScript + Vite + lots of ☕ or even 🍺 sometimes.
+Build with React + TypeScript + Vite and fueled by lots of ☕ (or even 🍺 sometimes).
 
-Data are loading from a `.json` file. One for each language.
+Data are loaded from `.json` files, with one for each language to support multilingual resume content.
 
-The resume app is responsive. 
-One page layout with dimentions of an A4 paper (on desktop and pdf files).
+The app features a responsive design, providing a one-page layout with dimensions similar to an A4 paper, ensuring compatibility on both desktop and PDF files.
 
+## Key Features 🔑
 
-- [x] Light and Dark mode 🌞/🌕
-- [x] Greek and English languages 🇬🇷/🇺🇸
-- [x] PDF download in two variations, colored and/or grayscaled, for each language 🗎
-- [x] Quick Print 🖨️
+- [x] **Light and Dark Mode** 🌞/🌕: Seamlessly switch between light and dark themes for optimal readability.
+- [x] **Multilingual Support** 🇬🇷/🇺🇸: Available in Greek and English languages.
+- [x] **PDF Downloads** 🗎: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
+- [x] **Quick Print** 🖨️: Conveniently print your resume with a single click.
 
 
 ## Todo 🗒️
 
-- [ ] Toggle full detailed resume presentation for online view only. The pdfs will still have the one page version.
-  - [ ] Work expirience will show in more details project entries.
-  - [ ] Propably will reveal other components like Projets, to display personal projetcs.
-  - [ ] Maybe add some functionality to prevent printing of detailed version? Will leave this for last!
-- [ ] Maybe add FaceBook and Twitter meta.
-- [ ] Add test coverage with Vitest.
+- [ ] Implement a toggle for full detailed resume presentation in the online view only. This will enhance user experience by providing more comprehensive information while maintaining the one-page layout for PDFs.
+  - [ ] Enhance the display of work experience to include more detailed project entries.
+  - [ ] Consider revealing additional components like projects to showcase personal projects and achievements.
+  - [ ] Explore options to prevent printing of the detailed version, if desired.
+- [ ] Add social media meta tags for Facebook and Twitter to improve the shareability and visibility of the resume.
+- [ ] Add test coverage by implementing Vitest for comprehensive testing of the application.
 
 
 ## Getting Started 🏁
@@ -29,79 +29,68 @@ One page layout with dimentions of an A4 paper (on desktop and pdf files).
 
 ### Build with 🧰
 
-- [React](https://github.com/facebook/react#readme)
-- [React-helmet-async](https://github.com/staylor/react-helmet-async#readme)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons#readme)
-- [Playwright](https://playwright.dev/docs/library)
-- [@playwright/browser-chromium](https://playwright.dev/docs/library#key-differences)
+#### Frameworks and Libraries
 
-- [Vite](https://github.com/vitejs/vite#readme)
-- [TypeScript](https://github.com/microsoft/TypeScript/#readme)
-- [ESLint](https://github.com/eslint/eslint#readme)
-- [PostCSS](https://github.com/postcss/postcss#readme)
-- [Autoprefixer](https://github.com/postcss/autoprefixer#readme)
-- [Prettier](https://github.com/prettier/prettier#readme)
+- [React](https://github.com/facebook/react#readme): A JavaScript library for building user interfaces.
+- [React Helmet Async](https://github.com/staylor/react-helmet-async#readme): A library for managing document head tags in React.
+- [React Icons](https://react-icons.github.io/react-icons/): A library for including popular icons in React projects.
+- [country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons#readme): A set of SVG country flag icons for use in web projects.
+
+
+#### Automation
+
+- [Playwright](https://playwright.dev/docs/library): A Node library for automating browsers.
+- [@playwright/browser-chromium](https://playwright.dev/docs/library#key-differences): Chromium-specific Playwright library for browser automation.
+
+
+#### Build Tools and Utilities
+
+- [Vite](https://github.com/vitejs/vite#readme): A fast build tool for modern web development.
+- [TypeScript](https://github.com/microsoft/TypeScript/#readme): A superset of JavaScript that adds static types to the language.
+- [ESLint](https://github.com/eslint/eslint#readme): A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+- [PostCSS](https://github.com/postcss/postcss#readme): A tool for transforming CSS with JavaScript plugins.
+- [Autoprefixer](https://github.com/postcss/autoprefixer#readme): A PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use.
+- [Prettier](https://github.com/prettier/prettier#readme): A tool for automatically formatting code to ensure consistent style and formatting.
 
 ### Installation 🚧
 
 1. Clone this repo.
-2. 
-```shell
-cd ./resume
-npm install
-```
-3. Modify `.json` files in: `./src/Data` with your personal information.
-> Some sections / entries in the data files are ommited from rendering. **This is by design as I wanted to fit the basic information in one page**. 
-> However, there will be a future version that will display all `non hidden` entries upon request, for online view*. The pdfs will still be on the one page version.
+2. Navigate to the project directory and install dependencies:
+  ```shell
+  cd ./resume
+  npm install
+  ```
+3. Modify the `.json` files located in `./src/Data` with your personal information.
+
+> Some sections/entries in the data files are omitted from rendering. **This is by design as I wanted to fit the basic information on one page**. However, there will be a future version that will display all `non-hidden` entries upon request, for online view*. The PDFs will still be in the one-page version.
 
 
 ### Running the app 🚀
 
+To run the app locally, use the following command:
+
 ```shell
 npm run dev
 
 ```
-App will run locally on: `http://localhost:5174/` , by default.
+
+The app will be accessible at: `http://localhost:5174/` by default.
+
+
 
 #### Available scripts 🔧
 
-```shell
-# Tells Vite to start the development server.
-npm run dev
-```
+- **npm run dev**: Starts the development server using Vite.
 
-```shell
-# Generates images and pdfs of the resume app for both locales.
-# The generated files are stored in the /public/img and 
-# /public/pdf directories respectively.
-# /!\ This script requires `npm run dev` to be running as it uses
-# playwright to open a headless chromium browser to our local 
-# dev address `http://localhost:5174/`.
-npm run gen-pdfs
-```
+- **npm run gen-pdfs**: Generates images and PDFs of the resume app for both locales. The generated files are stored in the `/public/img` and `/public/pdf` directories respectively. This script requires `npm run dev` to be running as it uses Playwright to open a headless Chromium browser to our local dev address `http://localhost:5174/`.
 
-```shell
-# This will run both `npm run dev` and `npm run gen-pdfs` in parallel
-# with a delay of 3 seconds before calling the second script and will 
-# generate the images and pdfs of the resume.
-npm run dev:gen-pdfs
-```
+- **npm run dev:gen-pdfs**: Runs both `npm run dev` and `npm run gen-pdfs` in parallel with a delay of 3 seconds before calling the second script. This script generates the images and PDFs of the resume.
 
-```shell
-# Runs ESLint to out ts and tsx files and report any errors.
-npm run lint
-```
+- **npm run lint**: Runs ESLint to lint TypeScript and TSX files and report any errors.
 
-```shell
-# Tells Vite to build for production.
-npm run build
-```
+- **npm run build**: Builds the project for production using Vite.
 
-```shell
-# Tells Vite to locally preview the production build.
-npm run preview
-```
+- **npm run preview**: Locally previews the production build using Vite.
 
 
 ## Kudos (in alphabetical order) 🫡
