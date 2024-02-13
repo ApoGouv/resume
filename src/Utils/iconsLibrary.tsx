@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 
 import {

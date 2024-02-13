@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
 import { useState, useEffect } from 'react';
 import useLocale from '../../Hooks/useLocale';
 import { replacePlaceholderWithYearDifference } from '../../Utils/dates';

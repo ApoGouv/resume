@@ -3,6 +3,7 @@
  * @param value - The value to check.
  * @returns {boolean} True if the value is of type string or number, otherwise false.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isStringOrNumber = (value: any): value is string | number => {
   return typeof value === 'string' || typeof value === 'number';
 };

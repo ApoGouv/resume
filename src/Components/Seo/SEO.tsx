@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Helmet } from 'react-helmet-async';
 import { replacePlaceholderWithYearDifference } from '../../Utils/dates';
 
