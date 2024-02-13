@@ -149,6 +149,27 @@ export const formatNumber = (
 };
 
 /**
+ * Replaces a placeholder in the provided text with the calculated year difference
+ * between the provided start date and the current date.
+ *
+ * @param {string} text - The text containing the placeholder.
+ * @param {string} [placeholderName='experience'] - The placeholder name to search for.
+ * @param {string} startDate - The start date in 'YYYY-MM-DD' format.
+ * @param {string} appLocale - The locale to format the number.
+ * @returns {string} The text with the placeholder replaced by the calculated year difference.
+ */
+export const replacePlaceholderWithYearDifference = (
+  text: string,
+  startDate: string,
+  appLocale: string = 'el-GR',
+  placeholderName: string = 'experience'
+): string => {
+  const yearDifference = dateDifferenceInYears(startDate);
+  const formattedYearDifference = formatNumber(yearDifference, appLocale);
+  return text.replace(`{{${placeholderName}}}`, formattedYearDifference);
+};
+
+/**
  * @typedef {Object.<string, Intl.DateTimeFormatOptions>} DateFormatOptions
  * @description A mapping of date format options by key.
  * @property {Intl.DateTimeFormatOptions} year - Date format with only the year.

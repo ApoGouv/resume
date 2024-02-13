@@ -2,7 +2,7 @@
 /* eslint-disable import/no-dynamic-require */
 import { useState, useEffect } from 'react';
 import useLocale from '../../Hooks/useLocale';
-import { dateDifferenceInYears, formatNumber } from '../../Utils/dates';
+import { replacePlaceholderWithYearDifference } from '../../Utils/dates';
 import { printUrl } from '../../Utils/strings';
 import {
   PROFILE_CONTACT_ICONS,
@@ -65,11 +65,11 @@ function Profile({ data }: ProfileProps) {
   // fetch the current profile picture name [user can save more than one]
   const profileImage = profileState.image?.showImage ? ProfilePic : '';
 
-  const getBio = (bio: string, propertyName: string, expStartDate: string) => {
-    return bio.replace(
-      `{{${propertyName}}}`,
-      // calculateYearsDiff(expStartDate, appLocale)
-      formatNumber(dateDifferenceInYears(expStartDate), appLocale)
+  const getBio = () => {
+    return replacePlaceholderWithYearDifference(
+      profileState.bio,
+      profileState.overallExperienceStartDate,
+      appLocale
     );
   };
 
@@ -90,13 +90,7 @@ function Profile({ data }: ProfileProps) {
             <div className="profile__name">{profileState.name}</div>
             <div className="profile__role">{profileState.role}</div>
             {profileState.showBio && (
-              <div className="profile__bio">
-                {getBio(
-                  profileState.bio,
-                  'experience',
-                  profileState.overallExperienceStartDate
-                )}
-              </div>
+              <div className="profile__bio">{getBio()}</div>
             )}
           </div>
         </div>

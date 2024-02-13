@@ -56,6 +56,8 @@ function ResumePage() {
         name={profile.name}
         occupation={profile.role}
         description={profile.bio}
+        expStartDate={profile.overallExperienceStartDate}
+        locale={appLocale}
       />
       <Menu name={profile.name} />
       <Resume data={state} locale={appLocale} dark={darkMode} />
