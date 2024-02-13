@@ -497,7 +497,7 @@
   "tools": {
     "isHidden": false,
     "sectionTitle": "ΛΟΓΙΣΜΙΚΑ & ΕΡΓΑΛΕΙΑ",
-    "entries": ["VSCode", "Git", "Linux", "Windows", "etc."]
+    "entries": ["VSCode", "Git", "Linux", "Windows", "cPanel", "etc."]
   },
   "interests": {
     "isHidden": false,
