@@ -103,6 +103,7 @@ async function saveCurrentPageToPDF(page) {
     return false;
   }
   // Change the CSS media type to screen.
+  // @see https://playwright.dev/docs/api/class-page#page-emulate-media
   await page.emulateMedia({ media: 'screen' });
 
   const cvFileName = await getCvFileName(page);
