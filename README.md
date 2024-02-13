@@ -6,15 +6,15 @@ Data are loaded from `.json` files, with one for each language to support multil
 
 The app features a responsive design, providing a one-page layout with dimensions similar to an A4 paper, ensuring compatibility on both desktop and PDF files.
 
-## Key Features 🔑
+## Key Features 🎛️
 
 - [x] **Light and Dark Mode** 🌞/🌕: Seamlessly switch between light and dark themes for optimal readability.
 - [x] **Multilingual Support** 🇬🇷/🇺🇸: Available in Greek and English languages.
-- [x] **PDF Downloads** 🗎: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
+- [x] **PDF Downloads** 📄: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
 - [x] **Quick Print** 🖨️: Conveniently print your resume with a single click.
 
 
-## Todo 🗒️
+## Todo 📝
 
 - [ ] Implement a toggle for full detailed resume presentation in the online view only. This will enhance user experience by providing more comprehensive information while maintaining the one-page layout for PDFs.
   - [ ] Enhance the display of work experience to include more detailed project entries.
