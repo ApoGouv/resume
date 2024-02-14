@@ -11,38 +11,6 @@
   display: flex;
 }
 
-.workExp__time {
-  padding-right: 1rem;
-}
-
-.workExp__rounder {
-  position: relative;
-  display: block;
-  width: 16px;
-  height: 16px;
-  background-color: var(--text-color-light);
-  border-radius: 50%;
-  margin-top: 0.25rem;
-}
-
-.workExp__line {
-  display: block;
-  width: 2px;
-  height: 110%;
-  background-color: var(--text-color-light);
-  transform: translate(7px, 0);
-}
-
-.workExp__entry:last-child > .workExp__time > .workExp__line {
-  height: 85%;
-}
-
-.workExp__entry:hover > .workExp__time > .workExp__rounder {
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-  transform: scale(1);
-  animation: pulse 2s infinite;
-}
-
 .workExp__data {
   width: 100%;
 }

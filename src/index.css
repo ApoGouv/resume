@@ -39,6 +39,10 @@
   --color-yellow: #ffba49;
 
   --section-padding: 1.2rem 0 0.5rem;
+
+  --rs-trans-duration: 300ms;
+  --rs-trans-duration-menu-item: 300ms;
+  --rs-trans-timing-fn: linear;
 }
 
 body.dark-mode {
@@ -79,6 +83,9 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   line-height: var(--body-line-height, 1.1);
+  transition:
+    background-color var(--rs-trans-duration) var(--rs-trans-timing-fn),
+    color var(--rs-trans-duration) var(--rs-trans-timing-fn);
 }
 
 h1 {
@@ -106,6 +113,7 @@ h2,
 h3 {
   color: var(--title-color);
   font-weight: var(--font-medium);
+  transition: color var(--rs-trans-duration) var(--rs-trans-timing-fn);
 }
 
 ul {

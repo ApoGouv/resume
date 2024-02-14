@@ -25,6 +25,8 @@
   background-color: var(--text-color-light, #7b88a1);
   border-radius: 50%;
   margin-top: 0.25rem;
+  transition: background-color var(--rs-trans-duration)
+    var(--rs-trans-timing-fn);
 }
 
 #resume .section__timeentry-line {
@@ -33,6 +35,17 @@
   height: 110%;
   background-color: var(--text-color-light, #7b88a1);
   transform: translate(7px, 0);
+  transition: background-color var(--rs-trans-duration)
+    var(--rs-trans-timing-fn);
+}
+
+#resume
+  .section__timeentry:hover
+  > .section__timeentry-time
+  > .section__timeentry-rounder {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+  animation: pulse 2s infinite;
 }
 
 #resume
@@ -50,6 +63,9 @@
   border: 1px solid var(--color-snow, #fffcff);
   margin: 0 auto;
   overflow: hidden;
+  transition:
+    background-color var(--rs-trans-duration) var(--rs-trans-timing-fn),
+    border-color var(--rs-trans-duration) var(--rs-trans-timing-fn);
 }
 
 .resume.resume-A4 {
@@ -59,6 +75,8 @@
 
 .resume__left {
   background-color: var(--resume-bg-color-alt, #f7f9fb);
+  transition: background-color var(--rs-trans-duration)
+    var(--rs-trans-timing-fn);
 }
 
 .resume__left,
