@@ -1,7 +1,20 @@
 {
   "name": "resume",
+  "description": "A personal resume app built with React, TypeScript, and Vite.",
   "private": true,
+  "license": "MIT",
   "version": "1.4.0",
+  "author": "Apostolos Gouvalas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ApoGouv/resume.git"
+  },
+  "keywords": [
+    "resume",
+    "react",
+    "typescript",
+    "vite"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
