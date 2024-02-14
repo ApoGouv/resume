@@ -28,3 +28,13 @@ node_modules
 # Production
 dist
 dist-ssr
+
+# Ignore generated images.
+public/img/*.png
+public/img/*.jpg
+public/img/*.jpeg
+public/img/*.gif
+
+# Ignore ALL pdf files
+
+*.pdf
