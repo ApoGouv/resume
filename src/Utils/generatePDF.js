@@ -7,8 +7,8 @@
  * This will generate the CV images and PDFs in the
  * `/public/img` and `/public/pdf` respectively.
  */
-
 import { chromium, selectors } from 'playwright';
+import { createServer } from 'vite';
 
 async function extractFullNameAndLocaleFromTitle(page) {
   console.log(' 🚀 extractFullNameAndLocaleFromTitle > running...');
@@ -119,10 +119,11 @@ async function saveCurrentPageToPDF(page) {
 
   // Take a screenshot of current page.
   // @see 👉 https://playwright.dev/docs/api/class-locator#locator-screenshot
-  await page.screenshot({
+  const resumeContainerLocator = await page.getByTestId('rs-resume-container');
+  await resumeContainerLocator.screenshot({
     path: screenshotFilePath,
-    type: 'png',
-    fullPage: true,
+    // type: 'png', // "png"|"jpeg" - defaults to png.
+    // fullPage: true, // When true, takes a screenshot of the full scrollable page, instead of the currently visible viewport. Defaults to false.
     // mask: [rsMenuMaskLocator],
     // maskColor: '#f2f4f8',
   });
@@ -182,19 +183,43 @@ async function saveCurrentPageToPDF(page) {
   return true;
 }
 
-(async () => {
+/**
+ * Generates a PDF from the specified URL, optionally running a development server.
+ * @param {object} options - Options for generating the PDF.
+ * @param {boolean} [options.runDevServer=false] - Whether to run a development server.
+ * @param {number} [options.onPort=5173] - The port number for the development server.
+ * @returns {Promise<number>} A promise that resolves to 0 when the PDF generation is complete.
+ */
+const generatePDF = async ({ runDevServer = false, onPort = 5173 }) => {
   console.log(' 🏁 generatePDF > running...');
 
-  // Defines custom attribute name to be used in page.getByTestId(testId). data-testid is used by default.
+  let port = onPort;
+
+  // If runDevServer flag is true, start a Vite server and return
+  let viteServer = null;
+  if (runDevServer) {
+    viteServer = await createServer();
+
+    await viteServer.listen(port);
+    viteServer.printUrls();
+
+    port = viteServer.config.server.port;
+  }
+
+  // Set custom attribute name to be used in page.getByTestId(testId). data-testid is used by default.
   selectors.setTestIdAttribute('data-rs-id');
 
+  // Launch a Chromium browser
   const browser = await chromium.launch();
-
   const page = await browser.newPage();
 
-  // Navigate to your resume page
-  await page.goto('http://localhost:5173');
+  // Navigate to our resume page
+  console.log(
+    `    👉 generatePDF > navigating to page URL: http://localhost:${port}`
+  );
+  await page.goto(`http://localhost:${port}`);
 
+  // Set a timeout for page methods
   const methodsTimeout = 3000; // ms = 3 sec.
   page.setDefaultTimeout(methodsTimeout);
 
@@ -215,11 +240,59 @@ async function saveCurrentPageToPDF(page) {
     );
   }
 
-  // Since we changed locale, save current page to pdf.
+  // Save the page to PDF after changing the locale
   await saveCurrentPageToPDF(page);
 
   // Close the browser
   await browser.close();
 
-  console.log('🎆🎆🎆🎆 Finished 🎆🎆🎆🎆');
-})();
+  console.log('🎆🎆🎆🎆 generatePDF > Finished 🎆🎆🎆🎆');
+
+  // If we have a running de server, close it!
+  if (runDevServer && viteServer) {
+    // Stop the dev server.
+    await viteServer.close();
+  }
+
+  /**
+   * Since we call this utility (generatePDF) via CLI, we are simply
+   * returning 0 to indicate that the PDF generation process has completed successfully.
+   */
+  return 0;
+};
+
+// Default options for generating PDF
+const generatePDFOptions = {
+  runDevServer: false, // Default to not running the development server
+  onPort: 5173, // Default port for the development server
+};
+
+// Extract any arguments passed via the command line
+// The first two elements are node and the script file name
+// e.g. node ./src/Utils/generatePDF.js --runDevServer --port 3333
+const args = process?.argv?.slice(2) ?? [];
+
+if (args.length > 0) {
+  // Check if the arguments include flags for runDevServer and port
+  const runDevIndex = args.indexOf('--runDevServer');
+  const portIndex = args.indexOf('--port');
+
+  // If --runDevServer flag is present
+  if (runDevIndex !== -1) {
+    // Set runDevServer option to true
+    generatePDFOptions.runDevServer = true;
+  }
+
+  // If --port flag is present and the next argument is a valid port number
+  if (portIndex !== -1 && portIndex < args.length - 1) {
+    // Parse the port number
+    const port = parseInt(args[portIndex + 1], 10);
+    if (!Number.isNaN(port) && port > 0 && port < 65536) {
+      // Set port option to the provided value
+      generatePDFOptions.onPort = port;
+    }
+  }
+}
+
+// Call the function with optional parameters
+generatePDF(generatePDFOptions);
