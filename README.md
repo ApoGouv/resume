@@ -51,6 +51,8 @@ The app features a responsive design, providing a one-page layout with dimension
 - [PostCSS](https://github.com/postcss/postcss#readme): A tool for transforming CSS with JavaScript plugins.
 - [Autoprefixer](https://github.com/postcss/autoprefixer#readme): A PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use.
 - [Prettier](https://github.com/prettier/prettier#readme): A tool for automatically formatting code to ensure consistent style and formatting.
+- [gh-pages](https://github.com/tschaub/gh-pages#readme): A convenient tool for deploying your project to GitHub Pages with minimal configuration. With `gh-pages`, you can seamlessly publish your static websites, React applications, or any other web projects directly from your GitHub repository to a dedicated GitHub Pages branch, making it accessible to the world with just a few simple commands.
+
 
 ### Installation 🚧
 
@@ -91,6 +93,11 @@ The app will be accessible at: `http://localhost:5174/` by default.
 - **npm run build**: Builds the project for production using Vite.
 
 - **npm run preview**: Locally previews the production build using Vite.
+
+- **predeploy**: Runs the `dev:gen-pdfs` script to generate images and PDFs of the resume app, and then builds the project using `npm run build`. This script is used automatically before deploying our application to ensure that the latest changes are included in the build.
+
+- **deploy**: Deploys the built project to GitHub Pages using the `gh-pages` package. It uploads the contents of the `dist` directory to a dedicated branch, making our application accessible via GitHub Pages.
+
 
 
 ## Kudos (in alphabetical order) 🫡
