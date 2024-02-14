@@ -112,6 +112,7 @@ async function saveCurrentPageToPDF(page) {
 
   // Get menu, so we can mask it during screenshot.
   await page.$eval('[data-rs-id="rs-menu"]', (menuEl) => {
+    // eslint-disable-next-line no-param-reassign
     menuEl.style.display = 'none';
   });
 
