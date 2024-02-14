@@ -64,13 +64,19 @@ function Menu({ name }: MenuProps) {
     print();
   };
 
+  const normalizeUrl = (url: string) => {
+    return `/${url.split('/').filter(Boolean).join('/')}`;
+  };
+
   const handlePdfButtonClick = (bnw = false) => {
     setLoadingPdf(true);
     try {
       const pdfName = `${name.replace(/\s+/g, '-')}-${
         localizedStrings[appLocale].bio
       }${bnw ? '-print' : ''}`;
-      const pdfUrl = `/pdf/${pdfName}.pdf`;
+      const pdfUrl = normalizeUrl(
+        `${import.meta.env.BASE_URL}/pdf/${pdfName}.pdf`
+      );
 
       const pdfWindowOptions = {
         url: pdfUrl,
