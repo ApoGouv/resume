@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="500" ry="500" fill="#414b5e"></rect><g transform="matrix(3.8461538461538463,0,0,3.8461538461538463,-2.7681121826171875,1.4416210467998667)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="260" height="260"><svg width="260" height="260" viewBox="120 -55 260 260" preserveAspectRatio="xMidYMid" version="1.1" id="svg7" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs6">
+    <linearGradient id="editing-sticker-gradient" x1="69.851356" y1="-99.394118" x2="56.354893" y2="-22.851879" gradientTransform="scale(1.3163131,0.75969767)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7c89a2" id="stop1"></stop>
+      <stop offset="1" stop-color="#7c89a2" id="stop2"></stop>
+    </linearGradient>
+    <filter id="editing-sticker" x="-0.067696078" y="-0.11109947" width="1.1312376" height="1.2221989">
+      <feMorphology operator="erode" radius="1" in="SourceAlpha" result="alpha-erode" id="feMorphology2"></feMorphology>
+      <feConvolveMatrix order="3,3" divisor="1" kernelMatrix="0 1 0 1 1 1 0 1 0" in="alpha-erode" result="alpha-round" id="feConvolveMatrix2"></feConvolveMatrix>
+      <feMorphology operator="dilate" radius="3.5" in="alpha-round" result="dilate-shadow" id="feMorphology3"></feMorphology>
+      <feGaussianBlur in="dilate-shadow" stdDeviation="1.5" result="shadow" id="feGaussianBlur3"></feGaussianBlur>
+      <feFlood flood-color="#fff" result="flood-sticker" id="feFlood3"></feFlood>
+      <feComposite operator="in" in="flood-sticker" in2="alpha-round" result="comp-sticker" id="feComposite3"></feComposite>
+      <feMorphology operator="dilate" radius="3" in="comp-sticker" result="morph-sticker" id="feMorphology4"></feMorphology>
+      <feConvolveMatrix order="3,3" divisor="1" kernelMatrix="0 1 0 1 1 1 0 1 0" in="morph-sticker" result="sticker" id="feConvolveMatrix4"></feConvolveMatrix>
+      <feMerge id="feMerge6">
+        <feMergeNode in="shadow" id="feMergeNode4"></feMergeNode>
+        <feMergeNode in="sticker" id="feMergeNode5"></feMergeNode>
+        <feMergeNode in="SourceGraphic" id="feMergeNode6"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+  <style id="style7">text {
+  font-size: 64px;
+  font-family: Arial Black;
+  dominant-baseline: central;
+  text-anchor: middle;
+}</style>
+  <ellipse style="fill:#f7f9fb;fill-opacity:1;stroke:#c4403d;stroke-width:7.7178;stroke-opacity:1;paint-order:stroke markers fill" id="path7" cx="250.97258" cy="74.493484" rx="117.01994" ry="121.27493"></ellipse>
+  <g filter="url(#editing-sticker)" id="g7">
+    <g transform="translate(166.59,122.705)" id="g6">
+      <path d="M 82.96,0 H 70.84 L 59.67,-28.75 H 22.85 L 11.81,0 H 0 L 36.25,-93.18 H 46.78 Z M 26.79,-39.1 h 29.39 l -10.41,-28.12 -4.45,-13.9 v 0 q -1.9,7.61 -4,13.9 v 0 z m 107.97,0.51 V -49 h 32.06 v 45.51 0 q -7.37,2.35 -14.98,3.55 v 0 0 q -7.62,1.21 -17.65,1.21 v 0 0 q -21.2,0 -32.82,-12.57 v 0 0 Q 89.76,-23.87 89.76,-46.4 v 0 0 q 0,-14.54 5.77,-25.39 v 0 0 q 5.78,-10.86 16.66,-16.6 v 0 0 q 10.89,-5.75 25.68,-5.75 v 0 0 q 14.85,0 27.68,5.46 v 0 l -4.45,10.16 v 0 q -12.25,-5.33 -23.93,-5.33 v 0 0 q -16.56,0 -25.9,10.03 v 0 0 q -9.33,10.03 -9.33,27.42 v 0 0 q 0,18.41 8.95,27.99 v 0 0 q 8.95,9.59 26.03,9.59 v 0 0 q 9.33,0 18.22,-2.22 v 0 -27.55 z" fill="url(#editing-sticker-gradient)" stroke="#414b5e" stroke-width="3" id="path6" style="fill:url(#editing-sticker-gradient)"></path>
+    </g>
+  </g>
+</svg></svg></g></svg>
