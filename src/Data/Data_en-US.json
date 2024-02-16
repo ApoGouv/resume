@@ -4,7 +4,7 @@
     "name": "Apostolos Gouvalas",
     "role": "Full-stack Web Developer",
     "overallExperienceStartDate": "2017-08-01",
-    "bio": "Full-stack developer with over {{experience}} years of experience in PHP, SQL and JavaScript, among other languages. With attention to detail and a passion for problem solving, I am willing to contribute my skills to dynamic and challenging projects.",
+    "bio": "Full-stack developer with over {{__YEARS_OF_EXPERIENCE__}} years of experience in PHP, SQL and JavaScript, among other languages. With attention to detail and a passion for problem solving, I am willing to contribute my skills to dynamic and challenging projects.",
     "showBio": true,
     "contact": [
       {

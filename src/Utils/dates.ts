@@ -1,3 +1,9 @@
+import {
+  DEFAULT_LOCALE,
+  EXP_YEARS_PLACEHOLDER,
+  DATE_RANGE_SEPARATOR,
+} from '../constants';
+
 /**
  * Checks if a value is of type string or number.
  * @param value - The value to check.
@@ -32,13 +38,13 @@ const yearsWords: Record<string, LanguageForms> = {
  * @description Calculates the difference between two dates and returns the experience in years.
  * @param {string | number | Date } startDate - The start date of the experience.
  * @param {string | number | Date } [endDate=new Date()] - The end date of the experience (default is the current date).
- * @param {string} [locale='el-GR'] - The locale to determine the language for formatting.
+ * @param {string} [locale=DEFAULT_LOCALE] - The locale to determine the language for formatting.
  * @returns {string} - The experience duration formatted in years.
  */
 export const calculateYearsDiff = (
   startDate: string | number | Date,
   endDate: string | number | Date = new Date(),
-  locale: string = 'el-GR'
+  locale: string = DEFAULT_LOCALE
 ): string => {
   const startDateDateFormat = isStringOrNumber(startDate)
     ? new Date(startDate)
@@ -53,7 +59,7 @@ export const calculateYearsDiff = (
   ).toFixed(1);
 
   // Select the appropriate language forms based on the provided locale.
-  const { singular, plural } = yearsWords[locale] || yearsWords['el-GR'];
+  const { singular, plural } = yearsWords[locale] || yearsWords[DEFAULT_LOCALE];
 
   return `${experience} ${+experience <= 1 ? singular : plural}`;
 };
@@ -141,7 +147,7 @@ export const dateDifferenceInYears = (
  */
 export const formatNumber = (
   number: number,
-  locale: string = 'el-GR'
+  locale: string = DEFAULT_LOCALE
 ): string => {
   return new Intl.NumberFormat(locale, {
     maximumSignificantDigits: 2,
@@ -154,16 +160,16 @@ export const formatNumber = (
  * between the provided start date and the current date.
  *
  * @param {string} text - The text containing the placeholder.
- * @param {string} [placeholderName='experience'] - The placeholder name to search for.
  * @param {string} startDate - The start date in 'YYYY-MM-DD' format.
- * @param {string} appLocale - The locale to format the number.
+ * @param {string} [appLocale= DEFAULT_LOCALE] - The locale to format the number.
+ * @param {string} [placeholderName='__YEARS_OF_EXPERIENCE__'] - The placeholder name to search for.
  * @returns {string} The text with the placeholder replaced by the calculated year difference.
  */
 export const replacePlaceholderWithYearDifference = (
   text: string,
   startDate: string,
-  appLocale: string = 'el-GR',
-  placeholderName: string = 'experience'
+  appLocale: string = DEFAULT_LOCALE,
+  placeholderName: string = EXP_YEARS_PLACEHOLDER
 ): string => {
   const yearDifference = dateDifferenceInYears(startDate);
   const formattedYearDifference = formatNumber(yearDifference, appLocale);
@@ -193,13 +199,13 @@ export const dateFormatOptions: Record<string, Intl.DateTimeFormatOptions> = {
  * @description Formats a date according to the specified options using Intl.DateTimeFormat
  * @param {string} dateString - The date string to format
  * @param {Intl.DateTimeFormatOptions} options - Options for formatting the date
- * @param {string} locale - The locale string (e.g., 'en-US', 'el-GR')
+ * @param {string} [locale=DEFAULT_LOCALE] - The locale string (e.g., 'en-US', 'el-GR')
  * @returns {string} Formatted date string
  */
 export const getDateFormatIntl = (
   dateString: string,
   options: Intl.DateTimeFormatOptions,
-  locale: string = 'el-GR'
+  locale: string = DEFAULT_LOCALE
 ): string => {
   const dateObj = new Date(dateString);
   return dateObj.toLocaleDateString(locale, options);
@@ -216,16 +222,16 @@ const presentTranslationByLocale: Record<string, string> = {
  * @param {string} dateFrom - The start date string
  * @param {string | null} dateTo - The end date string or null if ongoing
  * @param {Intl.DateTimeFormatOptions} options - Options for formatting the date range
- * @param {string} locale - The locale string (e.g., 'en-US', 'el-GR')
- * @param {string} separator - Separator between date parts
+ * @param {string} [locale= DEFAULT_LOCALE] - The locale string (e.g., 'en-US', 'el-GR')
+ * @param {string} [separator= DATE_RANGE_SEPARATOR] - Separator between date parts
  * @returns {string} Formatted date range string
  */
 export const getDateRangeFormattedIntl = (
   dateFrom: string,
   dateTo: string | null,
   options: Intl.DateTimeFormatOptions,
-  locale: string = 'el-GR',
-  separator: string = ' - '
+  locale: string = DEFAULT_LOCALE,
+  separator: string = DATE_RANGE_SEPARATOR
 ): string => {
   const formattedDateFrom = getDateFormatIntl(dateFrom, options, locale);
   let formattedDateTo = '';

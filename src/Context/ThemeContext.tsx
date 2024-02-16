@@ -8,6 +8,8 @@ import {
   useEffect,
 } from 'react';
 
+import { DEFAULT_LOCALE } from '../constants';
+
 // Define the type for the locale context
 export type ThemeContextType = {
   appLocale: string;
@@ -38,8 +40,8 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
 
   // Load initial values from local storage or use defaults
   const initialLocale = isLocalStorageSupported
-    ? localStorage.getItem('appLocale') || 'el-GR'
-    : 'el-GR';
+    ? localStorage.getItem('appLocale') || DEFAULT_LOCALE
+    : DEFAULT_LOCALE;
   const initialDarkMode = isLocalStorageSupported
     ? localStorage.getItem('darkMode') === 'true' || false
     : false;

@@ -25,7 +25,7 @@ function ResumePage() {
     // Update state when appLocale changes
     if (appLocale === 'en-US') {
       setState({ ...userDataEnUS });
-    } else if (appLocale === 'el-GR') {
+    } else {
       setState({ ...userDataElGR });
     }
 
