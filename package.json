@@ -17,6 +17,13 @@
     "vite"
   ],
   "type": "module",
+  "browserslist": [
+    ">0.4%",
+    "last 3 versions",
+    "last 1 Opera versions",
+    "not dead",
+    "node 16.0.0"
+  ],
   "scripts": {
     "dev": "vite",
     "gen-pdfs": "node ./src/Utils/generatePDF.js",

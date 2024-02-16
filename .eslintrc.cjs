@@ -13,7 +13,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   overrides: [],
-  ignorePatterns: ['dist', './.eslintrc.cjs'],
+  ignorePatterns: ['dist', './.eslintrc.cjs', '*.config.js', '*.config.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
