@@ -8,7 +8,7 @@ import Languages, { LanguagesProp } from '../Languages/Languages';
 import Tools, { ToolsProp } from '../Tools/Tools';
 import Interests, { InterestsProps } from '../Interests/Interests';
 import isEmpty from '../../Utils/isEmpty';
-// import useMobileDetection from '../../Hooks/useMobileDetection';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 
 import './Resume.css';
 
@@ -37,7 +37,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
     interests,
   } = data;
 
-  // const isMobile = useMobileDetection();
+  const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
 
   return (
     <main
@@ -55,17 +55,44 @@ function Resume({ data, locale, dark }: ResumeProps) {
         <div className="resume__left">
           <Profile data={profile} />
           <Education data={education} />
-          {!isEmpty(languages.entries) && !languages.isHidden && (
-            <Languages data={languages} />
-          )}
-          {!isEmpty(tools.entries) && !tools.isHidden && <Tools data={tools} />}
-          {!isEmpty(interests.entries) && !interests.isHidden && (
-            <Interests data={interests} />
+          {!isMobile ? (
+            <>
+              {!isEmpty(languages.entries) && !languages.isHidden && (
+                <Languages data={languages} />
+              )}
+              {!isEmpty(tools.entries) && !tools.isHidden && (
+                <Tools data={tools} />
+              )}
+              {!isEmpty(interests.entries) && !interests.isHidden && (
+                <Interests data={interests} />
+              )}
+            </>
+          ) : (
+            <>
+              <WorkExperience data={workExperience} />
+              {!certificates.isHidden && <Certificates data={certificates} />}
+            </>
           )}
         </div>
         <div className="resume__right">
-          <WorkExperience data={workExperience} />
-          {!certificates.isHidden && <Certificates data={certificates} />}
+          {!isMobile ? (
+            <>
+              <WorkExperience data={workExperience} />
+              {!certificates.isHidden && <Certificates data={certificates} />}
+            </>
+          ) : (
+            <>
+              {!isEmpty(languages.entries) && !languages.isHidden && (
+                <Languages data={languages} />
+              )}
+              {!isEmpty(tools.entries) && !tools.isHidden && (
+                <Tools data={tools} />
+              )}
+              {!isEmpty(interests.entries) && !interests.isHidden && (
+                <Interests data={interests} />
+              )}
+            </>
+          )}
         </div>
       </div>
     </main>
