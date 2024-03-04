@@ -16,11 +16,13 @@ The app features a responsive design, providing a one-page layout with dimension
 
 ## Todo 📝
 
+- [ ] Conditionally change render order of components on mobile devices.
 - [ ] Implement a toggle for full detailed resume presentation in the online view only. This will enhance user experience by providing more comprehensive information while maintaining the one-page layout for PDFs.
   - [ ] Enhance the display of work experience to include more detailed project entries.
   - [ ] Consider revealing additional components like projects to showcase personal projects and achievements.
   - [ ] Explore options to prevent printing of the detailed version, if desired.
 - [ ] Add social media meta tags for Facebook and Twitter to improve the shareability and visibility of the resume.
+- [ ] make it offline ready (PWA).
 - [ ] Add test coverage by implementing Vitest for comprehensive testing of the application.
 
 
