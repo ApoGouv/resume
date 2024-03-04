@@ -12,11 +12,11 @@ The app features a responsive design, providing a one-page layout with dimension
 - [x] **Multilingual Support** 🇬🇷/🇺🇸: Available in Greek and English languages.
 - [x] **PDF Downloads** 📄: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
 - [x] **Quick Print** 🖨️: Conveniently print your resume with a single click.
+- [x] **Mobile Tweaks** : Conditionally change render order of components on mobile devices.
 
 
 ## Todo 📝
 
-- [ ] Conditionally change render order of components on mobile devices.
 - [ ] Implement a toggle for full detailed resume presentation in the online view only. This will enhance user experience by providing more comprehensive information while maintaining the one-page layout for PDFs.
   - [ ] Enhance the display of work experience to include more detailed project entries.
   - [ ] Consider revealing additional components like projects to showcase personal projects and achievements.
