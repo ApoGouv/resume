@@ -24,7 +24,7 @@
 }
 
 .education__type {
-  font-weight: var(--font-semi-bold);
+  font-weight: var(--font-bold);
   font-size: var(--h3-font-size);
   margin: 0 0 0.5rem 0;
 }
@@ -45,7 +45,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 5px;
-  font-weight: var(--font-medium);
+  font-weight: var(--font-bold);
   margin: 0 0 0.5rem 0;
 }
 

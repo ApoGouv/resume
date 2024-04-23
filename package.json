@@ -17,13 +17,6 @@
     "vite"
   ],
   "type": "module",
-  "browserslist": [
-    ">0.4%",
-    "last 3 versions",
-    "last 1 Opera versions",
-    "not dead",
-    "node 16.0.0"
-  ],
   "scripts": {
     "dev": "vite",
     "gen-pdfs": "node ./src/Utils/generatePDF.js",
@@ -31,11 +24,12 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "predeploy" : "npm run dev:gen-pdfs && npm run build",
-    "deploy" : "gh-pages -d dist",
+    "predeploy": "npm run dev:gen-pdfs && npm run build",
+    "deploy": "gh-pages -d dist",
     "test": "vitest"
   },
   "dependencies": {
+    "@fontsource/lato": "^5.0.21",
     "@playwright/browser-chromium": "^1.41.2",
     "country-flag-icons": "^1.5.9",
     "playwright": "^1.41.2",
@@ -69,6 +63,9 @@
     "gh-pages": "^6.1.1",
     "jsdom": "^23.0.1",
     "postcss": "^8.4.32",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-preset-env": "^9.5.8",
+    "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",

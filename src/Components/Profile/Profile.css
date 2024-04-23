@@ -9,10 +9,11 @@
 
 .profile__name {
   font-size: var(--h1-font-size);
+  font-weight: var(--font-bold);
 }
 
 .profile__role {
-  font-weight: var(--font-medium);
+  font-weight: var(--font-bold);
   font-size: var(--normal-font-size);
   margin-bottom: var(--mb-1);
   color: var(--color-red);

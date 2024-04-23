@@ -6,7 +6,7 @@
 #resume .section-title {
   font-size: var(--h2-font-size);
   color: var(--title-color);
-  font-weight: var(--font-semi-bold);
+  font-weight: var(--font-black);
   text-transform: uppercase;
   letter-spacing: 0.15rem;
   text-align: left;
