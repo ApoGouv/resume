@@ -9,7 +9,7 @@ import {
 
 import './Profile.css';
 
-import ProfilePic from '../../Assets/Images/profile.jpg';
+import ProfilePic from '../../Assets/Images/Profile/profile-160x160.opt.webp';
 
 type ContactType = {
   type: string;
