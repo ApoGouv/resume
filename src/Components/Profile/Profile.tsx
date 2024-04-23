@@ -81,6 +81,8 @@ function Profile({ data }: ProfileProps) {
                 src={profileImage}
                 alt={`profile of ${profileState.name}`}
                 className="profile__picture"
+                width="160"
+                height="160"
               />
             </div>
           )}
