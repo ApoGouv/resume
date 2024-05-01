@@ -5,6 +5,7 @@ import Menu from '../../Components/Menu/Menu';
 import Resume from '../../Components/Resume/Resume';
 
 import useLocale from '../../Hooks/useLocale';
+import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import usePrintStatus from '../../Hooks/usePrintStatus';
 
@@ -14,6 +15,7 @@ import './ResumePage.css';
 
 function ResumePage() {
   const { appLocale } = useLocale();
+  const { expandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
   const [state, setState] = useState(
     appLocale === 'en-US' ? userDataEnUS : userDataElGR
@@ -37,13 +39,21 @@ function ResumePage() {
       body.classList.remove('dark-mode');
     }
 
+    if (expandedView && !isPrinting) {
+      body.classList.add('expanded-view');
+    } else {
+      body.classList.remove('expanded-view');
+    }
+
     // Handle printing mode change
     if (isPrinting) {
+      body.classList.remove('expanded-view');
+
       body.classList.add('printing-mode');
     } else {
       body.classList.remove('printing-mode');
     }
-  }, [appLocale, darkMode, isPrinting]);
+  }, [appLocale, darkMode, isPrinting, expandedView]);
 
   const { htmlLang, profile } = state;
 

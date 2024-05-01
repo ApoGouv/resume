@@ -17,7 +17,7 @@ import {
   FaTerminal,
 } from 'react-icons/fa6';
 
-import { CgWebsite } from 'react-icons/cg';
+import { CgWebsite, CgDetailsMore, CgDetailsLess } from 'react-icons/cg';
 
 import { US, GR } from 'country-flag-icons/react/3x2';
 
@@ -64,6 +64,8 @@ const MENU_ICONS = {
   pdf: <FaRegFilePdf />,
   print: <FaPrint />,
   sun: <FaSun />,
+  more_details: <CgDetailsMore />,
+  less_details: <CgDetailsLess />,
 };
 
 export {

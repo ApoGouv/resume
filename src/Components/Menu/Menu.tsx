@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useLocale from '../../Hooks/useLocale';
 import usePrintStatus from '../../Hooks/usePrintStatus';
+import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import { MENU_ICONS } from '../../Utils/iconsLibrary';
 
@@ -14,6 +15,7 @@ type LocalizedStrings = {
     downloadPdf: string;
     downloadGrayscalePdf: string;
     toggleLocale: string;
+    toggleExpandedView: string;
     toggleDarkMode: string;
     bio: string;
   };
@@ -25,12 +27,14 @@ type MenuProps = {
 
 function Menu({ name }: MenuProps) {
   const { appLocale, changeLocale } = useLocale();
+  const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode, toggleDarkMode } = useDarkMode();
   const isPrinting = usePrintStatus();
   const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
 
-  const darkModeIconKey = darkMode ? 'sun' : 'moon';
   const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
+  const expandedViewIconKey = expandedView ? 'less_details' : 'more_details';
+  const darkModeIconKey = darkMode ? 'sun' : 'moon';
 
   // Define dictionary for localized strings
   const localizedStrings: LocalizedStrings = {
@@ -41,6 +45,7 @@ function Menu({ name }: MenuProps) {
       downloadPdf: 'Download colored resume in PDF format',
       downloadGrayscalePdf: 'Download grayscaled resume in PDF format',
       toggleLocale: 'Toggle locale to el-GR',
+      toggleExpandedView: `Toggle expanded view ${expandedView ? 'Off' : 'On'}`,
       toggleDarkMode: `Toggle dark mode ${darkMode ? 'Off' : 'On'}`,
       bio: 'CV',
     },
@@ -52,6 +57,9 @@ function Menu({ name }: MenuProps) {
       downloadGrayscalePdf:
         'Κατεβάστε το βιογραφικό σε μορφή PDf σε αποχρώσεις του γκρι',
       toggleLocale: 'Εναλλαγή γλώσσας σε en-US',
+      toggleExpandedView: `${
+        expandedView ? 'Απενεργοποίηση' : 'Ενεργοποίηση'
+      } διευρυμένης προβολής`,
       toggleDarkMode: `${
         darkMode ? 'Απενεργοποίηση' : 'Ενεργοποίηση'
       } σκούρου θέματος`,
@@ -164,6 +172,17 @@ function Menu({ name }: MenuProps) {
         onClick={() => changeLocale(appLocale === 'el-GR' ? 'en-US' : 'el-GR')}
       >
         {MENU_ICONS[languageIconKey as keyof typeof MENU_ICONS]}
+      </button>
+
+      <button
+        className={`menu-item menu-expanded-view-toggler menu-ev-${expandedViewIconKey}`}
+        type="button"
+        title={localizedStrings[appLocale].toggleExpandedView}
+        data-rs-id="rs-menu-toggle-expanded-view"
+        onClick={toggleExpandedView}
+      >
+        {/* more_details */}
+        {MENU_ICONS[expandedViewIconKey as keyof typeof MENU_ICONS]}
       </button>
 
       <button

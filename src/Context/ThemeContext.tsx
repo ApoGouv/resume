@@ -16,6 +16,8 @@ export type ThemeContextType = {
   changeLocale: (newLocale: string) => void;
   darkMode: boolean;
   toggleDarkMode: () => void;
+  expandedView: boolean;
+  toggleExpandedView: () => void;
 };
 
 // Create the context
@@ -45,6 +47,9 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const initialDarkMode = isLocalStorageSupported
     ? localStorage.getItem('darkMode') === 'true' || false
     : false;
+  const initialExpandedView = isLocalStorageSupported
+    ? localStorage.getItem('expandedView') === 'true' || false
+    : false;
 
   // Set the default locale to el-GR
   const [appLocale, setAppLocale] = useState(initialLocale);
@@ -52,13 +57,22 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   // Set darkMode to false by default
   const [darkMode, setDarkMode] = useState(initialDarkMode);
 
+  // Set expandedView to false by default
+  const [expandedView, setExpandedView] = useState(initialExpandedView);
+
   // Function to change the locale
   const changeLocale = useCallback((newLocale: string) => {
     setAppLocale(newLocale);
   }, []); // Empty dependency array as setAppLocale is a stable function
 
+  // Function to toggle the darkMode
   const toggleDarkMode = useCallback(() => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
+  }, []); // Empty dependency array as setAppLocale is a stable function
+
+  // Function to toggle the expandedView
+  const toggleExpandedView = useCallback(() => {
+    setExpandedView((prevExpandedView) => !prevExpandedView);
   }, []); // Empty dependency array as setAppLocale is a stable function
 
   // Update local storage on appLocale change
@@ -75,6 +89,13 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
     }
   }, [darkMode, isLocalStorageSupported]);
 
+  // Update local storage on expandedView change
+  useEffect(() => {
+    if (isLocalStorageSupported) {
+      localStorage.setItem('expandedView', expandedView.toString());
+    }
+  }, [expandedView, isLocalStorageSupported]);
+
   // Provide the context values to the children
   const contextValues: ThemeContextType = useMemo(() => {
     return {
@@ -82,8 +103,17 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
       changeLocale,
       darkMode,
       toggleDarkMode,
+      expandedView,
+      toggleExpandedView,
     };
-  }, [appLocale, darkMode, changeLocale, toggleDarkMode]);
+  }, [
+    appLocale,
+    darkMode,
+    changeLocale,
+    toggleDarkMode,
+    expandedView,
+    toggleExpandedView,
+  ]);
 
   return (
     <ThemeContext.Provider value={contextValues}>

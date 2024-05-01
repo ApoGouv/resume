@@ -102,87 +102,91 @@
           {
             "role": "Full-stack Web Developer",
             "showRole": false,
-            "projects": [
-              {
-                "name": "Eldico B2B",
-                "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
-                "showResponsibilities": true,
-                "responsibilities": [
-                  "Optimizing the bridging of the store with their Merchant program (SoftOne)",
-                  "Creation of a custom function for Quick Cart, with Ajax product search, real time inventory control, automatic saving to continue the order at another time, etc.. For the appearance, I relied on a mockup design provided by the company",
-                  "Creating processes for various company requirements",
-                  "Create plugin to create and manage xml with product lists with various options (manufacturer, category exceptions, add based on product codes, etc.)",
-                  "As part of the project, the other sites of the company were also created: amila.gr, escapesummer.gr and total-gym.gr"
-                ]
-              },
-              {
-                "name": "Efthivoulis Cash and Carry - B2B",
-                "technologies": [
-                  "OpenCart",
-                  "Lumen",
-                  "PHP",
-                  "JavaScript",
-                  "CSS",
-                  "QuaggaJS",
-                  "Vue"
-                ],
-                "showResponsibilities": true,
-                "responsibilities": [
-                  "Bridging the store with their commercial program (SoftOne), using the Lumen microframework",
-                  "Create processes to automatically download product images from Google Drive. Also convert images to .webp when needed.",
-                  "Another process to download the catalog and display in flipbook",
-                  "Calculating and presenting order volumetrics with Ajax with each product addition/removal from the cart",
-                  "Creation of a module for scanning the barcode of a product with the mobile camera and then being able to view the product page or add it to the cart. Vue was used for the appearance and management of the application and the QuaggaJS library was used for scanning"
-                ]
-              },
-              {
-                "name": "ICPS",
-                "technologies": ["PHP", "JavaScript", "reCaptcha"],
-                "showResponsibilities": true,
-                "responsibilities": [
-                  "Custom website, refactored from PHP 5.6 to play with PHP 7.4",
-                  "Replace outdated solution for Captcha with images, with Google reCaptcha",
-                  "Replace FLASH with HTML and JavaScript solutions"
-                ]
-              },
-              {
-                "name": "Other Clients",
-                "technologies": [
-                  "CS-Cart",
-                  "OpenCart",
-                  "PrestaShop",
-                  "Wordpress",
-                  "Joomla",
-                  "Drupal",
-                  "Lumen"
-                ],
-                "showResponsibilities": true,
-                "responsibilities": [
-                  "Build a solution to read/import product data from supplier files. Import products into CS-Cart and harvest detailed data (sku, images, description, features) via Icecat API call. Create a process to select the cheapest supplier, and with stock , for products that many suppliers had.",
-                  "Building websites and e-shops with ready-made templates and then adapting them according to the customer's requirements",
-                  "Building plugins for OpenCart, WordPress for various customer requirements",
-                  "Cleaning sites, mainly WordPress, after a hack"
-                ]
-              },
-              {
-                "name": "Company's Projects",
-                "technologies": [
-                  "OpenCart",
-                  "Wordpress",
-                  "Joomla",
-                  "WHMCS",
-                  "Laravel",
-                  "vBulletin"
-                ],
-                "showResponsibilities": true,
-                "responsibilities": [
-                  "Creation of an module for the presentation, search and import of books from Biblionet, in the company's bookstore (OpenCart)",
-                  "Building plugins for WHMCS, e.g. Evaluation form for the different departments of the company. Managing GDPR Agreement between the company and reseller customers.",
-                  "Building plugins for Joomla, e.g. display Forum Threads according to the category we are in. Accordingly, display books according to the category we are in, etc.",
-                  "Building plugins for WordPress, e.g. Staff management and viewing them"
-                ]
-              }
-            ],
+            "projects": {
+              "isHidden": false,
+              "title": "In nore detail",
+              "entries": [
+                {
+                  "name": "Eldico B2B",
+                  "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
+                  "showResponsibilities": true,
+                  "responsibilities": [
+                    "Optimizing the bridging of the store with their Merchant program (SoftOne)",
+                    "Creation of a custom function for Quick Cart, with Ajax product search, real time inventory control, automatic saving to continue the order at another time, etc.. For the appearance, I relied on a mockup design provided by the company",
+                    "Creating processes for various company requirements",
+                    "Create plugin to create and manage xml with product lists with various options (manufacturer, category exceptions, add based on product codes, etc.)",
+                    "As part of the project, the other sites of the company were also created: amila.gr, escapesummer.gr and total-gym.gr"
+                  ]
+                },
+                {
+                  "name": "Efthivoulis Cash and Carry - B2B",
+                  "technologies": [
+                    "OpenCart",
+                    "Lumen",
+                    "PHP",
+                    "JavaScript",
+                    "CSS",
+                    "QuaggaJS",
+                    "Vue"
+                  ],
+                  "showResponsibilities": true,
+                  "responsibilities": [
+                    "Bridging the store with their commercial program (SoftOne), using the Lumen microframework",
+                    "Create processes to automatically download product images from Google Drive. Also convert images to .webp when needed.",
+                    "Another process to download the catalog and display in flipbook",
+                    "Calculating and presenting order volumetrics with Ajax with each product addition/removal from the cart",
+                    "Creation of a module for scanning the barcode of a product with the mobile camera and then being able to view the product page or add it to the cart. Vue was used for the appearance and management of the application and the QuaggaJS library was used for scanning"
+                  ]
+                },
+                {
+                  "name": "ICPS",
+                  "technologies": ["PHP", "JavaScript", "reCaptcha"],
+                  "showResponsibilities": true,
+                  "responsibilities": [
+                    "Custom website, refactored from PHP 5.6 to play with PHP 7.4",
+                    "Replace outdated solution for Captcha with images, with Google reCaptcha",
+                    "Replace FLASH with HTML and JavaScript solutions"
+                  ]
+                },
+                {
+                  "name": "Other Clients",
+                  "technologies": [
+                    "CS-Cart",
+                    "OpenCart",
+                    "PrestaShop",
+                    "Wordpress",
+                    "Joomla",
+                    "Drupal",
+                    "Lumen"
+                  ],
+                  "showResponsibilities": true,
+                  "responsibilities": [
+                    "Build a solution to read/import product data from supplier files. Import products into CS-Cart and harvest detailed data (sku, images, description, features) via Icecat API call. Create a process to select the cheapest supplier, and with stock , for products that many suppliers had.",
+                    "Building websites and e-shops with ready-made templates and then adapting them according to the customer's requirements",
+                    "Building plugins for OpenCart, WordPress for various customer requirements",
+                    "Cleaning sites, mainly WordPress, after a hack"
+                  ]
+                },
+                {
+                  "name": "Company's Projects",
+                  "technologies": [
+                    "OpenCart",
+                    "Wordpress",
+                    "Joomla",
+                    "WHMCS",
+                    "Laravel",
+                    "vBulletin"
+                  ],
+                  "showResponsibilities": true,
+                  "responsibilities": [
+                    "Creation of an module for the presentation, search and import of books from Biblionet, in the company's bookstore (OpenCart)",
+                    "Building plugins for WHMCS, e.g. Evaluation form for the different departments of the company. Managing GDPR Agreement between the company and reseller customers.",
+                    "Building plugins for Joomla, e.g. display Forum Threads according to the category we are in. Accordingly, display books according to the category we are in, etc.",
+                    "Building plugins for WordPress, e.g. Staff management and viewing them"
+                  ]
+                }
+              ]
+            },
             "description": [
               "Development of ecommerce websites, with OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., as well as custom functionalities and integrations with ERP programs.",
               "Website development (portfolios, corporate, personal, etc.) - WordPress, Joomla, etc.",

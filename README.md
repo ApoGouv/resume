@@ -13,6 +13,7 @@ The app features a responsive design, providing a one-page layout with dimension
 - [x] **PDF Downloads** 📄: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
 - [x] **Quick Print** 🖨️: Conveniently print your resume with a single click.
 - [x] **Mobile Tweaks** : Conditionally change render order of components on mobile devices.
+- [x] **Local Google Fonts** : We load Google Fonts locally to improve page loading times and avoid flashes of unstyled text (FOUT).
 
 
 ## Todo 📝
@@ -20,9 +21,9 @@ The app features a responsive design, providing a one-page layout with dimension
 - [ ] Implement a toggle for full detailed resume presentation in the online view only. This will enhance user experience by providing more comprehensive information while maintaining the one-page layout for PDFs.
   - [ ] Enhance the display of work experience to include more detailed project entries.
   - [ ] Consider revealing additional components like projects to showcase personal projects and achievements.
-  - [ ] Explore options to prevent printing of the detailed version, if desired.
+  - [ ] Explore options to prevent printing of the detailed version.
 - [ ] Add social media meta tags for Facebook and Twitter to improve the shareability and visibility of the resume.
-- [ ] make it offline ready (PWA).
+- [ ] Make it offline ready (PWA).
 - [ ] Add test coverage by implementing Vitest for comprehensive testing of the application.
 
 
@@ -37,6 +38,7 @@ The app features a responsive design, providing a one-page layout with dimension
 - [React Helmet Async](https://github.com/staylor/react-helmet-async#readme): A library for managing document head tags in React.
 - [React Icons](https://react-icons.github.io/react-icons/): A library for including popular icons in React projects.
 - [country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons#readme): A set of SVG country flag icons for use in web projects.
+- [Fontsource](https://github.com/fontsource/fontsource#readme): An updating monorepo full of self-hostable Open Source fonts bundled into individual NPM packages!
 
 
 #### Automation

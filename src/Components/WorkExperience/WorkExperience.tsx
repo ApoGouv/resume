@@ -21,10 +21,16 @@ type ProjectType = {
   showResponsibilities: boolean;
 };
 
+type WorkProjectsType = {
+  isHidden: boolean;
+  title: string;
+  entries: ProjectType[];
+};
+
 type WorkType = {
   role: string;
   showRole: boolean;
-  projects?: ProjectType[];
+  projects?: WorkProjectsType;
   description?: string[];
   showDescription?: boolean;
 };
@@ -164,55 +170,64 @@ function WorkExperience({ data }: WorkExperienceProps) {
                             })}
                           </ul>
                         )}
-                        {work.projects && (
-                          <div className="workExp__work-projects">
-                            <ul className="workExp__work-project-list">
-                              {work.projects.map((project, projectIndex) => {
-                                const keyWorkProjectId: string = `project-${project.name}-${projectIndex}`;
-                                return (
-                                  <li
-                                    className="workExp__work-project-entry"
-                                    key={keyWorkProjectId}
-                                  >
-                                    <div className="workExp__work-project-name">
-                                      {project.name}
-                                    </div>
-                                    <div className="workExp__work-project-technologies">
-                                      <div
-                                        className="workExp__work-project-technologies-label"
-                                        title="Τεχνολογίες που χρησιμοποιήθηκαν"
+                        {work.projects &&
+                          !work.projects.isHidden &&
+                          work.projects.entries && (
+                            <div className="workExp__work-projects">
+                              {work.projects.title && (
+                                <div className="workExp__work-projects-title">
+                                  {work.projects.title}
+                                </div>
+                              )}
+                              <ul className="workExp__work-project-list">
+                                {work.projects.entries.map(
+                                  (project, projectIndex) => {
+                                    const keyWorkProjectId: string = `project-${project.name}-${projectIndex}`;
+                                    return (
+                                      <li
+                                        className="workExp__work-project-entry"
+                                        key={keyWorkProjectId}
                                       >
-                                        {WORK_EXPERIENCE_ICONS.code}:{' '}
-                                      </div>
-                                      <div className="workExp__work-project-technologies-values">
-                                        {project.technologies.join(', ')}
-                                      </div>
-                                    </div>
-                                    {project.showResponsibilities && (
-                                      <ul className="workExp__work-project-responsibilities">
-                                        {project.responsibilities.map(
-                                          (resp, respIndex) => {
-                                            const keyWorkProjectResponsibilityId: string = `project-${project.name}-${projectIndex}-${respIndex}`;
-                                            return (
-                                              <li
-                                                className="workExp__work-project-responsibility"
-                                                key={
-                                                  keyWorkProjectResponsibilityId
-                                                }
-                                              >
-                                                {resp}
-                                              </li>
-                                            );
-                                          }
+                                        <div className="workExp__work-project-name">
+                                          {project.name}
+                                        </div>
+                                        <div className="workExp__work-project-technologies">
+                                          <div
+                                            className="workExp__work-project-technologies-label"
+                                            title="Τεχνολογίες που χρησιμοποιήθηκαν"
+                                          >
+                                            {WORK_EXPERIENCE_ICONS.code}:{' '}
+                                          </div>
+                                          <div className="workExp__work-project-technologies-values">
+                                            {project.technologies.join(', ')}
+                                          </div>
+                                        </div>
+                                        {project.showResponsibilities && (
+                                          <ul className="workExp__work-project-responsibilities">
+                                            {project.responsibilities.map(
+                                              (resp, respIndex) => {
+                                                const keyWorkProjectResponsibilityId: string = `project-${project.name}-${projectIndex}-${respIndex}`;
+                                                return (
+                                                  <li
+                                                    className="workExp__work-project-responsibility"
+                                                    key={
+                                                      keyWorkProjectResponsibilityId
+                                                    }
+                                                  >
+                                                    {resp}
+                                                  </li>
+                                                );
+                                              }
+                                            )}
+                                          </ul>
                                         )}
-                                      </ul>
-                                    )}
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        )}
+                                      </li>
+                                    );
+                                  }
+                                )}
+                              </ul>
+                            </div>
+                          )}
                       </div>
                     );
                   })}

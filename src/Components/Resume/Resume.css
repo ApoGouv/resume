@@ -114,6 +114,13 @@
 }
 
 /**
+ * Resume Expanded View Styles
+ */
+.expanded-view .resume.resume-A4 {
+  height: auto;
+}
+
+/**
  * Resume Print Styles
  */
 @media print {
@@ -182,5 +189,22 @@
     > .section__timeentry-time
     > .section__timeentry-line {
     height: 85%;
+  }
+
+  /**
+   * Make sure we are not printing the expanded view and we stick to 1 A4 page.
+   */
+  .expanded-view .resume.resume-A4 {
+    width: 793.7007874px; /* ~ 210mm */
+    height: 1122.519685px; /* ~ 297mm */
+  }
+
+  .printing-mode.expanded-view .resume .workExp__work-projects,
+  .printing-mode .resume .workExp__work-projects,
+  .resume .workExp__work-projects {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    display: none;
   }
 }

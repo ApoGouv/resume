@@ -71,12 +71,51 @@
 }
 
 .workExp__work-projects {
-  padding-left: 2rem;
-  display: none;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  transition: opacity var(--rs-trans-duration) var(--rs-trans-timing-fn);
+}
+
+.workExp__work-projects-title {
+  font-size: var(--h3-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-black);
+  text-align: left;
+  margin: 0.8rem 0 0.5rem -1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.workExp__work-projects-title:before,
+.workExp__work-projects-title:after {
+  content: '';
+  position: absolute;
+  background: var(--text-color-light, #7b88a1);
+  border: 1px solid var(--text-color-light, #7b88a1);
+  z-index: -1;
+}
+.workExp__work-projects-title:before {
+  left: -2rem;
+  top: 0.5rem;
+  width: 15px;
+  height: 1px;
+}
+
+.workExp__work-projects-title:after {
+  left: -1.3rem;
+  top: 0px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
 }
 
 .workExp__work-project-entry {
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 1rem;
 }
 
 .workExp__work-projects ul ::marker {
@@ -123,6 +162,26 @@
 
 .workExp__work-project-responsibilities ::marker {
   font-size: 1.3rem !important;
+}
+
+/**
+ * Resume Expanded View Styles
+ */
+.expanded-view .resume .workExp__work-projects {
+  opacity: 1;
+  height: auto;
+  width: 100%;
+}
+
+/**
+ * Resume Print Styles
+ */
+.printing-mode.expanded-view .resume .workExp__work-projects,
+.printing-mode .resume .workExp__work-projects {
+  opacity: 0;
+  height: 0px;
+  width: 0px;
+  display: none;
 }
 
 /* Media query for mobile screens */
