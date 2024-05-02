@@ -12,16 +12,15 @@ The app features a responsive design, providing a one-page layout with dimension
 - [x] **Multilingual Support** 🇬🇷/🇺🇸: Available in Greek and English languages.
 - [x] **PDF Downloads** 📄: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
 - [x] **Quick Print** 🖨️: Conveniently print your resume with a single click.
-- [x] **Mobile Tweaks** : Conditionally change render order of components on mobile devices.
-- [x] **Local Google Fonts** : We load Google Fonts locally to improve page loading times and avoid flashes of unstyled text (FOUT).
+- [x] **Mobile Tweaks** 🎛️ : Conditionally change render order of components on mobile devices.
+- [x] **Local Google Fonts** ℹ️ : We load Google Fonts locally to improve page loading times and avoid flashes of unstyled text (FOUT).
+- [x] **Expanded View** ℹ️ : Menu button that enable or disable the Expanded View (EV). During EV, we reveal more information regarding projects in a particular work. Also we make the profile as sticky when EV is enabled and we are on desktop. Finally, EV is not available when printing.
 
 
 ## Todo 📝
 
-- [ ] Implement a toggle for full detailed resume presentation in the online view only. This will enhance user experience by providing more comprehensive information while maintaining the one-page layout for PDFs.
-  - [ ] Enhance the display of work experience to include more detailed project entries.
+- [-] Expanded View (EV) Additions
   - [ ] Consider revealing additional components like projects to showcase personal projects and achievements.
-  - [ ] Explore options to prevent printing of the detailed version.
 - [ ] Add social media meta tags for Facebook and Twitter to improve the shareability and visibility of the resume.
 - [ ] Make it offline ready (PWA).
 - [ ] Add test coverage by implementing Vitest for comprehensive testing of the application.

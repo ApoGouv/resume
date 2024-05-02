@@ -3,7 +3,7 @@
   "description": "A personal resume app built with React, TypeScript, and Vite.",
   "private": true,
   "license": "MIT",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "author": "Apostolos Gouvalas",
   "homepage": "https://apogouv.github.io/resume/",
   "repository": {
