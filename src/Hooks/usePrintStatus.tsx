@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 
 const usePrintStatus = () => {
-  const getMatches = (queryToMatch: string = 'print'): boolean => {
-    return window.matchMedia(queryToMatch).matches;
-  };
-
   const [isPrinting, setIsPrinting] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,7 +24,7 @@ const usePrintStatus = () => {
     printMediaQueryList.addEventListener('change', updatePrintStatus);
 
     // Initial check
-    // setIsPrinting(getMatches('print'));
+    // setIsPrinting(window.matchMedia('print'));
 
     // Clean up the event listeners on component unmount
     return () => {
