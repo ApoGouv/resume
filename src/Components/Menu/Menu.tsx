@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useLocale from '../../Hooks/useLocale';
 import usePrintStatus from '../../Hooks/usePrintStatus';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import { MENU_ICONS } from '../../Utils/iconsLibrary';
@@ -30,6 +31,7 @@ function Menu({ name }: MenuProps) {
   const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode, toggleDarkMode } = useDarkMode();
   const isPrinting = usePrintStatus();
+  const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
   const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
 
   const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
@@ -68,8 +70,23 @@ function Menu({ name }: MenuProps) {
   };
 
   const handlePrintButtonClick = () => {
-    // eslint-disable-next-line no-restricted-globals
-    print();
+    /**
+     * On mobile the window.print() is printing the mobile version
+     * which is not print friendly.
+     */
+    if (isMobile) {
+      const printPdfButton = document.querySelector(
+        '.menu-item.menu-grayscale-pdf-resume'
+      ) as HTMLButtonElement;
+      if (printPdfButton) {
+        printPdfButton.click();
+      } else {
+        console.error('Print PDF button not found.');
+      }
+    } else {
+      // eslint-disable-next-line no-restricted-globals
+      window.print();
+    }
   };
 
   const normalizeUrl = (url: string) => {

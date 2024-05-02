@@ -1,24 +1,40 @@
 import { useEffect, useState } from 'react';
 
 const usePrintStatus = () => {
+  const getMatches = (queryToMatch: string = 'print'): boolean => {
+    return window.matchMedia(queryToMatch).matches;
+  };
+
   const [isPrinting, setIsPrinting] = useState<boolean>(false);
 
   useEffect(() => {
+    const printMediaQueryList = window.matchMedia('print');
+
     const updatePrintStatus = () => {
-      setIsPrinting(window.matchMedia && window.matchMedia('print').matches);
+      setIsPrinting(printMediaQueryList.matches);
+    };
+
+    const handleBeforePrint = () => {
+      setIsPrinting(true);
+    };
+
+    const handleAfterPrint = () => {
+      setIsPrinting(false);
     };
 
     // Listen for changes in print status
-    window.addEventListener('beforeprint', updatePrintStatus);
-    window.addEventListener('afterprint', updatePrintStatus);
+    window.addEventListener('beforeprint', handleBeforePrint);
+    window.addEventListener('afterprint', handleAfterPrint);
+    printMediaQueryList.addEventListener('change', updatePrintStatus);
 
     // Initial check
-    updatePrintStatus();
+    // setIsPrinting(getMatches('print'));
 
     // Clean up the event listeners on component unmount
     return () => {
-      window.removeEventListener('beforeprint', updatePrintStatus);
-      window.removeEventListener('afterprint', updatePrintStatus);
+      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener('afterprint', handleAfterPrint);
+      printMediaQueryList.removeEventListener('change', updatePrintStatus);
     };
   }, []);
 

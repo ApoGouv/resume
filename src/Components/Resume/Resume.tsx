@@ -9,6 +9,7 @@ import Tools, { ToolsProp } from '../Tools/Tools';
 import Interests, { InterestsProps } from '../Interests/Interests';
 import isEmpty from '../../Utils/isEmpty';
 import useMediaQuery from '../../Hooks/useMediaQuery';
+import usePrintStatus from '../../Hooks/usePrintStatus';
 
 import './Resume.css';
 
@@ -38,6 +39,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
   } = data;
 
   const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
+  const isPrinting = usePrintStatus();
 
   return (
     <main
@@ -55,7 +57,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
         <div className="resume__left">
           <Profile data={profile} />
           <Education data={education} />
-          {!isMobile ? (
+          {!isMobile || isPrinting ? (
             <>
               {!isEmpty(languages.entries) && !languages.isHidden && (
                 <Languages data={languages} />
@@ -75,7 +77,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
           )}
         </div>
         <div className="resume__right">
-          {!isMobile ? (
+          {!isMobile || isPrinting ? (
             <>
               <WorkExperience data={workExperience} />
               {!certificates.isHidden && <Certificates data={certificates} />}
