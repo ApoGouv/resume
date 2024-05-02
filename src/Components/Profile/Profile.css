@@ -89,6 +89,25 @@
   margin-bottom: var(--mb-1);
 }
 
+/* Expanded View sticky */
+.expanded-view #profile.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.expanded-view #profile.sticky:before {
+  content: '';
+  width: 100%;
+  height: calc(100% - 1.2rem);
+  background: var(--resume-bg-color-alt, #f7f9fb);
+  opacity: 0.6;
+  display: block;
+  z-index: -1;
+  position: absolute;
+  box-shadow: 0px -6px 10px 0px var(--resume-bg-color-alt, #f7f9fb);
+}
+
 /* Media query for mobile screens */
 @media screen and (max-width: 767.99px) {
   #profile .profile__contacts-wrapper > .profile__contact,

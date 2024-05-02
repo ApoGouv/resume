@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import useLocale from '../../Hooks/useLocale';
+import useExpandedView from '../../Hooks/useExpandedView';
+import useMediaQuery from '../../Hooks/useMediaQuery';
 import { replacePlaceholderWithYearDifference } from '../../Utils/dates';
 import { printUrl } from '../../Utils/strings';
 import {
@@ -59,6 +61,30 @@ function Profile({ data }: ProfileProps) {
   }, [data]);
 
   const { appLocale } = useLocale();
+  const { expandedView } = useExpandedView();
+  const isNotMobile = useMediaQuery(`only screen and (min-width: 768px)`);
+
+  const [isScrollUnderLeftSections, setIsScrollUnderLeftSections] =
+    useState(false);
+  useEffect(() => {
+    const handleScrollUnderLeftSections = () => {
+      let totalLeftSectionsHeight = 0;
+      if (isNotMobile && expandedView) {
+        document
+          .querySelectorAll('.expanded-view .resume .resume__left section')
+          .forEach((currentSection) => {
+            totalLeftSectionsHeight += currentSection.scrollHeight;
+          });
+
+        setIsScrollUnderLeftSections(window.scrollY > totalLeftSectionsHeight);
+      } else {
+        setIsScrollUnderLeftSections(false);
+      }
+    };
+    window.addEventListener('scroll', handleScrollUnderLeftSections);
+    return () =>
+      window.removeEventListener('scroll', handleScrollUnderLeftSections);
+  }, [expandedView, isNotMobile]);
 
   // fetch the current profile picture name [user can save more than one]
   const profileImage = profileState.image?.showImage ? ProfilePic : '';
@@ -72,7 +98,12 @@ function Profile({ data }: ProfileProps) {
   };
 
   return (
-    <section className="profile__section" id="profile">
+    <section
+      id="profile"
+      className={`profile__section ${
+        isScrollUnderLeftSections ? 'sticky' : ''
+      }`}
+    >
       <div className="profile__container">
         <div className="profile__bio-and-pic">
           {profileState.image?.showImage && (

@@ -118,6 +118,7 @@
  */
 .expanded-view .resume.resume-A4 {
   height: auto;
+  overflow: visible;
 }
 
 /**
