@@ -1,0 +1,26 @@
+<svg
+  class="fileBack"
+  width="146"
+  height="113"
+  viewBox="0 0 146 113"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M0 4C0 1.79086 1.79086 0 4 0H50.3802C51.8285 0 53.2056 0.627965 54.1553 1.72142L64.3303 13.4371C65.2799 14.5306 66.657 15.1585 68.1053 15.1585H141.509C143.718 15.1585 145.509 16.9494 145.509 19.1585V109C145.509 111.209 143.718 113 141.509 113H3.99999C1.79085 113 0 111.209 0 109V4Z"
+    class="gradient-bg"
+  ></path>
+  <defs>
+    <linearGradient
+      id="fileBack_linear_gradient"
+      x1="0"
+      y1="0"
+      x2="72.93"
+      y2="95.4804"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="var(--color-stop1, #8F88C2)"></stop>
+      <stop offset="1" stop-color="var(--color-stop2, #5C52A2)"></stop>
+    </linearGradient>
+  </defs>
+</svg>

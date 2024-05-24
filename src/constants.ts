@@ -1,6 +1,13 @@
 // src/constants.ts
 
 /**
+ * The default base URL of the app.
+ * We use it in ThemeContext and date functions that have locale.
+ * @constant
+ */
+export const BASE_APP_URL = '/resume';
+
+/**
  * The default locale of the app.
  * We use it in ThemeContext and date functions that have locale.
  * @constant

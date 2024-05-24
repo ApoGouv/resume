@@ -21,6 +21,10 @@ import { CgWebsite, CgDetailsMore, CgDetailsLess } from 'react-icons/cg';
 
 import { US, GR } from 'country-flag-icons/react/3x2';
 
+import FileBack from '../Assets/svg/fileBack.svg?react';
+import FileFront from '../Assets/svg/fileFront.svg?react';
+import FilePage from '../Assets/svg/filePage.svg?react';
+
 const PROFILE_CONTACT_ICONS = {
   email: <MdEmail />,
   phone: <MdPhone />,
@@ -68,10 +72,17 @@ const MENU_ICONS = {
   less_details: <CgDetailsLess />,
 };
 
+const RESUME_NOT_FOUND_ICONS = {
+  fileBack: <FileBack />,
+  fileFront: <FileFront />,
+  filePage: <FilePage />,
+};
+
 export {
   MENU_ICONS,
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
   PROJECT_ICONS,
   WORK_EXPERIENCE_ICONS,
+  RESUME_NOT_FOUND_ICONS,
 };

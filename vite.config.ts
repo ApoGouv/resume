@@ -1,9 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
+/// <reference types="vite-plugin-svgr/client" />
 
 import react from '@vitejs/plugin-react';
 import { defineConfig, UserConfig } from 'vite';
+import svgr from 'vite-plugin-svgr';
 
 // @see https://vitejs.dev/config/#conditional-config
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
@@ -16,8 +18,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 
   const config: UserConfig = {
     // @see https://vitejs.dev/config/shared-options.html#base
-    base: '/',
-    plugins: [react()],
+    base: '/resume',
+    plugins: [react(), svgr()],
     build: {
       minify: false,
       // sourcemap: true,

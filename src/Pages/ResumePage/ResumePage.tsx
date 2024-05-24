@@ -1,20 +1,25 @@
 // Pages/ResumePage/ResumePage.tsx
 import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import SEO from '../../Components/Seo/SEO';
 import Menu from '../../Components/Menu/Menu';
 import Resume from '../../Components/Resume/Resume';
+import Error404Page from '../Error404Page/Error404Page';
 
 import useLocale from '../../Hooks/useLocale';
 import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import usePrintStatus from '../../Hooks/usePrintStatus';
 
+import { BASE_APP_URL } from '../../constants';
+
 import userDataElGR from '../../Data/Data_el-GR.json';
 import userDataEnUS from '../../Data/Data_en-US.json';
 import './ResumePage.css';
 
 function ResumePage() {
-  const { appLocale } = useLocale();
+  const location = useLocation();
+  const { appLocale, setLocale } = useLocale();
   const { expandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
   const [state, setState] = useState(
@@ -22,6 +27,20 @@ function ResumePage() {
   );
 
   const isPrinting = usePrintStatus();
+
+  useEffect(() => {
+    console.log('Current location.pathname: ', location.pathname);
+
+    // Determine the initial locale based on the URL
+    if (
+      location.pathname === `${BASE_APP_URL}/en` ||
+      location.pathname.startsWith(`${BASE_APP_URL}/en/`)
+    ) {
+      setLocale('en-US');
+    } else {
+      setLocale('el-GR');
+    }
+  }, [location.pathname, setLocale]);
 
   useEffect(() => {
     // Update state when appLocale changes
@@ -69,8 +88,30 @@ function ResumePage() {
         expStartDate={profile.overallExperienceStartDate}
         locale={appLocale}
       />
-      <Menu name={profile.name} />
-      <Resume data={state} locale={appLocale} dark={darkMode} />
+      <Routes>
+        <Route
+          path="/resume"
+          element={
+            <>
+              <Menu name={profile.name} />
+              <Resume data={state} locale={appLocale} dark={darkMode} />
+            </>
+          }
+        />
+        <Route
+          path="/resume/en"
+          element={
+            <>
+              <Menu name={profile.name} />
+              <Resume data={state} locale={appLocale} dark={darkMode} />
+            </>
+          }
+        />
+        <Route
+          path="*"
+          element={<Error404Page locale={appLocale} dark={darkMode} />}
+        />
+      </Routes>
     </>
   );
 }

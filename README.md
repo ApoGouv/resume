@@ -15,7 +15,7 @@ The app features a responsive design, providing a one-page layout with dimension
 - [x] **Mobile Tweaks** 🎛️ : Conditionally change render order of components on mobile devices.
 - [x] **Local Google Fonts** ℹ️ : We load Google Fonts locally to improve page loading times and avoid flashes of unstyled text (FOUT).
 - [x] **Expanded View** ℹ️ : Menu button that enable or disable the Expanded View (EV). During EV, we reveal more information regarding projects in a particular work. Also we make the profile as sticky when EV is enabled and we are on desktop. Finally, EV is not available when printing.
-
+- [x] **Routing** 🔖 Added second locale (en-US) to it's own route `/en` and introduced 404 error documents for non specified routes. With separate routes by locale we can now share and/or bookmark the resume to specific locale.
 
 ## Todo 📝
 
@@ -38,6 +38,7 @@ The app features a responsive design, providing a one-page layout with dimension
 - [React Icons](https://react-icons.github.io/react-icons/): A library for including popular icons in React projects.
 - [country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons#readme): A set of SVG country flag icons for use in web projects.
 - [Fontsource](https://github.com/fontsource/fontsource#readme): An updating monorepo full of self-hostable Open Source fonts bundled into individual NPM packages!
+- [React Router DOM](https://github.com/remix-run/react-router#readme): React Router is a lightweight, fully-featured routing library for the React JavaScript library.
 
 
 #### Automation
@@ -55,6 +56,7 @@ The app features a responsive design, providing a one-page layout with dimension
 - [Autoprefixer](https://github.com/postcss/autoprefixer#readme): A PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use.
 - [Prettier](https://github.com/prettier/prettier#readme): A tool for automatically formatting code to ensure consistent style and formatting.
 - [gh-pages](https://github.com/tschaub/gh-pages#readme): A convenient tool for deploying your project to GitHub Pages with minimal configuration. With `gh-pages`, you can seamlessly publish your static websites, React applications, or any other web projects directly from your GitHub repository to a dedicated GitHub Pages branch, making it accessible to the world with just a few simple commands.
+- [vite-plugin-svgr]: Vite plugin to transform SVGs into React components. Uses [svgr](https://github.com/gregberge/svgr) under the hood.
 
 
 ### Installation 🚧
@@ -115,3 +117,8 @@ So, **kudos** to these talented developers!
 | Shashank Sharma | @geekyorion | [geekyorion/resume](https://github.com/geekyorion/resume)     |
 
 
+## Acknowledgements ✨
+
+Special thanks to the following individuals for their inspiring designs and resources used in this project:
+
+- **Vinod Jangid**: Thanks to [Vinod Jangid](https://github.com/vinodjangid07) for the [amazing button design](https://uiverse.io/vinodjangid07/evil-chicken-13) that I used on the 404 not found page. Check out his GitHub profile for more fantastic work!

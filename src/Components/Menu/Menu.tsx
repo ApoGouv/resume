@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useLocale from '../../Hooks/useLocale';
 import usePrintStatus from '../../Hooks/usePrintStatus';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import { MENU_ICONS } from '../../Utils/iconsLibrary';
+import { BASE_APP_URL } from '../../constants';
+import { normalizeUrl } from '../../Utils/strings';
 
 import './Menu.css';
 
@@ -27,7 +30,8 @@ type MenuProps = {
 };
 
 function Menu({ name }: MenuProps) {
-  const { appLocale, changeLocale } = useLocale();
+  const navigate = useNavigate();
+  const { appLocale, setLocale } = useLocale();
   const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode, toggleDarkMode } = useDarkMode();
   const isPrinting = usePrintStatus();
@@ -89,10 +93,6 @@ function Menu({ name }: MenuProps) {
     }
   };
 
-  const normalizeUrl = (url: string) => {
-    return `/${url.split('/').filter(Boolean).join('/')}`;
-  };
-
   const handlePdfButtonClick = (bnw = false) => {
     setLoadingPdf(true);
     try {
@@ -130,15 +130,27 @@ function Menu({ name }: MenuProps) {
     }
   };
 
+  const toggleLocale = () => {
+    const newLocale = appLocale === 'el-GR' ? 'en-US' : 'el-GR';
+    setLocale(newLocale);
+    if (newLocale === 'en-US') {
+      navigate(`${BASE_APP_URL}/en`);
+    } else {
+      navigate(`${BASE_APP_URL}`);
+    }
+  };
+
   return (
     <div
       id="menu"
       className={`menu ${isPrinting ? 'printing' : ''}`}
       data-rs-id="rs-menu"
     >
+      {/*
       <p className="hidden">
         Current Locale: {appLocale} and langKey: {languageIconKey}
       </p>
+      */}
 
       <button
         className="menu-item menu-print-resume"
@@ -186,7 +198,7 @@ function Menu({ name }: MenuProps) {
         type="button"
         title={localizedStrings[appLocale].toggleLocale}
         data-rs-id="rs-menu-toggle-locale"
-        onClick={() => changeLocale(appLocale === 'el-GR' ? 'en-US' : 'el-GR')}
+        onClick={toggleLocale}
       >
         {MENU_ICONS[languageIconKey as keyof typeof MENU_ICONS]}
       </button>

@@ -1,0 +1,23 @@
+<svg
+  class="filePage"
+  width="88"
+  height="99"
+  viewBox="0 0 88 99"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect width="88" height="99" class="gradient-bg"></rect>
+  <defs>
+    <linearGradient
+      id="filePage_linear_gradient"
+      x1="0"
+      y1="0"
+      x2="81"
+      y2="160.5"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="var(--color-stop1, #ffffff)"></stop>
+      <stop offset="1" stop-color="var(--color-stop2, #686868)"></stop>
+    </linearGradient>
+  </defs>
+</svg>

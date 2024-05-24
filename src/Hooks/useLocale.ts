@@ -2,16 +2,14 @@
 import { useContext } from 'react';
 import { ThemeContext, ThemeContextType } from '../Context/ThemeContext';
 
-const useLocale = (): Pick<ThemeContextType, 'appLocale' | 'changeLocale'> => {
-  const { appLocale, changeLocale } = useContext(
-    ThemeContext
-  ) as ThemeContextType;
+const useLocale = (): Pick<ThemeContextType, 'appLocale' | 'setLocale'> => {
+  const { appLocale, setLocale } = useContext(ThemeContext) as ThemeContextType;
 
-  if (!appLocale || !changeLocale) {
+  if (!appLocale || !setLocale) {
     throw new Error('useLocale must be used within a ThemeProvider');
   }
 
-  return { appLocale, changeLocale };
+  return { appLocale, setLocale };
 };
 
 export default useLocale;

@@ -13,7 +13,7 @@ import { DEFAULT_LOCALE } from '../constants';
 // Define the type for the locale context
 export type ThemeContextType = {
   appLocale: string;
-  changeLocale: (newLocale: string) => void;
+  setLocale: (newLocale: string) => void;
   darkMode: boolean;
   toggleDarkMode: () => void;
   expandedView: boolean;
@@ -61,7 +61,7 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const [expandedView, setExpandedView] = useState(initialExpandedView);
 
   // Function to change the locale
-  const changeLocale = useCallback((newLocale: string) => {
+  const setLocale = useCallback((newLocale: string) => {
     setAppLocale(newLocale);
   }, []); // Empty dependency array as setAppLocale is a stable function
 
@@ -100,7 +100,7 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const contextValues: ThemeContextType = useMemo(() => {
     return {
       appLocale,
-      changeLocale,
+      setLocale,
       darkMode,
       toggleDarkMode,
       expandedView,
@@ -109,7 +109,7 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   }, [
     appLocale,
     darkMode,
-    changeLocale,
+    setLocale,
     toggleDarkMode,
     expandedView,
     toggleExpandedView,
