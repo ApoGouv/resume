@@ -1,6 +1,6 @@
 // Pages/ResumePage/ResumePage.tsx
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SEO from '../../Components/Seo/SEO';
 import Menu from '../../Components/Menu/Menu';
 import Resume from '../../Components/Resume/Resume';
@@ -11,14 +11,11 @@ import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import usePrintStatus from '../../Hooks/usePrintStatus';
 
-import { BASE_APP_URL } from '../../constants';
-
 import userDataElGR from '../../Data/Data_el-GR.json';
 import userDataEnUS from '../../Data/Data_en-US.json';
 import './ResumePage.css';
 
 function ResumePage() {
-  const location = useLocation();
   const { appLocale, setLocale } = useLocale();
   const { expandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
@@ -29,18 +26,18 @@ function ResumePage() {
   const isPrinting = usePrintStatus();
 
   useEffect(() => {
-    console.log('Current location.pathname: ', location.pathname);
+    console.log('Current window.location: ', window.location);
 
     // Determine the initial locale based on the URL
     if (
-      location.pathname === `${BASE_APP_URL}/en` ||
-      location.pathname.startsWith(`${BASE_APP_URL}/en/`)
+      window.location.hash === `#/en` ||
+      window.location.hash.startsWith(`#/en/`)
     ) {
       setLocale('en-US');
     } else {
       setLocale('el-GR');
     }
-  }, [location.pathname, setLocale]);
+  }, [setLocale]);
 
   useEffect(() => {
     // Update state when appLocale changes
@@ -90,7 +87,7 @@ function ResumePage() {
       />
       <Routes>
         <Route
-          path="/resume"
+          path="/"
           element={
             <>
               <Menu name={profile.name} />
@@ -99,7 +96,7 @@ function ResumePage() {
           }
         />
         <Route
-          path="/resume/en"
+          path="en"
           element={
             <>
               <Menu name={profile.name} />

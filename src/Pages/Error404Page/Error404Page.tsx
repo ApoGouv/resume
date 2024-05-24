@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { BASE_APP_URL } from '../../constants';
+import { useNavigate } from 'react-router-dom';
 import { normalizeUrl } from '../../Utils/strings';
 import { RESUME_NOT_FOUND_ICONS } from '../../Utils/iconsLibrary';
 import './Error404Page.css';
@@ -20,6 +19,8 @@ type Localized404Strings = {
 };
 
 function Error404Page({ locale, dark }: Error404PageProps) {
+  const navigate = useNavigate();
+
   // Define dictionary for localized strings
   const localized404Strings: Localized404Strings = {
     'en-US': {
@@ -36,11 +37,12 @@ function Error404Page({ locale, dark }: Error404PageProps) {
     },
   };
 
-  const getBaseUrl = (currentLocale: string) => {
-    if (currentLocale === 'en-US') {
-      return `${BASE_APP_URL}/en`;
+  const handleViewResumeButtonClick = () => {
+    if (locale === 'en-US') {
+      navigate(`/en`);
+    } else {
+      navigate(`/`);
     }
-    return `${BASE_APP_URL}`;
   };
 
   const backgroundImageUrl = normalizeUrl(
@@ -83,18 +85,20 @@ function Error404Page({ locale, dark }: Error404PageProps) {
             {localized404Strings[locale].desc}
           </div>
           <div className="error-404-link2resume">
-            <Link to={getBaseUrl(locale)}>
-              <button type="button" className="btn-view_resume">
-                <span className="btn-icon-wrapper">
-                  {RESUME_NOT_FOUND_ICONS.fileBack}
-                  {RESUME_NOT_FOUND_ICONS.fileFront}
-                  {RESUME_NOT_FOUND_ICONS.filePage}
-                </span>
-                <span className="btn-text">
-                  {localized404Strings[locale].link2resume}
-                </span>
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="btn-view_resume"
+              onClick={handleViewResumeButtonClick}
+            >
+              <span className="btn-icon-wrapper">
+                {RESUME_NOT_FOUND_ICONS.fileBack}
+                {RESUME_NOT_FOUND_ICONS.fileFront}
+                {RESUME_NOT_FOUND_ICONS.filePage}
+              </span>
+              <span className="btn-text">
+                {localized404Strings[locale].link2resume}
+              </span>
+            </button>
           </div>
         </div>
       </div>

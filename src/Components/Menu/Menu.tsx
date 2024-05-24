@@ -6,7 +6,6 @@ import useMediaQuery from '../../Hooks/useMediaQuery';
 import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import { MENU_ICONS } from '../../Utils/iconsLibrary';
-import { BASE_APP_URL } from '../../constants';
 import { normalizeUrl } from '../../Utils/strings';
 
 import './Menu.css';
@@ -134,9 +133,9 @@ function Menu({ name }: MenuProps) {
     const newLocale = appLocale === 'el-GR' ? 'en-US' : 'el-GR';
     setLocale(newLocale);
     if (newLocale === 'en-US') {
-      navigate(`${BASE_APP_URL}/en`);
+      navigate(`/en`);
     } else {
-      navigate(`${BASE_APP_URL}`);
+      navigate(`/`);
     }
   };
 
