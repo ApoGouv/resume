@@ -168,11 +168,16 @@ export const formatNumber = (
 export const replacePlaceholderWithYearDifference = (
   text: string,
   startDate: string,
+  displayRawDiff = false,
   appLocale: string = DEFAULT_LOCALE,
   placeholderName: string = EXP_YEARS_PLACEHOLDER
 ): string => {
   const yearDifference = dateDifferenceInYears(startDate);
-  const formattedYearDifference = formatNumber(yearDifference, appLocale);
+
+  const formattedYearDifference = displayRawDiff
+    ? formatNumber(yearDifference, appLocale)
+    : Math.round(yearDifference);
+
   return text.replace(`{{${placeholderName}}}`, formattedYearDifference);
 };
 
