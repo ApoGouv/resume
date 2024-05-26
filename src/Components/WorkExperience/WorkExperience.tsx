@@ -93,57 +93,59 @@ function WorkExperience({ data }: WorkExperienceProps) {
                   <span className="workExp__line section__timeentry-line" />
                 </div>
                 <div className="workExp__data">
-                  <h3 className="workExp__main-role">{exp.mainRole}</h3>
-                  <div className="workExp__company-info">
-                    <p className="workExp__company-duration">
-                      {exp.duration.showIcon && (
-                        <span className="workExp__company-duration-icon">
-                          {
-                            WORK_EXPERIENCE_ICONS[
-                              exp.duration
-                                .icon as keyof typeof WORK_EXPERIENCE_ICONS
-                            ]
-                          }
-                        </span>
-                      )}
-                      <span className="workExp__company-duration-date-range">
-                        {getDateRangeFormattedIntl(
-                          exp.duration.from,
-                          exp.duration.to,
-                          dateFormatOptions.monthYear,
-                          appLocale
+                  <div className="workExp__company">
+                    <h3 className="workExp__main-role">{exp.mainRole}</h3>
+                    <div className="workExp__company-info">
+                      <p className="workExp__company-duration">
+                        {exp.duration.showIcon && (
+                          <span className="workExp__company-duration-icon">
+                            {
+                              WORK_EXPERIENCE_ICONS[
+                                exp.duration
+                                  .icon as keyof typeof WORK_EXPERIENCE_ICONS
+                              ]
+                            }
+                          </span>
                         )}
-                      </span>
-                    </p>
-                    <p className="workExp__company-separator"> | </p>
-                    <p className="workExp__company-name">
-                      <span className="workExp__company-name-current">
-                        {exp.company}
-                      </span>
-                      {exp.companyOldName && (
-                        <span className="workExp__company-name-old">
-                          {exp.companyOldName}
+                        <span className="workExp__company-duration-date-range">
+                          {getDateRangeFormattedIntl(
+                            exp.duration.from,
+                            exp.duration.to,
+                            dateFormatOptions.monthYear,
+                            appLocale
+                          )}
                         </span>
-                      )}
-                    </p>
-                    <p
-                      className="workExp__company-location"
-                      style={{ display: 'none' }}
-                    >
-                      {exp.address.showIcon && (
-                        <span className="workExp__company-location-icon">
-                          {
-                            WORK_EXPERIENCE_ICONS[
-                              exp.address
-                                .icon as keyof typeof WORK_EXPERIENCE_ICONS
-                            ]
-                          }
+                      </p>
+                      <p className="workExp__company-separator"> | </p>
+                      <p className="workExp__company-name">
+                        <span className="workExp__company-name-current">
+                          {exp.company}
                         </span>
-                      )}
-                      <span className="workExp__company-location-place">
-                        {exp.address.city}, {exp.address.country}
-                      </span>
-                    </p>
+                        {exp.companyOldName && (
+                          <span className="workExp__company-name-old">
+                            {exp.companyOldName}
+                          </span>
+                        )}
+                      </p>
+                      <p
+                        className="workExp__company-location"
+                        style={{ display: 'none' }}
+                      >
+                        {exp.address.showIcon && (
+                          <span className="workExp__company-location-icon">
+                            {
+                              WORK_EXPERIENCE_ICONS[
+                                exp.address
+                                  .icon as keyof typeof WORK_EXPERIENCE_ICONS
+                              ]
+                            }
+                          </span>
+                        )}
+                        <span className="workExp__company-location-place">
+                          {exp.address.city}, {exp.address.country}
+                        </span>
+                      </p>
+                    </div>
                   </div>
 
                   {exp.work.map((work, workIndex) => {

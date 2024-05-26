@@ -72,10 +72,13 @@
 
 .workExp__work-projects {
   padding-left: 1rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-start;
-  opacity: 0;
+}
+
+.expanded-view .resume .workExp__work-projects > div,
+.expanded-view .resume .workExp__work-projects > ul {
   height: 0;
   width: 0;
   transition: opacity var(--rs-trans-duration) var(--rs-trans-timing-fn);
@@ -168,6 +171,11 @@
  * Resume Expanded View Styles
  */
 .expanded-view .resume .workExp__work-projects {
+  display: flex;
+}
+
+.expanded-view .resume .workExp__work-projects > div,
+.expanded-view .resume .workExp__work-projects > ul {
   opacity: 1;
   height: auto;
   width: 100%;
