@@ -176,7 +176,7 @@ export const replacePlaceholderWithYearDifference = (
 
   const formattedYearDifference = displayRawDiff
     ? formatNumber(yearDifference, appLocale)
-    : Math.round(yearDifference);
+    : Math.round(yearDifference).toFixed(0);
 
   return text.replace(`{{${placeholderName}}}`, formattedYearDifference);
 };
