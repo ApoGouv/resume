@@ -4,7 +4,7 @@
     "name": "Apostolos Gouvalas",
     "role": "Full-stack Web Developer",
     "overallExperienceStartDate": "2017-08-01",
-    "bio": "Full-stack developer with over {{__YEARS_OF_EXPERIENCE__}} years of experience in PHP, SQL and JavaScript, among other languages. With attention to detail and a passion for problem solving, I am willing to contribute my skills to dynamic and challenging projects.",
+    "bio": "Full-stack developer with over {{__YEARS_OF_EXPERIENCE__}} years of experience in PHP, SQL, and JavaScript, among other languages. With attention to detail and a passion for problem-solving, I am eager to contribute my skills to dynamic and challenging projects.",
     "showBio": true,
     "contact": [
       {
@@ -104,18 +104,18 @@
             "showRole": false,
             "projects": {
               "isHidden": false,
-              "title": "In nore detail",
+              "title": "In more detail",
               "entries": [
                 {
                   "name": "Eldico B2B",
                   "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Optimizing the bridging of the store with their Merchant program (SoftOne)",
-                    "Creation of a custom function for Quick Cart, with Ajax product search, real time inventory control, automatic saving to continue the order at another time, etc.. For the appearance, I relied on a mockup design provided by the company",
-                    "Creating processes for various company requirements",
-                    "Create plugin to create and manage xml with product lists with various options (manufacturer, category exceptions, add based on product codes, etc.)",
-                    "As part of the project, the other sites of the company were also created: amila.gr, escapesummer.gr and total-gym.gr"
+                    "Optimizing the integration of the store with their Merchant program (SoftOne).",
+                    "Developed a custom function for Quick Cart, with Ajax product search, real-time inventory control, automatic saving to continue the order at another time, etc. The appearance was based on a mockup design provided by the company.",
+                    "Created processes to meet various company requirements.",
+                    "Developed a plugin to create and manage XML product lists with various options (manufacturer, category exceptions, add based on product codes, etc.).",
+                    "As part of the project, developed other company sites: amila.gr, escapesummer.gr, and total-gym.gr."
                   ]
                 },
                 {
@@ -131,11 +131,11 @@
                   ],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Bridging the store with their commercial program (SoftOne), using the Lumen microframework",
-                    "Create processes to automatically download product images from Google Drive. Also convert images to .webp when needed.",
-                    "Another process to download the catalog and display in flipbook",
-                    "Calculating and presenting order volumetrics with Ajax with each product addition/removal from the cart",
-                    "Creation of a module for scanning the barcode of a product with the mobile camera and then being able to view the product page or add it to the cart. Vue was used for the appearance and management of the application and the QuaggaJS library was used for scanning"
+                    "Integrated the store with their commercial program (SoftOne), using the Lumen microframework.",
+                    "Created processes to automatically download product images from Google Drive and convert them to .webp when needed.",
+                    "Developed a process to download the PDF catalog and display it in a flipbook.",
+                    "Developed a process for calculating and presenting order volumetrics with Ajax for each product addition/removal from the cart.",
+                    "Developed of a module for scanning the barcode of a product with the mobile camera and then being able to view the product page or add it to the cart. Vue was used for the appearance and management of the application and the QuaggaJS library was used for scanning."
                   ]
                 },
                 {
@@ -143,9 +143,9 @@
                   "technologies": ["PHP", "JavaScript", "reCaptcha"],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Custom website, refactored from PHP 5.6 to play with PHP 7.4",
-                    "Replace outdated solution for Captcha with images, with Google reCaptcha",
-                    "Replace FLASH with HTML and JavaScript solutions"
+                    "Refactored custom website from PHP 5.6 to PHP 7.4.",
+                    "Replaced outdated image-based Captcha with Google reCaptcha, implemented with my own abstract class encapsulating the reCaptcha logic for reuse across various forms on the site.",
+                    "Replaced FLASH with HTML and JavaScript solutions."
                   ]
                 },
                 {
@@ -161,10 +161,10 @@
                   ],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Build a solution to read/import product data from supplier files. Import products into CS-Cart and harvest detailed data (sku, images, description, features) via Icecat API call. Create a process to select the cheapest supplier, and with stock , for products that many suppliers had.",
-                    "Building websites and e-shops with ready-made templates and then adapting them according to the customer's requirements",
-                    "Building plugins for OpenCart, WordPress for various customer requirements",
-                    "Cleaning sites, mainly WordPress, after a hack"
+                    "Built a solution to read and import product data from supplier files. Imported products into CS-Cart and harvested detailed data (SKU, images, description, features) via Icecat API calls. Created a process to select the cheapest supplier with stock for products offered by multiple suppliers.",
+                    "Built websites and e-shops using ready-made templates, adapting them to meet customer requirements.",
+                    "Developed plugins for OpenCart and WordPress to meet various customer requirements.",
+                    "Cleaned websites, mainly WordPress, after hacks."
                   ]
                 },
                 {
@@ -179,18 +179,18 @@
                   ],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Creation of an module for the presentation, search and import of books from Biblionet, in the company's bookstore (OpenCart)",
-                    "Building plugins for WHMCS, e.g. Evaluation form for the different departments of the company. Managing GDPR Agreement between the company and reseller customers.",
-                    "Building plugins for Joomla, e.g. display Forum Threads according to the category we are in. Accordingly, display books according to the category we are in, etc.",
-                    "Building plugins for WordPress, e.g. Staff management and viewing them"
+                    "Created a module for the presentation, search, and import of books from Biblionet into the company's bookstore (OpenCart).",
+                    "Developed plugins for WHMCS, such as an evaluation form for different departments and a GDPR agreement management tool for the company and reseller customers.",
+                    "Developed plugins for Joomla, such as displaying forum threads according to the category and displaying books based on the current category.",
+                    "Developed plugins for WordPress, such as staff management and display."
                   ]
                 }
               ]
             },
             "description": [
-              "Development of ecommerce websites, with OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., as well as custom functionalities and integrations with ERP programs.",
-              "Website development (portfolios, corporate, personal, etc.) - WordPress, Joomla, etc.",
-              "Company projects - WHMCS, Laravel, vBulletin, Joomla, etc."
+              "Developed e-commerce websites using platforms such as OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., integrating custom functionalities and ERP programs.",
+              "Website development including portfolios, corporate sites, personal websites, etc., using platforms such as WordPress, Joomla, etc.",
+              "Contributed to various company projects utilizing technologies such as WHMCS, Laravel, vBulletin, Joomla, etc."
             ],
             "showDescription": true
           }
@@ -221,7 +221,7 @@
             "role": "Junior Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Convert design mockups from PSD or AI to valid HTML and CSS or WordPress Themes."
+              "Converted design mockups from PSD or AI files to valid HTML and CSS, or WordPress themes."
             ],
             "showDescription": true
           }
@@ -252,7 +252,7 @@
             "role": "Web Developer",
             "showRole": false,
             "description": [
-              "Construction of websites, e-shops and custom solutions according to customer requirements"
+              "Develop websites, e-shops, and custom solutions according to customer requirements."
             ],
             "showDescription": true
           }
@@ -283,9 +283,9 @@
             "role": "Website Optimizations & Internet Marketing",
             "showRole": false,
             "description": [
-              "Creation and promotion of company profiles on Facebook and Twitter",
-              "Create and manage advertising campaigns for the company, through Facebook and Google AdWords.",
-              "Optimizing the speed of the company website, based on tools such as PageSpeed (Google) and YSlow (based on Yahoo rules). The company website is built with Joomla! CMS."
+              "Created and promoted company profiles on Facebook and Twitter.",
+              "Created and managed advertising campaigns for the company through Facebook and Google AdWords.",
+              "Optimized the speed of the company website using tools such as PageSpeed (Google) and YSlow (based on Yahoo rules). The company website is built with Joomla! CMS."
             ],
             "showDescription": false
           }
@@ -316,7 +316,7 @@
             "role": "Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Created the user interface, based on the supplied graphic mockups, for applications to visualize the results of the 2014 Italian European Parliament Elections and display past Italian election results, with valid HTML, CSS and jQuery."
+              "Created the user interface, based on supplied graphic mockups, for applications to visualize the results of the 2014 Italian European Parliament Elections and display past Italian election results, using valid HTML, CSS, and jQuery."
             ],
             "showDescription": true
           }
@@ -347,9 +347,9 @@
             "role": "Internship - Junior Web Developer",
             "showRole": false,
             "description": [
-              "Content editing with FlexionPro, the company's own CMS.",
-              "e-shop content management with Magento.",
-              "online classroom content management with Moodle."
+              "Edited content using FlexionPro, the company's proprietary CMS.",
+              "Managed e-shop content with Magento.",
+              "Administered online classroom content with Moodle."
             ],
             "showDescription": false
           }
@@ -396,9 +396,9 @@
         "technologies": ["Python", "JavaScript", "HTML", "CSS", "Bootstrap"],
         "showDesc": true,
         "desc": [
-          "Building a form with dynamic and interdependent fields for single player attribute options for DnD.",
-          "Creating endpoints in Flask to submit the form.",
-          "The processing of the form data is done by a Python script created by my friend Argyris Tsagkalidis, who also helped me with the Flask setup and the form requirements as I have no idea about DnD!"
+          "Built a form with dynamic and interdependent fields for single-player attribute options for DnD (Dungeons & Dragons).",
+          "Created endpoints in Flask to submit the form.",
+          "The processing of the form data is handled by a Python script developed by my friend Argyris Tsagkalidis, who also assisted with the Flask setup and form requirements as I have limited knowledge about DnD."
         ],
         "link": null,
         "isHidden": true
@@ -412,7 +412,7 @@
       {
         "isHidden": false,
         "org": "Udemy",
-        "name": "JavaScript, React, Node.js, PHP, κ.α.",
+        "name": "JavaScript, React, Node.js, PHP, etc.",
         "valid": {
           "from": "2017-08",
           "to": "present",
