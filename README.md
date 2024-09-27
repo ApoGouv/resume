@@ -91,7 +91,7 @@ The app will be accessible at: `http://localhost:5174/` by default.
 
 - **npm run gen-pdfs**: Calls the generatePDF script, that generates images and PDFs of the resume app for both locales. The generated files are stored in the `/public/img` and `/public/pdf` directories respectively. This script requires `npm run dev` to be running as it uses Playwright to open a headless Chromium browser to our local dev address `http://localhost:5174/`.
 
-- **npm run dev:gen-pdfs**: Calls the generatePDF script with CLI arguments in order to also run the Vite den server first and then proceed with the pdf generation. This script generates the images and PDFs of the resume.
+- **npm run dev:gen-pdfs**: Calls the generatePDF script with CLI arguments in order to also run the Vite dev server first and then proceed with the pdf generation. This script generates the images and PDFs of the resume.
 
 - **npm run lint**: Runs ESLint to lint TypeScript and TSX files and report any errors.
 
