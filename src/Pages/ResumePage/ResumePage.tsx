@@ -26,8 +26,6 @@ function ResumePage() {
   const isPrinting = usePrintStatus();
 
   useEffect(() => {
-    console.log('Current window.location: ', window.location);
-
     // Determine the initial locale based on the URL
     if (
       window.location.hash === `#/en` ||
