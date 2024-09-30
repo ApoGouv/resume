@@ -14,7 +14,7 @@
 }
 
 #resume .section__timeentry-time {
-  padding-right: 1rem;
+  padding-right: 0.75rem;
 }
 
 #resume .section__timeentry-rounder {
@@ -108,7 +108,7 @@
   }
 
   #resume .section__timeentry-time {
-    padding-right: 0.8rem;
+    padding-right: 0.75rem;
     margin-left: -8px;
   }
 }
@@ -160,8 +160,8 @@
 
   #resume .section__timeentry-time {
     position: relative;
-    padding-right: 1rem;
-    width: 32px;
+    padding-right: 0.75rem;
+    width: 28px;
     height: auto;
   }
 
