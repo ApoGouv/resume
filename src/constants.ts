@@ -15,7 +15,18 @@ export const BASE_APP_URL = '/resume';
 export const DEFAULT_LOCALE = 'el-GR';
 
 /**
- * Placeholder for string/text that will be replaces by years of experience number.
+ * The fallback version number of the app.
+ * We use it in useVersion hook as a falback in case we cannot
+ * retrieve the app's version from the package.json file.
+ * 
+ * And we use the version for cache busting when linking to the pdf
+ * version of the resume.
+ * @constant
+ */
+export const VERSION_FALLBACK = '3.0.1fx';
+
+/**
+ * Placeholder for string/text that will be replaced by years of experience number.
  * Used in replacePlaceholderWithYearDifference fn.
  * @constant
  */

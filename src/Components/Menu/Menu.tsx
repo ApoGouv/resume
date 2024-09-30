@@ -5,6 +5,7 @@ import usePrintStatus from '../../Hooks/usePrintStatus';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
+import useVersion from '../../Hooks/useVersion';
 import { MENU_ICONS } from '../../Utils/iconsLibrary';
 import { normalizeUrl } from '../../Utils/strings';
 
@@ -36,6 +37,7 @@ function Menu({ name }: MenuProps) {
   const isPrinting = usePrintStatus();
   const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
   const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
+  const resumeVersion = useVersion();
 
   const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
   const expandedViewIconKey = expandedView ? 'less_details' : 'more_details';
@@ -99,7 +101,7 @@ function Menu({ name }: MenuProps) {
         localizedStrings[appLocale].bio
       }${bnw ? '-print' : ''}`;
       const pdfUrl = normalizeUrl(
-        `${import.meta.env.BASE_URL}/pdf/${pdfName}.pdf`
+        `${import.meta.env.BASE_URL}/pdf/${pdfName}.pdf?v=${resumeVersion}`
       );
 
       const pdfWindowOptions = {
