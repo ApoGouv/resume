@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/// <reference types="vitest" />
+// /* eslint-disable import/no-extraneous-dependencies */
 /// <reference types="vite/client" />
 /// <reference types="vite-plugin-svgr/client" />
 
-import react from '@vitejs/plugin-react';
 import { defineConfig, UserConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 
 // @see https://vitejs.dev/config/#conditional-config
