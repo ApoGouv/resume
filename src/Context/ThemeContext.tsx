@@ -6,6 +6,7 @@ import {
   useMemo,
   useCallback,
   useEffect,
+  JSX,
 } from 'react';
 
 import { DEFAULT_LOCALE } from '../constants';
