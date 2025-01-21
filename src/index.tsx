@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
 import { HashRouter } from 'react-router-dom';
 import LocaleProvider from './Context/ThemeContext';
 import ResumePage from './Pages/ResumePage/ResumePage';
@@ -18,13 +17,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
       <LocaleProvider>
         <HashRouter>
           <ResumePage />
         </HashRouter>
       </LocaleProvider>
-    </HelmetProvider>
   </React.StrictMode>
 );
 
