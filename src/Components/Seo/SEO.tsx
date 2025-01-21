@@ -24,13 +24,9 @@ export default function SEO({
     );
   };
 
-  const getTitle = () => {
-    return `${name} - ${occupation}`;
-  };
-
   return (
     <>
-      <title>{getTitle()}</title>
+      <title>{`${name} - ${occupation}`}</title>
       <meta name="description" content={getDescription()} />
     </>
   );
