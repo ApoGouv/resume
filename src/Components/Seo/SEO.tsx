@@ -1,8 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { replacePlaceholderWithYearDifference } from '../../Utils/dates';
 
 type Seo = {
-  lang: string;
   name: string;
   occupation: string;
   description: string;
@@ -11,7 +9,6 @@ type Seo = {
 };
 
 export default function SEO({
-  lang,
   name,
   occupation,
   description,
@@ -27,13 +24,14 @@ export default function SEO({
     );
   };
 
+  const getTitle = () => {
+    return `${name} - ${occupation}`;
+  };
+
   return (
-    <Helmet>
-      <html lang={lang} />
-      <title>
-        {name} - {occupation}
-      </title>
+    <>
+      <title>{getTitle()}</title>
       <meta name="description" content={getDescription()} />
-    </Helmet>
+    </>
   );
 }
