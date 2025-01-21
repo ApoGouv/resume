@@ -81,7 +81,7 @@
         "isHidden": false,
         "mainRole": "Full-stack Web Developer",
         "company": "Mental Media",
-        "companyOldName": "(former MultiHosting)",
+        "companyOldName": "(Formerly MultiHosting)",
         "duration": {
           "from": "2017-11",
           "to": "present",
@@ -111,10 +111,10 @@
                   "technologies": ["PrestaShop", "PHP", "JavaScript", "CSS"],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Optimizing the integration of the store with their Merchant program (SoftOne).",
-                    "Developed a custom function for Quick Cart, with Ajax product search, real-time inventory control, automatic saving to continue the order at another time, etc. The appearance was based on a mockup design provided by the company.",
+                    "Optimized store integration with SoftOne (merchant program), enhancing overall functionality.",
+                    "Developed Quick Cart feature using Ajax, allowing real-time inventory control, auto-save for incomplete orders, and an intuitive user experience. The appearance was based on a mockup design provided by the company.",
                     "Created processes to meet various company requirements.",
-                    "Developed a plugin to create and manage XML product lists with various options (manufacturer, category exceptions, add based on product codes, etc.).",
+                    "Created XML product list generation tool with flexible options for category exceptions, product codes, and manufacturer selection.",
                     "As part of the project, developed other company sites: amila.gr, escapesummer.gr, and total-gym.gr."
                   ]
                 },
@@ -132,7 +132,7 @@
                   "showResponsibilities": true,
                   "responsibilities": [
                     "Integrated the store with their commercial program (SoftOne), using the Lumen microframework.",
-                    "Created processes to automatically download product images from Google Drive and convert them to .webp when needed.",
+                    "Developed an automated product image downloader that converts images to .webp format for improved site performance.",
                     "Developed a process to download the PDF catalog and display it in a flipbook.",
                     "Developed a process for calculating and presenting order volumetrics with Ajax for each product addition/removal from the cart.",
                     "Developed of a module for scanning the barcode of a product with the mobile camera and then being able to view the product page or add it to the cart. Vue was used for the appearance and management of the application and the QuaggaJS library was used for scanning."
@@ -143,9 +143,9 @@
                   "technologies": ["PHP", "JavaScript", "reCaptcha"],
                   "showResponsibilities": true,
                   "responsibilities": [
-                    "Refactored custom website from PHP 5.6 to PHP 7.4.",
-                    "Replaced outdated image-based Captcha with Google reCaptcha, implemented with my own abstract class encapsulating the reCaptcha logic for reuse across various forms on the site.",
-                    "Replaced FLASH with HTML and JavaScript solutions."
+                    "Refactored legacy code from PHP 5.6 to PHP 7.4, improving system performance and compatibility.",
+                    "Replaced outdated image-based Captcha with Google reCaptcha for enhanced security and user experience. Implemented with my own abstract class encapsulating the reCaptcha logic for reuse across various forms on the site.",
+                    "Replaced Flash elements with modern HTML5 and JavaScript solutions for improved accessibility and performance."
                   ]
                 },
                 {
@@ -188,9 +188,9 @@
               ]
             },
             "description": [
-              "Development of e-commerce websites using platforms such as OpenCart, CS-Cart, PrestaShop, WooCommerce, etc., integrating custom functionalities and ERP systems.",
-              "Website development (portfolios, corporate, personal, etc.) using content management systems such as WordPress, Joomla, etc., with customization for each client's needs, including plugin development and tailored functionality.",
-              "Development and contribution to company projects, by creating websites, e-shops, as well as custom plugins and new functionalities on WHMCS, Laravel, vBulletin, Joomla, OpenCart, etc."
+              "Lead company projects, creating tailored e-commerce solutions, integrating third-party services, and delivering custom plugins for WHMCS, Laravel, vBulletin, Joomla, and OpenCart.",
+              "Build and customize dynamic websites for various industries (corporate, personal, portfolios) using WordPress, Joomla, and other CMSs, focusing on client-specific needs and plugin development.",
+              "Develop and maintain e-commerce websites (OpenCart, CS-Cart, PrestaShop, WooCommerce), integrating custom functionalities and ERP systems like SoftOne."
             ],
             "showDescription": true
           }
@@ -221,7 +221,7 @@
             "role": "Junior Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Converted design mockups from PSD or AI files to valid HTML and CSS, or WordPress themes."
+              "Converted PSD/AI mockups into responsive, pixel-perfect HTML/CSS or WordPress themes, ensuring optimal cross-device/browser performance."
             ],
             "showDescription": true
           }
@@ -252,7 +252,7 @@
             "role": "Web Developer",
             "showRole": false,
             "description": [
-              "Development of websites and e-shops, as well as custom solutions according to customer requirements."
+              "Developed custom websites, e-shops, and web apps, integrating front-end and back-end technologies to meet client needs and improve user experience."
             ],
             "showDescription": true
           }
@@ -316,7 +316,7 @@
             "role": "Front-end Web Developer",
             "showRole": false,
             "description": [
-              "User interface development, based on supplied graphic mockups, for applications to visualize the results of the 2014 Italian European Parliament Elections and display past Italian election results, using valid HTML, CSS, and jQuery."
+              "Developed user interfaces for applications to visualize results from the 2014 Italian European Parliament Elections and display historical election data. Transformed graphic mockups into responsive web pages using HTML, CSS, and jQuery."
             ],
             "showDescription": true
           }
