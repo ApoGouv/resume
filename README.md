@@ -34,7 +34,6 @@ The app features a responsive design, providing a one-page layout with dimension
 #### Frameworks and Libraries
 
 - [React](https://github.com/facebook/react#readme): A JavaScript library for building user interfaces.
-- [React Helmet Async](https://github.com/staylor/react-helmet-async#readme): A library for managing document head tags in React.
 - [React Icons](https://react-icons.github.io/react-icons/): A library for including popular icons in React projects.
 - [country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons#readme): A set of SVG country flag icons for use in web projects.
 - [Fontsource](https://github.com/fontsource/fontsource#readme): An updating monorepo full of self-hostable Open Source fonts bundled into individual NPM packages!
