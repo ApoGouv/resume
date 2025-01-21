@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { EN_LOCALE, EL_LOCALE } from '../../constants';
 import { normalizeUrl } from '../../Utils/strings';
 import { RESUME_NOT_FOUND_ICONS } from '../../Utils/iconsLibrary';
 import './Error404Page.css';
@@ -23,13 +24,13 @@ function Error404Page({ locale, dark }: Error404PageProps) {
 
   // Define dictionary for localized strings
   const localized404Strings: Localized404Strings = {
-    'en-US': {
+    [EN_LOCALE]: {
       errorMessage: 'Resume Not Found',
       title: 'Oops! How did you get here?',
       desc: 'Let me help you...',
       link2resume: 'Check out my Resume',
     },
-    'el-GR': {
+    [EL_LOCALE]: {
       errorMessage: 'Το βιογραφικό δεν βρέθηκε',
       title: 'Ωχ! Πώς βρέθηκες εδώ;',
       desc: 'Κάτσε να σε βοηθήσω...',
@@ -38,7 +39,7 @@ function Error404Page({ locale, dark }: Error404PageProps) {
   };
 
   const handleViewResumeButtonClick = () => {
-    if (locale === 'en-US') {
+    if (locale === EN_LOCALE) {
       navigate(`/en`);
     } else {
       navigate(`/`);

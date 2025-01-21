@@ -1,3 +1,5 @@
+import { EL_LOCALE, EN_LOCALE } from '../constants';
+
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 
 import {
@@ -78,6 +80,21 @@ const RESUME_NOT_FOUND_ICONS = {
   filePage: <FilePage />,
 };
 
+/**
+ * Returns the icon key for the opposite locale, falling back to Greek if unsupported.
+ *
+ * @param locale The current app locale (e.g., 'el-GR', 'en-US').
+ * @returns The icon key for the opposite locale (e.g., 'en_us' for 'el-GR').
+ */
+const getOppositeLocaleIconKey = (locale: string): string => {
+  const opositeLocale = locale === EL_LOCALE ? EN_LOCALE : EL_LOCALE;
+  const iconKey = opositeLocale.toLowerCase().replace('-', '_');
+  if (MENU_ICONS[iconKey as keyof typeof MENU_ICONS]) {
+    return iconKey;
+  }
+  return EL_LOCALE.toLowerCase().replace('-', '_'); // Fallback to Greek
+};
+
 export {
   MENU_ICONS,
   PROFILE_CONTACT_ICONS,
@@ -85,4 +102,5 @@ export {
   PROJECT_ICONS,
   WORK_EXPERIENCE_ICONS,
   RESUME_NOT_FOUND_ICONS,
+  getOppositeLocaleIconKey
 };

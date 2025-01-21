@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { EN_LOCALE, EL_LOCALE } from '../../constants';
 import useLocale from '../../Hooks/useLocale';
 import usePrintStatus from '../../Hooks/usePrintStatus';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import useExpandedView from '../../Hooks/useExpandedView';
 import useDarkMode from '../../Hooks/useDarkMode';
 import useVersion from '../../Hooks/useVersion';
-import { MENU_ICONS } from '../../Utils/iconsLibrary';
+import { MENU_ICONS, getOppositeLocaleIconKey } from '../../Utils/iconsLibrary';
 import { normalizeUrl } from '../../Utils/strings';
 
 import './Menu.css';
@@ -39,31 +40,31 @@ function Menu({ name }: MenuProps) {
   const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
   const resumeVersion = useVersion();
 
-  const languageIconKey = appLocale === 'el-GR' ? 'en_us' : 'el_gr';
+  const languageIconKey = getOppositeLocaleIconKey(appLocale);
   const expandedViewIconKey = expandedView ? 'less_details' : 'more_details';
   const darkModeIconKey = darkMode ? 'sun' : 'moon';
 
   // Define dictionary for localized strings
   const localizedStrings: LocalizedStrings = {
-    'en-US': {
+    [EN_LOCALE]: {
       print: 'Print resume',
       downloadPdfsWrapper:
         'Download resume in PDF format (colored or grayscale)',
       downloadPdf: 'Download colored resume in PDF format',
       downloadGrayscalePdf: 'Download grayscaled resume in PDF format',
-      toggleLocale: 'Toggle locale to el-GR',
+      toggleLocale: `Toggle locale to ${EL_LOCALE}`,
       toggleExpandedView: `Toggle expanded view ${expandedView ? 'Off' : 'On'}`,
       toggleDarkMode: `Toggle dark mode ${darkMode ? 'Off' : 'On'}`,
       bio: 'CV',
     },
-    'el-GR': {
+    [EL_LOCALE]: {
       print: 'Εκτύπωση βιογραφικού',
       downloadPdfsWrapper:
         'Κατεβάστε το βιογραφικό σε μορφή PDf (έγχρωμο ή σε αποχρώσεις του γκρι)',
       downloadPdf: 'Κατεβάστε το έγχρωμο βιογραφικό σε μορφή PDf',
       downloadGrayscalePdf:
         'Κατεβάστε το βιογραφικό σε μορφή PDf σε αποχρώσεις του γκρι',
-      toggleLocale: 'Εναλλαγή γλώσσας σε en-US',
+      toggleLocale: `Εναλλαγή γλώσσας σε ${EN_LOCALE}`,
       toggleExpandedView: `${
         expandedView ? 'Απενεργοποίηση' : 'Ενεργοποίηση'
       } διευρυμένης προβολής`,
@@ -132,9 +133,9 @@ function Menu({ name }: MenuProps) {
   };
 
   const toggleLocale = () => {
-    const newLocale = appLocale === 'el-GR' ? 'en-US' : 'el-GR';
+    const newLocale = appLocale === EL_LOCALE ? EN_LOCALE : EL_LOCALE;
     setLocale(newLocale);
-    if (newLocale === 'en-US') {
+    if (newLocale === EN_LOCALE) {
       navigate(`/en`);
     } else {
       navigate(`/`);

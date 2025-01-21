@@ -1,6 +1,7 @@
 // Pages/ResumePage/ResumePage.tsx
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { EL_LOCALE, EN_LOCALE } from '../../constants';
 import SEO from '../../Components/Seo/SEO';
 import Menu from '../../Components/Menu/Menu';
 import Resume from '../../Components/Resume/Resume';
@@ -20,7 +21,7 @@ function ResumePage() {
   const { expandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
   const [state, setState] = useState(
-    appLocale === 'en-US' ? userDataEnUS : userDataElGR
+    appLocale === EN_LOCALE ? userDataEnUS : userDataElGR
   );
 
   const isPrinting = usePrintStatus();
@@ -31,20 +32,27 @@ function ResumePage() {
       window.location.hash === `#/en` ||
       window.location.hash.startsWith(`#/en/`)
     ) {
-      setLocale('en-US');
+      setLocale(EN_LOCALE);
     } else {
-      setLocale('el-GR');
+      setLocale(EL_LOCALE);
     }
   }, [setLocale]);
 
+
   useEffect(() => {
+    // Set the document language attribute
+    const language = appLocale.split('-')[0];  // Get the first part (e.g., "en" or "el")
+    document.documentElement.setAttribute('lang', language);
+
     // Update state when appLocale changes
-    if (appLocale === 'en-US') {
+    if (appLocale === EN_LOCALE) {
       setState({ ...userDataEnUS });
     } else {
       setState({ ...userDataElGR });
     }
+  }, [appLocale]);
 
+  useEffect(() => {
     // Handle dark mode change
     const { body } = document;
     if (darkMode && !isPrinting) {
@@ -53,6 +61,7 @@ function ResumePage() {
       body.classList.remove('dark-mode');
     }
 
+    // Handle expanding view mode change
     if (expandedView && !isPrinting) {
       body.classList.add('expanded-view');
     } else {
@@ -67,16 +76,15 @@ function ResumePage() {
     } else {
       body.classList.remove('printing-mode');
     }
-  }, [appLocale, darkMode, isPrinting, expandedView]);
+  }, [darkMode, isPrinting, expandedView]);
 
-  const { htmlLang, profile } = state;
+  const { profile } = state;
 
   // console.log(`${appLocale} - state: `, state);
 
   return (
     <>
       <SEO
-        lang={htmlLang}
         name={profile.name}
         occupation={profile.role}
         description={profile.bio}

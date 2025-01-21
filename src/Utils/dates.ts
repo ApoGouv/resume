@@ -1,4 +1,6 @@
 import {
+  EN_LOCALE,
+  EL_LOCALE,
   DEFAULT_LOCALE,
   EXP_YEARS_PLACEHOLDER,
   DATE_RANGE_SEPARATOR,
@@ -29,8 +31,8 @@ type LanguageForms = {
  * @description Object holding singular and plural forms of the word "year" for different locales.
  */
 const yearsWords: Record<string, LanguageForms> = {
-  'el-GR': { singular: 'χρόνος', plural: 'χρόνια' },
-  'en-US': { singular: 'year', plural: 'years' },
+  [EL_LOCALE]: { singular: 'χρόνος', plural: 'χρόνια' },
+  [EN_LOCALE]: { singular: 'year', plural: 'years' },
 };
 
 /**
@@ -217,8 +219,8 @@ export const getDateFormatIntl = (
 };
 
 const presentTranslationByLocale: Record<string, string> = {
-  'el-GR': 'Σήμερα',
-  'en-US': 'Present',
+  [EL_LOCALE]: 'Σήμερα',
+  [EN_LOCALE]: 'Present',
 };
 
 /**
