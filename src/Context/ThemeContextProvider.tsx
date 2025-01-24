@@ -1,6 +1,5 @@
-// Context\ThemeContext.tsx
+// Context/ThemeContextProvider.tsx
 import {
-  createContext,
   useState,
   ReactNode,
   useMemo,
@@ -8,21 +7,8 @@ import {
   useEffect,
   JSX,
 } from 'react';
-
+import { ThemeContext, ThemeContextType } from '@/Context/ThemeContext';
 import { DEFAULT_LOCALE } from '@/constants';
-
-// Define the type for the locale context
-export type ThemeContextType = {
-  appLocale: string;
-  setLocale: (newLocale: string) => void;
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-  expandedView: boolean;
-  toggleExpandedView: () => void;
-};
-
-// Create the context
-export const ThemeContext = createContext<ThemeContextType | null>(null);
 
 // Define the type for the props of ThemeProvider
 type ThemeProviderProps = {

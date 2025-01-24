@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
-import LocaleProvider from '@/Context/ThemeContext';
+import ThemeProvider from '@/Context/ThemeContextProvider';
 import ResumePage from '@/Pages/ResumePage/ResumePage';
 
 import '@fontsource/lato/400.css';
@@ -17,11 +17,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <LocaleProvider>
+      <ThemeProvider>
         <HashRouter>
           <ResumePage />
         </HashRouter>
-      </LocaleProvider>
+      </ThemeProvider>
   </React.StrictMode>
 );
 
