@@ -18,13 +18,31 @@ import '@/Pages/ResumePage/ResumePage.css';
 
 function ResumePage() {
   const { appLocale, setLocale } = useLocale();
-  const { expandedView } = useExpandedView();
+  const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
   const [state, setState] = useState(
     appLocale === EN_LOCALE ? userDataEnUS : userDataElGR
   );
 
-  const isPrinting = usePrintStatus();
+  // const isPrinting = usePrintStatus();
+
+  // Track previous expandedView state
+  const [wasExpandedView, setWasExpandedView] = useState(expandedView);
+
+  const isPrinting = usePrintStatus({
+    onBeforePrint: () => {
+      if (expandedView) {
+        setWasExpandedView(true);
+        toggleExpandedView(); // Disable expanded view before print
+      }
+    },
+    onAfterPrint: () => {
+      if (wasExpandedView) {
+        toggleExpandedView(); // Restore expanded view after print
+        setWasExpandedView(false);
+      }
+    },
+  });
 
   useEffect(() => {
     // Determine the initial locale based on the URL
@@ -71,6 +89,7 @@ function ResumePage() {
     // Handle printing mode change
     if (isPrinting) {
       body.classList.remove('expanded-view');
+      body.classList.remove('dark-mode');
 
       body.classList.add('printing-mode');
     } else {

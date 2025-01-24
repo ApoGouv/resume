@@ -90,8 +90,14 @@ function Menu({ name }: MenuProps) {
         console.error('Print PDF button not found.');
       }
     } else {
-       
-      window.print();
+      if (expandedView) {
+        toggleExpandedView(); // Toggle expanded view off
+        setTimeout(() => {
+          window.print(); // Delay to ensure the state update propagates
+        }, 100); // Small delay (100ms) for state propagation
+      } else {
+        window.print(); // Directly trigger print if not expanded
+      }
     }
   };
 
