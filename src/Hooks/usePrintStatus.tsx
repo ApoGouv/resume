@@ -19,13 +19,13 @@ const usePrintStatus = ({ onBeforePrint, onAfterPrint }: PrintCallbacks = {}) =>
     // };
 
     const handleBeforePrint = () => {
-      console.log('Before print');
+      // console.log('Before print');
       setIsPrinting(true);
       onBeforePrint?.();
     };
 
     const handleAfterPrint = () => {
-      console.log('After print');
+      // console.log('After print');
       setIsPrinting(false);
       onAfterPrint?.();
     };
