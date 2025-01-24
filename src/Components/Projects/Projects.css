@@ -1,0 +1,88 @@
+.projects__section {
+    padding: var(--section-padding);
+}
+
+.certificates__heading {
+    text-transform: uppercase;
+    margin-bottom: var(--mb-1);
+}
+
+.project__entry {
+    display: flex;
+}
+
+.project__data {
+    width: 100%;
+}
+
+.project__basic-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 0.5rem 0;
+    font-style: normal;
+}
+
+.project__name {
+    font-weight: var(--font-bold);
+    font-size: var(--h3-font-size);
+}
+
+.project__tech-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    margin: 0.5rem 0;
+    font-style: normal;
+}
+
+.project__desc {
+    list-style: square;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project__desc ::marker {
+    color: var(--color-red);
+}
+
+.project__link a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--base-font-size);
+    padding: 0.25rem 0;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.project__link a:hover,
+.project__link a:focus {
+    color: var(--color-red);
+    text-decoration: underline;
+}
+
+.project__link a::after {
+    content: '↗';
+    margin-left: 0.3rem;
+    font-size: var(--base-font-size);
+    vertical-align: middle;
+    color: inherit;
+}
+
+.project__link a:hover::after,
+.project__link a:focus::after {
+    text-decoration: none;
+}
+
+.project__link a:focus {
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: 3px;
+}

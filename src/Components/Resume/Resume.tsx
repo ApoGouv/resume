@@ -7,6 +7,7 @@ import Certificates, { CertificatesProps } from '@/Components/Certificates/Certi
 import Languages, { LanguagesProp } from '@/Components/Languages/Languages';
 import Tools, { ToolsProp } from '@/Components/Tools/Tools';
 import Interests, { InterestsProps } from '@/Components/Interests/Interests';
+import Projects, { ProjectsProps } from '@/Components/Projects/Projects';
 import isEmpty from '@/Utils/isEmpty';
 import useMediaQuery from '@/Hooks/useMediaQuery';
 import usePrintStatus from '@/Hooks/usePrintStatus';
@@ -22,12 +23,14 @@ type ResumeProps = {
     languages: LanguagesProp['data'];
     tools: ToolsProp['data'];
     interests: InterestsProps['data'];
+    projects: ProjectsProps['data'];
   };
   locale: string;
   dark: boolean;
+  expandedView: boolean;
 };
 
-function Resume({ data, locale, dark }: ResumeProps) {
+function Resume({ data, locale, dark, expandedView }: ResumeProps) {
   const {
     profile,
     workExperience,
@@ -36,6 +39,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
     languages,
     tools,
     interests,
+    projects,
   } = data;
 
   const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
@@ -73,6 +77,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
             <>
               <WorkExperience data={workExperience} />
               {!certificates.isHidden && <Certificates data={certificates} />}
+              {!projects.isHidden && <Projects data={projects} expandedView={expandedView} />}
             </>
           )}
         </div>
@@ -81,6 +86,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
             <>
               <WorkExperience data={workExperience} />
               {!certificates.isHidden && <Certificates data={certificates} />}
+              {!projects.isHidden && <Projects data={projects} expandedView={expandedView} />}
             </>
           ) : (
             <>

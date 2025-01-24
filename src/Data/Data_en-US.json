@@ -189,8 +189,8 @@
             },
             "description": [
               "Lead company projects, creating tailored e-commerce solutions, integrating third-party services, and delivering custom plugins for WHMCS, Laravel, vBulletin, Joomla, and OpenCart.",
-              "Build and customize dynamic websites for various industries (corporate, personal, portfolios) using WordPress, Joomla, and other CMSs, focusing on client-specific needs and plugin development.",
-              "Develop and maintain e-commerce websites (OpenCart, CS-Cart, PrestaShop, WooCommerce), integrating custom functionalities and ERP systems like SoftOne."
+              "Develop and maintain e-commerce websites (OpenCart, CS-Cart, PrestaShop, WooCommerce), integrating custom functionalities and ERP systems like SoftOne.",
+              "Build and customize dynamic websites for various industries (corporate, personal, portfolios) using WordPress, Joomla, and other CMSs, focusing on client-specific needs and plugin development."
             ],
             "showDescription": true
           }
@@ -388,8 +388,8 @@
     ]
   },
   "projects": {
-    "isHidden": true,
-    "sectionTitle": "PROJECTS",
+    "isHidden": false,
+    "sectionTitle": "PERSONAL PROJECTS",
     "entries": [
       {
         "name": "NPC Generator",
@@ -402,6 +402,30 @@
         ],
         "link": null,
         "isHidden": true
+      },
+      {
+        "name": "Resume App",
+        "technologies": ["Vite", "React", "TypeScript", "CSS"],
+        "showDesc": true,
+        "desc": [
+          "Built a resume app using modern web technologies such as Vite, React, and TypeScript.",
+          "Focused on building a responsive, dynamic design with custom CSS to showcase my professional experience and skills.",
+          "Integrated various features like print, PDF download, and an interactive 'expanded view' for displaying additional work and personal project details."
+        ],
+        "link": "https://apogouv.github.io/resume/",
+        "isHidden": false
+      },
+      {
+        "name": "Scrabble Word Finder",
+        "technologies": ["Vite", "Vue.js", "TypeScript", "Tailwind", "CSS", "IndexedDB", "Python"],
+        "showDesc": true,
+        "desc": [
+          "Developed a word validation and anagram finder tool for Scrabble using Vue.js, TypeScript, and Tailwind.",
+          "Implemented IndexedDB to store and retrieve word lists for efficient searching.",
+          "Used Python for data preprocessing to prepare word lists and improve search performance."
+        ],
+        "link": "https://apogouv.github.io/scrabble-word-finder/",
+        "isHidden": false
       }
     ]
   },

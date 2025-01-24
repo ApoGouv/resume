@@ -116,7 +116,7 @@ function ResumePage() {
           element={
             <>
               <Menu name={profile.name} />
-              <Resume data={state} locale={appLocale} dark={darkMode} />
+              <Resume data={state} locale={appLocale} dark={darkMode} expandedView={expandedView} />
             </>
           }
         />
@@ -125,7 +125,7 @@ function ResumePage() {
           element={
             <>
               <Menu name={profile.name} />
-              <Resume data={state} locale={appLocale} dark={darkMode} />
+              <Resume data={state} locale={appLocale} dark={darkMode} expandedView={expandedView}/>
             </>
           }
         />
