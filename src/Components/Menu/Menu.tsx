@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EN_LOCALE, EL_LOCALE } from '@/constants';
 import useLocale from '@/Hooks/useLocale';
@@ -36,9 +36,35 @@ function Menu({ name }: MenuProps) {
   const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode, toggleDarkMode } = useDarkMode();
   const isPrinting = usePrintStatus();
-  const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
-  const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
   const resumeVersion = useVersion();
+  const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
+
+  const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
+
+  const [showPdfButtons, setShowPdfButtons] = useState<boolean>(false);
+
+  const togglePdfButtons = () => {
+    setShowPdfButtons((prevState) => !prevState);
+  };
+
+  // Hide PDF buttons when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+
+      if (
+        !target.closest('.menu-pdfs-resume') && // If the click is outside the button container
+        showPdfButtons
+      ) {
+        setShowPdfButtons(false); // Hide the PDF buttons
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showPdfButtons]);
 
   const languageIconKey = getOppositeLocaleIconKey(appLocale);
   const expandedViewIconKey = expandedView ? 'less_details' : 'more_details';
@@ -171,11 +197,24 @@ function Menu({ name }: MenuProps) {
       </button>
 
       <div
-        className="menu-item menu-pdfs-resume"
+        className={`menu-item menu-pdfs-resume ${
+          showPdfButtons ? ' active' : ''
+        } ${!isMobile ? ' hoverable' : ''}`}
         title={localizedStrings[appLocale].downloadPdfsWrapper}
         data-rs-id="rs-menu-pdfs"
+        onClick={(e) => {
+          if (isMobile) {
+            togglePdfButtons();
+            // Explicitly blur the element to remove focus
+            e.currentTarget.blur();
+          }
+        }}
       >
-        <div className="pdf-buttons-container">
+        <div 
+          className={`pdf-buttons-container ${
+            showPdfButtons || !isMobile ? 'visible' : ''
+          }`}
+        >
           <button
             className="menu-item menu-colored-pdf-resume"
             type="button"

@@ -62,7 +62,8 @@
   display: none;
 }
 
-#menu .menu-item.menu-pdfs-resume:hover .pdf-buttons-container {
+#menu .menu-item.menu-pdfs-resume.hoverable:hover .pdf-buttons-container, 
+#menu .menu-item.menu-pdfs-resume.active .pdf-buttons-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
