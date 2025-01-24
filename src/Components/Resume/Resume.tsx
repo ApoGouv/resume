@@ -1,17 +1,17 @@
-import Profile, { ProfileProps } from '../Profile/Profile';
+import Profile, { ProfileProps } from '@/Components/Profile/Profile';
 import WorkExperience, {
   WorkExperienceProps,
-} from '../WorkExperience/WorkExperience';
-import Education, { EducationProps } from '../Education/Education';
-import Certificates, { CertificatesProps } from '../Certificates/Certificates';
-import Languages, { LanguagesProp } from '../Languages/Languages';
-import Tools, { ToolsProp } from '../Tools/Tools';
-import Interests, { InterestsProps } from '../Interests/Interests';
-import isEmpty from '../../Utils/isEmpty';
-import useMediaQuery from '../../Hooks/useMediaQuery';
-import usePrintStatus from '../../Hooks/usePrintStatus';
+} from '@/Components/WorkExperience/WorkExperience';
+import Education, { EducationProps } from '@/Components/Education/Education';
+import Certificates, { CertificatesProps } from '@/Components/Certificates/Certificates';
+import Languages, { LanguagesProp } from '@/Components/Languages/Languages';
+import Tools, { ToolsProp } from '@/Components/Tools/Tools';
+import Interests, { InterestsProps } from '@/Components/Interests/Interests';
+import isEmpty from '@/Utils/isEmpty';
+import useMediaQuery from '@/Hooks/useMediaQuery';
+import usePrintStatus from '@/Hooks/usePrintStatus';
 
-import './Resume.css';
+import '@/Components/Resume/Resume.css';
 
 type ResumeProps = {
   data: {

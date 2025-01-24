@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { EN_LOCALE, EL_LOCALE } from '../../constants';
-import useLocale from '../../Hooks/useLocale';
-import usePrintStatus from '../../Hooks/usePrintStatus';
-import useMediaQuery from '../../Hooks/useMediaQuery';
-import useExpandedView from '../../Hooks/useExpandedView';
-import useDarkMode from '../../Hooks/useDarkMode';
-import useVersion from '../../Hooks/useVersion';
-import { MENU_ICONS, getOppositeLocaleIconKey } from '../../Utils/iconsLibrary';
-import { normalizeUrl } from '../../Utils/strings';
+import { EN_LOCALE, EL_LOCALE } from '@/constants';
+import useLocale from '@/Hooks/useLocale';
+import usePrintStatus from '@/Hooks/usePrintStatus';
+import useMediaQuery from '@/Hooks/useMediaQuery';
+import useExpandedView from '@/Hooks/useExpandedView';
+import useDarkMode from '@/Hooks/useDarkMode';
+import useVersion from '@/Hooks/useVersion';
+import { MENU_ICONS, getOppositeLocaleIconKey } from '@/Utils/iconsLibrary';
+import { normalizeUrl } from '@/Utils/strings';
 
-import './Menu.css';
+import '@/Components/Menu/Menu.css';
 
 // Define type for localized strings
 type LocalizedStrings = {
@@ -90,7 +90,7 @@ function Menu({ name }: MenuProps) {
         console.error('Print PDF button not found.');
       }
     } else {
-      // eslint-disable-next-line no-restricted-globals
+       
       window.print();
     }
   };

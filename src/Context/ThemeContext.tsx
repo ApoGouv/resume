@@ -9,7 +9,7 @@ import {
   JSX,
 } from 'react';
 
-import { DEFAULT_LOCALE } from '../constants';
+import { DEFAULT_LOCALE } from '@/constants';
 
 // Define the type for the locale context
 export type ThemeContextType = {
@@ -37,6 +37,7 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
       localStorage.removeItem('test_storage');
       return true;
     } catch (error) {
+      console.error('Local storage is not supported: ', error);
       return false;
     }
   })();

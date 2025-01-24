@@ -5,6 +5,7 @@
 import { defineConfig, UserConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
+import { fileURLToPath, URL } from 'node:url';
 
 // @see https://vitejs.dev/config/#conditional-config
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
@@ -19,6 +20,11 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
     // @see https://vitejs.dev/config/shared-options.html#base
     base: '/resume',
     plugins: [react(), svgr()],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)), // '@' maps to 'src'
+      },
+    },
     build: {
       minify: false,
       // sourcemap: true,

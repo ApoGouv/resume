@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import useLocale from '../../Hooks/useLocale';
-import useExpandedView from '../../Hooks/useExpandedView';
-import useMediaQuery from '../../Hooks/useMediaQuery';
-import { replacePlaceholderWithYearDifference } from '../../Utils/dates';
-import { printUrl } from '../../Utils/strings';
+import useLocale from '@/Hooks/useLocale';
+import useExpandedView from '@/Hooks/useExpandedView';
+import useMediaQuery from '@/Hooks/useMediaQuery';
+import { replacePlaceholderWithYearDifference } from '@/Utils/dates';
+import { printUrl } from '@/Utils/strings';
 import {
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
-} from '../../Utils/iconsLibrary';
+} from '@/Utils/iconsLibrary';
 
-import './Profile.css';
+import '@/Components/Profile/Profile.css';
 
-import ProfilePic from '../../Assets/Images/Profile/profile-160x160.opt.webp';
+import ProfilePic from '@/Assets/Images/Profile/profile-160x160.opt.webp';
 
 type ContactType = {
   type: string;

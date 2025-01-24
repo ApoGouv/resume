@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Languages.css';
+import '@/Components/Languages/Languages.css';
 
 type LanguageEntryType = {
   language: string;

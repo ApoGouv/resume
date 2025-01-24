@@ -1,6 +1,6 @@
 // Hooks\useLocale.ts
 import { useContext } from 'react';
-import { ThemeContext, ThemeContextType } from '../Context/ThemeContext';
+import { ThemeContext, ThemeContextType } from '@/Context/ThemeContext';
 
 const useLocale = (): Pick<ThemeContextType, 'appLocale' | 'setLocale'> => {
   const { appLocale, setLocale } = useContext(ThemeContext) as ThemeContextType;

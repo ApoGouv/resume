@@ -1,4 +1,4 @@
-import { EL_LOCALE, EN_LOCALE } from '../constants';
+import { EL_LOCALE, EN_LOCALE } from '@/constants';
 
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 
@@ -23,9 +23,9 @@ import { CgWebsite, CgDetailsMore, CgDetailsLess } from 'react-icons/cg';
 
 import { US, GR } from 'country-flag-icons/react/3x2';
 
-import FileBack from '../Assets/svg/fileBack.svg?react';
-import FileFront from '../Assets/svg/fileFront.svg?react';
-import FilePage from '../Assets/svg/filePage.svg?react';
+import FileBack from '@/Assets/svg/fileBack.svg?react';
+import FileFront from '@/Assets/svg/fileFront.svg?react';
+import FilePage from '@/Assets/svg/filePage.svg?react';
 
 const PROFILE_CONTACT_ICONS = {
   email: <MdEmail />,

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Interests.css';
+import '@/Components/Interests/Interests.css';
 
 type InterestEntryType = {
   name: string;

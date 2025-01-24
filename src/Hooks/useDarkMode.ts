@@ -1,6 +1,6 @@
 // Hooks\useDarkMode.ts
 import { useContext } from 'react';
-import { ThemeContext, ThemeContextType } from '../Context/ThemeContext';
+import { ThemeContext, ThemeContextType } from '@/Context/ThemeContext';
 
 const useDarkMode = (): Pick<
   ThemeContextType,

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import useLocale from '../../Hooks/useLocale';
+import useLocale from '@/Hooks/useLocale';
 import {
   getDateRangeFormattedIntl,
   dateFormatOptions,
-} from '../../Utils/dates';
-import { WORK_EXPERIENCE_ICONS } from '../../Utils/iconsLibrary';
-import './WorkExperience.css';
+} from '@/Utils/dates';
+import { WORK_EXPERIENCE_ICONS } from '@/Utils/iconsLibrary';
+import '@/Components/WorkExperience/WorkExperience.css';
 
 type DurationType = {
   from: string;

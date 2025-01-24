@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import useLocale from '../../Hooks/useLocale';
-import { getDateFormatIntl, dateFormatOptions } from '../../Utils/dates';
-import { printUrl } from '../../Utils/strings';
-import './Certificates.css';
+import useLocale from '@/Hooks/useLocale';
+import { getDateFormatIntl, dateFormatOptions } from '@/Utils/dates';
+import { printUrl } from '@/Utils/strings';
+import '@/Components/Certificates/Certificates.css';
 
 type ValidityType = {
   from: string;

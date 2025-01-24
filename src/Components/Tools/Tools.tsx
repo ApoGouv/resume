@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Tools.css';
+import '@/Components/Tools/Tools.css';
 
 type ToolsType = {
   isHidden: boolean;

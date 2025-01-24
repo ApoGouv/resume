@@ -1,4 +1,4 @@
-import { replacePlaceholderWithYearDifference } from '../../Utils/dates';
+import { replacePlaceholderWithYearDifference } from '@/Utils/dates';
 
 type Seo = {
   name: string;

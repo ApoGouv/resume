@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { EN_LOCALE, EL_LOCALE } from '../../constants';
-import { normalizeUrl } from '../../Utils/strings';
-import { RESUME_NOT_FOUND_ICONS } from '../../Utils/iconsLibrary';
+import { EN_LOCALE, EL_LOCALE } from '@/constants';
+import { normalizeUrl } from '@/Utils/strings';
+import { RESUME_NOT_FOUND_ICONS } from '@/Utils/iconsLibrary';
 import './Error404Page.css';
 
 type Error404PageProps = {

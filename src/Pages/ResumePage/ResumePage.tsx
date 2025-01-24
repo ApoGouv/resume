@@ -1,20 +1,20 @@
 // Pages/ResumePage/ResumePage.tsx
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { EL_LOCALE, EN_LOCALE } from '../../constants';
-import SEO from '../../Components/Seo/SEO';
-import Menu from '../../Components/Menu/Menu';
-import Resume from '../../Components/Resume/Resume';
-import Error404Page from '../Error404Page/Error404Page';
+import { EL_LOCALE, EN_LOCALE } from '@/constants';
+import SEO from '@/Components/Seo/SEO';
+import Menu from '@/Components/Menu/Menu';
+import Resume from '@/Components/Resume/Resume';
+import Error404Page from '@/Pages/Error404Page/Error404Page';
 
-import useLocale from '../../Hooks/useLocale';
-import useExpandedView from '../../Hooks/useExpandedView';
-import useDarkMode from '../../Hooks/useDarkMode';
-import usePrintStatus from '../../Hooks/usePrintStatus';
+import useLocale from '@/Hooks/useLocale';
+import useExpandedView from '@/Hooks/useExpandedView';
+import useDarkMode from '@/Hooks/useDarkMode';
+import usePrintStatus from '@/Hooks/usePrintStatus';
 
-import userDataElGR from '../../Data/Data_el-GR.json';
-import userDataEnUS from '../../Data/Data_en-US.json';
-import './ResumePage.css';
+import userDataElGR from '@/Data/Data_el-GR.json';
+import userDataEnUS from '@/Data/Data_en-US.json';
+import '@/Pages/ResumePage/ResumePage.css';
 
 function ResumePage() {
   const { appLocale, setLocale } = useLocale();

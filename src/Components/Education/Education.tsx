@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import useLocale from '../../Hooks/useLocale';
+import useLocale from '@/Hooks/useLocale';
 import {
   getDateFormatIntl,
   getDateRangeFormattedIntl,
   dateFormatOptions,
-} from '../../Utils/dates';
-import './Education.css';
+} from '@/Utils/dates';
+import '@/Components/Education/Education.css';
 
 type DurationType = {
   from: string;
