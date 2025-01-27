@@ -16,21 +16,20 @@ import '@/Components/Resume/Resume.css';
 
 type ResumeProps = {
   data: {
-    profile: ProfileProps['data'];
+    profile: ProfileProps['profileData'];
     workExperience: WorkExperienceProps['data'];
     education: EducationProps['data'];
-    certificates: CertificatesProps['data'];
-    languages: LanguagesProp['data'];
-    tools: ToolsProp['data'];
-    interests: InterestsProps['data'];
-    projects: ProjectsProps['data'];
+    certificates: CertificatesProps['certificatesData'];
+    languages: LanguagesProp['languagesData'];
+    tools: ToolsProp['toolsData'];
+    interests: InterestsProps['interestsData'];
+    projects: ProjectsProps['projectsData'];
   };
   locale: string;
   dark: boolean;
-  expandedView: boolean;
 };
 
-function Resume({ data, locale, dark, expandedView }: ResumeProps) {
+function Resume({ data, locale, dark }: ResumeProps) {
   const {
     profile,
     workExperience,
@@ -63,21 +62,19 @@ function Resume({ data, locale, dark, expandedView }: ResumeProps) {
           <Education data={education} />
           {!isMobile || isPrinting ? (
             <>
+              {!certificates.isHidden && <Certificates certificatesData={certificates} />}
               {!isEmpty(languages.entries) && !languages.isHidden && (
-                <Languages data={languages} />
-              )}
-              {!isEmpty(tools.entries) && !tools.isHidden && (
-                <Tools data={tools} />
+                <Languages languagesData={languages} />
               )}
               {!isEmpty(interests.entries) && !interests.isHidden && (
-                <Interests data={interests} />
+                <Interests interestsData={interests} />
               )}
             </>
           ) : (
             <>
               <WorkExperience data={workExperience} />
-              {!certificates.isHidden && <Certificates data={certificates} />}
-              {!projects.isHidden && <Projects data={projects} expandedView={expandedView} />}
+              {!projects.isHidden && <Projects projectsData={projects} />}
+              {!certificates.isHidden && <Certificates certificatesData={certificates} />}
             </>
           )}
         </div>
@@ -85,19 +82,21 @@ function Resume({ data, locale, dark, expandedView }: ResumeProps) {
           {!isMobile || isPrinting ? (
             <>
               <WorkExperience data={workExperience} />
-              {!certificates.isHidden && <Certificates data={certificates} />}
-              {!projects.isHidden && <Projects data={projects} expandedView={expandedView} />}
+              {!projects.isHidden && <Projects projectsData={projects} />}
+              {!isEmpty(tools.entries) && !tools.isHidden && (
+                <Tools toolsData={tools} />
+              )}
             </>
           ) : (
             <>
-              {!isEmpty(languages.entries) && !languages.isHidden && (
-                <Languages data={languages} />
-              )}
               {!isEmpty(tools.entries) && !tools.isHidden && (
-                <Tools data={tools} />
+                <Tools toolsData={tools} />
+              )}
+              {!isEmpty(languages.entries) && !languages.isHidden && (
+                <Languages languagesData={languages} />
               )}
               {!isEmpty(interests.entries) && !interests.isHidden && (
-                <Interests data={interests} />
+                <Interests interestsData={interests} />
               )}
             </>
           )}

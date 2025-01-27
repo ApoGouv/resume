@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { printUrl } from '@/Utils/strings';
+import { HIDE_UNLESS_EXPANDED } from '@/constants';
 import '@/Components/Projects/Projects.css';
 
 type ProjectType = {
@@ -18,26 +19,17 @@ type ProjectsType = {
 };
 
 export type ProjectsProps = {
-  data: ProjectsType;
-  expandedView: boolean;
+  projectsData: ProjectsType;
 };
 
-function Projects({ data, expandedView }: ProjectsProps) {
-  const [projectsState, setProjectsState] = useState(data);
+function Projects({ projectsData }: ProjectsProps) {
+  const { sectionTitle, entries } = projectsData;
   
-  useEffect(() => {
-    setProjectsState({ ...data });
-  }, [data]);
-
-  if (!expandedView) {
-    // Don't render anything if expandedView is false
-    return null;
-  }
 
   return (
-    <section className={`projects__section ${expandedView ? '' : 'hidden'}`} id="projects">
-      <h2 className="projects__heading section-title">{projectsState.sectionTitle}</h2>
-      {projectsState.entries
+    <section className="projects__section" id="projects">
+      <h2 className="projects__heading section-title">{sectionTitle}</h2>
+      {entries
         .filter((project) => !project.isHidden)
         .map((project, index) => {
           const keyProject = `project-${index}`;
@@ -55,7 +47,7 @@ function Projects({ data, expandedView }: ProjectsProps) {
                   </p>
                 </div>
                 {project.showDesc && (
-                  <ul className="project__desc">
+                  <ul className={`project__desc ${HIDE_UNLESS_EXPANDED}`}>
                     {project.desc.map((desc, descIndex) => (
                       <li key={`desc-${descIndex}`} className="project__desc-entry">{desc}</li>
                     ))}
@@ -80,4 +72,4 @@ function Projects({ data, expandedView }: ProjectsProps) {
   );
 }
 
-export default Projects;
+export default React.memo(Projects);

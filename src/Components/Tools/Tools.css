@@ -9,4 +9,18 @@
 
 .tools__entries {
   color: var(--color-red);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tools__entry {
+  background-color: var(--resume-bg-color-alt, #f7f9fb);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
 }

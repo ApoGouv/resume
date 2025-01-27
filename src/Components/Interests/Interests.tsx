@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { HIDE_UNLESS_EXPANDED } from '@/constants';
 import '@/Components/Interests/Interests.css';
 
 type InterestEntryType = {
@@ -14,26 +14,28 @@ type InterestsType = {
 };
 
 export type InterestsProps = {
-  data: InterestsType;
+  interestsData: InterestsType;
 };
 
-function Interests({ data }: InterestsProps) {
-  const [interestsState, setInterestsState] = useState(data);
-
-  useEffect(() => {
-    setInterestsState({ ...data });
-  }, [data]);
-
-  const interestsNamesString = interestsState.entries
-    .map((interest) => interest.name)
-    .join(', ');
+function Interests({ interestsData }: InterestsProps) {
+  if (interestsData.isHidden) return null;
 
   return (
-    <section className="interests__section" id="interests">
+    <section className={`interests__section ${HIDE_UNLESS_EXPANDED}`} id="interests">
       <h2 className="interests__heading section-title">
-        {interestsState.sectionTitle}
+        {interestsData.sectionTitle}
       </h2>
-      <div className="interests__entries">{interestsNamesString}</div>
+      <ul className="interests__entries">
+        {interestsData.entries
+          .filter((interest) => !interest.isHidden)
+          .map((interest, index) => {
+            return (
+              <li key={`interest-${index}`} className="interests__entry">
+                {interest.name}
+              </li>
+            );
+          })}
+      </ul>
     </section>
   );
 }

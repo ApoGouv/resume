@@ -4,7 +4,7 @@
     "name": "Απόστολος Γουβάλας",
     "role": "Full-stack Web Developer",
     "overallExperienceStartDate": "2017-08-01",
-    "bio": "Full-stack προγραμματιστής με {{__YEARS_OF_EXPERIENCE__}} και πλέον χρόνια εμπειρίας σε PHP, SQL και JavaScript, μεταξύ άλλων γλωσσών. Με προσήλωση στη λεπτομέρεια και πάθος για την επίλυση προβλημάτων, είμαι έτοιμος να συνεισφέρω τις δεξιότητές μου σε δυναμικά και απαιτητικά έργα.",
+    "bio": "Με {{__YEARS_OF_EXPERIENCE__}} και πλέον χρόνια εμπειρίας σε PHP, SQL, JavaScript και άλλες γλώσσες, εξειδικεύομαι στη δημιουργία αποδοτικών λύσεων και στην επίλυση σύνθετων προβλημάτων με ιδιαίτερη προσοχή στη λεπτομέρεια.",
     "showBio": true,
     "contact": [
       {
@@ -28,14 +28,14 @@
       {
         "type": "website",
         "value": "Resume",
-        "isHidden": false,
+        "isHidden": true,
         "icon": "website",
         "link": "https://cubedesigns.gr"
       }
     ],
     "socials": {
       "isHidden": false,
-      "displayAsSection": true,
+      "displayAsSection": false,
       "sectionTitle": "SOCIAL",
       "entries": [
         {
@@ -53,7 +53,7 @@
         {
           "type": "StackOverflow",
           "value": "https://stackoverflow.com/users/4861651",
-          "isHidden": false,
+          "isHidden": true,
           "icon": "stackoverflow"
         },
         {
@@ -406,7 +406,7 @@
       },
       {
         "name": "Resume App",
-        "technologies": ["Vite", "React", "TypeScript", "CSS"],
+        "technologies": ["Vite", "React", "TypeScript", "CSS", "Playwright"],
         "showDesc": true,
         "desc": [
           "Δημιουργία μιας εφαρμογής βιογραφικού χρησιμοποιώντας σύγχρονες τεχνολογίες ιστού όπως Vite, React και TypeScript.",
@@ -479,7 +479,7 @@
             "issuedOn": "2017-09-11"
           },
           {
-            "isHidden": false,
+            "isHidden": true,
             "name": "JavaScript Essentials",
             "link": "https://www.udemy.com/certificate/UC-S1LFA6UL/",
             "issuedOn": "2017-08-14"
@@ -507,16 +507,19 @@
     "sectionTitle": "ΓΛΩΣΣΕΣ",
     "entries": [
       {
+        "isHidden": false,
         "language": "Ελληνικά",
         "rating": 5,
         "info": "Μητρική γλώσσα"
       },
       {
+        "isHidden": false,
         "language": "Αγγλικά",
         "rating": 4,
         "info": "Proficiency of Michigan & IELTS 7.5"
       },
       {
+        "isHidden": true,
         "language": "Ισπανικά",
         "rating": 1,
         "info": "A2 σε εξέλιξη"
@@ -526,7 +529,7 @@
   "tools": {
     "isHidden": false,
     "sectionTitle": "ΛΟΓΙΣΜΙΚΑ & ΕΡΓΑΛΕΙΑ",
-    "entries": ["VSCode", "Git", "Linux", "Windows", "cPanel", "etc."]
+    "entries": ["VSCode", "Git", "Linux", "Windows", "cPanel", "κ.α."]
   },
   "interests": {
     "isHidden": false,
@@ -548,7 +551,7 @@
         "isHidden": false
       },
       {
-        "name": "Rock μουσική",
+        "name": "Ροκ μουσική",
         "icon": "",
         "isHidden": false
       }

@@ -51,3 +51,10 @@ export const EXP_YEARS_PLACEHOLDER = '__YEARS_OF_EXPERIENCE__';
  * @constant
  */
 export const DATE_RANGE_SEPARATOR = ' - ';
+
+/**
+ * CSS class used to hide elements when the expanded view is not active.
+ * Typically applied to sections or components that should only appear in expanded view mode.
+ * @constant
+ */
+export const HIDE_UNLESS_EXPANDED = 'only-on-expanded';

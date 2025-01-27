@@ -82,7 +82,7 @@
 
 .resume__left,
 .resume__right {
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
 }
 
 /* Media query for mobile screens */
@@ -120,6 +120,15 @@
 .expanded-view .resume.resume-A4 {
   height: auto;
   overflow: visible;
+}
+
+
+.only-on-expanded {
+  display: none !important;
+}
+
+.expanded-view .only-on-expanded {
+  display: block !important;
 }
 
 /**

@@ -36,7 +36,7 @@
   --color-snow: #fffcff;
   --color-yellow: #ffba49;
 
-  --section-padding: 1.2rem 0 0.5rem;
+  --section-padding: 0.9375rem 0 0;
 
   --rs-trans-duration: 300ms;
   --rs-trans-duration-menu-item: 300ms;

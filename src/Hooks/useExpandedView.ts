@@ -1,17 +1,20 @@
 // Hooks\useExpandedView.ts
 import { useContext } from 'react';
-import { ThemeContext, ThemeContextType } from '@/Context/ThemeContext';
+import { ThemeContext } from '@/Context/ThemeContext';
 
-const useExpandedView = (): Pick<
-  ThemeContextType,
-  'expandedView' | 'toggleExpandedView'
-> => {
-  const { expandedView, toggleExpandedView } = useContext(
-    ThemeContext
-  ) as ThemeContextType;
+const useExpandedView = () => {
+  const context = useContext(ThemeContext);
 
-  if (expandedView === undefined || !toggleExpandedView) {
+  if (!context) {
     throw new Error('useExpandedView must be used within a ThemeProvider');
+  }
+
+  const { expandedView, toggleExpandedView } = context;
+
+  if (expandedView === undefined || typeof toggleExpandedView !== 'function') {
+    throw new Error(
+      'Invalid context values: expandedView or toggleExpandedView is missing'
+    );
   }
 
   return { expandedView, toggleExpandedView };

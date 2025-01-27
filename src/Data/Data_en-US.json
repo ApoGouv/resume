@@ -4,7 +4,7 @@
     "name": "Apostolos Gouvalas",
     "role": "Full-stack Web Developer",
     "overallExperienceStartDate": "2017-08-01",
-    "bio": "Full-stack developer with over {{__YEARS_OF_EXPERIENCE__}} years of experience in PHP, SQL, and JavaScript, among other languages. With attention to detail and a passion for problem-solving, I am eager to contribute my skills to dynamic and challenging projects.",
+    "bio": "With over {{__YEARS_OF_EXPERIENCE__}} years of experience in PHP, SQL, JavaScript, and other languages, I specialize in creating efficient solutions and tackling complex challenges with a keen eye for detail.",
     "showBio": true,
     "contact": [
       {
@@ -28,14 +28,14 @@
       {
         "type": "website",
         "value": "Resume",
-        "isHidden": false,
+        "isHidden": true,
         "icon": "website",
         "link": "https://cubedesigns.gr"
       }
     ],
     "socials": {
       "isHidden": false,
-      "displayAsSection": true,
+      "displayAsSection": false,
       "sectionTitle": "SOCIAL",
       "entries": [
         {
@@ -53,7 +53,7 @@
         {
           "type": "StackOverflow",
           "value": "https://stackoverflow.com/users/4861651/cubakos",
-          "isHidden": false,
+          "isHidden": true,
           "icon": "stackoverflow"
         },
         {
@@ -406,7 +406,7 @@
       },
       {
         "name": "Resume App",
-        "technologies": ["Vite", "React", "TypeScript", "CSS"],
+        "technologies": ["Vite", "React", "TypeScript", "CSS", "Playwright"],
         "showDesc": true,
         "desc": [
           "Built a resume app using modern web technologies such as Vite, React, and TypeScript.",
@@ -479,7 +479,7 @@
             "issuedOn": "2017-09-11"
           },
           {
-            "isHidden": false,
+            "isHidden": true,
             "name": "JavaScript Essentials",
             "link": "https://www.udemy.com/certificate/UC-S1LFA6UL/",
             "issuedOn": "2017-08-14"
@@ -507,16 +507,19 @@
     "sectionTitle": "LANGUAGES",
     "entries": [
       {
+        "isHidden": false,
         "language": "Greek",
         "rating": 5,
         "info": "Native language"
       },
       {
+        "isHidden": false,
         "language": "English",
         "rating": 4,
         "info": "Proficiency of Michigan & IELTS 7.5"
       },
       {
+        "isHidden": true,
         "language": "Spanish",
         "rating": 1,
         "info": "A2 in progress"

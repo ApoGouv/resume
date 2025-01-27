@@ -49,3 +49,16 @@
   flex-shrink: 0;
   white-space: nowrap;
 }
+
+#resume .resume__left .certificate__time.section__timeentry-time {
+  display: none;
+}
+
+#resume .resume__left .certificate__sub-certificates {
+  list-style: square;
+  padding-left: 1rem;
+}
+
+#resume .resume__left .certificate__sub-certificates ::marker {
+  color: var(--color-red);
+}

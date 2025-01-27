@@ -9,4 +9,17 @@
 
 .interests__entries {
   color: var(--color-red);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.interests__entry {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--resume-bg-color, #ffffff);
+  border-radius: 0.5rem;
 }

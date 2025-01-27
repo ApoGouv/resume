@@ -63,20 +63,42 @@ function Profile({ profileData }: ProfileProps) {
     useState(false);
 
   useEffect(() => {
-    const handleScrollUnderLeftSections = () => {
-      let totalLeftSectionsHeight = 0;
-      if (isNotMobile && expandedView) {
-        document
-          .querySelectorAll('.expanded-view .resume .resume__left section')
-          .forEach((currentSection) => {
-            totalLeftSectionsHeight += currentSection.scrollHeight;
-          });
+    let totalLeftSectionsHeight = 0;
 
-        setIsScrollUnderLeftSections(window.scrollY > totalLeftSectionsHeight);
+    const calculateTotalHeight = () => {
+      totalLeftSectionsHeight = 0;
+      document
+        .querySelectorAll('.expanded-view .resume .resume__left section')
+        .forEach((currentSection) => {
+          totalLeftSectionsHeight += currentSection.scrollHeight;
+        });
+    };
+
+    const handleScrollUnderLeftSections = () => {
+      if (isNotMobile && expandedView) {
+        if (totalLeftSectionsHeight === 0) {
+          // Only calculate once
+          calculateTotalHeight();
+        }
+
+        const isUnder = window.scrollY > totalLeftSectionsHeight;
+        setIsScrollUnderLeftSections((prev) => {
+          // Avoid redundant state updates
+          if (prev !== isUnder) {
+            return isUnder;
+          }
+          return prev;
+        });
       } else {
         setIsScrollUnderLeftSections(false);
       }
     };
+
+    if (isNotMobile && expandedView) {
+      // Initial calculation
+      calculateTotalHeight();
+    }
+
     window.addEventListener('scroll', handleScrollUnderLeftSections);
     return () =>
       window.removeEventListener('scroll', handleScrollUnderLeftSections);
@@ -85,14 +107,14 @@ function Profile({ profileData }: ProfileProps) {
   // fetch the current profile picture name [user can save more than one]
   const profileImage = profileData.image?.showImage ? ProfilePic : '';
 
-  const getBio = () => {
+  const bio = useMemo(() => {
     return replacePlaceholderWithYearDifference(
       profileData.bio,
       profileData.overallExperienceStartDate,
       false,
       appLocale
     );
-  };
+  }, [profileData.bio, profileData.overallExperienceStartDate, appLocale]);
 
   // Contact Component
   const Contact = ({ contact }: { contact: ContactType }) => {
@@ -141,7 +163,7 @@ function Profile({ profileData }: ProfileProps) {
     }
 
     return (
-      <div className="profile__contact" key={`contact-${contact.type}`}>
+      <div className="profile__contact">
         <div className={`profile__contact-icon ${contact.iconClass ?? ''}`}>
           {
             PROFILE_CONTACT_ICONS[
@@ -192,17 +214,17 @@ function Profile({ profileData }: ProfileProps) {
             <div className="profile__name">{profileData.name}</div>
             <div className="profile__role">{profileData.role}</div>
             {profileData.showBio && (
-              <div className="profile__bio">{getBio()}</div>
+              <div className="profile__bio">{bio}</div>
             )}
           </div>
         </div>
 
-        <div className={`profile__contacts-and-socials ${profileData.socials.displayAsSection ? 'with_sections' : 'with_section'}`}>
+        <div className={`profile__contacts-and-socials ${profileData.socials.displayAsSection ? 'with_sections' : 'without_sections'}`}>
           <div className="profile__contacts-wrapper">
             {profileData.contact
               .filter((contact) => !contact.isHidden)
-              .map((contact) => (
-                <Contact contact={contact} key={`contact-${contact.type}`} />
+              .map((contact, index) => (
+                <Contact contact={contact} key={`contact-${contact.type}-${index}`} />
               ))}
           </div>
 
@@ -215,8 +237,8 @@ function Profile({ profileData }: ProfileProps) {
 
             {profileData.socials.entries
               .filter((social) => !social.isHidden)
-              .map((social) => (
-                <Social social={social} key={`social-${social.type}`} />
+              .map((social, index) => (
+                <Social social={social} key={`social-${social.type}-${index}`} />
               ))}
           </div>
         </div>

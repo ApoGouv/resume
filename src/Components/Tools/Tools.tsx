@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import '@/Components/Tools/Tools.css';
 
 type ToolsType = {
@@ -8,22 +7,26 @@ type ToolsType = {
 };
 
 export type ToolsProp = {
-  data: ToolsType;
+  toolsData: ToolsType;
 };
 
-function Tools({ data }: ToolsProp) {
-  const [toolsState, setToolsState] = useState(data);
-
-  useEffect(() => {
-    setToolsState({ ...data });
-  }, [data]);
+function Tools({ toolsData }: ToolsProp) {
+  // Guard to avoid rendering unnecessary markup.
+  if (toolsData.isHidden) return null;
 
   return (
     <section className="tools__section" id="tools">
       <h2 className="interests__heading section-title">
-        {toolsState.sectionTitle}
+        {toolsData.sectionTitle}
       </h2>
-      <div className="tools__entries">{toolsState.entries.join(', ')}</div>
+      {/* <div className="tools__entries">{toolsData.entries.join(', ')}</div> */}
+      <ul className="tools__entries">
+        {toolsData.entries.map((tool, index) => (
+          <li key={`tool-${index}`} className="tools__entry">
+            {tool}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
