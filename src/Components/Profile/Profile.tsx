@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import useLocale from '@/Hooks/useLocale';
 import useExpandedView from '@/Hooks/useExpandedView';
 import useMediaQuery from '@/Hooks/useMediaQuery';
@@ -31,6 +31,7 @@ type SocialType = {
 };
 
 type SocialSectionType = {
+  displayAsSection: boolean;
   sectionTitle: string;
   isHidden: boolean;
   entries: SocialType[];
@@ -41,7 +42,7 @@ type ImageType = {
 };
 
 export type ProfileProps = {
-  data: {
+  profileData: {
     name: string;
     role: string;
     overallExperienceStartDate: string;
@@ -53,19 +54,14 @@ export type ProfileProps = {
   };
 };
 
-function Profile({ data }: ProfileProps) {
-  const [profileState, setProfileState] = useState(data);
-
-  useEffect(() => {
-    setProfileState({ ...data });
-  }, [data]);
-
+function Profile({ profileData }: ProfileProps) {
   const { appLocale } = useLocale();
   const { expandedView } = useExpandedView();
   const isNotMobile = useMediaQuery(`only screen and (min-width: 768px)`);
 
   const [isScrollUnderLeftSections, setIsScrollUnderLeftSections] =
     useState(false);
+
   useEffect(() => {
     const handleScrollUnderLeftSections = () => {
       let totalLeftSectionsHeight = 0;
@@ -87,16 +83,90 @@ function Profile({ data }: ProfileProps) {
   }, [expandedView, isNotMobile]);
 
   // fetch the current profile picture name [user can save more than one]
-  const profileImage = profileState.image?.showImage ? ProfilePic : '';
+  const profileImage = profileData.image?.showImage ? ProfilePic : '';
 
   const getBio = () => {
     return replacePlaceholderWithYearDifference(
-      profileState.bio,
-      profileState.overallExperienceStartDate,
+      profileData.bio,
+      profileData.overallExperienceStartDate,
       false,
       appLocale
     );
   };
+
+  // Contact Component
+  const Contact = ({ contact }: { contact: ContactType }) => {
+    let contactElement;
+    switch (contact.type) {
+      case 'email':
+        contactElement = (
+          <a
+            className="profile__email"
+            href={`mailto:${contact.value}`}
+            rel="noreferrer noopener"
+          >
+            {contact.value}
+          </a>
+        );
+        break;
+      case 'phone':
+        contactElement = (
+          <a
+            className="profile__phone"
+            href={`tel:${contact.value.replace(/\s+/g, '')}`}
+            rel="noreferrer noopener"
+          >
+            {contact.value}
+          </a>
+        );
+        break;
+      case 'website':
+        if ('link' in contact && contact.link) {
+          contactElement = (
+            <a
+              className="profile__website"
+              href={contact.link}
+              rel="noreferrer noopener"
+            >
+              {printUrl(contact.link)}
+            </a>
+          );
+        }
+        break;
+      default:
+        contactElement = (
+          <p className="profile__other-contact">{contact.value}</p>
+        );
+        break;
+    }
+
+    return (
+      <div className="profile__contact" key={`contact-${contact.type}`}>
+        <div className={`profile__contact-icon ${contact.iconClass ?? ''}`}>
+          {
+            PROFILE_CONTACT_ICONS[
+              contact.icon as keyof typeof PROFILE_CONTACT_ICONS
+            ]
+          }
+        </div>
+        <div className="profile__contact-text">{contactElement}</div>
+      </div>
+    );
+  };
+
+  // Social Component
+  const Social = ({ social }: { social: SocialType }) => (
+    <div className="profile__social">
+      <div className={`profile__social-icon ${social.iconClass ?? ''}`}>
+        {PROFILE_LINKS_ICONS[social.icon as keyof typeof PROFILE_LINKS_ICONS]}
+      </div>
+      <div className="profile__social-text">
+        <a href={social.value} target="_blank" rel="noreferrer noopener">
+          {printUrl(social.value)}
+        </a>
+      </div>
+    </div>
+  );
 
   return (
     <section
@@ -107,11 +177,11 @@ function Profile({ data }: ProfileProps) {
     >
       <div className="profile__container">
         <div className="profile__bio-and-pic">
-          {profileState.image?.showImage && (
+          {profileData.image?.showImage && (
             <div className="profile__picture-wrapper">
               <img
                 src={profileImage}
-                alt={`profile of ${profileState.name}`}
+                alt={`profile of ${profileData.name}`}
                 className="profile__picture"
                 width="160"
                 height="160"
@@ -119,114 +189,34 @@ function Profile({ data }: ProfileProps) {
             </div>
           )}
           <div className="profile__bio-wrapper">
-            <div className="profile__name">{profileState.name}</div>
-            <div className="profile__role">{profileState.role}</div>
-            {profileState.showBio && (
+            <div className="profile__name">{profileData.name}</div>
+            <div className="profile__role">{profileData.role}</div>
+            {profileData.showBio && (
               <div className="profile__bio">{getBio()}</div>
             )}
           </div>
         </div>
 
-        <div className="profile__contacts-and-socials">
+        <div className={`profile__contacts-and-socials ${profileData.socials.displayAsSection ? 'with_sections' : 'with_section'}`}>
           <div className="profile__contacts-wrapper">
-            {profileState.contact
+            {profileData.contact
               .filter((contact) => !contact.isHidden)
-              .map((contact) => {
-                let contactElement;
-
-                switch (contact.type) {
-                  case 'email':
-                    contactElement = (
-                      <a
-                        className="profile__email"
-                        href={`mailto:${contact.value}`}
-                        rel="noreferrer noopener"
-                      >
-                        {contact.value}
-                      </a>
-                    );
-                    break;
-                  case 'phone':
-                    contactElement = (
-                      <a
-                        className="profile__phone"
-                        href={`tel:${contact.value.replace(/\s+/g, '')}`}
-                        rel="noreferrer noopener"
-                      >
-                        {contact.value}
-                      </a>
-                    );
-                    break;
-                  case 'website':
-                    if ('link' in contact && contact.link) {
-                      contactElement = (
-                        <a
-                          className="profile__website"
-                          href={contact.link}
-                          rel="noreferrer noopener"
-                        >
-                          {printUrl(contact.link)}
-                        </a>
-                      );
-                    }
-                    break;
-                  default:
-                    contactElement = (
-                      <p className="profile__other-contact">{contact.value}</p>
-                    );
-                    break;
-                }
-                return (
-                  <div
-                    className="profile__contact"
-                    key={`contact-${contact.type}`}
-                  >
-                    <div
-                      className={`profile__contact-icon ${
-                        contact.iconClass ?? ''
-                      }`}
-                    >
-                      {
-                        PROFILE_CONTACT_ICONS[
-                          contact.icon as keyof typeof PROFILE_CONTACT_ICONS
-                        ]
-                      }
-                    </div>
-                    <div className="profile__contact-text">
-                      {contactElement}
-                    </div>
-                  </div>
-                );
-              })}
+              .map((contact) => (
+                <Contact contact={contact} key={`contact-${contact.type}`} />
+              ))}
           </div>
 
           <div className="profile__socials-wrapper">
-            <h2 className="profile__social-heading section-title">
-              {profileState.socials.sectionTitle}
-            </h2>
-            {profileState.socials.entries
+            {profileData.socials.displayAsSection && (
+              <h2 className="profile__social-heading section-title">
+                {profileData.socials.sectionTitle}
+              </h2>
+            )}
+
+            {profileData.socials.entries
               .filter((social) => !social.isHidden)
               .map((social) => (
-                <div className="profile__social" key={`social-${social.type}`}>
-                  <div
-                    className={`profile__social-icon ${social.iconClass ?? ''}`}
-                  >
-                    {
-                      PROFILE_LINKS_ICONS[
-                        social.icon as keyof typeof PROFILE_LINKS_ICONS
-                      ]
-                    }
-                  </div>
-                  <div className="profile__social-text">
-                    <a
-                      href={social.value}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      {printUrl(social.value)}
-                    </a>
-                  </div>
-                </div>
+                <Social social={social} key={`social-${social.type}`} />
               ))}
           </div>
         </div>
@@ -235,4 +225,4 @@ function Profile({ data }: ProfileProps) {
   );
 }
 
-export default Profile;
+export default React.memo(Profile);

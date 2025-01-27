@@ -59,7 +59,7 @@ function Resume({ data, locale, dark, expandedView }: ResumeProps) {
         data-rs-locale={locale}
       >
         <div className="resume__left">
-          <Profile data={profile} />
+          <Profile profileData={profile} />
           <Education data={education} />
           {!isMobile || isPrinting ? (
             <>

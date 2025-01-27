@@ -197,4 +197,8 @@
   #workExperience .workExp__work-desc {
     padding-left: 0.5rem;
   }
+
+  .expanded-view .resume .workExp__work-projects > ul {
+      margin-left: -1rem;
+  }
 }

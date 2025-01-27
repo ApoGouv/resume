@@ -20,21 +20,22 @@
         "icon": "phone"
       },
       {
+        "type": "address",
+        "value": "Thessaloniki, Greece",
+        "isHidden": false,
+        "icon": "address"
+      },
+      {
         "type": "website",
         "value": "Resume",
         "isHidden": false,
         "icon": "website",
         "link": "https://cubedesigns.gr"
-      },
-      {
-        "type": "address",
-        "value": "Thessaloniki, Greece",
-        "isHidden": false,
-        "icon": "address"
       }
     ],
     "socials": {
       "isHidden": false,
+      "displayAsSection": true,
       "sectionTitle": "SOCIAL",
       "entries": [
         {

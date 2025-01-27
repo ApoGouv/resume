@@ -39,6 +39,12 @@
   margin-top: 0.5rem;
 }
 
+.profile__contacts-and-socials.with_section > div {
+  padding: 0;
+  gap: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
 .profile__contacts-wrapper,
 .profile__socials-wrapper {
   display: flex;

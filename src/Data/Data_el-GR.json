@@ -20,21 +20,22 @@
         "icon": "phone"
       },
       {
+        "type": "address",
+        "value": "Θεσσαλονίκη, Ελλάδα",
+        "isHidden": false,
+        "icon": "address"
+      },
+      {
         "type": "website",
         "value": "Resume",
         "isHidden": false,
         "icon": "website",
         "link": "https://cubedesigns.gr"
-      },
-      {
-        "type": "address",
-        "value": "Θεσσαλονίκη, Ελλάδα",
-        "isHidden": false,
-        "icon": "address"
       }
     ],
     "socials": {
       "isHidden": false,
+      "displayAsSection": true,
       "sectionTitle": "SOCIAL",
       "entries": [
         {
@@ -51,7 +52,7 @@
         },
         {
           "type": "StackOverflow",
-          "value": "https://stackoverflow.com/users/4861651/cubakos",
+          "value": "https://stackoverflow.com/users/4861651",
           "isHidden": false,
           "icon": "stackoverflow"
         },

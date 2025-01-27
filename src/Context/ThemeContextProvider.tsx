@@ -56,12 +56,12 @@ function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   // Function to toggle the darkMode
   const toggleDarkMode = useCallback(() => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
-  }, []); // Empty dependency array as setAppLocale is a stable function
+  }, []); // Empty dependency array as setDarkMode is a stable function
 
   // Function to toggle the expandedView
   const toggleExpandedView = useCallback(() => {
     setExpandedView((prevExpandedView) => !prevExpandedView);
-  }, []); // Empty dependency array as setAppLocale is a stable function
+  }, []); // Empty dependency array as setExpandedView is a stable function
 
   // Update local storage on appLocale change
   useEffect(() => {
