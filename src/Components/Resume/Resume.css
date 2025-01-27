@@ -57,7 +57,8 @@
 
 .resume {
   display: grid;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 0.8fr 1fr;
+  grid-template-columns: 45% 55%;
   background-color: var(--resume-bg-color, #ffffff);
   box-shadow: 0 0 8px rgb(13 12 12 / 15%);
   border: 1px solid var(--color-snow, #fffcff);
