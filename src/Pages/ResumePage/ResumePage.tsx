@@ -1,6 +1,6 @@
 // Pages/ResumePage/ResumePage.tsx
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { EL_LOCALE, EN_LOCALE } from '@/constants';
 import SEO from '@/Components/Seo/SEO';
 import Menu from '@/Components/Menu/Menu';
@@ -11,36 +11,12 @@ import useLocale from '@/Hooks/useLocale';
 import useExpandedView from '@/Hooks/useExpandedView';
 import useDarkMode from '@/Hooks/useDarkMode';
 import usePrintStatus from '@/Hooks/usePrintStatus';
+import useBodyClassManager from '@/Hooks/useBodyClassManager';
 
 import userDataElGR from '@/Data/Data_el-GR.json';
 import userDataEnUS from '@/Data/Data_en-US.json';
 import { displayTypeTypes } from '@/Components/Certificates/Certificates';
 import '@/Pages/ResumePage/ResumePage.css';
-
-// // Function to sanitize certificate entries
-// const sanitizeCertificates = (entries: CertificateDetailsType[]) => {
-//   return entries.map((entry) => ({
-//     ...entry,
-//     displayType: entry.displayType as displayTypeTypes,
-//   }));
-// };
-
-// // Pre-sanitize both sets of data
-// const sanitizedUserDataEnUS = {
-//   ...userDataEnUS,
-//   certificates: {
-//     ...userDataEnUS.certificates,
-//     entries: sanitizeCertificates(userDataEnUS.certificates.entries as CertificateDetailsType[]),
-//   },
-// };
-
-// const sanitizedUserDataElGR = {
-//   ...userDataElGR,
-//   certificates: {
-//     ...userDataElGR.certificates,
-//     entries: sanitizeCertificates(userDataElGR.certificates.entries as CertificateDetailsType[]),
-//   },
-// };
 
 const sanitizedUserDataEnUS = {
   ...userDataEnUS,
@@ -68,11 +44,11 @@ const sanitizedUserDataElGR = {
   },
 };
 
-
 function ResumePage() {
   const { appLocale, setLocale } = useLocale();
   const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
+  const location = useLocation();
   
   const [state, setState] = useState(
     appLocale === EN_LOCALE ? sanitizedUserDataEnUS : sanitizedUserDataElGR
@@ -100,15 +76,16 @@ function ResumePage() {
 
   useEffect(() => {
     // Determine the initial locale based on the URL
-    if (
-      window.location.hash === `#/en` ||
-      window.location.hash.startsWith(`#/en/`)
-    ) {
-      setLocale(EN_LOCALE);
-    } else {
-      setLocale(EL_LOCALE);
+    const localeFromUrl = location.pathname.startsWith('/en') ? EN_LOCALE : EL_LOCALE;
+    setLocale(localeFromUrl);
+
+    // Check if both conditions are true for forced redirect
+    const pathnameAfterResume = window.location.pathname.replace("/resume/", "");
+    if (window.location.hash === "" && pathnameAfterResume !== "") {
+      // Clean the URL and redirect to the 404 page if both conditions are met
+      window.location.replace("/resume/#/404");
     }
-  }, [setLocale]);
+  }, [location, setLocale]);
 
 
   useEffect(() => {
@@ -124,32 +101,8 @@ function ResumePage() {
     }
   }, [appLocale]);
 
-  useEffect(() => {
-    // Handle dark mode change
-    const { body } = document;
-    if (darkMode && !isPrinting) {
-      body.classList.add('dark-mode');
-    } else {
-      body.classList.remove('dark-mode');
-    }
-
-    // Handle expanding view mode change
-    if (expandedView && !isPrinting) {
-      body.classList.add('expanded-view');
-    } else {
-      body.classList.remove('expanded-view');
-    }
-
-    // Handle printing mode change
-    if (isPrinting) {
-      body.classList.remove('expanded-view');
-      body.classList.remove('dark-mode');
-
-      body.classList.add('printing-mode');
-    } else {
-      body.classList.remove('printing-mode');
-    }
-  }, [darkMode, isPrinting, expandedView]);
+  // Manage body classes
+  useBodyClassManager(darkMode, expandedView, isPrinting);
 
   const { profile } = state;
 
@@ -163,6 +116,7 @@ function ResumePage() {
         locale={appLocale}
       />
       <Routes>
+        {/* Valid Locale Routes */}
         <Route
           path="/"
           element={
@@ -189,6 +143,8 @@ function ResumePage() {
             </>
           }
         />
+
+        {/* Fallback for invalid paths */}
         <Route
           path="*"
           element={<Error404Page locale={appLocale} dark={darkMode} />}
