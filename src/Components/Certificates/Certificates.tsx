@@ -16,6 +16,9 @@ export type SubCertificatesType = {
   issuedOn: string;
 };
 
+// Determines what to display
+export type displayTypeTypes = 'subsOnly' | 'parentOnly' | 'both';
+
 export type CertificateDetailsType = {
   isHidden: boolean;
   org: string;
@@ -23,7 +26,7 @@ export type CertificateDetailsType = {
   valid: ValidityType;
   showLink: boolean;
   link: string | null;
-  displayType: 'subsOnly' | 'parentOnly' | 'both'; // Determines what to display
+  displayType: displayTypeTypes; 
   subs: SubCertificatesType[];
 };
 
