@@ -122,6 +122,9 @@
   overflow: visible;
 }
 
+.expanded-view .resume__right {
+  padding-bottom: 0.9375rem;
+}
 
 .only-on-expanded {
   display: none !important;
