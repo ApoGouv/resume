@@ -80,4 +80,4 @@ function Certificates({ certificatesData }: CertificatesProps) {
   );
 }
 
-export default Certificates;
+export default React.memo(Certificates);
