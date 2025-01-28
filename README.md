@@ -11,16 +11,14 @@ The app features a responsive design, providing a one-page layout with dimension
 - [x] **Light and Dark Mode** 🌞/🌕: Seamlessly switch between light and dark themes for optimal readability.
 - [x] **Multilingual Support** 🇬🇷/🇺🇸: Available in Greek and English languages.
 - [x] **PDF Downloads** 📄: Easily download resume in pdf format in two variations (colored and grayscale) for each supported language.
-- [x] **Quick Print** 🖨️: Conveniently print your resume with a single click.
+- [x] **Quick Print** 🖨️: Conveniently print the resume with a single click.
 - [x] **Mobile Tweaks** 🎛️ : Conditionally change render order of components on mobile devices.
 - [x] **Local Google Fonts** ℹ️ : We load Google Fonts locally to improve page loading times and avoid flashes of unstyled text (FOUT).
-- [x] **Expanded View** ℹ️ : Menu button that enable or disable the Expanded View (EV). During EV, we reveal more information regarding projects in a particular work. Also we make the profile as sticky when EV is enabled and we are on desktop. Finally, EV is not available when printing.
-- [x] **Routing** 🔖 Added second locale (en-US) to it's own route `/en` and introduced 404 error documents for non specified routes. With separate routes by locale we can now share and/or bookmark the resume to specific locale.
+- [x] **Expanded View** ℹ️ : Menu button that enable or disable the Expanded View (EV). During EV, we reveal more information regarding projects in a particular work and also for personal projects. We also reveal Hobbies section. Furthermore, we make the profile as sticky when EV is enabled and we are on desktop. Finally, EV is not available when printing.
+- [x] **Routing** 🔖 Added second locale (en-US) to it's own route `/en` and introduced 404 error documents for non specified routes. With separate routes by locale we can now share and/or bookmark the resume to specific locale. As a side note here, we are using react-router's HashRouter because the default Router is not working on github pages where we host the app.
 
 ## Todo 📝
 
-- [-] Expanded View (EV) Additions
-  - [ ] Consider revealing additional components like projects to showcase personal projects and achievements.
 - [ ] Add social media meta tags for Facebook and Twitter to improve the shareability and visibility of the resume.
 - [ ] Make it offline ready (PWA).
 - [ ] Add test coverage by implementing Vitest for comprehensive testing of the application.
@@ -68,7 +66,7 @@ The app features a responsive design, providing a one-page layout with dimension
   ```
 3. Modify the `.json` files located in `./src/Data` with your personal information.
 
-> Some sections/entries in the data files are omitted from rendering. **This is by design as I wanted to fit the basic information on one page**. However, there will be a future version that will display all `non-hidden` entries upon request, for online view*. The PDFs will still be in the one-page version.
+> Some sections/entries in the data files are omitted from rendering. **This is by design as I wanted to fit the basic information on one page**. However, we can display all `non-hidden` entries upon request, via the Expanded-View, for online view*. The PDFs remain in the one-page version.
 
 
 ### Running the app 🚀
