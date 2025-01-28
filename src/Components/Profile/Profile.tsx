@@ -3,7 +3,7 @@ import useLocale from '@/Hooks/useLocale';
 import useExpandedView from '@/Hooks/useExpandedView';
 import useMediaQuery from '@/Hooks/useMediaQuery';
 import { replacePlaceholderWithYearDifference } from '@/Utils/dates';
-import { printUrl } from '@/Utils/strings';
+import { printUrl, sanitizeIntlPhoneNumber, formatIntlPhoneNumber } from '@/Utils/strings';
 import {
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
@@ -135,10 +135,10 @@ function Profile({ profileData }: ProfileProps) {
         contactElement = (
           <a
             className="profile__phone"
-            href={`tel:${contact.value.replace(/\s+/g, '')}`}
+            href={`tel:${sanitizeIntlPhoneNumber(contact.value)}`}
             rel="noreferrer noopener"
           >
-            {contact.value}
+            {formatIntlPhoneNumber(contact.value)}
           </a>
         );
         break;

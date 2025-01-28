@@ -135,3 +135,61 @@ export const printUrl = (url: string): string => {
 export const normalizeUrl = (url: string): string => {
   return `/${url.split('/').filter(Boolean).join('/')}`;
 };
+
+/**
+ * Sanitizes a phone number to retain only digits and the leading '+' for international numbers.
+ *
+ * This function removes all characters except digits and a leading '+'.
+ *
+ * @param {string} phoneNumber - The phone number to sanitize.
+ * @returns {string} - The sanitized phone number.
+ *
+ * @example
+ * // returns '+301234567890'
+ * sanitizeIntlPhoneNumber('+30 (123) 456-7890');
+ *
+ * @example
+ * // returns '301234567890'
+ * sanitizeIntlPhoneNumber('30 (123) 456-7890');
+ */
+export const sanitizeIntlPhoneNumber = (phoneNumber: string): string => {
+  return phoneNumber.replace(/[^\d+]/g, '');
+};
+
+/**
+ * Formats a sanitized international phone number into a more readable format.
+ *
+ * This function assumes the phone number is already sanitized and begins with a '+' if it's international.
+ * It splits the number into groups for display (e.g., country code, area code, and remaining digits).
+ *
+ * @param {string} phoneNumber - The sanitized phone number to format.
+ * @returns {string} - The formatted phone number.
+ *
+ * @example
+ * // returns '+30 123 456 7890'
+ * formatIntlPhoneNumber('+301234567890');
+ *
+ * @example
+ * // returns '123 456 7890'
+ * formatIntlPhoneNumber('1234567890');
+ */
+export const formatIntlPhoneNumber = (phoneNumber: string): string => {
+  const sanitized = sanitizeIntlPhoneNumber(phoneNumber);
+
+  // Match international numbers starting with '+' and group the digits
+  const match: RegExpMatchArray | null = sanitized.match(/^\+(\d{2})(\d{3})(\d{3})(\d{4})$/);
+  if (match !== null) {
+    let [, countryCode, part1, part2, part3] = match as [string, string, string, string, string];
+    return `+${countryCode} ${part1} ${part2} ${part3}`;
+  }
+
+  // Match local numbers without a '+'
+  const localMatch: RegExpMatchArray | null = sanitized.match(/^(\d{3})(\d{3})(\d{4})$/);
+  if (localMatch !== null) {
+    let [, part1, part2, part3] = localMatch as [string, string, string, string];
+    return `${part1} ${part2} ${part3}`;
+  }
+
+  // If unable to format, return the original sanitized number
+  return sanitized;
+};
