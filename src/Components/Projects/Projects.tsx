@@ -23,12 +23,15 @@ export type ProjectsProps = {
 };
 
 function Projects({ projectsData }: ProjectsProps) {
-  if (projectsData.isHidden) return null;
-  
-  const filteredProjects = useMemo(
-      () => projectsData.entries.filter((project) => !project.isHidden),
-      [projectsData.entries]
-    );
+  const filteredProjects = useMemo(() => {
+    if (projectsData.isHidden) {
+      return [];
+    }
+    return projectsData.entries.filter(project => !project.isHidden);
+  }, [projectsData.isHidden, projectsData.entries]);
+
+  // Return null if no filtered projects
+  if (!filteredProjects.length) return null;
 
   return (
     <section className="projects__section" id="projects">

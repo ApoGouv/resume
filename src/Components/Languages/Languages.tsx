@@ -19,13 +19,15 @@ export type LanguagesProp = {
 };
 
 function Languages({ languagesData }: LanguagesProp) {
-  // Guard to avoid rendering unnecessary markup.
-  if (languagesData.isHidden) return null;
+  const filteredLanguages = useMemo(() => {
+    if (languagesData.isHidden) {
+      return [];
+    }
+    return languagesData.entries.filter(lang => !lang.isHidden);
+  }, [languagesData.isHidden, languagesData.entries]);
 
-  const filteredLanguages = useMemo(
-    () => languagesData.entries.filter((lang) => !lang.isHidden),
-    [languagesData.entries]
-  );
+  // Return null if no filtered languages
+  if (!filteredLanguages.length) return null;
 
   return (
     <section className="languages__section" id="languages">

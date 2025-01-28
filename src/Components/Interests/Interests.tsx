@@ -19,12 +19,15 @@ export type InterestsProps = {
 };
 
 function Interests({ interestsData }: InterestsProps) {
-  if (interestsData.isHidden) return null;
+  const filteredInterests = useMemo(() => {
+    if (interestsData.isHidden) {
+      return [];
+    }
+    return interestsData.entries.filter(interest => !interest.isHidden);
+  }, [interestsData.isHidden, interestsData.entries]);
 
-  const filteredInterests = useMemo(
-    () => interestsData.entries.filter(interest => !interest.isHidden),
-    [interestsData.entries]
-  );
+  // Return null if no filtered interests
+  if (!filteredInterests.length) return null;
 
   return (
     <section className={`interests__section ${HIDE_UNLESS_EXPANDED}`} id="interests">
