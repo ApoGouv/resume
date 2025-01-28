@@ -11,11 +11,12 @@ import Projects, { ProjectsProps } from '@/Components/Projects/Projects';
 import isEmpty from '@/Utils/isEmpty';
 import useMediaQuery from '@/Hooks/useMediaQuery';
 import usePrintStatus from '@/Hooks/usePrintStatus';
+import { FALLBACK_NAME } from '@/constants';
 
 import '@/Components/Resume/Resume.css';
 
 type ResumeProps = {
-  data: {
+  resumeData: {
     profile: ProfileProps['profileData'];
     workExperience: WorkExperienceProps['workExperienceData'];
     education: EducationProps['educationData'];
@@ -29,7 +30,7 @@ type ResumeProps = {
   dark: boolean;
 };
 
-function Resume({ data, locale, dark }: ResumeProps) {
+function Resume({ resumeData, locale, dark }: ResumeProps) {
   const {
     profile,
     workExperience,
@@ -39,10 +40,45 @@ function Resume({ data, locale, dark }: ResumeProps) {
     tools,
     interests,
     projects,
-  } = data;
+  } = resumeData;
 
   const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
   const isPrinting = usePrintStatus();
+
+  type SectionData = {
+    isHidden?: boolean;
+    entries?: unknown[];
+  };
+
+  const shouldRenderSection = <T extends SectionData>(
+    sectionData: T
+  ): boolean => {
+    return Boolean(sectionData && !sectionData.isHidden && !isEmpty(sectionData.entries));
+  };
+
+  const leftContent = !isMobile || isPrinting
+    ? <>
+        {!certificates.isHidden && <Certificates certificatesData={certificates} />}
+        {shouldRenderSection(languages) && <Languages languagesData={languages} />}
+        {shouldRenderSection(interests) && <Interests interestsData={interests} />}
+      </>
+    : <>
+        <WorkExperience workExperienceData={workExperience} />
+        {!projects.isHidden && <Projects projectsData={projects} />}
+        {!certificates.isHidden && <Certificates certificatesData={certificates} />}
+      </>;
+
+  const rightContent = !isMobile || isPrinting
+  ? <>
+      <WorkExperience workExperienceData={workExperience} />
+      {!projects.isHidden && <Projects projectsData={projects} />}
+      {shouldRenderSection(tools) && <Tools toolsData={tools} />}
+    </>
+  : <>
+      {shouldRenderSection(tools) && <Tools toolsData={tools} />}
+      {shouldRenderSection(languages) && <Languages languagesData={languages} />}
+      {shouldRenderSection(interests) && <Interests interestsData={interests} />}
+    </>;
 
   return (
     <main
@@ -54,52 +90,16 @@ function Resume({ data, locale, dark }: ResumeProps) {
         className="resume resume-A4"
         id="resume"
         data-rs-id="rs-resume"
-        data-rs-name={`${profile?.name ?? 'Απόστολος Γουβάλας'}`}
+        data-rs-name={`${profile?.name ?? FALLBACK_NAME}`}
         data-rs-locale={locale}
       >
         <div className="resume__left">
           <Profile profileData={profile} />
           <Education educationData={education} />
-          {!isMobile || isPrinting ? (
-            <>
-              {!certificates.isHidden && <Certificates certificatesData={certificates} />}
-              {!isEmpty(languages.entries) && !languages.isHidden && (
-                <Languages languagesData={languages} />
-              )}
-              {!isEmpty(interests.entries) && !interests.isHidden && (
-                <Interests interestsData={interests} />
-              )}
-            </>
-          ) : (
-            <>
-              <WorkExperience workExperienceData={workExperience} />
-              {!projects.isHidden && <Projects projectsData={projects} />}
-              {!certificates.isHidden && <Certificates certificatesData={certificates} />}
-            </>
-          )}
+          {leftContent}
         </div>
         <div className="resume__right">
-          {!isMobile || isPrinting ? (
-            <>
-              <WorkExperience workExperienceData={workExperience} />
-              {!projects.isHidden && <Projects projectsData={projects} />}
-              {!isEmpty(tools.entries) && !tools.isHidden && (
-                <Tools toolsData={tools} />
-              )}
-            </>
-          ) : (
-            <>
-              {!isEmpty(tools.entries) && !tools.isHidden && (
-                <Tools toolsData={tools} />
-              )}
-              {!isEmpty(languages.entries) && !languages.isHidden && (
-                <Languages languagesData={languages} />
-              )}
-              {!isEmpty(interests.entries) && !interests.isHidden && (
-                <Interests interestsData={interests} />
-              )}
-            </>
-          )}
+          {rightContent}
         </div>
       </div>
     </main>
