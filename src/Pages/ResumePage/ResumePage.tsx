@@ -14,14 +14,68 @@ import usePrintStatus from '@/Hooks/usePrintStatus';
 
 import userDataElGR from '@/Data/Data_el-GR.json';
 import userDataEnUS from '@/Data/Data_en-US.json';
+import { displayTypeTypes } from '@/Components/Certificates/Certificates';
 import '@/Pages/ResumePage/ResumePage.css';
+
+// // Function to sanitize certificate entries
+// const sanitizeCertificates = (entries: CertificateDetailsType[]) => {
+//   return entries.map((entry) => ({
+//     ...entry,
+//     displayType: entry.displayType as displayTypeTypes,
+//   }));
+// };
+
+// // Pre-sanitize both sets of data
+// const sanitizedUserDataEnUS = {
+//   ...userDataEnUS,
+//   certificates: {
+//     ...userDataEnUS.certificates,
+//     entries: sanitizeCertificates(userDataEnUS.certificates.entries as CertificateDetailsType[]),
+//   },
+// };
+
+// const sanitizedUserDataElGR = {
+//   ...userDataElGR,
+//   certificates: {
+//     ...userDataElGR.certificates,
+//     entries: sanitizeCertificates(userDataElGR.certificates.entries as CertificateDetailsType[]),
+//   },
+// };
+
+const sanitizedUserDataEnUS = {
+  ...userDataEnUS,
+  certificates: {
+    ...userDataEnUS.certificates,
+    entries: userDataEnUS.certificates.entries.map((entry) => ({
+      ...entry,
+      // Directly assert the 'displayType' property as 'displayTypeTypes' to enforce the correct type.
+      // This ensures type compatibility and fixes the TypeScript error related to the 'displayType' property.
+      displayType: entry.displayType as displayTypeTypes,
+    })),
+  },
+};
+
+const sanitizedUserDataElGR = {
+  ...userDataElGR,
+  certificates: {
+    ...userDataElGR.certificates,
+    entries: userDataElGR.certificates.entries.map((entry) => ({
+      ...entry,
+      // Directly assert the 'displayType' property as 'displayTypeTypes' to enforce the correct type.
+      // This ensures type compatibility and fixes the TypeScript error related to the 'displayType' property.
+      displayType: entry.displayType as displayTypeTypes,
+    })),
+  },
+};
+
 
 function ResumePage() {
   const { appLocale, setLocale } = useLocale();
   const { expandedView, toggleExpandedView } = useExpandedView();
   const { darkMode } = useDarkMode();
+  
   const [state, setState] = useState(
-    appLocale === EN_LOCALE ? userDataEnUS : userDataElGR
+    appLocale === EN_LOCALE ? sanitizedUserDataEnUS : sanitizedUserDataElGR
   );
 
   // const isPrinting = usePrintStatus();
@@ -64,9 +118,9 @@ function ResumePage() {
 
     // Update state when appLocale changes
     if (appLocale === EN_LOCALE) {
-      setState({ ...userDataEnUS });
+      setState(sanitizedUserDataEnUS);
     } else {
-      setState({ ...userDataElGR });
+      setState(sanitizedUserDataElGR);
     }
   }, [appLocale]);
 
@@ -99,8 +153,6 @@ function ResumePage() {
 
   const { profile } = state;
 
-  // console.log(`${appLocale} - state: `, state);
-
   return (
     <>
       <SEO
@@ -116,7 +168,11 @@ function ResumePage() {
           element={
             <>
               <Menu name={profile.name} />
-              <Resume data={state} locale={appLocale} dark={darkMode} />
+              <Resume 
+                resumeData={state}
+                locale={appLocale} 
+                dark={darkMode}
+              />
             </>
           }
         />
@@ -125,7 +181,11 @@ function ResumePage() {
           element={
             <>
               <Menu name={profile.name} />
-              <Resume data={state} locale={appLocale} dark={darkMode} />
+              <Resume 
+                resumeData={state}
+                locale={appLocale} 
+                dark={darkMode}
+              />
             </>
           }
         />
