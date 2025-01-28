@@ -12,20 +12,32 @@ import '@fontsource/lato/900.css';
 import '@/index.css';
 import reportWebVitals from '@/Utils/reportWebVitals';
 
+const resumeAppInDev = import.meta.env?.DEV ?? false;
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(
-  <React.StrictMode>
+
+if (resumeAppInDev) {
+  root.render(
+    <React.StrictMode>
       <ThemeProvider>
         <HashRouter>
           <ResumePage />
         </HashRouter>
       </ThemeProvider>
-  </React.StrictMode>
-);
+    </React.StrictMode>
+  );
+} else {
+  root.render(
+    <ThemeProvider>
+      <HashRouter>
+        <ResumePage />
+      </HashRouter>
+    </ThemeProvider>
+  );
+}
 
-const resumeAppInDev = import.meta.env?.DEV ?? false;
 if (resumeAppInDev) {
   // If you want to start measuring performance in your app, pass a function
   // to log results (for example: reportWebVitals(console.log))
