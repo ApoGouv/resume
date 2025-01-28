@@ -1,6 +1,13 @@
 // src/constants.ts
 
 /**
+ * Fallback name to be used when the profile name is not available.
+ * This is used in the Resume component to ensure there is always a name to display.
+ * @constant
+ */
+export const FALLBACK_NAME = 'Απόστολος Γουβάλας';
+
+/**
  * The default base URL of the app.
  * We use it in ThemeContext and date functions that have locale.
  * @constant
