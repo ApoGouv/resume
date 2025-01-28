@@ -15,7 +15,7 @@
       },
       {
         "type": "phone",
-        "value": "+30-697 8811 469",
+        "value": "+306978811469",
         "isHidden": false,
         "icon": "phone"
       },
@@ -409,9 +409,9 @@
         "technologies": ["Vite", "React", "TypeScript", "CSS", "Playwright"],
         "showDesc": true,
         "desc": [
-          "Δημιουργία μιας εφαρμογής βιογραφικού χρησιμοποιώντας σύγχρονες τεχνολογίες ιστού όπως Vite, React και TypeScript.",
+          "Δημιουργία μιας εφαρμογής βιογραφικού με τη χρήση σύγχρονων τεχνολογιών ιστού όπως Vite, React και TypeScript.",
           "Εστίαση στη δημιουργία ενός responsive και δυναμικού σχεδίου με custom CSS για να προβληθούν οι επαγγελματικές μου εμπειρίες και δεξιότητες.",
-          "Ενσωμάτωση διαφόρων χαρακτηριστικών όπως εκτύπωση, λήψη PDF και δυνατότητα 'expanded view' για εμφάνιση επιπλέον λεπτομερειών για τα εταιρικά και προσωπικά έργα."
+          "Ενσωμάτωση διάφορων χαρακτηριστικών όπως εκτύπωση, λήψη PDF και δυνατότητα 'expanded view' για εμφάνιση επιπλέον λεπτομερειών για τα εταιρικά και προσωπικά έργα."
         ],
         "link": "https://apogouv.github.io/resume/",
         "isHidden": false
@@ -421,7 +421,7 @@
         "technologies": ["Vite", "Vue.js", "TypeScript", "Tailwind", "CSS", "IndexedDB", "Python"],
         "showDesc": true,
         "desc": [
-          "Ανάπτυξη εφαρμογής επικύρωσης λέξεων και εύρεσης αναγραμματισμών για το Scrabble χρησιμοποιώντας Vue.js, TypeScript και Tailwind.",
+          "Ανάπτυξη εφαρμογής επικύρωσης λέξεων και εύρεσης αναγραμματισμών για το Scrabble με τη χρήση Vue.js, TypeScript και Tailwind.",
           "Χρήση IndexedDB για αποθήκευση και ανάκτηση λιστών λέξεων για αποδοτική αναζήτηση.",
           "Χρήση Python για προετοιμασία δεδομένων και βελτίωση της απόδοσης της αναζήτησης."
         ],
@@ -437,7 +437,7 @@
       {
         "isHidden": false,
         "org": "Udemy",
-        "name": "JavaScript, React, Node.js, PHP, κ.α.",
+        "name": "JavaScript, React, Node.js, PHP, κ.ά.",
         "valid": {
           "from": "2017-08",
           "to": "present",
