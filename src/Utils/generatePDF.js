@@ -35,7 +35,7 @@ async function extractFullNameAndLocaleFromTitle(page) {
 
 async function extractFullNameAndLocaleFromResume(page) {
   console.log(' 🚀 extractFullNameAndLocaleFromResume > running...');
-  const resumeLocator = await page.getByTestId('rs-resume');
+  const resumeLocator = await page.getByTestId('rs-resume').first();
 
   if (!resumeLocator) {
     throw new Error('Resume element not found on the page.');
@@ -191,10 +191,11 @@ async function saveCurrentPageToPDF(page) {
  * @param {number} [options.onPort=5173] - The port number for the development server.
  * @returns {Promise<number>} A promise that resolves to 0 when the PDF generation is complete.
  */
-const generatePDF = async ({ runDevServer = false, onPort = 5173 }) => {
+const generatePDF = async ({ runDevServer = false, onPort = 5173, onBaseURL = '/'}) => {
   console.log(' 🏁 generatePDF > running...');
 
   let port = onPort;
+  let baseURL = onBaseURL;
 
   // If runDevServer flag is true, start a Vite server and return
   let viteServer = null;
@@ -205,6 +206,10 @@ const generatePDF = async ({ runDevServer = false, onPort = 5173 }) => {
     viteServer.printUrls();
 
     port = viteServer.config.server.port;
+
+    baseURL = viteServer.config.base;
+
+    // console.log({'viteConf': viteServer.config});
   }
 
   // Set custom attribute name to be used in page.getByTestId(testId). data-testid is used by default.
@@ -216,9 +221,9 @@ const generatePDF = async ({ runDevServer = false, onPort = 5173 }) => {
 
   // Navigate to our resume page
   console.log(
-    `    👉 generatePDF > navigating to page URL: http://localhost:${port}`
+    `    👉 generatePDF > navigating to page URL: http://localhost:${port}${baseURL}`
   );
-  await page.goto(`http://localhost:${port}`);
+  await page.goto(`http://localhost:${port}${baseURL}`);
 
   // Set a timeout for page methods
   const methodsTimeout = 3000; // ms = 3 sec.
