@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EN_LOCALE, EL_LOCALE } from '@/constants';
 import useLocale from '@/Hooks/useLocale';
@@ -13,7 +13,7 @@ import { normalizeUrl } from '@/Utils/strings';
 import '@/Components/Menu/Menu.css';
 
 // Define type for localized strings
-type LocalizedStrings = {
+type LocalizedStringsType = {
   [key: string]: {
     print: string;
     downloadPdfsWrapper: string;
@@ -39,39 +39,17 @@ function Menu({ name }: MenuProps) {
   const resumeVersion = useVersion();
   const isMobile = useMediaQuery(`only screen and (max-width: 767.99px)`);
 
-  const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
-
   const [showPdfButtons, setShowPdfButtons] = useState<boolean>(false);
 
-  const togglePdfButtons = () => {
-    setShowPdfButtons((prevState) => !prevState);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-
-    if (
-      !target.closest('.menu-pdfs-resume') && // If the click is outside the button container
-      showPdfButtons
-    ) {
-      setShowPdfButtons(false); // Hide the PDF buttons
-    }
-  };
-
-  // Hide PDF buttons when clicking outside
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [showPdfButtons]);
+  // const [loadingPdf, setLoadingPdf] = useState<boolean>(false);
+  const loadingPdfRef = useRef(false);
 
   const languageIconKey = getOppositeLocaleIconKey(appLocale);
   const expandedViewIconKey = expandedView ? 'less_details' : 'more_details';
   const darkModeIconKey = darkMode ? 'sun' : 'moon';
 
   // Define dictionary for localized strings
-  const localizedStrings = useMemo(() => ({
+  const localizedStrings = useMemo<LocalizedStringsType>(() => ({
     [EN_LOCALE]: {
       print: 'Print resume',
       downloadPdfsWrapper:
@@ -99,12 +77,31 @@ function Menu({ name }: MenuProps) {
       } σκούρου θέματος`,
       bio: 'Βιογραφικό',
     },
-  }), [appLocale, expandedView, darkMode]);
+  }), [expandedView, darkMode]);
+
+  const togglePdfButtons = () => {
+    setShowPdfButtons((prevState) => !prevState);
+  };
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.menu-pdfs-resume') && showPdfButtons) {
+      setShowPdfButtons(false);
+    }
+  }, [showPdfButtons]);
+
+  // Hide PDF buttons when clicking outside
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [handleClickOutside]);
 
   const handlePrintButtonClick = () => {
     /**
      * On mobile the window.print() is printing the mobile version
-     * which is not print friendly.
+     * which is not print friendly. Thus we trigger the print PDF.
      */
     if (isMobile) {
       const printPdfButton = document.querySelector(
@@ -128,7 +125,9 @@ function Menu({ name }: MenuProps) {
   };
 
   const handlePdfButtonClick = (bnw = false) => {
-    setLoadingPdf(true);
+    if (loadingPdfRef.current) return; // Prevent multiple downloads
+
+    loadingPdfRef.current = true;
     try {
       const pdfName = `${name.replace(/\s+/g, '-')}-${
         localizedStrings[appLocale].bio
@@ -160,7 +159,7 @@ function Menu({ name }: MenuProps) {
     } catch (error) {
       console.error('Error downloading PDF:', error);
     } finally {
-      setLoadingPdf(false);
+      loadingPdfRef.current = false;
     }
   };
 
@@ -178,12 +177,6 @@ function Menu({ name }: MenuProps) {
       className={`menu ${isPrinting ? 'printing' : ''}`}
       data-rs-id="rs-menu"
     >
-      {/*
-      <p className="hidden">
-        Current Locale: {appLocale} and langKey: {languageIconKey}
-      </p>
-      */}
-
       <button
         className="menu-item menu-print-resume"
         type="button"
@@ -219,9 +212,9 @@ function Menu({ name }: MenuProps) {
             title={localizedStrings[appLocale].downloadPdf}
             data-rs-id="rs-menu-colored-pdf"
             onClick={() => handlePdfButtonClick()}
-            disabled={loadingPdf}
+            disabled={loadingPdfRef.current}
           >
-            {loadingPdf ? MENU_ICONS.loading : MENU_ICONS.pdf}
+            {loadingPdfRef.current ? MENU_ICONS.loading : MENU_ICONS.pdf}
           </button>
 
           <button
@@ -230,9 +223,9 @@ function Menu({ name }: MenuProps) {
             title={localizedStrings[appLocale].downloadGrayscalePdf}
             data-rs-id="rs-menu-grayscale-pdf"
             onClick={() => handlePdfButtonClick(true)}
-            disabled={loadingPdf}
+            disabled={loadingPdfRef.current}
           >
-            {loadingPdf ? MENU_ICONS.loading : MENU_ICONS.pdf}
+            {loadingPdfRef.current ? MENU_ICONS.loading : MENU_ICONS.pdf}
           </button>
         </div>
         {MENU_ICONS.pdf}
@@ -255,7 +248,7 @@ function Menu({ name }: MenuProps) {
         data-rs-id="rs-menu-toggle-expanded-view"
         onClick={toggleExpandedView}
       >
-        {/* more_details */}
+        {/* More details */}
         {MENU_ICONS[expandedViewIconKey as keyof typeof MENU_ICONS]}
       </button>
 
