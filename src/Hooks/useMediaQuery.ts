@@ -21,6 +21,7 @@ function useMediaQuery(query: string): boolean {
     // Watch for updates
     try {
       matchQueryList.addEventListener('change', handleMediaQueryChange);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       // Backwards compatibility for old browsers
       matchQueryList.addListener(handleMediaQueryChange);
@@ -30,6 +31,7 @@ function useMediaQuery(query: string): boolean {
     return () => {
       try {
         matchQueryList.removeEventListener('change', handleMediaQueryChange);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (e) {
         // Backwards compatibility for old browsers
         matchQueryList.removeListener(handleMediaQueryChange);
