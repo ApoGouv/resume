@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import useLocale from '@/Hooks/useLocale';
 import {
   getDateFormatIntl,
@@ -29,70 +29,65 @@ type EducationSectionType = {
 };
 
 export type EducationProps = {
-  data: EducationSectionType;
+  educationData: EducationSectionType;
 };
 
-function Education({ data }: EducationProps) {
-  const [educationState, setEducationState] = useState(data);
-
-  useEffect(() => {
-    setEducationState({ ...data });
-  }, [data]);
-
+function Education({ educationData }: EducationProps) {
   const { appLocale } = useLocale();
+
+  // Memoize the filtered entries to avoid recalculating them on every render
+  const filteredEntries = useMemo(() => {
+    return educationData.entries.filter((edu) => !edu.isHidden);
+  }, [educationData.entries]);
 
   return (
     <section className="education__section" id="education">
       <h2 className="education__heading section-title">
-        {educationState.sectionTitle}
+        {educationData.sectionTitle}
       </h2>
-      {educationState.entries
-        .filter((edu) => !edu.isHidden)
-        .map((education, index) => {
-          const keyEdu = `edu-${index}`;
-          return (
-            <div className="education__entry section__timeentry" key={keyEdu}>
-              <div className="education__time section__timeentry-time">
-                <span className="education__rounder section__timeentry-rounder" />
-                <span className="education__line section__timeentry-line" />
-              </div>
-              <div className="education__data">
-                <h3 className="education__type">
-                  {education.degree || education.type}
-                </h3>
-                <div className="education__basic-info">
-                  <div className="education__period">
-                    {education.isGraduation ? (
-                      <>
-                        {getDateRangeFormattedIntl(
-                          education.duration.from,
-                          education.duration?.to ?? null,
-                          dateFormatOptions.year
-                        )}
-                      </>
-                    ) : (
-                      getDateFormatIntl(
+      {filteredEntries.map((education, index) => {
+        const keyEdu = `edu-${index}`;
+        return (
+          <div className="education__entry section__timeentry" key={keyEdu}>
+            <div className="education__time section__timeentry-time">
+              <span className="education__rounder section__timeentry-rounder" />
+              <span className="education__line section__timeentry-line" />
+            </div>
+            <div className="education__data">
+              <h3 className="education__type">
+                {education.degree || education.type}
+              </h3>
+              <div className="education__basic-info">
+                <div className="education__period">
+                  {education.isGraduation ? (
+                    <>
+                      {getDateRangeFormattedIntl(
                         education.duration.from,
-                        dateFormatOptions.year,
-                        appLocale
-                      )
-                    )}
-                  </div>
-                  {education.score && (
-                    <div className="education__score">
-                      [ {education.score} ]
-                    </div>
+                        education.duration?.to ?? null,
+                        dateFormatOptions.year
+                      )}
+                    </>
+                  ) : (
+                    getDateFormatIntl(
+                      education.duration.from,
+                      dateFormatOptions.year,
+                      appLocale
+                    )
                   )}
                 </div>
-                <div className="education__school-info">
-                  <div className="education__name">{education.school}</div>
-                </div>
+                {education.score && (
+                  <div className="education__score">[ {education.score} ]</div>
+                )}
+              </div>
+              <div className="education__school-info">
+                <div className="education__name">{education.school}</div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
     </section>
   );
 }
 
-export default Education;
+export default React.memo(Education);

@@ -17,8 +17,8 @@ import '@/Components/Resume/Resume.css';
 type ResumeProps = {
   data: {
     profile: ProfileProps['profileData'];
-    workExperience: WorkExperienceProps['data'];
-    education: EducationProps['data'];
+    workExperience: WorkExperienceProps['workExperienceData'];
+    education: EducationProps['educationData'];
     certificates: CertificatesProps['certificatesData'];
     languages: LanguagesProp['languagesData'];
     tools: ToolsProp['toolsData'];
@@ -59,7 +59,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
       >
         <div className="resume__left">
           <Profile profileData={profile} />
-          <Education data={education} />
+          <Education educationData={education} />
           {!isMobile || isPrinting ? (
             <>
               {!certificates.isHidden && <Certificates certificatesData={certificates} />}
@@ -72,7 +72,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
             </>
           ) : (
             <>
-              <WorkExperience data={workExperience} />
+              <WorkExperience workExperienceData={workExperience} />
               {!projects.isHidden && <Projects projectsData={projects} />}
               {!certificates.isHidden && <Certificates certificatesData={certificates} />}
             </>
@@ -81,7 +81,7 @@ function Resume({ data, locale, dark }: ResumeProps) {
         <div className="resume__right">
           {!isMobile || isPrinting ? (
             <>
-              <WorkExperience data={workExperience} />
+              <WorkExperience workExperienceData={workExperience} />
               {!projects.isHidden && <Projects projectsData={projects} />}
               {!isEmpty(tools.entries) && !tools.isHidden && (
                 <Tools toolsData={tools} />

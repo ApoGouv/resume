@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { printUrl } from '@/Utils/strings';
 import { HIDE_UNLESS_EXPANDED } from '@/constants';
 import '@/Components/Projects/Projects.css';
@@ -23,15 +23,17 @@ export type ProjectsProps = {
 };
 
 function Projects({ projectsData }: ProjectsProps) {
-  const { sectionTitle, entries } = projectsData;
+  if (projectsData.isHidden) return null;
   
+  const filteredProjects = useMemo(
+      () => projectsData.entries.filter((project) => !project.isHidden),
+      [projectsData.entries]
+    );
 
   return (
     <section className="projects__section" id="projects">
-      <h2 className="projects__heading section-title">{sectionTitle}</h2>
-      {entries
-        .filter((project) => !project.isHidden)
-        .map((project, index) => {
+      <h2 className="projects__heading section-title">{projectsData.sectionTitle}</h2>
+      {filteredProjects.map((project, index) => {
           const keyProject = `project-${index}`;
           return (
             <div className="project__entry section__timeentry" key={keyProject}>

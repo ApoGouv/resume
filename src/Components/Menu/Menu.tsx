@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EN_LOCALE, EL_LOCALE } from '@/constants';
 import useLocale from '@/Hooks/useLocale';
@@ -47,19 +47,19 @@ function Menu({ name }: MenuProps) {
     setShowPdfButtons((prevState) => !prevState);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+
+    if (
+      !target.closest('.menu-pdfs-resume') && // If the click is outside the button container
+      showPdfButtons
+    ) {
+      setShowPdfButtons(false); // Hide the PDF buttons
+    }
+  };
+
   // Hide PDF buttons when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-
-      if (
-        !target.closest('.menu-pdfs-resume') && // If the click is outside the button container
-        showPdfButtons
-      ) {
-        setShowPdfButtons(false); // Hide the PDF buttons
-      }
-    };
-
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
@@ -71,7 +71,7 @@ function Menu({ name }: MenuProps) {
   const darkModeIconKey = darkMode ? 'sun' : 'moon';
 
   // Define dictionary for localized strings
-  const localizedStrings: LocalizedStrings = {
+  const localizedStrings = useMemo(() => ({
     [EN_LOCALE]: {
       print: 'Print resume',
       downloadPdfsWrapper:
@@ -99,7 +99,7 @@ function Menu({ name }: MenuProps) {
       } σκούρου θέματος`,
       bio: 'Βιογραφικό',
     },
-  };
+  }), [appLocale, expandedView, darkMode]);
 
   const handlePrintButtonClick = () => {
     /**
@@ -164,15 +164,13 @@ function Menu({ name }: MenuProps) {
     }
   };
 
-  const toggleLocale = () => {
+  const toggleLocale = useCallback(() => {
     const newLocale = appLocale === EL_LOCALE ? EN_LOCALE : EL_LOCALE;
-    setLocale(newLocale);
-    if (newLocale === EN_LOCALE) {
-      navigate(`/en`);
-    } else {
-      navigate(`/`);
+    if (newLocale !== appLocale) {
+      setLocale(newLocale);
+      navigate(newLocale === EN_LOCALE ? `/en` : `/`);
     }
-  };
+  }, [appLocale, setLocale, navigate]);
 
   return (
     <div
