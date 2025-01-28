@@ -445,8 +445,7 @@
         },
         "showLink": false,
         "link": "https://www.udemy.com/user/apogouv/",
-        "containsSub": true,
-        "shouldShowSubs": true,
+        "displayType": "subsOnly",
         "subs": [
           {
             "isHidden": true,
@@ -496,8 +495,7 @@
         },
         "showLink": false,
         "link": null,
-        "containsSub": false,
-        "shouldShowSubs": false,
+        "displayType": "parentOnly",
         "subs": []
       }
     ]
@@ -519,7 +517,7 @@
         "info": "Proficiency of Michigan & IELTS 7.5"
       },
       {
-        "isHidden": true,
+        "isHidden": false,
         "language": "Spanish",
         "rating": 1,
         "info": "A2 in progress"
