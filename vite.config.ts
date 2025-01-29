@@ -18,7 +18,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 
   const config: UserConfig = {
     // @see https://vitejs.dev/config/shared-options.html#base
-    base: '/resume',
+    base: '/resume/',
     plugins: [react(), svgr()],
     resolve: {
       alias: {
