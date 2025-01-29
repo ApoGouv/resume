@@ -123,7 +123,6 @@
 
 .workExp__work-projects ul ::marker {
   color: var(--color-red);
-  font-size: 2rem;
 }
 
 .workExp__work-project-name {
@@ -161,10 +160,6 @@
 .workExp__work-project-responsibilities {
   list-style: square;
   padding-left: 2rem;
-}
-
-.workExp__work-project-responsibilities ::marker {
-  font-size: 1.3rem !important;
 }
 
 /**
