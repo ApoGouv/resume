@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { EN_LOCALE, EL_LOCALE } from '@/constants';
+import { EN_LOCALE, EL_LOCALE, APP_BASE_URL } from '@/constants';
 import useLocale from '@/Hooks/useLocale';
 import usePrintStatus from '@/Hooks/usePrintStatus';
 import useMediaQuery from '@/Hooks/useMediaQuery';
@@ -133,7 +133,7 @@ function Menu({ name }: MenuProps) {
         localizedStrings[appLocale].bio
       }${bnw ? '-print' : ''}`;
       const pdfUrl = normalizeUrl(
-        `${import.meta.env.BASE_URL}/pdf/${pdfName}.pdf?v=${resumeVersion}`
+        `${APP_BASE_URL}/pdf/${pdfName}.pdf?v=${resumeVersion}`
       );
 
       const pdfWindowOptions = {
