@@ -68,7 +68,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
   };
 
   if (command === 'build' || (command === 'serve' && mode === 'production')) {
-    config.base = '/resume';
+    config.base = '/resume/';
 
     if (config.build !== undefined) {
       config.build.minify = true;
