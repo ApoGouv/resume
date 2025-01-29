@@ -36,21 +36,20 @@ function Projects({ projectsData }: ProjectsProps) {
   return (
     <section className="projects__section" id="projects">
       <h2 className="projects__heading section-title">{projectsData.sectionTitle}</h2>
-      {filteredProjects.map((project, index) => {
+
+      <div className="projects__grid">
+        {filteredProjects.map((project, index) => {
           const keyProject = `project-${index}`;
           return (
-            <div className="project__entry section__timeentry" key={keyProject}>
-              <div className="project__time section__timeentry-time">
-                <span className="project__rounder section__timeentry-rounder" />
-                <span className="project__line section__timeentry-line" />
-              </div>
-              <div className="project__data">
+            <div className="project__entry" key={keyProject}>
+              <div className="project__content">
                 <h3 className="project__name">{project.name}</h3>
-                <div className="project__technologies">
-                  <p className="project__tech-list">
-                    {project.technologies.join(' | ')}
-                  </p>
-                </div>
+                <ul className="project__technologies">
+                  {project.technologies.map((tech, techIndex) => (
+                    <li key={`tech-${techIndex}`} className="project__tech-item">{tech}</li>
+                  ))}
+                </ul>
+
                 {project.showDesc && (
                   <ul className={`project__desc ${HIDE_UNLESS_EXPANDED}`}>
                     {project.desc.map((desc, descIndex) => (
@@ -58,13 +57,10 @@ function Projects({ projectsData }: ProjectsProps) {
                     ))}
                   </ul>
                 )}
+
                 {project.link && (
                   <div className="project__link">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" title={project.name}>
                       {printUrl(project.link)}
                     </a>
                   </div>
@@ -73,6 +69,7 @@ function Projects({ projectsData }: ProjectsProps) {
             </div>
           );
         })}
+      </div>
     </section>
   );
 }

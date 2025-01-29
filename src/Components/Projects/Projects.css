@@ -2,49 +2,63 @@
     padding: var(--section-padding);
 }
 
-.certificates__heading {
-    text-transform: uppercase;
-    margin-bottom: var(--mb-1);
+.projects__grid {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .project__entry {
     display: flex;
+    position: relative;
+    padding: 0 0 .5rem 0;
+    transition: all 0.3s ease;
 }
 
-.project__data {
+.project__content {
     width: 100%;
-}
-
-.project__basic-info {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 5px;
-    margin: 0.5rem 0;
-    font-style: normal;
 }
 
 .project__name {
     font-weight: var(--font-bold);
     font-size: var(--h3-font-size);
+    margin-bottom: 0.5rem;
 }
 
-.project__tech-list {
+.project__name::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid var(--color-red);
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.project__technologies {
+    list-style: none;
+    gap: 0.2rem;
+    color: var(--color-red);
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    margin: 0.5rem 0;
-    font-style: normal;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+.project__tech-item {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--resume-bg-color-alt, #f7f9fb);
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .project__desc {
     list-style: square;
-    padding-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    margin: 1rem 0 0.5rem;
 }
 
 .project__desc ::marker {
@@ -52,37 +66,21 @@
 }
 
 .project__link a {
-    color: var(--color-primary);
+    color: var(--color-blue);
+    -webkit-text-decoration: none;
     text-decoration: none;
-    font-weight: var(--font-bold);
-    font-size: var(--base-font-size);
-    padding: 0.25rem 0;
-    display: inline-flex;
-    align-items: center;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+    transition: all .3s linear;
 }
 
-.project__link a:hover,
-.project__link a:focus {
-    color: var(--color-red);
+.project__link a:hover {
     text-decoration: underline;
 }
 
 .project__link a::after {
-    content: '↗';
-    margin-left: 0.3rem;
-    font-size: var(--base-font-size);
-    vertical-align: middle;
-    color: inherit;
-}
-
-.project__link a:hover::after,
-.project__link a:focus::after {
-    text-decoration: none;
-}
-
-.project__link a:focus {
-    outline: 2px solid var(--color-primary-light);
-    outline-offset: 3px;
+    content: ' ↗';
+    font-size: 0.875rem;
 }
