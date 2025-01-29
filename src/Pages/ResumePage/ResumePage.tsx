@@ -124,7 +124,7 @@ function ResumePage() {
   // Set the URL based on locale
   const pageURL = appLocale === EN_LOCALE ? alternateEN : alternateEL;
 
-  const pageImage = '';
+  const pageImage = `${baseURL}img/resume-preview.png`;
   const pageTitle = `${profile.name} - ${profile.role}`;
   const metaDescription = replacePlaceholderWithYearDifference(
     profile.bio,
