@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { EN_LOCALE, EL_LOCALE } from '@/constants';
+import { EN_LOCALE, EL_LOCALE, APP_BASE_URL } from '@/constants';
 import { normalizeUrl } from '@/Utils/strings';
 import { RESUME_NOT_FOUND_ICONS } from '@/Utils/iconsLibrary';
 import './Error404Page.css';
@@ -47,7 +47,7 @@ function Error404Page({ locale, dark }: Error404PageProps) {
   };
 
   const backgroundImageUrl = normalizeUrl(
-    `${import.meta.env.BASE_URL}/img/404/CV-blured-${locale}.jpg`
+    `${APP_BASE_URL}/img/404/CV-blured-${locale}.jpg`
   );
 
   return (
