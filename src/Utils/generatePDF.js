@@ -112,7 +112,6 @@ async function saveCurrentPageToPDF(page) {
 
   // Get menu, so we can mask it during screenshot.
   await page.$eval('[data-rs-id="rs-menu"]', (menuEl) => {
-    // eslint-disable-next-line no-param-reassign
     menuEl.style.display = 'none';
   });
 
@@ -191,7 +190,11 @@ async function saveCurrentPageToPDF(page) {
  * @param {number} [options.onPort=5173] - The port number for the development server.
  * @returns {Promise<number>} A promise that resolves to 0 when the PDF generation is complete.
  */
-const generatePDF = async ({ runDevServer = false, onPort = 5173, onBaseURL = '/'}) => {
+const generatePDF = async ({
+  runDevServer = false,
+  onPort = 5173,
+  onBaseURL = '/resume/',
+}) => {
   console.log(' 🏁 generatePDF > running...');
 
   let port = onPort;
