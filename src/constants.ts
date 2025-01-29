@@ -8,11 +8,26 @@
 export const FALLBACK_NAME = 'Απόστολος Γουβάλας';
 
 /**
- * The default base URL of the app.
- * We use it in ThemeContext and date functions that have locale.
+ * Whether the app is running in development mode.
+ * Uses Vite's `import.meta.env.DEV` to detect the environment.
  * @constant
  */
-export const BASE_APP_URL = '/resume';
+export const APP_IN_DEV_MODE = import.meta.env?.DEV ?? false;
+
+/**
+ * The base URL of the app.
+ * Used for routing and constructing absolute URLs.
+ * Vite provides `import.meta.env.BASE_URL`, but we ensure a fallback.
+ * @constant
+ */
+export const APP_BASE_URL = import.meta.env.BASE_URL ?? '/resume/';
+
+/**
+ * The production host of the app.
+ * This is used when constructing full URLs for meta tags, social sharing, etc.
+ * @constant
+ */
+export const APP_PROD_HOST = 'https://apogouv.github.io';
 
 /**
  * Greek locale constant used for representing the Greek language and region.
