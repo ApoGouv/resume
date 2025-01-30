@@ -16,10 +16,11 @@ The app features a responsive design, providing a one-page layout with dimension
 - [x] **Local Google Fonts** ℹ️ : We load Google Fonts locally to improve page loading times and avoid flashes of unstyled text (FOUT).
 - [x] **Expanded View** ℹ️ : Menu button that enable or disable the Expanded View (EV). During EV, we reveal more information regarding projects in a particular work and also for personal projects. We also reveal Hobbies section. Furthermore, we make the profile as sticky when EV is enabled and we are on desktop. Finally, EV is not available when printing.
 - [x] **Routing** 🔖 Added second locale (en-US) to it's own route `/en` and introduced 404 error documents for non specified routes. With separate routes by locale we can now share and/or bookmark the resume to specific locale. As a side note here, we are using react-router's HashRouter because the default Router is not working on github pages where we host the app.
+- [x] **SEO & Meta Tags** 🔍: Implemented **social media meta tags** for Facebook and Twitter, improving shareability and visibility. Additionally, included **canonical** and **hreflang** meta tags to enhance search engine optimization and ensure proper language recognition.
+
 
 ## Todo 📝
 
-- [ ] Add social media meta tags for Facebook and Twitter to improve the shareability and visibility of the resume.
 - [ ] Make it offline ready (PWA).
 - [ ] Add test coverage by implementing Vitest for comprehensive testing of the application.
 
