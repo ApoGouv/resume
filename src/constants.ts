@@ -58,7 +58,7 @@ export const DEFAULT_LOCALE = EL_LOCALE;
  * version of the resume.
  * @constant
  */
-export const VERSION_FALLBACK = '5.0.0fx';
+export const VERSION_FALLBACK = '5.0.1fx';
 
 /**
  * Placeholder for string/text that will be replaced by years of experience number.
