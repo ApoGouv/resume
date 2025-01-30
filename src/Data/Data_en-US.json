@@ -527,7 +527,7 @@
   "tools": {
     "isHidden": false,
     "sectionTitle": "SOFTWARE & TOOLS",
-    "entries": ["VSCode", "Git", "Linux", "Windows", "cPanel", "etc."]
+    "entries": ["VS Code", "Git", "Linux", "Windows", "cPanel", "and more"]
   },
   "interests": {
     "isHidden": false,

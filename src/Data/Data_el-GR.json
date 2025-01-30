@@ -527,7 +527,7 @@
   "tools": {
     "isHidden": false,
     "sectionTitle": "ΛΟΓΙΣΜΙΚΑ & ΕΡΓΑΛΕΙΑ",
-    "entries": ["VSCode", "Git", "Linux", "Windows", "cPanel", "κ.α."]
+    "entries": ["VS Code", "Git", "Linux", "Windows", "cPanel", "κ.ά."]
   },
   "interests": {
     "isHidden": false,
