@@ -129,7 +129,6 @@ function ResumePage() {
   const metaDescription = replacePlaceholderWithYearDifference(
     profile.bio,
     profile.overallExperienceStartDate,
-    false,
     appLocale
   );
 

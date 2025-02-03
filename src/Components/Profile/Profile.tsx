@@ -111,7 +111,6 @@ function Profile({ profileData }: ProfileProps) {
     return replacePlaceholderWithYearDifference(
       profileData.bio,
       profileData.overallExperienceStartDate,
-      false,
       appLocale
     );
   }, [profileData.bio, profileData.overallExperienceStartDate, appLocale]);

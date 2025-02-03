@@ -165,20 +165,25 @@ export const formatNumber = (
  * @param {string} startDate - The start date in 'YYYY-MM-DD' format.
  * @param {string} [appLocale= DEFAULT_LOCALE] - The locale to format the number.
  * @param {string} [placeholderName='__YEARS_OF_EXPERIENCE__'] - The placeholder name to search for.
+ * @param {"up" | "down"} [roundingMode="down"] - Determines whether to round up or down.
  * @returns {string} The text with the placeholder replaced by the calculated year difference.
  */
 export const replacePlaceholderWithYearDifference = (
   text: string,
   startDate: string,
-  displayRawDiff = false,
   appLocale: string = DEFAULT_LOCALE,
-  placeholderName: string = EXP_YEARS_PLACEHOLDER
+  placeholderName: string = EXP_YEARS_PLACEHOLDER,
+  displayRawDiff = false,
+  roundingMode: 'up' | 'down' = 'down'
 ): string => {
   const yearDifference = dateDifferenceInYears(startDate);
 
   const formattedYearDifference = displayRawDiff
     ? formatNumber(yearDifference, appLocale)
-    : Math.round(yearDifference).toFixed(0);
+    : (roundingMode === 'up'
+        ? Math.ceil(yearDifference)
+        : Math.floor(yearDifference)
+      ).toString();
 
   return text.replace(`{{${placeholderName}}}`, formattedYearDifference);
 };
