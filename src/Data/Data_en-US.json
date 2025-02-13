@@ -189,9 +189,9 @@
               ]
             },
             "description": [
-              "Lead company projects, creating tailored e-commerce solutions, integrating third-party services, and delivering custom plugins for WHMCS, Laravel, vBulletin, Joomla, and OpenCart.",
-              "Develop and maintain e-commerce websites (OpenCart, CS-Cart, PrestaShop, WooCommerce), integrating custom functionalities and ERP systems like SoftOne.",
-              "Build and customize dynamic websites for various industries (corporate, personal, portfolios) using WordPress, Joomla, and other CMSs, focusing on client-specific needs and plugin development."
+              "Lead company projects, creating tailored e-commerce solutions and integrations with third-party services, including ERP systems like SoftOne, to enhance the functionality of client websites.",
+              "Develop and maintain dynamic e-commerce platforms (OpenCart, CS-Cart, PrestaShop, WooCommerce) by implementing custom features, optimizing workflows, and integrating external tools to improve business operations.",
+              "Build and customize CMS-based websites (WordPress, Joomla) for diverse industries, ensuring a tailored experience based on customer-specific requirements and driving solutions for unique challenges."
             ],
             "showDescription": true
           }
@@ -364,7 +364,7 @@
     "entries": [
       {
         "type": "Master of Science",
-        "degree": "MS in Mobile and Web Computing",
+        "degree": "MSc in Mobile and Web Computing",
         "school": "International Hellenic University (Thessaloniki, Greece)",
         "score": "Distinction",
         "isHidden": false,
@@ -418,7 +418,7 @@
       },
       {
         "name": "Scrabble Word Finder",
-        "technologies": ["Vite", "Vue.js", "TypeScript", "Tailwind", "CSS", "IndexedDB", "Python"],
+        "technologies": ["Vue.js", "TypeScript", "Tailwind", "IndexedDB", "Python", "Vite"],
         "showDesc": true,
         "desc": [
           "Developed a word validation and anagram finder tool for Scrabble using Vue.js, TypeScript, and Tailwind.",
@@ -426,6 +426,30 @@
           "Used Python for data preprocessing to prepare word lists and improve search performance."
         ],
         "link": "https://apogouv.github.io/scrabble-word-finder/",
+        "isHidden": false
+      },
+      {
+        "name": "iTrAlytics (Thesis Project)",
+        "technologies": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "Redux",
+          "MongoDB",
+          "Socket.io",
+          "Google Analytics API",
+          "Google OAuth",
+          "MaterializeCSS"
+        ],
+        "showDesc": true,
+        "desc": [
+          "Developed an interactive web analytics dashboard integrating Google Analytics API.",
+          "Implemented Google OAuth for secure user authentication and access to analytics data.",
+          "Built real-time* active user tracking using Socket.io, React, and Google Real Time API.",
+          "Designed a user-friendly UI with MaterializeCSS and Redux for state management.",
+          "Set up a Node.js and Express.js backend with MongoDB for session management and data persistence."
+        ],
+        "link": "https://github.com/ApoGouv/itralytics",
         "isHidden": false
       }
     ]
@@ -448,6 +472,12 @@
         "displayType": "subsOnly",
         "subs": [
           {
+            "isHidden": false,
+            "name": "Java Masterclass (in progress)",
+            "link": "https://www.udemy.com/course/java-the-complete-java-developer-course",
+            "issuedOn": "2025-02-04"
+          },
+          {
             "isHidden": true,
             "name": " MongoDB Essentials - Understand the Basics of MongoDB",
             "link": "https://www.udemy.com/certificate/UC-BX1J7EAA/",
@@ -457,11 +487,12 @@
             "isHidden": false,
             "name": "Build a Social Network from Scratch: JavaScript PHP + MySQL",
             "link": "https://www.udemy.com/certificate/UC-SGPZFM5Y/",
+            "linkTitle": "Java Masterclass 2025: 130+ Hours of Expert Lessons",
             "issuedOn": "2019-01-01"
           },
           {
             "isHidden": false,
-            "name": "The Complete Node.js Developer Course (2nd Edition)",
+            "name": "The Complete Node.js Developer Course",
             "link": "https://www.udemy.com/certificate/UC-LW31MIKU/",
             "issuedOn": "2017-10-09"
           },

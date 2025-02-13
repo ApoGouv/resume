@@ -364,7 +364,7 @@
     "entries": [
       {
         "type": "Master of Science",
-        "degree": "MS in Mobile and Web Computing",
+        "degree": "MSs in Mobile and Web Computing",
         "school": "Διεθνές Πανεπιστήμιο της Ελλάδος (Θεσσαλονίκη, Ελλάδα)",
         "score": "Με μνεία",
         "isHidden": false,
@@ -418,7 +418,7 @@
       },
       {
         "name": "Scrabble Word Finder",
-        "technologies": ["Vite", "Vue.js", "TypeScript", "Tailwind", "CSS", "IndexedDB", "Python"],
+        "technologies": ["Vue.js", "TypeScript", "Tailwind", "IndexedDB", "Python", "Vite"],
         "showDesc": true,
         "desc": [
           "Ανάπτυξη εφαρμογής επικύρωσης λέξεων και εύρεσης αναγραμματισμών για το Scrabble με τη χρήση Vue.js, TypeScript και Tailwind.",
@@ -426,6 +426,30 @@
           "Χρήση Python για προετοιμασία δεδομένων και βελτίωση της απόδοσης της αναζήτησης."
         ],
         "link": "https://apogouv.github.io/scrabble-word-finder/",
+        "isHidden": false
+      },
+      {
+        "name": "iTrAlytics (Thesis Project)",
+        "technologies": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "Redux",
+          "MongoDB",
+          "Socket.io",
+          "Google Analytics API",
+          "Google OAuth",
+          "MaterializeCSS"
+        ],
+        "showDesc": true,
+        "desc": [
+          "Ανάπτυξη διαδραστικού πίνακα ελέγχου ανάλυσης δεδομένων με ενσωμάτωση του Google Analytics API.",
+          "Υλοποίηση αυθεντικοποίησης χρηστών μέσω Google OAuth για ασφαλή πρόσβαση στα δεδομένα.",
+          "Κατασκευή συστήματος σχεδόν πραγματικού χρόνου* για παρακολούθηση ενεργών χρηστών με χρήση Socket.io, React και Google Real Time API.",
+          "Σχεδιασμός φιλικού προς τον χρήστη UI με MaterializeCSS και οργάνωση και διαχείριση δεδομένων εφαρμογής μέσω Redux.",
+          "Υλοποίηση backend με Node.js και Express.js, και χρήση MongoDB για διαχείριση συνεδριών και αποθήκευση δεδομένων."
+        ],
+        "link": "https://github.com/ApoGouv/itralytics",
         "isHidden": false
       }
     ]
@@ -448,6 +472,13 @@
         "displayType": "subsOnly",
         "subs": [
           {
+            "isHidden": false,
+            "name": "Java Masterclass (σε εξέλιξη)",
+            "link": "https://www.udemy.com/course/java-the-complete-java-developer-course",
+            "linkTitle": "Java Masterclass 2025: 130+ Hours of Expert Lessons",
+            "issuedOn": "2025-02-04"
+          },
+          {
             "isHidden": true,
             "name": " MongoDB Essentials - Understand the Basics of MongoDB",
             "link": "https://www.udemy.com/certificate/UC-BX1J7EAA/",
@@ -461,7 +492,7 @@
           },
           {
             "isHidden": false,
-            "name": "The Complete Node.js Developer Course (2nd Edition)",
+            "name": "The Complete Node.js Developer Course",
             "link": "https://www.udemy.com/certificate/UC-LW31MIKU/",
             "issuedOn": "2017-10-09"
           },
