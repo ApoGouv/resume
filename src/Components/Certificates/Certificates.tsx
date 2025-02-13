@@ -13,6 +13,7 @@ export type SubCertificatesType = {
   isHidden: boolean;
   name: string;
   link: string;
+  linkTitle?: string;
   issuedOn: string;
 };
 

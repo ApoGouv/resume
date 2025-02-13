@@ -80,3 +80,5 @@ export const DATE_RANGE_SEPARATOR = ' - ';
  * @constant
  */
 export const HIDE_UNLESS_EXPANDED = 'only-on-expanded';
+
+export const TECHNOLOGY_DISPLAY_LIMIT = 5;

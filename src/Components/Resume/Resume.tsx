@@ -59,6 +59,7 @@ function Resume({ resumeData, locale, dark }: ResumeProps) {
   const leftContent = !isMobile || isPrinting
     ? <>
         {!certificates.isHidden && <Certificates certificatesData={certificates} />}
+        {shouldRenderSection(tools) && <Tools toolsData={tools} />}
         {shouldRenderSection(languages) && <Languages languagesData={languages} />}
         {shouldRenderSection(interests) && <Interests interestsData={interests} />}
       </>
@@ -72,7 +73,6 @@ function Resume({ resumeData, locale, dark }: ResumeProps) {
   ? <>
       <WorkExperience workExperienceData={workExperience} />
       {!projects.isHidden && <Projects projectsData={projects} />}
-      {shouldRenderSection(tools) && <Tools toolsData={tools} />}
     </>
   : <>
       {shouldRenderSection(tools) && <Tools toolsData={tools} />}

@@ -8,6 +8,7 @@ import {
   PROFILE_CONTACT_ICONS,
   PROFILE_LINKS_ICONS,
 } from '@/Utils/iconsLibrary';
+import { HIDE_UNLESS_EXPANDED } from '@/constants';
 
 import '@/Components/Profile/Profile.css';
 
@@ -213,7 +214,7 @@ function Profile({ profileData }: ProfileProps) {
             <div className="profile__name">{profileData.name}</div>
             <div className="profile__role">{profileData.role}</div>
             {profileData.showBio && (
-              <div className="profile__bio">{bio}</div>
+              <div className={`profile__bio ${HIDE_UNLESS_EXPANDED}`}>{bio}</div>
             )}
           </div>
         </div>

@@ -30,6 +30,7 @@ function CertificateWithSubs({ subs, index }: CertificateWithSubsProps) {
                   href={subCert.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={subCert.linkTitle || subCert.name}
                 >
                   {subCert.name}
                 </a>

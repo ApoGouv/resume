@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
+import useExpandedView from '@/Hooks/useExpandedView';
 import { printUrl } from '@/Utils/strings';
-import { HIDE_UNLESS_EXPANDED } from '@/constants';
+import { HIDE_UNLESS_EXPANDED, TECHNOLOGY_DISPLAY_LIMIT } from '@/constants';
 import '@/Components/Projects/Projects.css';
 
 type ProjectType = {
@@ -23,6 +24,8 @@ export type ProjectsProps = {
 };
 
 function Projects({ projectsData }: ProjectsProps) {
+  const { expandedView } = useExpandedView();
+
   const filteredProjects = useMemo(() => {
     if (projectsData.isHidden) {
       return [];
@@ -40,14 +43,28 @@ function Projects({ projectsData }: ProjectsProps) {
       <div className="projects__grid">
         {filteredProjects.map((project, index) => {
           const keyProject = `project-${index}`;
+
+          // Apply the limit only if not in expanded view
+          const displayedTechnologies = expandedView
+            ? project.technologies
+            : project.technologies.slice(0, TECHNOLOGY_DISPLAY_LIMIT);
+
           return (
             <div className="project__entry" key={keyProject}>
               <div className="project__content">
                 <h3 className="project__name">{project.name}</h3>
                 <ul className="project__technologies">
-                  {project.technologies.map((tech, techIndex) => (
+                  {displayedTechnologies.map((tech, techIndex) => (
                     <li key={`tech-${techIndex}`} className="project__tech-item">{tech}</li>
                   ))}
+                  {!expandedView && project.technologies.length > TECHNOLOGY_DISPLAY_LIMIT && (
+                    <li
+                      className="project__tech-item"
+                      title={project.technologies.slice(TECHNOLOGY_DISPLAY_LIMIT).join(', ')}
+                    >
+                      ...
+                    </li>
+                  )}
                 </ul>
 
                 {project.showDesc && (

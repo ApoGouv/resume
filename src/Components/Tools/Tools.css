@@ -24,3 +24,7 @@
   font-size: 0.85rem;
   white-space: nowrap;
 }
+
+.resume__left .tools__entry {
+  background: var(--resume-bg-color, #ffffff);
+}
