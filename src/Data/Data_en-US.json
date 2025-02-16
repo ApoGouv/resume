@@ -82,7 +82,7 @@
         "isHidden": false,
         "mainRole": "Full-stack Web Developer",
         "company": "Mental Media",
-        "companyOldName": "(Formerly MultiHosting)",
+        "companyOldName": "MultiHosting",
         "duration": {
           "from": "2017-11",
           "to": "present",
@@ -189,9 +189,9 @@
               ]
             },
             "description": [
-              "Lead company projects, creating tailored e-commerce solutions and integrations with third-party services, including ERP systems like SoftOne, to enhance the functionality of client websites.",
-              "Develop and maintain dynamic e-commerce platforms (OpenCart, CS-Cart, PrestaShop, WooCommerce) by implementing custom features, optimizing workflows, and integrating external tools to improve business operations.",
-              "Build and customize CMS-based websites (WordPress, Joomla) for diverse industries, ensuring a tailored experience based on customer-specific requirements and driving solutions for unique challenges."
+              "Develop and maintain e-commerce platforms (e.g., OpenCart, CS-Cart, PrestaShop), implementing custom features, and integrating data from APIs -like ERP systems (SoftOne), Biblionet, Icecat- to streamline operations, leveraging Laravel for efficient data handling.",
+              "Customize and extend CMS-based websites (e.g., WordPress, Joomla) to meet diverse client needs, handling custom theme modifications, plugins development, performance optimizations, and accessibility compliance with WCAG 2.0.",
+              "Manage data migrations and integrations, including platform transitions (Joomla to WordPress, PhpBB to vBulletin) and automation processes for supplier data imports."
             ],
             "showDescription": true
           }
@@ -253,7 +253,7 @@
             "role": "Web Developer",
             "showRole": false,
             "description": [
-              "Developed custom websites, e-shops, and web apps, integrating front-end and back-end technologies to meet client needs and improve user experience."
+              "Built and optimized websites, through integrations and custom solutions."
             ],
             "showDescription": true
           }
@@ -317,7 +317,7 @@
             "role": "Front-end Web Developer",
             "showRole": false,
             "description": [
-              "Developed user interfaces for applications to visualize results from the 2014 Italian European Parliament Elections and display historical election data. Transformed graphic mockups into responsive web pages using HTML, CSS, and jQuery."
+              "Development of user interfaces for applications to visualize results from the 2014 Italian European Parliament Elections and display historical election data. Transformed graphic mockups into responsive web pages using HTML, CSS, and jQuery."
             ],
             "showDescription": true
           }
@@ -558,7 +558,7 @@
   "tools": {
     "isHidden": false,
     "sectionTitle": "SOFTWARE & TOOLS",
-    "entries": ["VS Code", "Git", "Linux", "Windows", "cPanel", "and more"]
+    "entries": ["VS Code", "Git", "Linux", "Windows", "Postman",  "DBeaver", "cPanel", "and more"]
   },
   "interests": {
     "isHidden": false,

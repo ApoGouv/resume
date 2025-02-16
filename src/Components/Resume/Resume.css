@@ -8,7 +8,7 @@
   color: var(--title-color);
   font-weight: var(--font-black);
   text-transform: uppercase;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.03rem;
   text-align: left;
   margin-bottom: var(--mb-1);
 }

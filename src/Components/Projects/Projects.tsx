@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import useExpandedView from '@/Hooks/useExpandedView';
 import { printUrl } from '@/Utils/strings';
-import { HIDE_UNLESS_EXPANDED, TECHNOLOGY_DISPLAY_LIMIT } from '@/constants';
+import { HIDE_UNLESS_EXPANDED, TECHNOLOGY_DISPLAY_LIMIT, EL_LOCALE} from '@/constants';
 import '@/Components/Projects/Projects.css';
+import useLocale from '@/Hooks/useLocale';
 
 type ProjectType = {
   isHidden: boolean;
@@ -25,6 +26,7 @@ export type ProjectsProps = {
 
 function Projects({ projectsData }: ProjectsProps) {
   const { expandedView } = useExpandedView();
+  const { appLocale } = useLocale();
 
   const filteredProjects = useMemo(() => {
     if (projectsData.isHidden) {
@@ -59,10 +61,10 @@ function Projects({ projectsData }: ProjectsProps) {
                   ))}
                   {!expandedView && project.technologies.length > TECHNOLOGY_DISPLAY_LIMIT && (
                     <li
-                      className="project__tech-item"
+                      className="project__tech-item project__tech-item-more"
                       title={project.technologies.slice(TECHNOLOGY_DISPLAY_LIMIT).join(', ')}
                     >
-                      ...
+                      { appLocale == EL_LOCALE ? 'κ.ά.' : '+more'}
                     </li>
                   )}
                 </ul>

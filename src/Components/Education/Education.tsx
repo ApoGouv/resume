@@ -54,7 +54,7 @@ function Education({ educationData }: EducationProps) {
               <span className="education__line section__timeentry-line" />
             </div>
             <div className="education__data">
-              <h3 className="education__type">
+              <h3 className="education__degree">
                 {education.degree || education.type}
               </h3>
               <div className="education__basic-info">

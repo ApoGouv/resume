@@ -90,7 +90,7 @@ function WorkExperience({ workExperienceData }: WorkExperienceProps) {
                 <div className="workExp__company">
                   <h3 className="workExp__main-role">{exp.mainRole}</h3>
                   <div className="workExp__company-info">
-                    <p className="workExp__company-duration">
+                    <div className="workExp__company-duration">
                       {exp.duration.showIcon && (
                         <span className="workExp__company-duration-icon">
                           {
@@ -109,19 +109,23 @@ function WorkExperience({ workExperienceData }: WorkExperienceProps) {
                           appLocale
                         )}
                       </span>
-                    </p>
-                    <p className="workExp__company-separator"> | </p>
-                    <p className="workExp__company-name">
-                      <span className="workExp__company-name-current">
+                    </div>
+                    <div className="workExp__company-separator"> | </div>
+                    <div className="workExp__company-name-wrapper">
+                      <span className="workExp__company-name workExp__company-name-current">
                         {exp.company}
                       </span>
                       {exp.companyOldName && (
-                        <span className="workExp__company-name-old">
-                          {exp.companyOldName}
+                        <span className="workExp__company-name-old-wrapper">
+                          (
+                            <span className="workExp__company-name workExp__company-name-old">
+                              {exp.companyOldName}
+                            </span>
+                          )
                         </span>
                       )}
-                    </p>
-                    <p
+                    </div>
+                    <div
                       className="workExp__company-location"
                       style={{ display: 'none' }}
                     >
@@ -138,7 +142,7 @@ function WorkExperience({ workExperienceData }: WorkExperienceProps) {
                       <span className="workExp__company-location-place">
                         {exp.address.city}, {exp.address.country}
                       </span>
-                    </p>
+                    </div>
                   </div>
                 </div>
 

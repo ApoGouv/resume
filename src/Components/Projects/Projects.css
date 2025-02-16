@@ -84,3 +84,13 @@
     content: ' ↗';
     font-size: 0.875rem;
 }
+
+
+/**
+ * Projects Print Styles
+ */
+ /* @media print {
+    #projects .project__tech-item-more {
+        display: none;
+    }
+} */
