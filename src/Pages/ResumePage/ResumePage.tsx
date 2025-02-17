@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Menu from '@/Components/Menu/Menu';
 import Resume from '@/Components/Resume/Resume';
 import Error404Page from '@/Pages/Error404Page/Error404Page';
+import LetterDraftPage from '@/Pages/LetterDraftPage/LetterDraftPage'; // Adjust path if necessary
 
 import { displayTypeTypes } from '@/Components/Certificates/Certificates';
 
@@ -192,6 +193,12 @@ function ResumePage() {
             </>
           }
         />
+
+        {/* LetterDraftpage Route (only available in dev mode): http://localhost:5173/resume/#/letter-draft */}
+        {APP_IN_DEV_MODE && (
+            <Route path="/letter-draft" element={<LetterDraftPage />} />
+        )}
+
 
         {/* Fallback for invalid paths */}
         <Route
