@@ -395,6 +395,7 @@
       {
         "name": "NPC Generator",
         "technologies": ["Python", "JavaScript", "HTML", "CSS", "Bootstrap"],
+        "truncateTechnologies": false,
         "showDesc": true,
         "desc": [
           "Δημιουργία φόρμας με δυναμικά και αλληλεξαρτώμενα πεδία για επιλογές χαρακτηριστικών ενός παίκτη για το DnD (Dungeons & Dragons).",
@@ -407,6 +408,7 @@
       {
         "name": "Resume App",
         "technologies": ["Vite", "React", "TypeScript", "CSS", "Playwright"],
+        "truncateTechnologies": false,
         "showDesc": true,
         "desc": [
           "Δημιουργία μιας εφαρμογής βιογραφικού με τη χρήση σύγχρονων τεχνολογιών ιστού όπως Vite, React και TypeScript.",
@@ -419,6 +421,7 @@
       {
         "name": "Scrabble Word Finder",
         "technologies": ["Vue.js", "TypeScript", "Tailwind", "IndexedDB", "Python", "Vite"],
+        "truncateTechnologies": false,
         "showDesc": true,
         "desc": [
           "Ανάπτυξη εφαρμογής επικύρωσης λέξεων και εύρεσης αναγραμματισμών για το Scrabble με τη χρήση Vue.js, TypeScript και Tailwind.",
@@ -441,6 +444,7 @@
           "Google OAuth",
           "MaterializeCSS"
         ],
+        "truncateTechnologies": true,
         "showDesc": true,
         "desc": [
           "Ανάπτυξη διαδραστικού πίνακα ελέγχου ανάλυσης δεδομένων με ενσωμάτωση του Google Analytics API.",

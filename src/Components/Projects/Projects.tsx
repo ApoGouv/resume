@@ -9,6 +9,7 @@ type ProjectType = {
   isHidden: boolean;
   name: string;
   technologies: string[];
+  truncateTechnologies?: boolean,
   showDesc: boolean;
   desc: string[];
   link: string | null;
@@ -46,10 +47,11 @@ function Projects({ projectsData }: ProjectsProps) {
         {filteredProjects.map((project, index) => {
           const keyProject = `project-${index}`;
 
-          // Apply the limit only if not in expanded view
-          const displayedTechnologies = expandedView
-            ? project.technologies
-            : project.technologies.slice(0, TECHNOLOGY_DISPLAY_LIMIT);
+          // Apply truncation only if the project's truncateTechnologies is true and not in expanded view
+          const displayedTechnologies =
+            expandedView || !project.truncateTechnologies
+              ? project.technologies
+              : project.technologies.slice(0, TECHNOLOGY_DISPLAY_LIMIT);
 
           return (
             <div className="project__entry" key={keyProject}>
@@ -59,7 +61,9 @@ function Projects({ projectsData }: ProjectsProps) {
                   {displayedTechnologies.map((tech, techIndex) => (
                     <li key={`tech-${techIndex}`} className="project__tech-item">{tech}</li>
                   ))}
-                  {!expandedView && project.technologies.length > TECHNOLOGY_DISPLAY_LIMIT && (
+                  {!expandedView && 
+                    project.truncateTechnologies &&
+                    project.technologies.length > TECHNOLOGY_DISPLAY_LIMIT && (
                     <li
                       className="project__tech-item project__tech-item-more"
                       title={project.technologies.slice(TECHNOLOGY_DISPLAY_LIMIT).join(', ')}

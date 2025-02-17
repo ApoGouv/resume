@@ -395,6 +395,7 @@
       {
         "name": "NPC Generator",
         "technologies": ["Python", "JavaScript", "HTML", "CSS", "Bootstrap"],
+        "truncateTechnologies": false,
         "showDesc": true,
         "desc": [
           "Built a form with dynamic and interdependent fields for single-player attribute options for DnD (Dungeons & Dragons).",
@@ -407,6 +408,7 @@
       {
         "name": "Resume App",
         "technologies": ["Vite", "React", "TypeScript", "CSS", "Playwright"],
+        "truncateTechnologies": false,
         "showDesc": true,
         "desc": [
           "Built a resume app using modern web technologies such as Vite, React, and TypeScript.",
@@ -419,6 +421,7 @@
       {
         "name": "Scrabble Word Finder",
         "technologies": ["Vue.js", "TypeScript", "Tailwind", "IndexedDB", "Python", "Vite"],
+        "truncateTechnologies": false,
         "showDesc": true,
         "desc": [
           "Developed a word validation and anagram finder tool for Scrabble using Vue.js, TypeScript, and Tailwind.",
@@ -441,6 +444,7 @@
           "Google OAuth",
           "MaterializeCSS"
         ],
+        "truncateTechnologies": true,
         "showDesc": true,
         "desc": [
           "Developed an interactive web analytics dashboard integrating Google Analytics API.",
