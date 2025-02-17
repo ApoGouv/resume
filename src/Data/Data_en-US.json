@@ -562,7 +562,7 @@
   "tools": {
     "isHidden": false,
     "sectionTitle": "SOFTWARE & TOOLS",
-    "entries": ["VS Code", "Git", "Linux", "Windows", "Postman",  "DBeaver", "cPanel", "and more"]
+    "entries": ["VS Code", "Git", "Linux", "Windows", "Postman",  "DBeaver", "cPanel", "+more"]
   },
   "interests": {
     "isHidden": false,

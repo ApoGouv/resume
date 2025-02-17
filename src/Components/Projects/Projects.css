@@ -48,7 +48,7 @@
 
 .project__tech-item {
     display: inline-block;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.375rem;
     background-color: var(--resume-bg-color-alt, #f7f9fb);
     border-radius: 0.25rem;
     font-size: 0.85rem;
