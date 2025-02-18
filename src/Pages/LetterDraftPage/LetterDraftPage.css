@@ -55,6 +55,8 @@
   border-radius: 4px;
   margin-bottom: 15px;
   background-color: #fff;
+  max-width: 100%;
+  min-width: 100%;
 }
 
 .input-fields button {
@@ -93,6 +95,22 @@
   background-color: #f9f9f9;
   padding: 10px;
   box-sizing: border-box;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.letter-preview {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #000000;
+  background: #FFFFFF;
+  white-space: pre-line;
+  word-wrap: break-word;
+  max-width: 100%;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 1px rgb(0 0 0 / 20%);
 }
 
 .buttons-container {

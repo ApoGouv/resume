@@ -2,9 +2,9 @@ export const DEFAULT_TEMPLATE = `{NAME}
 {EMAIL} | {PHONE}
 {DATE}
 
-Subject: Application for {JOB_TITLE} Position @{JOB_COMPANY}
+Application for {JOB_TITLE} Position
 
-Dear {JOB_HM},
+Dear {JOB_HM} at {JOB_COMPANY},
 
 My name is {NAME}, and I am a web developer with experience in PHP, SQL, and JavaScript. 
 

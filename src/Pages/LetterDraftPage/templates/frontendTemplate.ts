@@ -2,16 +2,17 @@ export const FRONTEND_TEMPLATE = `{NAME}
 {EMAIL} | {PHONE}
 {DATE}
 
-Subject: Application for Frontend Developer Position @{JOB_COMPANY}
+Application for {JOB_TITLE} Position
 
-Dear {JOB_HM},
+Dear {JOB_HM} at {JOB_COMPANY},
 
-As a frontend developer with expertise in JavaScript, React, and modern UI frameworks, I am eager to apply my skills to [Job Company]. I have experience building responsive, user-friendly interfaces, optimizing performance, and working with RESTful APIs to create seamless user experiences.
+My name is {NAME}, and I am a web developer with experience in PHP, SQL, and JavaScript. Recently, I have been focusing more on front-end development, working with React and Vue in personal projects, and I am eager to grow professionally in this field.
 
-{COVER}
+Your job posting for a {JOB_TITLE} caught my attention, as it presents an exciting opportunity to work in a modern tech environment that values collaboration and innovation. {COVER}
 
-I would love to discuss how my frontend expertise can contribute to your team’s success.
+I would love the opportunity to further discuss this role in an interview and learn more about your team and projects.
+
+Thank you for your time, and I hope to speak with you soon.
 
 Best regards,
-
 {NAME}`;

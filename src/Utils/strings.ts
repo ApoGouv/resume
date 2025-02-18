@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /**
@@ -177,19 +176,50 @@ export const formatIntlPhoneNumber = (phoneNumber: string): string => {
   const sanitized = sanitizeIntlPhoneNumber(phoneNumber);
 
   // Match international numbers starting with '+' and group the digits
-  const match: RegExpMatchArray | null = sanitized.match(/^\+(\d{2})(\d{3})(\d{3})(\d{4})$/);
+  const match: RegExpMatchArray | null = sanitized.match(
+    /^\+(\d{2})(\d{3})(\d{3})(\d{4})$/
+  );
   if (match !== null) {
-    let [, countryCode, part1, part2, part3] = match as [string, string, string, string, string];
+    const [, countryCode, part1, part2, part3] = match as [
+      string,
+      string,
+      string,
+      string,
+      string,
+    ];
     return `+${countryCode} ${part1} ${part2} ${part3}`;
   }
 
   // Match local numbers without a '+'
-  const localMatch: RegExpMatchArray | null = sanitized.match(/^(\d{3})(\d{3})(\d{4})$/);
+  const localMatch: RegExpMatchArray | null = sanitized.match(
+    /^(\d{3})(\d{3})(\d{4})$/
+  );
   if (localMatch !== null) {
-    let [, part1, part2, part3] = localMatch as [string, string, string, string];
+    const [, part1, part2, part3] = localMatch as [
+      string,
+      string,
+      string,
+      string,
+    ];
     return `${part1} ${part2} ${part3}`;
   }
 
   // If unable to format, return the original sanitized number
   return sanitized;
+};
+
+/**
+ * Replaces all occurrences of a substring within a string.
+ *
+ * @param {string} str - The original string.
+ * @param {string} search - The substring to replace.
+ * @param {string} replacement - The string to replace occurrences of `search` with.
+ * @returns {string} - The modified string with all occurrences replaced.
+ */
+export const strReplaceAll = (
+  str: string,
+  search: string,
+  replacement: string
+): string => {
+  return str.split(search).join(replacement);
 };

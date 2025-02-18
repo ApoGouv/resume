@@ -1,11 +1,16 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import jsPDF from 'jspdf';
+import DOMPurify from 'dompurify';
 import type { ProfileProps } from '@/Components/Profile/Profile';
 import { getDateFormatIntl, dateFormatOptions } from '@/Utils/dates';
+import { strReplaceAll } from '@/Utils/strings';
 
 import { DEFAULT_TEMPLATE } from '@/Pages/LetterDraftPage/templates/defaultTemplate';
 import { FRONTEND_TEMPLATE } from '@/Pages/LetterDraftPage/templates/frontendTemplate';
 import { BACKEND_TEMPLATE } from '@/Pages/LetterDraftPage/templates/backendTemplate';
+
+import '@/Pages/LetterDraftPage/jsPDF-Fonts/Lato-Regular-normal.js';
+
 
 import '@/Pages/LetterDraftPage/LetterDraftPage.css';
 
@@ -16,7 +21,7 @@ const templates = [
   { id: 'custom', name: 'Custom Template', content: '' },
 ];
 
-function LetterDraftPage({ profile }: ProfileProps) {
+function LetterDraftPage({ profileData }: ProfileProps) {
   const [jobTitle, setJobTitle] = useState('');
   const [jobCompanyName, setJobCompanyName] = useState('');
   const [jobHiringManagerName, setJobHiringManagerName] = useState('');
@@ -25,24 +30,38 @@ function LetterDraftPage({ profile }: ProfileProps) {
   const [coverLetter, setCoverLetter] = useState(DEFAULT_TEMPLATE);
   const [customTemplate, setCustomTemplate] = useState('');
 
-  const myInfo = {
-    name: profile.name || '### My Name Here ###',
-    email:
-      profile.contact?.find((contact) => contact.type === 'email')?.value ||
-      '### My Email Here ###',
-    phone:
-      profile.contact?.find((contact) => contact.type === 'phone')?.value ||
-      '### My Phone Here ###',
-  };
-
   const todayDate = getDateFormatIntl(
     new Date().toLocaleDateString(),
     dateFormatOptions.dayMonthYear,
     'en-US'
   );
 
+  const myInfo = useMemo(
+    () => ({
+      name: profileData.name || '### My Name Here ###',
+      email:
+        profileData.contact?.find(
+          (contact: { type: string; value: string }) => contact.type === 'email'
+        )?.value || '### My Email Here ###',
+      phone:
+        profileData.contact?.find(
+          (contact: { type: string; value: string }) => contact.type === 'phone'
+        )?.value || '### My Phone Here ###',
+    }),
+    [profileData]
+  );
+
+  // Function to sanitize and render cover letter content
+  const getSanitizedCoverLetter = () => {
+    // Sanitize coverLetter content before rendering
+    const sanitizedContent = DOMPurify.sanitize(coverLetter, {
+      USE_PROFILES: { html: true },
+    });
+    return sanitizedContent;
+  };
+
   const generateCoverLetter = useCallback(() => {
-    let template =
+    const template =
       selectedTemplate === 'custom'
         ? customTemplate
         : templates.find((t) => t.id === selectedTemplate)?.content || '';
@@ -51,7 +70,7 @@ function LetterDraftPage({ profile }: ProfileProps) {
     const replacements: Record<string, string> = {
       '{JOB_TITLE}': jobTitle || '### Job Title Here ###',
       '{JOB_COMPANY}': jobCompanyName || '### Job Company Here ###',
-      '{JOB_HM}': jobHiringManagerName || 'Hiring Manager',
+      '{JOB_HM}': jobHiringManagerName || 'Hiring Team',
       '{NAME}': myInfo.name,
       '{EMAIL}': myInfo.email,
       '{PHONE}': myInfo.phone,
@@ -61,40 +80,56 @@ function LetterDraftPage({ profile }: ProfileProps) {
 
     let newCoverLetter = template;
     Object.entries(replacements).forEach(([key, value]) => {
-      newCoverLetter = newCoverLetter.replaceAll(key, value);
+      newCoverLetter = strReplaceAll(newCoverLetter, key, value);
     });
 
     setCoverLetter(newCoverLetter);
   }, [
     selectedTemplate,
+    customTemplate,
     jobTitle,
     jobCompanyName,
     jobHiringManagerName,
-    coverText,
     myInfo,
     todayDate,
+    coverText,
   ]);
 
   useEffect(() => {
     generateCoverLetter();
-  }, [selectedTemplate, jobTitle, jobCompanyName, jobHiringManagerName, coverText, myInfo, todayDate, generateCoverLetter]);
+  }, [
+    selectedTemplate,
+    customTemplate,
+    jobTitle,
+    jobCompanyName,
+    jobHiringManagerName,
+    myInfo,
+    todayDate,
+    coverText,
+    generateCoverLetter,
+  ]);
 
-
-  // Function to handle typing in the cover letter textarea
-  const handleCoverLetterChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCoverLetter(e.target.value);
-  };
-
-  const handleCustomTemplateChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleCustomTemplateChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setCustomTemplate(e.target.value);
   };
 
   const downloadPDF = () => {
     const doc = new jsPDF();
-    doc.setFont('helvetica');
+    // doc.setFont('helvetica');
+    doc.setFont('Lato'); // Use the custom font
+
     doc.setFontSize(12);
     doc.text(coverLetter, 10, 10, { maxWidth: 180 });
-    doc.save('Cover_Letter.pdf');
+
+    // Generate file name
+    const safeName = profileData.name
+      ? profileData.name.replace(/\s+/g, '_')
+      : 'Cover_Letter';
+    const fileName = `${safeName}_Cover_Letter.pdf`;
+
+    doc.save(fileName);
   };
 
   return (
@@ -153,15 +188,13 @@ function LetterDraftPage({ profile }: ProfileProps) {
             onChange={(e) => setCoverText(e.target.value)}
             rows={6}
           />
-
         </div>
 
         <div className="generated-letter">
           <h3>Generated Letter Draft:</h3>
-          <textarea
-            value={coverLetter}
-            onChange={handleCoverLetterChange}
-            rows={10}
+          <div
+            className="letter-preview"
+            dangerouslySetInnerHTML={{ __html: getSanitizedCoverLetter() }}
           />
 
           <div className="buttons-container">

@@ -201,8 +201,8 @@ function ResumePage() {
           // */}
         {APP_IN_DEV_MODE && (
             <>
-            <Route path="letter-draft" element={<LetterDraftPage profile={profile} />} />
-            <Route path="en/letter-draft" element={<LetterDraftPage profile={profile} />} />
+            <Route path="letter-draft" element={<LetterDraftPage profileData={profile} />} />
+            <Route path="en/letter-draft" element={<LetterDraftPage profileData={profile} />} />
           </>
         )}
 
