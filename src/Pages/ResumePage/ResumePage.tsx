@@ -194,9 +194,16 @@ function ResumePage() {
           }
         />
 
-        {/* LetterDraftpage Route (only available in dev mode): http://localhost:5173/resume/#/letter-draft */}
+        {/* 
+          // LetterDraftPage Route (only available in dev mode): 
+          // Greek (incomplete): http://localhost:5173/resume/#/letter-draft
+          // English: http://localhost:5173/resume/#/en/letter-draft
+          // */}
         {APP_IN_DEV_MODE && (
-            <Route path="/letter-draft" element={<LetterDraftPage />} />
+            <>
+            <Route path="letter-draft" element={<LetterDraftPage profile={profile} />} />
+            <Route path="en/letter-draft" element={<LetterDraftPage profile={profile} />} />
+          </>
         )}
 
 

@@ -27,6 +27,7 @@
 .input-fields {
   flex: 1;
   width: 50%;
+  padding: 0.625rem;
 }
 
 .input-fields label {
@@ -37,6 +38,16 @@
 }
 
 .input-fields input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.input-fields textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -64,10 +75,11 @@
 .generated-letter {
   flex: 1;
   width: 50%;
+  padding: 0.625rem;
 }
 
 .generated-letter h3 {
-  margin-top: 30px;
+  margin-bottom: 1.5rem;
   font-size: 20px;
   color: #333;
 }

@@ -88,7 +88,7 @@
 /* Media query for mobile screens */
 @media screen and (max-width: 767.99px) {
   #resume-container {
-    margin: 0 0 3rem 0;
+    margin: 0 0 3.5rem 0;
   }
 
   #resume {

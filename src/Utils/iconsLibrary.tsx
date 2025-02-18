@@ -17,6 +17,7 @@ import {
   FaStackOverflow,
   FaSun,
   FaTerminal,
+  FaPlus,
 } from 'react-icons/fa6';
 
 import { CgWebsite, CgDetailsMore, CgDetailsLess } from 'react-icons/cg';
@@ -65,6 +66,7 @@ const MENU_ICONS = {
       className="language-flag language-en-us"
     />
   ),
+  menu: <FaPlus />,
   loading: <FaSpinner className="spinner" />,
   moon: <FaRegMoon />,
   pdf: <FaRegFilePdf />,
